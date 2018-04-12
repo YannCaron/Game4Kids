@@ -4,7 +4,7 @@ Blockly.JavaScript['create_game'] = function (block) {
   var w = Blockly.JavaScript.valueToCode(block, 'W', Blockly.JavaScript.ORDER_ATOMIC);
   var h = Blockly.JavaScript.valueToCode(block, 'H', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = 'game.initGame(' + w + ', ' + h + ', ' + img + ');\n';
+  var code = 'game4k.createGame(' + w + ', ' + h + ', ' + img + ');\n';
   return code;
 };
 
@@ -19,16 +19,14 @@ Blockly.JavaScript['game_debug'] = function (block) {
   var apply = block.getFieldValue('APPLY') == 'TRUE';
 
   var code = '';
-  if (apply) {
-    code += 'game.debugGame();\n';
-  }
+  code += 'game4k.setDebugMode(' + apply + ');\n';
   return code;
 };
 
 Blockly.JavaScript['debug_var'] = function (block) {
   var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = 'game.logVar(\'' + varName + '\', function () {\n';
+  var code = 'game4k.addInfo(\'' + varName + '\', function () {\n';
   code += 'return ' + varName + ';\n';
   code += '});\n';
   return code;
@@ -45,7 +43,7 @@ Blockly.JavaScript['game_print'] = function (block) {
   var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
   var text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = 'game.addText(' + x + ', ' + y + ', function () {\n';
+  var code = 'game4k.createText(' + x + ', ' + y + ', function () {\n';
   code += 'return ' + text + ';\n';
   code += '});\n';
   return code;

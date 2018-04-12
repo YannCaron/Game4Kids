@@ -98,7 +98,7 @@ Game4kids.React.Signal.prototype.toTime = function () {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(Game4kids.currentGame.time.now);
+        signal.emit(Game4kids.current.game.time.now);
     });
 
     return signal;

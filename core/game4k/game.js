@@ -1,15 +1,17 @@
 // const
 Game4kids.Game.DEFAULT_MAX_ACTOR = 500;
+Game4kids.Game.TEXT_STYLE = { font: "25px Courier New", fill: "#f7f7f7", align: "left" }; // another choice: DejaVu Sans Mono
 
 // attributes
 Game4kids.Game.prototype.maxActor = null;
 Game4kids.Game.prototype.actorCount = null;
 Game4kids.Game.prototype.groups = null;
+Game4kids.Game.prototype.texts = null;
 
 // inner class
 Game4kids.Game.Groups = function (game) {
-    this.groups = {};
     this.game = game;
+    this.groups = {};
 
     this.get = function (name) {
         if (typeof this.groups[name] === 'undefined') {
@@ -26,7 +28,21 @@ Game4kids.Game.prototype.initGame = function () {
     this.groups = new Game4kids.Game.Groups(this.game);
     this.maxActor = Game4kids.Game.DEFAULT_MAX_ACTOR;
     this.actorCount = 0;
+    this.texts = [];
 }
+
+Game4kids.Game.prototype.updateGame = function () {
+    // print texts
+    for (var i in this.texts) {
+        this.texts[i].textObject.text = this.texts[i].valueCallback();
+    }
+}
+
+// methods
+Game4kids.Game.prototype.createGame = function (w, h, bg) {
+    this.game.add.tileSprite(0, 0, w, h, bg);
+    this.game.world.setBounds(0, 0, w, h);
+};
 
 Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
@@ -50,12 +66,6 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     return actor;
 };
 
-// methods
-Game4kids.Game.prototype.createGame = function (w, h, bg) {
-    this.game.add.tileSprite(0, 0, w, h, bg);
-    this.game.world.setBounds(0, 0, w, h);
-};
-
 Game4kids.Game.prototype.checkNbActor = function (actor) {
     if (this.actorCount > this.maxActor) {
         var msg = Blockly.Msg.ALERT_MAX_ACTOR.format(this.maxActor);
@@ -70,3 +80,12 @@ Game4kids.Game.prototype.checkNbActor = function (actor) {
     });
 
 }
+
+Game4kids.Game.prototype.createText = function (x, y, callback) {
+    //var text = this.add.bitmapText(x, y, 'font', '', 15);
+
+    var text = new Phaser.Text(this.game, x, y, "", Game4kids.Game.TEXT_STYLE);
+    this.game.add.existing(text);
+    text.fixedToCamera = true;
+    this.texts.push({ textObject: text, valueCallback: callback });
+};

@@ -1,6 +1,6 @@
 // namespace
 var Game4kids = Game4kids || {
-    currentGame : null,
+    current: null,
 };
 
 // constructor
@@ -11,7 +11,7 @@ Game4kids.Game = function (width, height, content, state) {
 
 // state methods
 Game4kids.Game.prototype.preload = function () {
-    Game4kids.currentGame = this.game;
+    Game4kids.current = this;
 
     this.initGame();
     this.initDebug();
@@ -28,6 +28,7 @@ Game4kids.Game.prototype.create = function () {
 }
 
 Game4kids.Game.prototype.update = function () {
+    this.updateGame();
     this.updateEvent();
 
     // call state.update

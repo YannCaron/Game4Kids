@@ -8,7 +8,7 @@ Game4kids.Actor = function (game, image, x = 0, y = 0) {
 Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
 Game4kids.Actor.prototype.constructor = Game4kids.Actor;
 
-// methods
+// accessor
 Game4kids.Actor.prototype.setBounce = function (bounce) {
     bounce = bounce / 100;
     this.body.bounce.x = bounce;
@@ -22,11 +22,15 @@ Game4kids.Actor.prototype.setFriction = function (friction) {
 }
 
 
-Game4kids.Actor.prototype.scaleTo = function (x, y) {
-    this.scale.setTo(x / 100, y / 100);
+Phaser.Sprite.prototype.getAngleWith = function (actor) {
+    return this.game.physics.arcade.angleBetween(this, actor).radToDeg();
 }
 
-Game4kids.Actor.prototype.VelocityFromAngle = function (speed) {
+Phaser.Sprite.prototype.getDistanceWith = function (actor) {
+    return this.game.physics.arcade.distanceBetween(this, actor);
+}
+
+Game4kids.Actor.prototype.setVelocityFromAngle = function (speed) {
     this.game.physics.arcade.velocityFromRotation(this.rotation, speed, this.body.velocity);
 }
 
@@ -53,6 +57,11 @@ Game4kids.Actor.prototype.setRotationFriction = function () {
         }
         sprite1.body.angularVelocity += -sprite2.body.angularVelocity * this.body.friction.y;
     }, this);
+}
+
+// methods
+Game4kids.Actor.prototype.scaleTo = function (x, y) {
+    this.scale.setTo(x / 100, y / 100);
 }
 
 Game4kids.Actor.prototype.cameraFollow = function () {
