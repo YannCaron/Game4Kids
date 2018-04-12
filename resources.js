@@ -240,9 +240,6 @@ Blockly4kids.gameImages['Platformer'] = [
 	[{ src: 'assets/img/Platformer/water.png', width: 50, height: 50 }, 'Platformer-water#assets/img/Platformer/water.png']
 ];
 Blockly4kids.gameImages['SpaceArt'] = [
-	[{ src: 'assets/img/SpaceArt/bold_silver.png', width: 50, height: 50 }, 'SpaceArt-bold-silver#assets/img/SpaceArt/bold_silver.png'],
-	[{ src: 'assets/img/SpaceArt/bolt_bronze.png', width: 50, height: 50 }, 'SpaceArt-bolt-bronze#assets/img/SpaceArt/bolt_bronze.png'],
-	[{ src: 'assets/img/SpaceArt/bolt_gold.png', width: 50, height: 50 }, 'SpaceArt-bolt-gold#assets/img/SpaceArt/bolt_gold.png'],
 	[{ src: 'assets/img/SpaceArt/enemyBlack1.png', width: 50, height: 50 }, 'SpaceArt-enemyBlack1#assets/img/SpaceArt/enemyBlack1.png'],
 	[{ src: 'assets/img/SpaceArt/enemyBlack2.png', width: 50, height: 50 }, 'SpaceArt-enemyBlack2#assets/img/SpaceArt/enemyBlack2.png'],
 	[{ src: 'assets/img/SpaceArt/enemyBlack3.png', width: 50, height: 50 }, 'SpaceArt-enemyBlack3#assets/img/SpaceArt/enemyBlack3.png'],
@@ -323,6 +320,9 @@ Blockly4kids.gameImages['SpaceArt'] = [
 	[{ src: 'assets/img/SpaceArt/star_bronze.png', width: 50, height: 50 }, 'SpaceArt-star-bronze#assets/img/SpaceArt/star_bronze.png'],
 	[{ src: 'assets/img/SpaceArt/star_gold.png', width: 50, height: 50 }, 'SpaceArt-star-gold#assets/img/SpaceArt/star_gold.png'],
 	[{ src: 'assets/img/SpaceArt/star_silver.png', width: 50, height: 50 }, 'SpaceArt-star-silver#assets/img/SpaceArt/star_silver.png'],
+	[{ src: 'assets/img/SpaceArt/thunderbold_silver.png', width: 50, height: 50 }, 'SpaceArt-thunderbold-silver#assets/img/SpaceArt/thunderbold_silver.png'],
+	[{ src: 'assets/img/SpaceArt/thunderbolt_bronze.png', width: 50, height: 50 }, 'SpaceArt-thunderbolt-bronze#assets/img/SpaceArt/thunderbolt_bronze.png'],
+	[{ src: 'assets/img/SpaceArt/thunderbolt_gold.png', width: 50, height: 50 }, 'SpaceArt-thunderbolt-gold#assets/img/SpaceArt/thunderbolt_gold.png'],
 	[{ src: 'assets/img/SpaceArt/ufoBlue.png', width: 50, height: 50 }, 'SpaceArt-ufoBlue#assets/img/SpaceArt/ufoBlue.png'],
 	[{ src: 'assets/img/SpaceArt/ufoGreen.png', width: 50, height: 50 }, 'SpaceArt-ufoGreen#assets/img/SpaceArt/ufoGreen.png'],
 	[{ src: 'assets/img/SpaceArt/ufoRed.png', width: 50, height: 50 }, 'SpaceArt-ufoRed#assets/img/SpaceArt/ufoRed.png'],

@@ -19,14 +19,32 @@ Blockly.Blocks['signal_create'] = {
     }
 };
 
+Blockly.Blocks['signal_create_with'] = {
+    init: function () {
+        this.appendValueInput("NEXT")
+            .appendField("with")
+            .appendField(this.fieldActorFactory(), "VAR")
+            .setCheck("SIGNAL")
+            .appendField("when");
+        this.appendStatementInput("STMT")
+            .setCheck(null);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 // mutators
 Blockly.Blocks['signal_every'] = {
     init: function () {
-        this.appendValueInput("NEXT")
-            .setCheck("SIGNAL")
-            .appendField("every")
-            .appendField(new Blockly.FieldNumber(0.75, 0, 60, 0.01), "VALUE")
+        this.appendValueInput("VALUE")
+            .setCheck("Number")
+            .appendField("every");
+        this.appendDummyInput()
             .appendField("seconds");
+        this.setInputsInline(true);
         this.setOutput(true, "SIGNAL");
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
@@ -44,7 +62,7 @@ Blockly.Blocks['signal_mouse'] = {
 
         this.appendValueInput("NEXT")
             .setCheck("SIGNAL")
-            .appendField("Mouse")
+            .appendField("mouse")
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT");
         this.setOutput(true, "SIGNAL");
         this.setColour(Blockly.Blocks.event.HUE);

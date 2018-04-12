@@ -11,12 +11,25 @@ Blockly.JavaScript['signal_create'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['signal_every'] = function (block) {
-    var value = block.getFieldValue('VALUE');
+Blockly.JavaScript['signal_create_with'] = function (block) {
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
+
+    var code = 'game4k.createSignal()\n';
+    if (next) code += next;
+    code += '.toObject(' + varName + ')\n'
+    code += '.subscribe(function (' + varName + ') {\n'
+    code += stmt + '\n';
+    code += '});';
+
+    return code;
+};
+
+Blockly.JavaScript['signal_every'] = function (block) {
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = '.toTime().every(' + value + ')\n';
-    if (next) code += next;
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
