@@ -98,7 +98,7 @@ Game4kids.React.Signal.prototype.toTime = function () {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(Game4kids.current.game.time.now);
+        signal.emit(Game4kids.current.game.time.now / 1000);
     });
 
     return signal;
@@ -115,6 +115,28 @@ Game4kids.Game.prototype.initEvent = function () {
     this.input.mouse.capture = true;
 
     var game = this.game;
+}
+
+Game4kids.Game.prototype.updateEvent = function () {
+    this.count++;
+
+    // loop on signals
+    for (var i in this.signals) {
+        var signal = this.signals[i];
+        signal.emit(this.count);
+    }
+}
+
+// method
+Game4kids.Game.prototype.createSignal = function() {
+    var signal = new Game4kids.React.Signal();
+    this.signals.push(signal);
+    return signal;
+}
+
+/*
+Examples: 
+
     var signal = new Game4kids.React.Signal()
         .toEvent(function () { return game.input.activePointer.leftButton.isDown; })
         .toggle()
@@ -133,19 +155,5 @@ Game4kids.Game.prototype.initEvent = function () {
         });
 
     this.signals.push(signal2);
-}
 
-Game4kids.Game.prototype.updateEvent = function () {
-    this.count++;
-
-    // loop on signals
-    for (var i in this.signals) {
-        var signal = this.signals[i];
-        signal.emit(this.count);
-    }
-}
-
-// method
-Game4kids.Game.prototype.createSignal = function(callback) {
-    this.signals.push(new Game4kids.React.Signal(callback).filterOnTime(1000));
-}
+*/

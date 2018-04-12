@@ -39,7 +39,7 @@ Blockly.Blocks['actor_object'] = {
     }
 };
 
-// accessor
+// properties
 Blockly.Blocks['actor_get'] = {
 
     init: function () {
@@ -209,64 +209,4 @@ Blockly.Blocks['actor_action'] = {
     },
 
     runIn: 'create'
-};
-
-// event
-Blockly.Blocks['actor_every'] = {
-    init: function () {
-        this.OPTIONS = [
-            [Blockly.Msg.BLOCK_IN, "Phaser.Sprite.TimeMode.IN"],
-            [Blockly.Msg.BLOCK_FROM, "Phaser.Sprite.TimeMode.IN_AND_AFTER"],
-            [Blockly.Msg.BLOCK_EVERY, "Phaser.Sprite.TimeMode.EVERY"]
-        ];
-        this.appendValueInput("VAR")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-            .setCheck(Blockly.Block.ACTOR_TYPE)
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT")
-        this.appendValueInput("TIME")
-            .setCheck("Number");
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCK_SECONDS);
-        this.appendStatementInput("STMT")
-            .setCheck(null)
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_EVERY.format(Blockly.Block.optionList(this.OPTIONS)));
-        this.setHelpUrl("");
-    },
-
-    runIn: 'create'
-};
-
-Blockly.Blocks['actor_collide'] = {
-    init: function () {
-        this.OPTIONS = [
-            ["collide", "onCollide"],
-            ["overlap", "onOverlap"]
-        ];
-        this.appendValueInput("IMG1")
-            .setCheck(Blockly.Block.IMAGE_TYPE)
-            .appendField(Blockly.Msg.BLOCK_WHEN)
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-        this.appendValueInput("IMG2")
-            .setCheck(Blockly.Block.IMAGE_TYPE)
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCK_ONCE)
-            .appendField(new Blockly.FieldCheckbox("FALSE"), "ONCE");
-        this.appendStatementInput("STMT")
-            .setCheck(null)
-            .appendField(new Blockly.FieldVariable("actor1", null, [Blockly.Block.ACTOR_TYPE], Blockly.Block.ACTOR_TYPE), "ID1")
-            .appendField(new Blockly.FieldVariable("actor2", null, [Blockly.Block.ACTOR_TYPE], Blockly.Block.ACTOR_TYPE), "ID2")
-        this.setInputsInline(true);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_COLLIDE);
-        this.setHelpUrl("");
-    },
-
-    runIn: 'update'
 };

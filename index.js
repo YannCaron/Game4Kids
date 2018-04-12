@@ -416,6 +416,7 @@ Code.init = function() {
   Code.workspace.registerToolboxCategoryCallback('IMAGE', Blockly.imageDynamic.imageFlyoutCallback);
   Code.workspace.registerToolboxCategoryCallback('GAME', Blockly.gameDynamic.gameFlyoutCallback);
   Code.workspace.registerToolboxCategoryCallback('ACTOR', Blockly.actorDynamic.actorFlyoutCallback);
+  Code.workspace.registerToolboxCategoryCallback('EVENT', Blockly.eventDynamic.actorFlyoutCallback);
 
 };
 

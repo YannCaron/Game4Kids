@@ -36,18 +36,6 @@ Blockly.gameDynamic.buildDebugVar = function (value) {
         '</block>';
 }
 
-Blockly.gameDynamic.GAME_ALWAYS =
-    '<block type="game_always"></block>';
-
-Blockly.gameDynamic.GAME_EVERY =
-    '<block type="game_every"></block>';
-
-Blockly.gameDynamic.KEY_EVENT =
-    '<block type="key_event"></block>';
-
-Blockly.gameDynamic.MOUSE_EVENT =
-    '<block type="mouse_event"></block>';
-
 Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
     var xmlList = [];
 
@@ -84,12 +72,7 @@ Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
     }
 
     // events
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.GAME_ALWAYS));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.GAME_EVERY));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.KEY_EVENT));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.MOUSE_EVENT));
-
+    //xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
 
     return xmlList;
 };

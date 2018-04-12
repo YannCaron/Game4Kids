@@ -49,18 +49,6 @@ Blockly.actorDynamic.ACTOR_ACTION =
 	Blockly.dynamic.buildShadowObject('VAR') +
 	'</block>';
 
-Blockly.actorDynamic.ACTOR_EVERY =
-	'<block type="actor_every">' +
-	Blockly.dynamic.buildShadowObject('VAR') +
-	Blockly.dynamic.buildShadowNumber('TIME', 0.75) +
-	'</block>';
-
-Blockly.actorDynamic.ACTOR_COLLIDE =
-	'<block type="actor_collide">' +
-	Blockly.dynamic.buildShadowImage('IMG1') +
-	Blockly.dynamic.buildShadowImage('IMG2') +
-	'</block>';
-
 Blockly.actorDynamic.actorFlyoutCallback = function (workspace) {
 
     var xmlList = [];
@@ -85,9 +73,7 @@ Blockly.actorDynamic.actorFlyoutCallback = function (workspace) {
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_ACTION));
 
-		xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
-		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_EVERY));
-		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_COLLIDE));
+		//xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
     }
 
 
