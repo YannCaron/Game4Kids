@@ -1,5 +1,5 @@
 var MSG = {
-  title: "Code4Kids - proof of concept",
+  title: `Code4Kids ${Blockly.Msg.VERSION} - Game rules are yours !`,
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",

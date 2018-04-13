@@ -1,5 +1,12 @@
 // namespace
-Game4kids.React = Game4kids.React || {};
+Game4kids.React = Game4kids.React || {
+
+    valueOf: function(f) {
+        if (typeof f === 'function') return f();
+        else return f;
+    },
+
+};
 
 // class
 // react
@@ -23,11 +30,11 @@ Game4kids.React.Signal.prototype.emit = function (value) {
 }
 
 // react.filters
-Game4kids.React.Signal.prototype.filter = function (preficate) {
+Game4kids.React.Signal.prototype.filter = function (predicate) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        if (preficate(value)) {
+        if (predicate(value)) {
             signal.emit(value);
         }
     });
@@ -56,7 +63,7 @@ Game4kids.React.Signal.prototype.every = function(interval) {
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
 
-        if (value >= self.previous + interval) {
+        if (value >= self.previous + Game4kids.React.valueOf(interval)) {
             self.previous = value;
             return true;
         }
@@ -64,10 +71,27 @@ Game4kids.React.Signal.prototype.every = function(interval) {
     });
 }
 
+Game4kids.React.Signal.prototype.dash = function (interval1, interval2 = null) {
+    var self = this;
+    var toggle = false;
+
+    return this.filter(function (value) {
+        if (typeof self.previous === 'undefined') self.previous = null;
+
+        var interval = !toggle && interval2 ? Game4kids.React.valueOf(interval2) : Game4kids.React.valueOf(interval1);
+
+        if (value >= self.previous + interval) {
+            toggle = !toggle;
+            self.previous = value;
+        }
+        return toggle;
+    });
+}
+
 Game4kids.React.Signal.prototype.whenEquals = function (compare) {
 
     return this.filter(function (value) {
-        return value == compare;
+        return value == Game4kids.React.valueOf(compare);
     });
 
 }

@@ -5,7 +5,7 @@ goog.provide('Blockly.Msg.en');
 goog.require('Blockly.Msg');
 
 // CyaNn Code
-
+Blockly.Msg.VERSION = 'v0.1';
 /// {{Notranslate}} Hue value for all logic blocks.
 Blockly.Msg.IMAGE_HUE = '215';
 Blockly.Msg.GAME_HUE = '215';

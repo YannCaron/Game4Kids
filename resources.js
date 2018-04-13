@@ -67,17 +67,22 @@ Blockly4kids.gameImages['Animals'] = [
 ];
 Blockly4kids.gameImages['Background'] = [
 	[{ src: 'assets/img/Background/dirt.png', width: 50, height: 50 }, 'Background-dirt#assets/img/Background/dirt.png'],
+	[{ src: 'assets/img/Background/glass.png', width: 50, height: 50 }, 'Background-glass#assets/img/Background/glass.png'],
 	[{ src: 'assets/img/Background/grass 1.png', width: 50, height: 50 }, 'Background-grass-1#assets/img/Background/grass 1.png'],
 	[{ src: 'assets/img/Background/grass 2.png', width: 50, height: 50 }, 'Background-grass-2#assets/img/Background/grass 2.png'],
 	[{ src: 'assets/img/Background/ground 1.png', width: 50, height: 50 }, 'Background-ground-1#assets/img/Background/ground 1.png'],
 	[{ src: 'assets/img/Background/ground 2.png', width: 50, height: 50 }, 'Background-ground-2#assets/img/Background/ground 2.png'],
 	[{ src: 'assets/img/Background/ground 3.png', width: 50, height: 50 }, 'Background-ground-3#assets/img/Background/ground 3.png'],
+	[{ src: 'assets/img/Background/ground 4.png', width: 50, height: 50 }, 'Background-ground-4#assets/img/Background/ground 4.png'],
 	[{ src: 'assets/img/Background/industrial.png', width: 50, height: 50 }, 'Background-industrial#assets/img/Background/industrial.png'],
+	[{ src: 'assets/img/Background/roof.png', width: 50, height: 50 }, 'Background-roof#assets/img/Background/roof.png'],
 	[{ src: 'assets/img/Background/sand.png', width: 50, height: 50 }, 'Background-sand#assets/img/Background/sand.png'],
 	[{ src: 'assets/img/Background/sky.png', width: 50, height: 50 }, 'Background-sky#assets/img/Background/sky.png'],
 	[{ src: 'assets/img/Background/space-blue.png', width: 50, height: 50 }, 'Background-space-blue#assets/img/Background/space-blue.png'],
 	[{ src: 'assets/img/Background/space-no-star.png', width: 50, height: 50 }, 'Background-space-no-star#assets/img/Background/space-no-star.png'],
-	[{ src: 'assets/img/Background/space.png', width: 50, height: 50 }, 'Background-space#assets/img/Background/space.png']
+	[{ src: 'assets/img/Background/space.png', width: 50, height: 50 }, 'Background-space#assets/img/Background/space.png'],
+	[{ src: 'assets/img/Background/tile 1.png', width: 50, height: 50 }, 'Background-tile-1#assets/img/Background/tile 1.png'],
+	[{ src: 'assets/img/Background/tile 2.png', width: 50, height: 50 }, 'Background-tile-2#assets/img/Background/tile 2.png']
 ];
 Blockly4kids.gameImages['Board'] = [
 	[{ src: 'assets/img/Board/dieRed1.png', width: 50, height: 50 }, 'Board-dieRed1#assets/img/Board/dieRed1.png'],
