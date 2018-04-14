@@ -43,6 +43,16 @@ Blockly.JavaScript['signal_combine'] = function (block) {
 };
 
 // methods
+Blockly.JavaScript['signal_if'] = function (block) {
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = '.filter(function () { return ' + value + '; })\n';
+    if (next) code += next;
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['signal_every'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
@@ -70,6 +80,19 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = key + event + '\n';
+    if (next) code += next;
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['signal_collide'] = function (block) {
+    var actor1 = block.getFieldValue('ACTOR1');
+    var key = block.getFieldValue('KEY');
+    var event = block.getFieldValue('EVENT');
+    var actor2 = block.getFieldValue('ACTOR2');
+    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
+    
+    var code = key.format(actor1, actor2) + event + '\n';
     if (next) code += next;
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];

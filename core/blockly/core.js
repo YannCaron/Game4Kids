@@ -42,6 +42,14 @@ Blockly.dynamic.buildShadowImage = function (name) {
         '</value>';
 }
 
+Blockly.dynamic.buildShadowBoolean = function (name, defaultValue = 0) {
+    return '<value name="' + name + '">' +
+        '<shadow type="logic_boolean">' +
+        '<field name="BOOL">' + defaultValue + '</field>' +
+        '</shadow>' +
+        '</value>';
+};
+
 Blockly.dynamic.buildShadowNumber = function (name, defaultValue = 0) {
     return '<value name="' + name + '">' +
         '<shadow type="math_number">' +

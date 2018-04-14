@@ -60,6 +60,23 @@ Blockly.Blocks['signal_combine'] = {
 };
 
 // methods
+Blockly.Blocks['signal_if'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck("Boolean")
+            .appendField("if");
+        this.appendValueInput("NEXT")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("when →");
+        this.setInputsInline(false);
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['signal_every'] = {
     init: function () {
         this.appendValueInput("VALUE")
@@ -127,7 +144,7 @@ Blockly.Blocks['signal_keyboard'] = {
 
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("mouse")
+            .appendField("key")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField("when →");
@@ -138,15 +155,38 @@ Blockly.Blocks['signal_keyboard'] = {
     }
 };
 
+Blockly.Blocks['signal_collide'] = {
+    init: function () {
+        this.KEYS = [
+            ["collide", ".toEvent(function () { return game.physics.arcade.collide(%1, %2); })"],
+            ["overlap", ".toEvent(function () { return game.physics.arcade.overlap(%1, %2); })"],
+        ];
 
+        this.EVENTS = [
+            ['enter', '.toggle().whenEquals(true)'],
+            ['during', '.whenEquals(true)'],
+            ['exit', '.toggle().whenEquals(false)']
+        ];
 
-/*
-    var key = [
-      ["← left", "LEFT"], // ↺ ↻ found on https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Caract%C3%A8res_sp%C3%A9ciaux/Fl%C3%A8ches
-      ["→ right", "RIGHT"],
-      ["↑ up", "UP"],
-      ["↓ down", "DOWN"],
-      ["↲ enter", "ENTER"],
-      ["  space", "SPACEBAR"]
-    ];
-*/
+        var actorVariables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
+        this.GROUPS = [];
+        for (var v in actorVariables) {
+            var variable = actorVariables[v];
+            this.GROUPS.push(['all %1s'.format(variable.name), 'Game4kids.current.groups.get(\'%1\')'.format(variable.name)]);
+        }
+
+        this.appendValueInput("NEXT")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .appendField("on")
+            .appendField(new Blockly.FieldDropdown(this.GROUPS), "ACTOR1")
+            .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+            .appendField("with")
+            .appendField(new Blockly.FieldDropdown(this.GROUPS.slice()), "ACTOR2")
+            .appendField("when →");
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};

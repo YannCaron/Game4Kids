@@ -10,6 +10,11 @@ Blockly.eventDynamic.SIGNAL_CREATE_WITH =
 Blockly.eventDynamic.SIGNAL_COMBINE =
     '<block type="signal_combine"></block>';
 
+Blockly.eventDynamic.SIGNAL_IF =
+    '<block type="signal_if">' +
+    Blockly.dynamic.buildShadowBoolean('VALUE', 'TRUE') +
+    '</block>';
+
 Blockly.eventDynamic.SIGNAL_EVERY =
     '<block type="signal_every">' + 
     Blockly.dynamic.buildShadowNumber('VALUE', 0.75) +
@@ -21,6 +26,9 @@ Blockly.eventDynamic.SIGNAL_MOUSE =
 Blockly.eventDynamic.SIGNAL_KEYBOARD =
     '<block type="signal_keyboard"></block>';
 
+Blockly.eventDynamic.SIGNAL_COLLIDE =
+    '<block type="signal_collide"></block>';
+
 Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
 
     var xmlList = [];
@@ -30,15 +38,20 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     // constructor
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_WITH));
+
+    if (actorVariables.length > 0) {
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_WITH));
+    }
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_OPERATOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COMBINE));
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_IF));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_EVERY));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_MOUSE));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_KEYBOARD));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE));
 
     if (actorVariables.length > 0) {
 	}
