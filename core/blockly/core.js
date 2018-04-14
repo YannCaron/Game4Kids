@@ -4,6 +4,7 @@ Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
 
 Blockly.Block.IMAGE_TYPE = 'Image';
 Blockly.Block.ACTOR_TYPE = 'Actor';
+Blockly.Block.SIGNAL_TYPE = 'Signal';
 
 Blockly.Block.GAME_WIDTH = 1024;
 Blockly.Block.GAME_HEIGHT = 768;

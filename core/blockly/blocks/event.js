@@ -7,7 +7,7 @@ Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
 Blockly.Blocks['signal_create'] = {
     init: function () {
         this.appendValueInput("NEXT")
-            .setCheck("SIGNAL")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("when");
         this.appendStatementInput("STMT")
             .setCheck(null);
@@ -24,7 +24,7 @@ Blockly.Blocks['signal_create_with'] = {
         this.appendValueInput("NEXT")
             .appendField("with")
             .appendField(this.fieldActorFactory(), "VAR")
-            .setCheck("SIGNAL")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("when");
         this.appendStatementInput("STMT")
             .setCheck(null);
@@ -45,7 +45,7 @@ Blockly.Blocks['signal_every'] = {
         this.appendDummyInput()
             .appendField("seconds");
         this.setInputsInline(true);
-        this.setOutput(true, "SIGNAL");
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
@@ -61,10 +61,25 @@ Blockly.Blocks['signal_mouse'] = {
         ];
 
         this.appendValueInput("NEXT")
-            .setCheck("SIGNAL")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("mouse")
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT");
-        this.setOutput(true, "SIGNAL");
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['signal_combine'] = {
+    init: function () {
+        this.appendValueInput("NEXT1")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .appendField("combine");
+        this.appendValueInput("NEXT2")
+            .setCheck(Blockly.Block.SIGNAL_TYPE);
+        this.setInputsInline(false);
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");

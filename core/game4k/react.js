@@ -26,7 +26,9 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 }
 
 Game4kids.React.Signal.prototype.emit = function (value) {
-    this.callback(value);
+    if (this.callback) {
+        this.callback(value);
+    }
 }
 
 // react.filters
@@ -94,6 +96,19 @@ Game4kids.React.Signal.prototype.whenEquals = function (compare) {
         return value == Game4kids.React.valueOf(compare);
     });
 
+}
+
+// react.combine
+Game4kids.React.Signal.prototype.combine = function (signals) {
+    var signal = new Game4kids.React.Signal(this);
+
+    for (var i in signals) {
+        signals[i].subscribe(function (value) {
+            signal.emit(value);
+        });
+    }
+
+    return signal;
 }
 
 // mutator

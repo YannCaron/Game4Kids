@@ -34,6 +34,7 @@ Blockly.Msg.OBJECT_CONSTRUCTOR = "constructor";
 Blockly.Msg.OBJECT_PROPERTIES = "properties";
 Blockly.Msg.OBJECT_METHODS = "methods";
 Blockly.Msg.OBJECT_EVENTS = "events";
+Blockly.Msg.OBJECT_OPERATOR = "operators";
 
 // actor
 Blockly.Msg.BLOCK_CREATE = "create";

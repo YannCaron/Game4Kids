@@ -7,6 +7,9 @@ Blockly.eventDynamic.SIGNAL_CREATE =
 Blockly.eventDynamic.SIGNAL_CREATE_WITH =
     '<block type="signal_create_with"></block>';
 
+Blockly.eventDynamic.SIGNAL_COMBINE =
+    '<block type="signal_combine"></block>';
+
 Blockly.eventDynamic.SIGNAL_EVERY =
     '<block type="signal_every">' + 
     Blockly.dynamic.buildShadowNumber('VALUE', 0.75) +
@@ -25,7 +28,10 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_WITH));
-    
+
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_OPERATOR)));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COMBINE));
+
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_EVERY));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_MOUSE));
