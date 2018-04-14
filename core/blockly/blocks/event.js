@@ -8,7 +8,7 @@ Blockly.Blocks['signal_create'] = {
     init: function () {
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("when");
+            .appendField("when →");
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setPreviousStatement(true, null);
@@ -25,7 +25,7 @@ Blockly.Blocks['signal_create_with'] = {
             .appendField("with")
             .appendField(this.fieldActorFactory(), "VAR")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("when");
+            .appendField("when →");
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setPreviousStatement(true, null);
@@ -36,15 +36,40 @@ Blockly.Blocks['signal_create_with'] = {
     }
 };
 
-// mutators
+// operators
+Blockly.Blocks['signal_combine'] = {
+    init: function () {
+        this.appendValueInput("NEXT1")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("combine");
+        this.appendValueInput("NEXT2")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("with");
+        this.appendValueInput("NEXT")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("when →");
+        this.setInputsInline(false);
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+// methods
 Blockly.Blocks['signal_every'] = {
     init: function () {
         this.appendValueInput("VALUE")
             .setCheck("Number")
             .appendField("every");
-        this.appendDummyInput()
-            .appendField("seconds");
-        this.setInputsInline(true);
+        this.appendValueInput("NEXT")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("when →");
+        this.setInputsInline(false);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
@@ -63,7 +88,8 @@ Blockly.Blocks['signal_mouse'] = {
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("mouse")
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT");
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT")
+            .appendField("when →");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
@@ -71,17 +97,14 @@ Blockly.Blocks['signal_mouse'] = {
     }
 };
 
-Blockly.Blocks['signal_combine'] = {
-    init: function () {
-        this.appendValueInput("NEXT1")
-            .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("combine");
-        this.appendValueInput("NEXT2")
-            .setCheck(Blockly.Block.SIGNAL_TYPE);
-        this.setInputsInline(false);
-        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
+
+/*
+    var key = [
+      ["← left", "LEFT"], // ↺ ↻ found on https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Caract%C3%A8res_sp%C3%A9ciaux/Fl%C3%A8ches
+      ["→ right", "RIGHT"],
+      ["↑ up", "UP"],
+      ["↓ down", "DOWN"],
+      ["↲ enter", "ENTER"],
+      ["  space", "SPACEBAR"]
+    ];
+*/
