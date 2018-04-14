@@ -18,6 +18,9 @@ Blockly.eventDynamic.SIGNAL_EVERY =
 Blockly.eventDynamic.SIGNAL_MOUSE =
     '<block type="signal_mouse"></block>';
 
+Blockly.eventDynamic.SIGNAL_KEYBOARD =
+    '<block type="signal_keyboard"></block>';
+
 Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
 
     var xmlList = [];
@@ -35,6 +38,7 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_EVERY));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_MOUSE));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_KEYBOARD));
 
     if (actorVariables.length > 0) {
 	}

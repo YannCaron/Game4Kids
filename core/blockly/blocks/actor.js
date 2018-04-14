@@ -78,7 +78,7 @@ Blockly.Blocks['actor_set'] = {
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
             [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x"],
-            [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.y"],
+            [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
         ];
 

@@ -54,12 +54,23 @@ Blockly.JavaScript['signal_every'] = function (block) {
 };
 
 Blockly.JavaScript['signal_mouse'] = function (block) {
+    var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = event + '\n';
+    var code = key + event + '\n';
     if (next) code += next;
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['signal_keyboard'] = function (block) {
+    var key = block.getFieldValue('KEY');
+    var event = block.getFieldValue('EVENT');
+    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = key + event + '\n';
+    if (next) code += next;
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

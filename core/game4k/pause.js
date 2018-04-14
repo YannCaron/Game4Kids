@@ -6,6 +6,7 @@ Game4kids.Game.KEY_CAPTURES = [Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT,
 // constructor
 Game4kids.Game.prototype.initPause = function () {
     this.input.keyboard.addKeyCapture(this.KEY_CAPTURES);
+    this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
 }
 
 // methods
@@ -15,11 +16,14 @@ Game4kids.Game.prototype.pause = function () {
     for (var i in Game4kids.Game.KEY_CAPTURES) {
         this.input.keyboard.removeKeyCapture(Game4kids.Game.KEY_CAPTURES[i]);
     }
+
+    this.game.canvas.oncontextmenu = null;
 }
 
 Game4kids.Game.prototype.resume = function () {
     this.game.paused = false;
     this.input.keyboard.addKeyCapture(Game4kids.Game.KEY_CAPTURES);
+    this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
 }
 
 // static methods

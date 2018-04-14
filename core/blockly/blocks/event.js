@@ -79,16 +79,23 @@ Blockly.Blocks['signal_every'] = {
 
 Blockly.Blocks['signal_mouse'] = {
     init: function () {
-        this.OPTIONS = [
-            ["left press enter", ".toEvent(function () { return game.input.activePointer.leftButton.isDown; }).toggle().whenEquals(true)"],
-            ["left press", ".toEvent(function () { return game.input.activePointer.leftButton.isDown; }).whenEquals(true)"],
-            ["left press exit", ".toEvent(function () { return game.input.activePointer.leftButton.isDown; }).toggle().whenEquals(false)"],
+        this.KEYS = [
+            ["left", ".toEvent(function () { return game.input.activePointer.leftButton.isDown; })"],
+            ["middle", ".toEvent(function () { return game.input.activePointer.middleButton.isDown; })"],
+            ["right", ".toEvent(function () { return game.input.activePointer.rightButton.isDown; })"],
+        ];
+
+        this.EVENTS = [
+            ['press', '.toggle().whenEquals(true)'],
+            ['pressing', '.whenEquals(true)'],
+            ['pressed', '.toggle().whenEquals(false)']
         ];
 
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("mouse")
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EVENT")
+            .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField("when →");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
@@ -96,6 +103,41 @@ Blockly.Blocks['signal_mouse'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['signal_keyboard'] = {
+    init: function () {
+        this.KEYS = [
+            ["← left", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
+            ["→ right", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
+            ["↑ up", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
+            ["↓ down", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
+            ["↲ enter", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
+            ["  space", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
+        ];
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        for (var i = 0; i < chars.length; i++) {
+            this.KEYS.push([chars.charAt(i), '.toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
+        }
+
+        this.EVENTS = [
+            ['press', '.toggle().whenEquals(true)'],
+            ['pressing', '.whenEquals(true)'],
+            ['pressed', '.toggle().whenEquals(false)']
+        ];
+
+        this.appendValueInput("NEXT")
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .appendField("mouse")
+            .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+            .appendField("when →");
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 
 
 /*
