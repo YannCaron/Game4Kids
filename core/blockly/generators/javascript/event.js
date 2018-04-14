@@ -29,7 +29,7 @@ Blockly.JavaScript['signal_create_with'] = function (block) {
 Blockly.JavaScript['signal_every'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = '.toTime().every(' + value + ')\n';
+    var code = '.toTime().every(function () { return ' + value + '; })\n';
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
