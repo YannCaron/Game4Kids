@@ -143,11 +143,12 @@ Blockly.Blocks['signal_keyboard'] = {
     }
 };
 
+// TODO : Put as standalone event !
 Blockly.Blocks['signal_collide'] = {
     init: function () {
         this.KEYS = [
-            ["collide", ".toEvent(function () { return game.physics.arcade.collide(%1, %2); })"],
-            ["overlap", ".toEvent(function () { return game.physics.arcade.overlap(%1, %2); })"],
+            ["collide", "collide"],
+            ["overlap", "overlap"],
         ];
 
         this.EVENTS = [
@@ -160,7 +161,7 @@ Blockly.Blocks['signal_collide'] = {
         this.GROUPS = [];
         for (var v in actorVariables) {
             var variable = actorVariables[v];
-            this.GROUPS.push(['all %1s'.format(variable.name), 'Game4kids.current.groups.get(\'%1\')'.format(variable.name)]);
+            this.GROUPS.push(['all %1s'.format(variable.name), variable.name]);
         }
 
         this.appendDummyInput()

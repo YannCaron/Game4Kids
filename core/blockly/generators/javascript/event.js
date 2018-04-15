@@ -79,9 +79,9 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var event = block.getFieldValue('EVENT');
     var actor2 = block.getFieldValue('ACTOR2');
     
-    var code = key.format(actor1, actor2) + event + '\n';
-    // TODO
-    //code += '.passObject(%1).passObject(%2)\n'.format(actor1, actor2);
+    var code = '.toEvent(function () {\n return game.physics.arcade.collide(Game4kids.current.groups.get(\'%1\'), Game4kids.current.groups.get(\'%2\'));\n })\n'.format(actor1, actor2);
+    code += event;
+    code += '.passObject(%1).passObject(%2)\n'.format(actor1, actor2);
     
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
