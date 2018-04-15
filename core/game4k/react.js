@@ -103,18 +103,23 @@ Game4kids.React.Signal.prototype.whenEquals = function (compare) {
 }
 
 // react.combine
-Game4kids.React.Signal.prototype.combine = function (signals) {
+Game4kids.React.Signal.prototype.combineWith = function (signal2) {
     var signal = new Game4kids.React.Signal(this);
 
-    for (var i in signals) {
+    this.subscribe(function (value) {
         arguments[0] = value;
         signal.emit(...arguments);
-    }
+    });
+
+    signal2.subscribe(function (value) {
+        arguments[0] = value;
+        signal.emit(...arguments);
+    });
 
     return signal;
 }
 
-// mutator
+// map
 Game4kids.React.Signal.prototype.toEvent = function (event) {
     var signal = new Game4kids.React.Signal(this);
 
@@ -137,17 +142,6 @@ Game4kids.React.Signal.prototype.toObject = function (object) {
     return signal;
 }
 
-Game4kids.React.Signal.prototype.passObject = function (object) {
-    var signal = new Game4kids.React.Signal(this);
-
-    this.subscribe(function (value) {
-        arguments[0] = value;
-        signal.emit(...arguments, object);
-    });
-
-    return signal;
-}
-
 Game4kids.React.Signal.prototype.toTime = function () {
     var signal = new Game4kids.React.Signal(this);
 
@@ -159,6 +153,16 @@ Game4kids.React.Signal.prototype.toTime = function () {
     return signal;
 }
 
+Game4kids.React.Signal.prototype.passObject = function (object) {
+    var signal = new Game4kids.React.Signal(this);
+
+    this.subscribe(function (value) {
+        arguments[0] = value;
+        signal.emit(...arguments, object);
+    });
+
+    return signal;
+}
 
 // game
 Game4kids.Game.prototype.signals = null;

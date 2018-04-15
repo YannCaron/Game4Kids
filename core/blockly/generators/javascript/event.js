@@ -31,13 +31,9 @@ Blockly.JavaScript['signal_create_with'] = function (block) {
 Blockly.JavaScript['signal_combine'] = function (block) {
     var next1 = Blockly.JavaScript.valueToCode(block, 'NEXT1', Blockly.JavaScript.ORDER_ATOMIC);
     var next2 = Blockly.JavaScript.valueToCode(block, 'NEXT2', Blockly.JavaScript.ORDER_ATOMIC);
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
+    var operator = block.getFieldValue('OPERATOR');
 
-    var code = '.combine([\n';
-    if (next1) code += 'game4k.createSignal()' + next1 + ',\n';
-    if (next2) code += 'game4k.createSignal()' + next2 + '\n';
-    code += '])\n'
-    if (next) code += next;
+    var code = operator.format(next1, next2) + '\n';
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -45,43 +41,35 @@ Blockly.JavaScript['signal_combine'] = function (block) {
 // methods
 Blockly.JavaScript['signal_if'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = '.filter(function () { return ' + value + '; })\n';
-    if (next) code += next;
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['signal_every'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = '.toTime().every(function () { return ' + value + '; })\n';
-    if (next) code += next;
-
+    
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['signal_mouse'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = key + event + '\n';
-    if (next) code += next;
-
+    
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['signal_keyboard'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = key + event + '\n';
-    if (next) code += next;
-
+    
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -90,10 +78,10 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
     var actor2 = block.getFieldValue('ACTOR2');
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
     
     var code = key.format(actor1, actor2) + event + '\n';
-    if (next) code += next;
-
+    // TODO
+    //code += '.passObject(%1).passObject(%2)\n'.format(actor1, actor2);
+    
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
