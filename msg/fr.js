@@ -55,6 +55,7 @@ Blockly.Msg.BLOCK_WHEN = "quand";
 Blockly.Msg.BLOCK_ONCE = "une fois seulement";
 Blockly.Msg.BLOCK_MOUSE_IN = "la sourie en";
 Blockly.Msg.BLOCK_DEBUG = "débogue";
+Blockly.Msg.BLOCK_LOG = "journalise";
 Blockly.Msg.BLOCK_VALUE_OF = "la valeur de";
 Blockly.Msg.PRINT = "écrit";
 Blockly.Msg.AT = "à";
@@ -98,6 +99,7 @@ Blockly.Msg.TOOLTIP_GAME_CREATE = "crée le jeu.";
 Blockly.Msg.TOOLTIP_GAME_GET = "obtient la valeure de la propriété du jeu.\nles propriétés sont :\n%1";
 Blockly.Msg.TOOLTIP_GAME_DEBUG = "affiche les indications de déboguage du jeu.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_VAR = "affiche les indications de déboguage d'une variable en particulier.";
+Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "affiche un message dans le journal.";
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "la caméra suit l'acteur.";
 Blockly.Msg.TOOLTIP_PRINT = "écrit un texte à l'écran.";

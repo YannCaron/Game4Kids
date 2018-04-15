@@ -21,7 +21,7 @@ Blockly.gameDynamic.buildGamePrint = function (value) {
         Blockly.dynamic.buildShadowNumber('X', 30) +
         Blockly.dynamic.buildShadowNumber('Y', 30) +
         '<value name="TEXT"><block type="text_join" inline="true">' +
-        '<value name="ADD0"><shadow type="text"><field name="TEXT">' + value + ': </field></shadow></value>' +
+        Blockly.dynamic.buildShadowText('ADD0', value) +
         Blockly.dynamic.buildShadowVariable('ADD1', value) +
         '</block></value>' +
         '</block>';
@@ -35,6 +35,11 @@ Blockly.gameDynamic.buildDebugVar = function (value) {
         Blockly.dynamic.buildShadowVariable('VAR', value) +
         '</block>';
 }
+
+Blockly.gameDynamic.DEBUG_LOG = 
+    '<block type="debug_log">' +
+        Blockly.dynamic.buildShadowText('TEXT', 'I love game 4 kids (G4K) !') +
+    '</block>';
 
 Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
     var xmlList = [];
@@ -54,6 +59,8 @@ Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
     if (variables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.buildDebugVar(variables[0].name)));
     }
+
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.DEBUG_LOG));
 
     // properties
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_PROPERTIES)));

@@ -15,6 +15,12 @@ Game4kids.React.Signal = function (parent = null) {
     this.parent = parent;
 };
 
+Game4kids.React.Signal.prototype.destroy = function () {
+    const index = Game4kids.current.signals.indexOf(this.getRoot());
+    Game4kids.current.signals.splice(index, 1);
+
+}
+
 Game4kids.React.Signal.prototype.subscribe = function (callback) {
     this.callback = callback;
     return this.getRoot();

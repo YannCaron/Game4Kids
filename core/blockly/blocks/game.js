@@ -81,6 +81,21 @@ Blockly.Blocks['debug_var'] = {
   }
 };
 
+Blockly.Blocks['debug_log'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.BLOCK_LOG)
+    this.appendValueInput("TEXT")
+      .setCheck(null)
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.game.HUE);
+    this.setTooltip(Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG);
+    this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['camera_follow'] = {
   init: function () {
     this.appendDummyInput()

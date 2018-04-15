@@ -58,6 +58,14 @@ Blockly.dynamic.buildShadowNumber = function (name, defaultValue = 0) {
         '</value>';
 };
 
+Blockly.dynamic.buildShadowText = function (name, defaultValue = '') {
+    return '<value name="' + name + '">' +
+        '<shadow type="text">' +
+        '<field name="TEXT">' + defaultValue + '</field>' +
+        '</shadow>' +
+        '</value>';
+};
+
 // block
 Blockly.Block.prototype.getLastCreatedActor = function () {
     var variables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);

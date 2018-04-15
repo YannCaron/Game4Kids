@@ -2,7 +2,6 @@
 Blockly.Blocks.event = {};
 Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
 
-
 // constructor
 Blockly.Blocks['signal_create'] = {
     init: function () {
@@ -14,6 +13,7 @@ Blockly.Blocks['signal_create'] = {
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+
     }
 };
 
@@ -31,6 +31,19 @@ Blockly.Blocks['signal_create_with'] = {
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['signal_destroy'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("destroy");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+
     }
 };
 

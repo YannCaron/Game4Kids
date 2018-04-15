@@ -7,6 +7,9 @@ Blockly.eventDynamic.SIGNAL_CREATE =
 Blockly.eventDynamic.SIGNAL_CREATE_WITH =
     '<block type="signal_create_with"></block>';
 
+Blockly.eventDynamic.SIGNAL_DESTROY =
+    '<block type="signal_destroy"></block>';
+
 Blockly.eventDynamic.SIGNAL_COMBINE =
     '<block type="signal_combine"></block>';
 
@@ -42,6 +45,8 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_WITH));
     }
+
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DESTROY));
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_OPERATOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COMBINE));
