@@ -18,9 +18,9 @@ Blockly.JavaScript['signal_create_with'] = function (block) {
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
     var code = 'game4k.createSignal()\n';
+    code += '.passObject(' + varName + ')\n'
     if (next) code += next;
-    code += '.toObject(' + varName + ')\n'
-    code += '.subscribe(function (' + varName + ') {\n'
+    code += '.subscribe(function (value, ' + varName + ') {\n'
     code += stmt + '\n';
     code += '});\n';
 

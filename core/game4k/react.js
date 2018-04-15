@@ -27,7 +27,10 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 
 Game4kids.React.Signal.prototype.emit = function (value) {
     if (this.callback) {
-        this.callback(value);
+        arguments[0] = value;
+        this.callback(...arguments);
+
+        //this.callback(value);
     }
 }
 
@@ -37,7 +40,8 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
 
     this.subscribe(function (value) {
         if (predicate(value)) {
-            signal.emit(value);
+            arguments[0] = value;
+            signal.emit(...arguments);
         }
     });
 
@@ -103,9 +107,8 @@ Game4kids.React.Signal.prototype.combine = function (signals) {
     var signal = new Game4kids.React.Signal(this);
 
     for (var i in signals) {
-        signals[i].subscribe(function (value) {
-            signal.emit(value);
-        });
+        arguments[0] = value;
+        signal.emit(...arguments);
     }
 
     return signal;
@@ -116,8 +119,8 @@ Game4kids.React.Signal.prototype.toEvent = function (event) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        var value = event();
-        signal.emit(value);
+        arguments[0] = event();
+        signal.emit(...arguments);
     });
 
     return signal;
@@ -127,7 +130,19 @@ Game4kids.React.Signal.prototype.toObject = function (object) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(object);
+        arguments[0] = object;
+        signal.emit(...arguments);
+    });
+
+    return signal;
+}
+
+Game4kids.React.Signal.prototype.passObject = function (object) {
+    var signal = new Game4kids.React.Signal(this);
+
+    this.subscribe(function (value) {
+        arguments[0] = value;
+        signal.emit(...arguments, object);
     });
 
     return signal;
@@ -137,7 +152,8 @@ Game4kids.React.Signal.prototype.toTime = function () {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(Game4kids.current.game.time.now / 1000);
+        arguments[0] = Game4kids.current.game.time.now / 1000;
+        signal.emit(...arguments);
     });
 
     return signal;
@@ -172,27 +188,3 @@ Game4kids.Game.prototype.createSignal = function() {
     this.signals.push(signal);
     return signal;
 }
-
-/*
-Examples: 
-
-    var signal = new Game4kids.React.Signal()
-        .toEvent(function () { return game.input.activePointer.leftButton.isDown; })
-        .toggle()
-        .whenEquals(true)
-        .subscribe(function (value) {
-            console.log(value);
-        });
-
-    this.signals.push(signal);
-
-    var signal2 = new Game4kids.React.Signal()
-        .toTime()
-        .every(1000)
-        .subscribe(function (value) {
-            console.log(value);
-        });
-
-    this.signals.push(signal2);
-
-*/

@@ -11,8 +11,6 @@ Blockly.Blocks['signal_create'] = {
             .appendField("when →");
         this.appendStatementInput("STMT")
             .setCheck(null);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");
@@ -108,12 +106,15 @@ Blockly.Blocks['signal_mouse'] = {
             ['pressed', '.toggle().whenEquals(false)']
         ];
 
-        this.appendValueInput("NEXT")
-            .setCheck(Blockly.Block.SIGNAL_TYPE)
+        this.appendDummyInput()
             .appendField("mouse")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+        this.appendValueInput("NEXT")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("when →");
+        this.setInputsInline(false);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
@@ -142,12 +143,15 @@ Blockly.Blocks['signal_keyboard'] = {
             ['pressed', '.toggle().whenEquals(false)']
         ];
 
-        this.appendValueInput("NEXT")
-            .setCheck(Blockly.Block.SIGNAL_TYPE)
+        this.appendDummyInput()
             .appendField("key")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+        this.appendValueInput("NEXT")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("when →");
+        this.setInputsInline(false);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
@@ -175,15 +179,19 @@ Blockly.Blocks['signal_collide'] = {
             this.GROUPS.push(['all %1s'.format(variable.name), 'Game4kids.current.groups.get(\'%1\')'.format(variable.name)]);
         }
 
-        this.appendValueInput("NEXT")
-            .setCheck(Blockly.Block.SIGNAL_TYPE)
+        this.appendDummyInput()
             .appendField("on")
             .appendField(new Blockly.FieldDropdown(this.GROUPS), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT");
+        this.appendDummyInput()
             .appendField("with")
-            .appendField(new Blockly.FieldDropdown(this.GROUPS.slice()), "ACTOR2")
+            .appendField(new Blockly.FieldDropdown(this.GROUPS.slice()), "ACTOR2");
+        this.appendValueInput("NEXT")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField("when →");
+        this.setInputsInline(false);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
