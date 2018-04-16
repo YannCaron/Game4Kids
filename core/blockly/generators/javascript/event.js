@@ -4,11 +4,11 @@ Blockly.JavaScript.allVariables = function (workspace) {
 }
 
 Blockly.JavaScript.closure = function (workspace, valueName, stmt) {
-    var code = 'var closure = (function () {\n';
+    var code = 'var closure = (function (' + Blockly.JavaScript.allVariables(workspace) + ') {\n';
     code += 'return function (' + valueName + ') {\n';
     code += stmt;
     code += '}\n'
-    code += '})();\n';
+    code += '})(' + Blockly.JavaScript.allVariables(workspace) + ');\n';
     return code;
 }
 
