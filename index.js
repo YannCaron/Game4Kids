@@ -525,6 +525,11 @@ Blockly.Generator.prototype.workspaceToCode = function (workspace) {
   this.init(workspace);
   Blockly.Generator.generateGame(workspace, this, code, 0);
   code = code.join('\n');  // Blank line between each section.
+
+  // workaround for functional closure; change var to let
+  var definition = Blockly.JavaScript.definitions_['variables'];
+  Blockly.JavaScript.definitions_['variables'] = 'let' + definition.slice(3);
+
   code = this.finish(code);
   // Final scrubbing of whitespace.
   code = code.replace(/^\s+\n/, '');
@@ -572,13 +577,13 @@ Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   code.push(Code.indent(ind + 1) + '// declare game');
   code.push('');
 
-  // variable definition
-  var definition = Blockly.JavaScript.definitions_['variables'];
+  // workaround definit variable for functional closure
+  /*var definition = Blockly.JavaScript.definitions_['variables'];
   if (definition) {
     code.push(Code.indent(ind + 1) + 'let' + definition.slice(3));
     code.push('');
     delete Blockly.JavaScript.definitions_['variables'];
-  }
+  }*/
 
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
