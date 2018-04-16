@@ -39,6 +39,11 @@ Blockly.JavaScript['debug_log'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['game_clear'] = function (block) {
+  var code = 'game4k.clear();\n';
+  return code;
+};
+
 Blockly.JavaScript['camera_follow'] = function (block) {
   var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'game.camera.follow(' + varName + ', Phaser.Camera.FOLLOW_LOCKON, 1, 0.1);\n';

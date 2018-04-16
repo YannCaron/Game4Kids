@@ -57,6 +57,7 @@ Blockly.Msg.BLOCK_MOUSE_IN = "mouse in";
 Blockly.Msg.BLOCK_DEBUG = "debug";
 Blockly.Msg.BLOCK_LOG = "log";
 Blockly.Msg.BLOCK_VALUE_OF = "value of";
+Blockly.Msg.BLOCK_CLEAR = "clear";
 Blockly.Msg.PRINT = "print";
 Blockly.Msg.AT = "at";
 Blockly.Msg.TEXT = "the text";
@@ -97,10 +98,15 @@ Blockly.Msg.TOOLTIP_ACTOR_EVERY = "execute an action in time.\nevents are:\n%1";
 Blockly.Msg.TOOLTIP_ACTOR_COLLIDE = "execute an action when actor collides together.";
 
 Blockly.Msg.TOOLTIP_GAME_CREATE = "create the game.";
+Blockly.Msg.TOOLTIP_GAME_CLEAR = "destroy all the game actors.";
 Blockly.Msg.TOOLTIP_GAME_GET = "get the game property value.\nproperties are:\n%1";
 Blockly.Msg.TOOLTIP_GAME_DEBUG = "show the game debug information.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_VAR = "show a specific variable debug information.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "show a message in logger.";
+
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "create a new event called every time.";
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH = "create a new event on an actor.\nthe event is called every time.";
+Blockly.Msg.TOOLTIP_SIGNAL_DESTROY = "destroy the current event.\ncan only be placed on an event block.";
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "camera follow the actor.";
 Blockly.Msg.TOOLTIP_PRINT = "print a text on the screen.";

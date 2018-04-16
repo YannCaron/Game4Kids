@@ -26,7 +26,7 @@ var MSG = {
   catImage: "Images",
   catGame: "Jeu",
   catActor: "Acteur",
-  catEvent: "Event",
+  catEvent: "Evénement",
 };
 
 // object
@@ -57,6 +57,7 @@ Blockly.Msg.BLOCK_MOUSE_IN = "la sourie en";
 Blockly.Msg.BLOCK_DEBUG = "débogue";
 Blockly.Msg.BLOCK_LOG = "journalise";
 Blockly.Msg.BLOCK_VALUE_OF = "la valeur de";
+Blockly.Msg.BLOCK_CLEAR = "nettoyer";
 Blockly.Msg.PRINT = "écrit";
 Blockly.Msg.AT = "à";
 Blockly.Msg.TEXT = "le text";
@@ -96,10 +97,15 @@ Blockly.Msg.TOOLTIP_ACTOR_EVERY = "exécute une action en fonction du temps.\nle
 Blockly.Msg.TOOLTIP_ACTOR_COLLIDE = "exécute une action quand les acteurs entrent en collision ensemble.";
 
 Blockly.Msg.TOOLTIP_GAME_CREATE = "crée le jeu.";
+Blockly.Msg.TOOLTIP_GAME_CLEAR = "supprimer tous les acteurs du jeu.";
 Blockly.Msg.TOOLTIP_GAME_GET = "obtient la valeure de la propriété du jeu.\nles propriétés sont :\n%1";
 Blockly.Msg.TOOLTIP_GAME_DEBUG = "affiche les indications de déboguage du jeu.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_VAR = "affiche les indications de déboguage d'une variable en particulier.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "affiche un message dans le journal.";
+
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "crée un nouvel énénement qui sera appeller tout le temps.";
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH = "crée un nouvel événement pour un acteur.\ncet événement sera appelé tout le temps.";
+Blockly.Msg.TOOLTIP_SIGNAL_DESTROY = "détruit l'événement courent.\npeut-être uniquement placé dans un bloque événement";
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "la caméra suit l'acteur.";
 Blockly.Msg.TOOLTIP_PRINT = "écrit un texte à l'écran.";

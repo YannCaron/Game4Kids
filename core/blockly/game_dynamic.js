@@ -11,6 +11,9 @@ Blockly.gameDynamic.CREATE_GAME =
 Blockly.gameDynamic.GAME_GET =
     '<block type="game_get"></block>';
 
+Blockly.gameDynamic.GAME_CLEAR =
+    '<block type="game_clear"></block>';
+
 Blockly.gameDynamic.CAMERA_FOLLOW =
     '<block type="camera_follow">' +
     Blockly.dynamic.buildShadowObject('VAR') +
@@ -69,6 +72,8 @@ Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
 
     // methods
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
+
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.GAME_CLEAR));
 
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.CAMERA_FOLLOW));

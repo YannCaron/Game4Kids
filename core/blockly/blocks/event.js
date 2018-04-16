@@ -7,11 +7,11 @@ Blockly.Blocks['signal_create'] = {
     init: function () {
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("when");
+            .appendField(Blockly.Msg.BLOCK_WHEN);
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE);
         this.setHelpUrl("");
 
     }
@@ -20,16 +20,16 @@ Blockly.Blocks['signal_create'] = {
 Blockly.Blocks['signal_create_with'] = {
     init: function () {
         this.appendValueInput("NEXT")
-            .appendField("with")
+            .appendField(Blockly.Msg.BLOCK_WITH)
             .appendField(this.fieldActorFactory(), "VAR")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField("when");
+            .appendField(Blockly.Msg.BLOCK_WHEN);
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH);
         this.setHelpUrl("");
     }
 };
@@ -37,15 +37,17 @@ Blockly.Blocks['signal_create_with'] = {
 Blockly.Blocks['signal_destroy'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("destroy");
+            .appendField(Blockly.Msg.BLOCK_DESTROY);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_DESTROY);
         this.setHelpUrl("");
 
     }
 };
+
+// TODO : translate from here
 
 // operators
 Blockly.Blocks['signal_combine'] = {

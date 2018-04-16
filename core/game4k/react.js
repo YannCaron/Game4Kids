@@ -16,14 +16,12 @@ Game4kids.React.Signal = function (parent = null) {
 };
 
 Game4kids.React.Signal.prototype.destroy = function () {
-    const index = Game4kids.current.signals.indexOf(this.getRoot());
-    Game4kids.current.signals.splice(index, 1);
-
+    Game4kids.current.removeSignal(this);
 }
 
 Game4kids.React.Signal.prototype.subscribe = function (callback) {
     this.callback = callback;
-    return this.getRoot();
+    return this;
 }
 
 Game4kids.React.Signal.prototype.getRoot = function () {
@@ -33,11 +31,14 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 
 Game4kids.React.Signal.prototype.emit = function (value) {
     if (this.callback) {
-        arguments[0] = value;
-        this.callback(...arguments);
+        this.callback(value);
 
         //this.callback(value);
     }
+}
+
+Game4kids.React.Signal.prototype.register = function (actor) {
+    Game4kids.current.registerActorSignals(actor, this);
 }
 
 // react.filters
@@ -46,8 +47,7 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
 
     this.subscribe(function (value) {
         if (predicate(value)) {
-            arguments[0] = value;
-            signal.emit(...arguments);
+            signal.emit(value);
         }
     });
 
@@ -73,7 +73,7 @@ Game4kids.React.Signal.prototype.every = function(interval) {
     var self = this;
 
     return this.filter(function (value) {
-        if (typeof self.previous === 'undefined') self.previous = null;
+        if (typeof self.previous === 'undefined') self.previous = value;
 
         if (value >= self.previous + Game4kids.React.valueOf(interval)) {
             self.previous = value;
@@ -113,13 +113,11 @@ Game4kids.React.Signal.prototype.combineWith = function (signal2) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        arguments[0] = value;
-        signal.emit(...arguments);
+        signal.emit(value);
     });
 
     signal2.subscribe(function (value) {
-        arguments[0] = value;
-        signal.emit(...arguments);
+        signal.emit(value);
     });
 
     return signal;
@@ -130,8 +128,7 @@ Game4kids.React.Signal.prototype.toEvent = function (event) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        arguments[0] = event();
-        signal.emit(...arguments);
+        signal.emit(event());
     });
 
     return signal;
@@ -141,8 +138,7 @@ Game4kids.React.Signal.prototype.toObject = function (object) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        arguments[0] = object;
-        signal.emit(...arguments);
+        signal.emit(object);
     });
 
     return signal;
@@ -152,19 +148,7 @@ Game4kids.React.Signal.prototype.toTime = function () {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        arguments[0] = Game4kids.current.game.time.now / 1000;
-        signal.emit(...arguments);
-    });
-
-    return signal;
-}
-
-Game4kids.React.Signal.prototype.passObject = function (object) {
-    var signal = new Game4kids.React.Signal(this);
-
-    this.subscribe(function (value) {
-        arguments[0] = value;
-        signal.emit(...arguments, object);
+        signal.emit(Game4kids.current.game.time.now / 1000);
     });
 
     return signal;
@@ -172,10 +156,12 @@ Game4kids.React.Signal.prototype.passObject = function (object) {
 
 // game
 Game4kids.Game.prototype.signals = null;
+Game4kids.Game.prototype.actorSignals = null;
 Game4kids.Game.prototype.count = null;
 
 Game4kids.Game.prototype.initEvent = function () {
     this.signals = [];
+    this.actorSignals = new Map();
     this.count = 0;
     this.input.mouse.capture = true;
 
@@ -197,4 +183,38 @@ Game4kids.Game.prototype.createSignal = function() {
     var signal = new Game4kids.React.Signal();
     this.signals.push(signal);
     return signal;
+}
+
+Game4kids.Game.prototype.removeSignal = function (signal) {
+    const index = this.signals.indexOf(signal);
+
+    if (index != -1) {
+        this.signals.splice(index, 1);
+    }
+
+    if (signal.parent != null) {
+        signal.parent.destroy();
+    }
+
+}
+
+Game4kids.Game.prototype.registerActorSignals = function (actor, signal) {
+    if (!this.actorSignals.has(actor)) {
+        this.actorSignals.set(actor, []);
+    }
+    this.actorSignals.get(actor).push(signal);
+}
+
+Game4kids.Game.prototype.removeActorSignals = function (actor) {
+    if (!this.actorSignals.has(actor)) return;
+
+    var signals = this.actorSignals.get(actor);
+    for (var s in signals) {
+        this.removeSignal(signals[s]);
+    }
+    this.actorSignals.delete(actor);
+}
+
+Game4kids.Game.prototype.clearSignals = function () {
+    this.signals = [];
 }

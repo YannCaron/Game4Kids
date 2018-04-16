@@ -1,6 +1,6 @@
 // const
 Game4kids.Game.DEFAULT_MAX_ACTOR = 500;
-Game4kids.Game.TEXT_STYLE = { font: "25px Courier New", fill: "#f7f7f7", align: "left" }; // another choice: DejaVu Sans Mono
+Game4kids.Game.TEXT_STYLE = { font: "20px Courier New", fill: "#f7f7f7", align: "left" }; // another choice: DejaVu Sans Mono
 
 // attributes
 Game4kids.Game.prototype.maxActor = null;
@@ -20,6 +20,14 @@ Game4kids.Game.Groups = function (game) {
             this.groups[name] = group;
         }
         return this.groups[name];
+    }
+
+    this.clear = function () {
+        for (var g in this.groups) {
+            this.groups[g].forEachAlive(function (actor) { actor.kill(); });
+            this.groups[g].destroy(true);
+        }
+        this.groups = [];
     }
 }
 
@@ -61,10 +69,31 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     var size = Math.min(actor.body.width, actor.body.height);
     actor.body.setSize(size, size, (actor.body.width - size) / 2, (actor.body.height - size) / 2);
 
+    // on kill event
+    var game4k = this;
+    game4k.actorCount++;
+    actor.events.onKilled.add(function (actor) {
+        game4k.actorCount--;
+        game4k.removeActorSignals(actor);
+    });
+
     // check
     this.checkNbActor(actor);
 
     return actor;
+};
+
+Game4kids.Game.prototype.clear = function () {
+
+    // clear actors
+    this.groups.clear();
+
+    // clear texts
+    this.clearTexts();
+
+    // clear signals
+    this.clearSignals();
+
 };
 
 Game4kids.Game.prototype.checkNbActor = function (actor) {
@@ -74,19 +103,18 @@ Game4kids.Game.prototype.checkNbActor = function (actor) {
         throw msg;
     }
 
-    var game = this;
-    game.actorCount++;
-    actor.events.onKilled.add(function (obj) {
-        game.actorCount--;
-    });
-
 }
 
 Game4kids.Game.prototype.createText = function (x, y, callback) {
-    //var text = this.add.bitmapText(x, y, 'font', '', 15);
-
     var text = new Phaser.Text(this.game, x, y, "", Game4kids.Game.TEXT_STYLE);
     this.game.add.existing(text);
     text.fixedToCamera = true;
     this.texts.push({ textObject: text, valueCallback: callback });
 };
+
+Game4kids.Game.prototype.clearTexts = function () {
+    for (var t in this.texts) {
+        this.texts[t].textObject.destroy()
+    }
+    this.texts = [];
+}

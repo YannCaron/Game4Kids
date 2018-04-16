@@ -96,6 +96,19 @@ Blockly.Blocks['debug_log'] = {
   }
 };
 
+Blockly.Blocks['game_clear'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.BLOCK_CLEAR);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.game.HUE);
+    this.setTooltip(Blockly.Msg.TOOLTIP_GAME_CLEAR);
+    this.setHelpUrl("");
+
+  }
+};
+
 Blockly.Blocks['camera_follow'] = {
   init: function () {
     this.appendDummyInput()

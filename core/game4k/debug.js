@@ -74,10 +74,15 @@ Game4kids.Game.prototype.addInfo = function (name, callback) {
 }
 
 Game4kids.Game.prototype.logInfo = function () {
-    this.game.debug.text('Living actors: ' + this.actorCount + ' / ' + this.maxActor, Game4kids.Game.LOG_X, Game4kids.Game.LOG_Y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
-    this.game.debug.text('Frame rate: ' + this.time.fps || '--', Game4kids.Game.LOG_X, Game4kids.Game.LOG_Y + Game4kids.Game.LINE_H, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+    var y = Game4kids.Game.LOG_Y;
 
-    var y = Game4kids.Game.LOG_Y + Game4kids.Game.LINE_H * 2;
+    this.game.debug.text('Living actors: ' + this.actorCount + ' / ' + this.maxActor, Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+    y += Game4kids.Game.LINE_H;
+    this.game.debug.text('Active event: ' + this.signals.length, Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+    y += Game4kids.Game.LINE_H;
+    this.game.debug.text('Frame rate: ' + this.time.fps || '--', Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+    y += Game4kids.Game.LINE_H;
+
     for (var i in this.infos) {
         var info = this.infos[i];
         var result = info.callback();

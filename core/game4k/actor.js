@@ -1,7 +1,6 @@
 // constructor
 Game4kids.Actor = function (game, image, x = 0, y = 0) {
     Phaser.Sprite.call(this, game, x, y, image);
-
     game.add.existing(this);
 };
 
@@ -34,7 +33,7 @@ Game4kids.Actor.prototype.setVelocityFromAngle = function (speed) {
     this.game.physics.arcade.velocityFromRotation(this.rotation, speed, this.body.velocity);
 }
 
-Game4kids.Actor.prototype.setRotationFriction = function () {
+Game4kids.Actor.prototype.rotateOnCollide = function () {
     var worldCollideCallback = function (sprite, up, down, left, right) {
         if (up) {
             sprite.body.angularVelocity = -sprite.body.velocity.x * this.body.friction.x;
