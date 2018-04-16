@@ -35,7 +35,7 @@ Blockly.JavaScript['debug_var'] = function (block) {
 Blockly.JavaScript['debug_log'] = function (block) {
   var text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC);
 
-  var code = 'game4k.log(' + text + ');\n';
+  var code = 'console.log(' + text + ');\n';
   return code;
 };
 

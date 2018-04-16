@@ -572,6 +572,14 @@ Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   code.push(Code.indent(ind + 1) + '// declare game');
   code.push('');
 
+  // variable definition
+  var definition = Blockly.JavaScript.definitions_['variables'];
+  if (definition) {
+    code.push(Code.indent(ind + 1) + 'let' + definition.slice(3));
+    code.push('');
+    delete Blockly.JavaScript.definitions_['variables'];
+  }
+
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
     if (!block.runIn || block.runIn == 'create') {

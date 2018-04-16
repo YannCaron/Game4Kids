@@ -91,6 +91,8 @@ Blockly.Blocks['signal_every'] = {
         this.appendValueInput("VALUE")
             .setCheck("Number")
             .appendField("every");
+        this.appendDummyInput()
+            .appendField("seconds");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
@@ -110,7 +112,8 @@ Blockly.Blocks['signal_mouse'] = {
         this.EVENTS = [
             ['press', '.toggle().whenEquals(true)'],
             ['pressing', '.whenEquals(true)'],
-            ['pressed', '.toggle().whenEquals(false)']
+            ['pressed', '.toggle().whenEquals(false)'],
+            ['not pressing', '.whenEquals(false)']
         ];
 
         this.appendDummyInput()
@@ -143,7 +146,8 @@ Blockly.Blocks['signal_keyboard'] = {
         this.EVENTS = [
             ['press', '.toggle().whenEquals(true)'],
             ['pressing', '.whenEquals(true)'],
-            ['pressed', '.toggle().whenEquals(false)']
+            ['pressed', '.toggle().whenEquals(false)'],
+            ['not pressing', '.whenEquals(false)']
         ];
 
         this.appendDummyInput()
