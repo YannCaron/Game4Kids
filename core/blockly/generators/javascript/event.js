@@ -1,13 +1,27 @@
+// closure
+Blockly.JavaScript.allVariables = function (workspace) {
+    return workspace.getAllVariables().map(item => item.name).join(', ');
+}
+
+Blockly.JavaScript.closure = function (workspace, valueName, stmt) {
+    var code = 'var closure = (function () {\n';
+    code += 'return function (' + valueName + ') {\n';
+    code += stmt;
+    code += '}\n'
+    code += '})();\n';
+    return code;
+}
+
 // constructor
 Blockly.JavaScript['signal_create'] = function (block) {
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    var code = 'game4k.createSignal()\n';
+    var code = Blockly.JavaScript.closure(block.workspace, 'value', stmt);
+    code += '\n';
+    code += 'game4k.createSignal()\n';
     if (next) code += next;
-    code += Code.indent(1) + '.subscribe(function (value) {\n'
-    code += Code.indent(1) + stmt;
-    code += Code.indent(1) + '});\n\n';
+    code += Code.indent(1) + '.subscribe(closure);\n\n';
 
     return code;
 };
@@ -17,12 +31,12 @@ Blockly.JavaScript['signal_create_with'] = function (block) {
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    var code = 'game4k.createSignal()\n';
+    var code = Blockly.JavaScript.closure(block.workspace, varName, stmt);
+    code += '\n\n';
+    code += 'game4k.createSignal()\n';
     if (next) code += next;
     code += Code.indent(1) + '.toObject(' + varName + ')\n'
-    code += Code.indent(1) + '.subscribe(function (' + varName + ') {\n'
-    code += Code.indent(1) + stmt;
-    code += Code.indent(1) + '}).register(' + varName + ');\n\n';
+    code += Code.indent(1) + '.subscribe(closure).register(' + varName + ');\n\n';
 
     return code;
 };
@@ -78,10 +92,10 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
 };
 
 Blockly.JavaScript['signal_collide'] = function (block) {
-    var actor1 = block.getFieldValue('ACTOR1');
+    var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
-    var actor2 = block.getFieldValue('ACTOR2');
+    var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
     
     var code = Code.indent(1) + '.toEvent(function () {\n';
     code += Code.indent(2) + 'return game.physics.arcade.' + key + '(\n';

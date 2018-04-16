@@ -176,19 +176,12 @@ Blockly.Blocks['signal_collide'] = {
             ['exit', '.toggle().whenEquals(false)']
         ];
 
-        var actorVariables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
-        this.GROUPS = [];
-        for (var v in actorVariables) {
-            var variable = actorVariables[v];
-            this.GROUPS.push(['all %1s'.format(variable.name), variable.name]);
-        }
-
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.GROUPS), "ACTOR1")
+            .appendField(this.fieldActorFactory(), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField("with")
-            .appendField(new Blockly.FieldDropdown(this.GROUPS.slice()), "ACTOR2");
+            .appendField(this.fieldActorFactory(), "ACTOR2");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);

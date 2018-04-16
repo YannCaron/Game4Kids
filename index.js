@@ -527,8 +527,8 @@ Blockly.Generator.prototype.workspaceToCode = function (workspace) {
   code = code.join('\n');  // Blank line between each section.
 
   // workaround for functional closure; change var to let
-  var definition = Blockly.JavaScript.definitions_['variables'];
-  Blockly.JavaScript.definitions_['variables'] = 'let' + definition.slice(3);
+  // var definition = Blockly.JavaScript.definitions_['variables'];
+  // Blockly.JavaScript.definitions_['variables'] = 'let' + definition.slice(3);
 
   code = this.finish(code);
   // Final scrubbing of whitespace.
