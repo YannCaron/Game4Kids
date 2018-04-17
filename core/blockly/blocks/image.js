@@ -21,8 +21,6 @@ for (var category in Blockly4kids.gameImages) {
             var img = this.getFieldValue('IMG');
             var pair = img.split('#');
             return { 'key': pair[0], 'url': pair[1] };
-        },
-
-        runIn: 'create'
+        }
     };
 }

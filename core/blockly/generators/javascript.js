@@ -11,10 +11,10 @@ Blockly.JavaScript.initialize = function(workspace){
 Blockly.JavaScript.finalize = function(workspace) {
 
     // add all other variables
-    Blockly.JavaScript.globalVars.add(
-        ...workspace.getAllVariables()
+    workspace.getAllVariables()
         .map(item => item.name)
-        .filter(item => !Blockly.JavaScript.localVars.has(item)));
+        .filter(item => !Blockly.JavaScript.localVars.has(item))
+        .forEach(item => Blockly.JavaScript.globalVars.add(item));
 
     // create global var line
     var vars = Array.from(Blockly.JavaScript.globalVars);

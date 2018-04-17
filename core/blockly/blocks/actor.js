@@ -23,9 +23,7 @@ Blockly.Blocks['create_actor'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_CREATE);
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
+    }
 };
 
 Blockly.Blocks['actor_object'] = {
@@ -46,10 +44,6 @@ Blockly.Blocks['actor_get'] = {
         this.OPTIONS = [
             ["x", "x"],
             ["y", "y"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
-            [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x"],
-            [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
         ];
 
@@ -64,22 +58,23 @@ Blockly.Blocks['actor_get'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
+    }
 
 };
 
 Blockly.Blocks['actor_set'] = {
     init: function () {
         this.OPTIONS = [
-            ["x", "x"],
-            ["y", "y"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
-            [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x"],
-            [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y"],
-            [Blockly.Msg.BLOCK_ANGLE, "angle"],
+            ["x", "x = %1"],
+            ["y", "y = %1"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x = %1"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y = %1"],
+            [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x = %1"],
+            [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y = %1"],
+            [Blockly.Msg.BLOCK_ANGLE, "angle = %1"],
+            [Blockly.Msg.BLOCK_SCALE, "setScaleTo(%1)"],
+            [Blockly.Msg.BLOCK_BOUNCE, "setBounce(%1)"],
+            [Blockly.Msg.BLOCK_FRICTION, "setFriction(%1)"],
         ];
 
         this.appendValueInput("VAR")
@@ -97,9 +92,7 @@ Blockly.Blocks['actor_set'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
+    }
 
 };
 
@@ -123,9 +116,7 @@ Blockly.Blocks['actor_get1'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
+    }
 
 };
 
@@ -149,41 +140,7 @@ Blockly.Blocks['actor_set1'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
-
-};
-
-Blockly.Blocks['actor_setXY'] = {
-    init: function () {
-        this.OPTIONS = [
-            [Blockly.Msg.BLOCK_SCALE, "scaleTo"],
-            [Blockly.Msg.BLOCK_BOUNCE, "setBounce"],
-            [Blockly.Msg.BLOCK_FRICTION, "setFriction"],
-        ];
-        this.appendValueInput("VAR")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-            .setCheck(Blockly.Block.ACTOR_TYPE)
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCK_SET)
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
-        this.appendValueInput("X")
-            .setCheck("Number")
-            .appendField(Blockly.Msg.BLOCK_X_TO);
-        this.appendValueInput("Y")
-            .setCheck("Number")
-            .appendField(Blockly.Msg.BLOCK_Y_TO);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
-        this.setHelpUrl("");
-    },
-
-    runIn: 'create'
-
+    }
 };
 
 // method
@@ -206,7 +163,5 @@ Blockly.Blocks['actor_action'] = {
         this.setColour(Blockly.Blocks.actor.HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-    },
-
-    runIn: 'create'
+    }
 };

@@ -20,6 +20,9 @@ Game4kids.Actor.prototype.setFriction = function (friction) {
     this.body.friction.y = friction;
 }
 
+Game4kids.Actor.prototype.setScaleTo = function (factor) {
+    this.scale.setTo(factor / 100, factor / 100);
+}
 
 Phaser.Sprite.prototype.getAngleWith = function (actor) {
     return this.game.physics.arcade.angleBetween(this, actor).radToDeg();
@@ -59,10 +62,6 @@ Game4kids.Actor.prototype.rotateOnCollide = function () {
 }
 
 // methods
-Game4kids.Actor.prototype.scaleTo = function (x, y) {
-    this.scale.setTo(x / 100, y / 100);
-}
-
 Game4kids.Actor.prototype.cameraFollow = function () {
     this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 0.1);
 }

@@ -21,9 +21,7 @@ Blockly.Blocks['create_game'] = {
     this.setColour(Blockly.Blocks.game.HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_CREATE);
     this.setHelpUrl("");
-  },
-
-  runIn: 'create'
+  }
 };
 
 Blockly.Blocks['game_get'] = {
@@ -44,9 +42,7 @@ Blockly.Blocks['game_get'] = {
     this.setColour(Blockly.Blocks.game.HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_GET.format(Blockly.Block.optionList(this.OPTIONS)));
     this.setHelpUrl("");
-  },
-
-  runIn: 'create'
+  }
 
 };
 
@@ -61,9 +57,7 @@ Blockly.Blocks['game_debug'] = {
     this.setColour(Blockly.Blocks.game.HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_DEBUG);
     this.setHelpUrl("");
-  },
-
-  runIn: 'create'
+  }
 };
 
 Blockly.Blocks['debug_var'] = {
@@ -123,9 +117,7 @@ Blockly.Blocks['camera_follow'] = {
     this.setHelpUrl("");
 
     this.setOnChange(this.selectNearestVar);
-  },
-
-  runIn: 'create'
+  }
 };
 
 Blockly.Blocks['game_print'] = {
@@ -147,7 +139,5 @@ Blockly.Blocks['game_print'] = {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_PRINT);
     this.setHelpUrl("");
-  },
-
-  runIn: 'create'
+  }
 };
