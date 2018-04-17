@@ -125,12 +125,10 @@ pre.content {
 #content_blocks {
   padding: 0;
 }
-#content_xml {
-  resize: none;
-  outline: none;
+#content_game {
+  padding: 0;
   border: 1px solid #ccc;
-  font-family: monospace;
-  overflow: scroll;
+  background: #000;
 }
 #languageMenu {
   vertical-align: top;

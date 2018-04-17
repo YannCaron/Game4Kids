@@ -123,35 +123,23 @@ Game4kids.React.Signal.prototype.combineWith = function (signal2) {
     return signal;
 }
 
-// map
-Game4kids.React.Signal.prototype.toEvent = function (event) {
+// react.map
+Game4kids.React.Signal.prototype.map = function (mapper) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(event());
+        signal.emit(mapper());
     });
 
     return signal;
 }
 
 Game4kids.React.Signal.prototype.toObject = function (object) {
-    var signal = new Game4kids.React.Signal(this);
-
-    this.subscribe(function (value) {
-        signal.emit(object);
-    });
-
-    return signal;
+    return this.map(function() { return object; });
 }
 
 Game4kids.React.Signal.prototype.toTime = function () {
-    var signal = new Game4kids.React.Signal(this);
-
-    this.subscribe(function (value) {
-        signal.emit(Game4kids.current.game.time.now / 1000);
-    });
-
-    return signal;
+    return this.map(function () { return Game4kids.current.game.time.now / 1000; });
 }
 
 // game

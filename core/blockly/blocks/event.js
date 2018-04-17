@@ -104,9 +104,9 @@ Blockly.Blocks['signal_every'] = {
 Blockly.Blocks['signal_mouse'] = {
     init: function () {
         this.KEYS = [
-            ["left", ".toEvent(function () { return game.input.activePointer.leftButton.isDown; })"],
-            ["middle", ".toEvent(function () { return game.input.activePointer.middleButton.isDown; })"],
-            ["right", ".toEvent(function () { return game.input.activePointer.rightButton.isDown; })"],
+            ["left", ".map(function () { return game.input.activePointer.leftButton.isDown; })"],
+            ["middle", ".map(function () { return game.input.activePointer.middleButton.isDown; })"],
+            ["right", ".map(function () { return game.input.activePointer.rightButton.isDown; })"],
         ];
 
         this.EVENTS = [
@@ -131,16 +131,16 @@ Blockly.Blocks['signal_mouse'] = {
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
         this.KEYS = [
-            ["← left", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
-            ["→ right", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
-            ["↑ up", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
-            ["↓ down", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
-            ["↲ enter", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
-            ["  space", ".toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
+            ["← left", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
+            ["→ right", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
+            ["↑ up", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
+            ["↓ down", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
+            ["↲ enter", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
+            ["  space", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
         ];
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         for (var i = 0; i < chars.length; i++) {
-            this.KEYS.push([chars.charAt(i), '.toEvent(function () { return game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
+            this.KEYS.push([chars.charAt(i), '.map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
         }
 
         this.EVENTS = [
