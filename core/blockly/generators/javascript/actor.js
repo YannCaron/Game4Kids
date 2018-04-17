@@ -5,7 +5,12 @@ Blockly.JavaScript['create_actor'] = function (block) {
     var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
     var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + ' = game4k.createActor(\'' + varName + '\', ' + img + ', ' + x + ', ' + y + ');\n';
+    var code = '';
+    if (Blockly.JavaScript.check(varName)) {
+        code += 'let ';
+    }
+    code += varName + ' = game4k.createActor(\'' + varName + '\', ' + img + ', ' + x + ', ' + y + ');\n';
+
     return code;
 };
 
