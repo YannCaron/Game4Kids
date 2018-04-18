@@ -131,7 +131,7 @@ Blockly.Blocks['signal_mouse'] = {
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
         this.KEYS = [
-            ["← left", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
+            ["← left", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT)})"],
             ["→ right", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
             ["↑ up", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
             ["↓ down", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
@@ -147,7 +147,7 @@ Blockly.Blocks['signal_keyboard'] = {
             ['press', '.toggle().whenEquals(true)'],
             ['pressing', '.whenEquals(true)'],
             ['pressed', '.toggle().whenEquals(false)'],
-            ['not pressing', '.whenEquals(false)']
+            ['not pressing', '.whenEquals(false || null)']
         ];
 
         this.appendDummyInput()
