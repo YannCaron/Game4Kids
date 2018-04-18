@@ -1,5 +1,7 @@
 Blockly.JavaScript.globalVars = null;
 Blockly.JavaScript.localVars = null;
+Blockly.JavaScript.VAR_USE_BLOCKS = new Set(['variables_get', 'variables_set', 'create_actor', 'math_change']);
+Blockly.JavaScript.PROCEDURE_BLOCKS = new Set(['procedures_defnoreturn', 'procedures_defreturn']);
 
 Blockly.JavaScript.initialize = function(workspace){
     Blockly.JavaScript.globalVars = new Set();
@@ -25,13 +27,13 @@ Blockly.JavaScript.finalize = function(workspace) {
 
 Blockly.JavaScript.promoteGlobal = function (workspace) {
     var blocks = workspace.getTopBlocks(true)
-        .filter(item => (item.type == 'procedures_defnoreturn' || item.type == 'procedures_defreturn'));
+        .filter(item => (Blockly.JavaScript.PROCEDURE_BLOCKS.has(item.type)));
 
     blocks.forEach(item => {
         var args = new Set(item.getVars());
 
         Blockly.JavaScript.dfs(item, block => {
-            if (block.type == 'variables_set' || block.type == 'create_actor') {
+            if (Blockly.JavaScript.VAR_USE_BLOCKS.has(block.type)) {
                 var varName = Blockly.JavaScript.variableDB_.getName(
                     block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
 
@@ -63,3 +65,15 @@ Blockly.JavaScript.check = function(varName) {
 
     return check;
 }
+
+// error management
+// TODO
+/*Blockly.JavaScript.manageError = function(message, file, line, col, err) {
+    alert(`A ${err.name} occured !\n${err.message}\nLine: ${err.lineNumber}`);
+    return false;
+}*/
+/*
+window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+    alert("Error occured: " + errorMsg);//or any message
+    return false;
+}*/

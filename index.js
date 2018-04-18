@@ -584,7 +584,7 @@ Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   for (var x = 0, block; block = blocks[x]; x++) {
     if (!block.runIn || block.runIn == 'create') {
       var line = Blockly.Generator.blockToCode(generator, block);
-      code.push(line.replace(/^/gm, Code.indent(ind + 1)));
+      code.push(line.replace(/^/gm, Code.indent(ind + 2)));
     }
   }
 
