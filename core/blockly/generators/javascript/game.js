@@ -11,7 +11,7 @@ Blockly.JavaScript['create_game'] = function (block) {
 Blockly.JavaScript['game_get'] = function (block) {
   var method = block.getFieldValue('PROPERTY');
 
-  var code = 'game.' + method;
+  var code = 'game4k.game.' + method;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -46,7 +46,7 @@ Blockly.JavaScript['game_clear'] = function (block) {
 
 Blockly.JavaScript['camera_follow'] = function (block) {
   var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'game.camera.follow(' + varName + ', Phaser.Camera.FOLLOW_LOCKON, 1, 0.1);\n';
+  var code = 'game4k.game.camera.follow(' + varName + ', Phaser.Camera.FOLLOW_LOCKON, 1, 0.1);\n';
   return code;
 };
 

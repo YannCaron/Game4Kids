@@ -19,12 +19,12 @@ Game4kids.Game.prototype.preload = function () {
     this.initEvent();
         
     // call state.preload
-    if (this._state && this._state.preload) this._state.preload(this.game);
+    if (this._state && this._state.preload) this._state.preload();
 };
 
 Game4kids.Game.prototype.create = function () {
     // call state.create
-    if (this._state && this._state.create) this._state.create(this.game);
+    if (this._state && this._state.create) this._state.create();
 }
 
 Game4kids.Game.prototype.update = function () {
@@ -32,12 +32,12 @@ Game4kids.Game.prototype.update = function () {
     this.updateEvent();
 
     // call state.update
-    if (this._state && this._state.update) this._state.update(this.game);
+    if (this._state && this._state.update) this._state.update();
 }
 
 Game4kids.Game.prototype.render = function () {
     this.renderDebug();
 
     // call state.render
-    if (this._state && this._state.render) this._state.render(this.game);
+    if (this._state && this._state.render) this._state.render();
 }

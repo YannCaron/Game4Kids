@@ -152,6 +152,7 @@ Game4kids.Game.prototype.initEvent = function () {
     this.actorSignals = new Map();
     this.count = 0;
     this.input.mouse.capture = true;
+    this.input.keyboard.capture = true;
 
     var game = this.game;
 }

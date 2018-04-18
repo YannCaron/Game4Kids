@@ -69,6 +69,7 @@ Blockly.Blocks['actor_set'] = {
             ["y", "y = %1"],
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x = %1"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y = %1"],
+            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "setVelocityFromAngle(%1)"],
             [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x = %1"],
             [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y = %1"],
             [Blockly.Msg.BLOCK_ANGLE, "angle = %1"],
@@ -118,29 +119,6 @@ Blockly.Blocks['actor_get1'] = {
         this.setHelpUrl("");
     }
 
-};
-
-Blockly.Blocks['actor_set1'] = {
-    init: function () {
-        this.OPTIONS = [
-            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "setVelocityFromAngle"],
-        ];
-        this.appendValueInput("VAR")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-            .setCheck(Blockly.Block.ACTOR_TYPE)
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCK_SET)
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
-        this.appendValueInput("ARG1")
-            .setCheck("Number")
-            .appendField(Blockly.Msg.BLOCK_TO);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
-        this.setHelpUrl("");
-    }
 };
 
 // method

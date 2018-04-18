@@ -31,12 +31,6 @@ Blockly.actorDynamic.ACTOR_SET =
 	Blockly.dynamic.buildShadowNumber('ARG1', 100) +
 	'</block>';
 
-Blockly.actorDynamic.ACTOR_SET_1 =
-	'<block type="actor_set1">' + 
-	Blockly.dynamic.buildShadowObject('VAR') +
-	Blockly.dynamic.buildShadowNumber('ARG1', 100) +
-	'</block>';
-
 Blockly.actorDynamic.ACTOR_ACTION =
 	'<block type="actor_action">' +
 	Blockly.dynamic.buildShadowObject('VAR') +
@@ -60,7 +54,6 @@ Blockly.actorDynamic.actorFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_GET));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_GET_1));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_SET));
-		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_SET_1));
         
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_ACTION));

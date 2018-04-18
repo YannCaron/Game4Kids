@@ -104,9 +104,9 @@ Blockly.Blocks['signal_every'] = {
 Blockly.Blocks['signal_mouse'] = {
     init: function () {
         this.KEYS = [
-            ["left", ".map(function () { return game.input.activePointer.leftButton.isDown; })"],
-            ["middle", ".map(function () { return game.input.activePointer.middleButton.isDown; })"],
-            ["right", ".map(function () { return game.input.activePointer.rightButton.isDown; })"],
+            ["left", ".map(function () { return game4k.game.input.activePointer.leftButton.isDown; })"],
+            ["middle", ".map(function () { return game4k.game.input.activePointer.middleButton.isDown; })"],
+            ["right", ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
         ];
 
         this.EVENTS = [
@@ -131,23 +131,23 @@ Blockly.Blocks['signal_mouse'] = {
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
         this.KEYS = [
-            ["← left", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.LEFT)})"],
-            ["→ right", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
-            ["↑ up", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
-            ["↓ down", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
-            ["↲ enter", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
-            ["  space", ".map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
+            ["← left", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || false; })"],
+            ["→ right", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || false; })"],
+            ["↑ up", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP) || false; })"],
+            ["↓ down", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.DOWN) || false; })"],
+            ["↲ enter", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.ENTER) || false; })"],
+            ["  space", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || false; })"],
         ];
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         for (var i = 0; i < chars.length; i++) {
-            this.KEYS.push([chars.charAt(i), '.map(function () { return game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
+            this.KEYS.push([chars.charAt(i), '.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
         }
 
         this.EVENTS = [
             ['press', '.toggle().whenEquals(true)'],
             ['pressing', '.whenEquals(true)'],
             ['pressed', '.toggle().whenEquals(false)'],
-            ['not pressing', '.whenEquals(false || null)']
+            ['not pressing', '.whenEquals(false)']
         ];
 
         this.appendDummyInput()

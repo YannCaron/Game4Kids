@@ -1,6 +1,6 @@
 Blockly.JavaScript.globalVars = null;
 Blockly.JavaScript.localVars = null;
-Blockly.JavaScript.VAR_USE_BLOCKS = new Set(['variables_get', 'variables_set', 'create_actor', 'math_change']);
+Blockly.JavaScript.VAR_USE_BLOCKS = new Set(['variables_get', 'variables_set', 'create_actor', 'actor_object', 'math_change']);
 Blockly.JavaScript.PROCEDURE_BLOCKS = new Set(['procedures_defnoreturn', 'procedures_defreturn']);
 
 Blockly.JavaScript.initialize = function(workspace){
@@ -21,7 +21,8 @@ Blockly.JavaScript.finalize = function(workspace) {
     // create global var line
     var vars = Array.from(Blockly.JavaScript.globalVars);
     Blockly.JavaScript.definitions_['variables'] =
-        (vars.length > 0) ? 'var ' + vars.join(', ') + ';' : '';
+        ((vars.length > 0) ? 'var ' + vars.join(', ') + ';\n' : '') +
+        'var game4k = new Game4kids.Game(' + Blockly.Block.GAME_WIDTH + ', ' + Blockly.Block.GAME_HEIGHT + ', \'content_game\', { preload: preload, create: create});';
 
 }
 
@@ -32,29 +33,18 @@ Blockly.JavaScript.promoteGlobal = function (workspace) {
     blocks.forEach(item => {
         var args = new Set(item.getVars());
 
-        Blockly.JavaScript.dfs(item, block => {
+        item.getDescendants().forEach(block => {
             if (Blockly.JavaScript.VAR_USE_BLOCKS.has(block.type)) {
                 var varName = Blockly.JavaScript.variableDB_.getName(
                     block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
 
-                if (! args.has(varName)) {
+                if (!args.has(varName)) {
                     Blockly.JavaScript.globalVars.add(varName);
                 }
             }
         });
 
     });
-}
-
-Blockly.JavaScript.dfs = function(block, callback) {
-    let stack = [];
-    stack.push(block);
-
-    while (stack.length > 0) {
-        var block = stack.pop();
-        callback(block);
-        stack.push(...block.getChildren());
-    }
 }
 
 Blockly.JavaScript.check = function(varName) {

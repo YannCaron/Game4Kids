@@ -47,14 +47,6 @@ Blockly.JavaScript['actor_set'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['actor_set1'] = function (block) {
-    var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
-    var property = block.getFieldValue('PROPERTY');
-    var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = varName + '.' + property + ' (' + arg1 + ');\n';
-    return code;
-};
-
 // methods
 Blockly.JavaScript['actor_action'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);

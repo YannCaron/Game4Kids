@@ -86,7 +86,7 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
     
     var code = '.toEvent(function () {\n';
-    code += 'return game.physics.arcade.' + key + '(\n';
+    code += 'return game4k.game.physics.arcade.' + key + '(\n';
     code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor1);
     code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor2);
     code += 'function (obj1, obj2) { %1 = obj1; %2 = obj2; }\n'.format(actor1, actor2);
