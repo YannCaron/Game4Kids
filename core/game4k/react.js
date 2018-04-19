@@ -32,13 +32,16 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 Game4kids.React.Signal.prototype.emit = function (value) {
     if (this.callback) {
         this.callback(value);
-
-        //this.callback(value);
     }
 }
 
-Game4kids.React.Signal.prototype.register = function (actor) {
-    Game4kids.current.registerActorSignals(actor, this);
+Game4kids.React.Signal.prototype.register = function (actors) {
+    if (typeof actors === 'array') {
+        actors.forEach(actor => Game4kids.current.registerActorSignals(actor, this))
+    } else {
+        Game4kids.current.registerActorSignals(actors, this);
+    }
+    return this;
 }
 
 // react.filters
@@ -171,6 +174,16 @@ Game4kids.Game.prototype.updateEvent = function () {
 Game4kids.Game.prototype.createSignal = function() {
     var signal = new Game4kids.React.Signal();
     this.signals.push(signal);
+    return signal;
+}
+
+Game4kids.Game.prototype.createSignalFromEvent = function (factory) {
+    var signal = new Game4kids.React.Signal();
+
+    factory(function (value) {
+        signal.emit(value);
+    });
+
     return signal;
 }
 

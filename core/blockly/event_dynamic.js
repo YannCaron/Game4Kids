@@ -4,9 +4,6 @@ Blockly.eventDynamic = Blockly.eventDynamic || {};
 Blockly.eventDynamic.SIGNAL_CREATE =
     '<block type="signal_create"></block>';
 
-Blockly.eventDynamic.SIGNAL_CREATE_WITH =
-    '<block type="signal_create_with"></block>';
-
 Blockly.eventDynamic.SIGNAL_DESTROY =
     '<block type="signal_destroy"></block>';
 
@@ -41,10 +38,6 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     // constructor
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
-
-    if (actorVariables.length > 0) {
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_WITH));
-    }
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DESTROY));
 

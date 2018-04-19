@@ -10,22 +10,6 @@ Blockly.Blocks['signal_create'] = {
             .appendField(Blockly.Msg.BLOCK_WHEN);
         this.appendStatementInput("STMT")
             .setCheck(null);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE);
-        this.setHelpUrl("");
-
-    }
-};
-
-Blockly.Blocks['signal_create_with'] = {
-    init: function () {
-        this.appendValueInput("NEXT")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-            .appendField(this.fieldActorFactory(), "VAR")
-            .setCheck(Blockly.Block.SIGNAL_TYPE)
-            .appendField(Blockly.Msg.BLOCK_WHEN);
-        this.appendStatementInput("STMT")
-            .setCheck(null);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.event.HUE);

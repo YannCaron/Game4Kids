@@ -6,25 +6,9 @@ Blockly.JavaScript['signal_create'] = function (block) {
     code = '';
     code += 'game4k.createSignal()\n';
     if (next) code += next;
-    code += '.subscribe(function (value) {\n'
+    code += '.subscribe(function (value) {\n';
     code += stmt;
-    code += '});\n\n';
-
-    return code;
-};
-
-Blockly.JavaScript['signal_create_with'] = function (block) {
-    var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
-    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
-
-    code = '';
-    code += 'game4k.createSignal()\n';
-    if (next) code += next;
-    code += '.toObject(' + varName + ')\n';
-    code += '.subscribe(function (' + varName + ') {\n';
-    code += stmt;
-    code += '}).register(' + varName + ');\n\n';
+    code += '}).register([' + Blockly.JavaScript.allActorsDeclared(block).join(', ') + ']);\n\n';
 
     return code;
 };
@@ -85,7 +69,7 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var event = block.getFieldValue('EVENT');
     var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
     
-    var code = '.toEvent(function () {\n';
+    var code = '.map(function () {\n';
     code += 'return game4k.game.physics.arcade.' + key + '(\n';
     code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor1);
     code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor2);
