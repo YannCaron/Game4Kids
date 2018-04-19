@@ -48,9 +48,20 @@ Blockly.JavaScript['actor_set'] = function (block) {
 };
 
 // methods
-Blockly.JavaScript['actor_action'] = function (block) {
+Blockly.JavaScript['actor_method0'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
     var method = block.getFieldValue('METHOD');
     var code = varName + '.' + method + ';\n';
     return code;
 };
+/*
+Blockly.JavaScript['actor_method3'] = function (block) {
+    var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
+    var method = block.getFieldValue('METHOD');
+    var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
+    var arg2 = Blockly.JavaScript.valueToCode(block, 'ARG2', Blockly.JavaScript.ORDER_ATOMIC);
+    var arg3 = Blockly.JavaScript.valueToCode(block, 'ARG3', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = varName + '.' + method.format(arg1, arg2, arg3) + ';\n';
+    return code;
+};*/

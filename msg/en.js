@@ -79,6 +79,8 @@ Blockly.Msg.BLOCK_IMMOVABLE = "immobilize";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "rotate when collide";
 Blockly.Msg.BLOCK_DESTROY = "destroy";
 
+Blockly.Msg.BLOCK_MOVE_TO = "move to";
+
 Blockly.Msg.BLOCK_IN = "in";
 Blockly.Msg.BLOCK_FROM = "from";
 Blockly.Msg.BLOCK_EVERY = "every";

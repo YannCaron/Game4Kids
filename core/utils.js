@@ -2,7 +2,7 @@
 String.prototype.format = function () {
     var result = '' + this;
     for (var i = 0; i < arguments.length; i++) {
-        result = result.replace('%' + (i + 1), arguments[i]);
+        result = result.split('%' + (i + 1)).join(arguments[i]);
     }
     return result;
 }

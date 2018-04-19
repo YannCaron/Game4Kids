@@ -122,7 +122,7 @@ Blockly.Blocks['actor_get1'] = {
 };
 
 // method
-Blockly.Blocks['actor_action'] = {
+Blockly.Blocks['actor_method0'] = {
     init: function () {
         this.OPTIONS = [
             [Blockly.Msg.BLOCK_COLLIDE_BOUNDE, "body.collideWorldBounds = true"],
@@ -143,3 +143,29 @@ Blockly.Blocks['actor_action'] = {
         this.setHelpUrl("");
     }
 };
+/*
+Blockly.Blocks['actor_method3'] = {
+    init: function () {
+        this.OPTIONS = [
+            [Blockly.Msg.BLOCK_MOVE_TO, "moveTo(%3, %1, %2)"],
+        ];
+
+        this.appendValueInput("VAR")
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
+        this.appendValueInput("ARG1")
+            .setCheck('Number')
+        this.appendValueInput("ARG2")
+            .setCheck('Number')
+        this.appendValueInput("ARG3")
+            .setCheck('Number')
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
+        this.setHelpUrl("");
+    }
+};*/

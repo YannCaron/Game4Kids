@@ -173,16 +173,6 @@ Game4kids.Game.prototype.createSignal = function() {
     return signal;
 }
 
-Game4kids.Game.prototype.createSignalFromEvent = function (factory) {
-    var signal = new Game4kids.React.Signal();
-
-    factory(function (value) {
-        signal.emit(value);
-    });
-
-    return signal;
-}
-
 Game4kids.Game.prototype.removeSignal = function (signal) {
     const index = this.signals.indexOf(signal);
 
@@ -229,3 +219,30 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
 Game4kids.Game.prototype.clearSignals = function () {
     this.signals = [];
 }
+
+/*
+Game4kids.React.Signal.prototype.toEvent = function (object) {
+    var signal = new Game4kids.React.Signal(this);
+    var value = false;
+
+    this.subscribe(function (value) {
+        signal.emit(value);
+    });
+
+    factory(function (value) {
+        value = true;
+    });
+
+    return signal;
+}
+
+Game4kids.Game.prototype.createSignalFromEvent = function (factory) {
+    var signal = new Game4kids.React.Signal();
+
+    factory(function (value) {
+        signal.emit(value);
+    });
+
+    return signal;
+}
+*/

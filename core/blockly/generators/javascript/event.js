@@ -106,3 +106,13 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
     
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['signal_with'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var key = block.getFieldValue('KEY');
+    var event = block.getFieldValue('EVENT');
+
+    var code = key.format(varName) + event + '\n';
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
