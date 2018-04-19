@@ -29,7 +29,7 @@ Blockly.Blocks['signal_collide'] = {
             ['enter', '.toggle().whenEquals(true)'],
             ['during', '.whenEquals(true)'],
             ['exit', '.toggle().whenEquals(false)'],
-            ['not during', '.whenEquals(false)']
+            ['hanging', '.whenEquals(false)']
         ];
 
         this.appendDummyInput()
@@ -136,7 +136,7 @@ Blockly.Blocks['signal_mouse'] = {
             ['press', '.toggle().whenEquals(true)'],
             ['pressing', '.whenEquals(true)'],
             ['pressed', '.toggle().whenEquals(false)'],
-            ['hanging', '.whenEquals(false)']
+            ['not pressing', '.whenEquals(false)']
         ];
 
         this.appendDummyInput()
