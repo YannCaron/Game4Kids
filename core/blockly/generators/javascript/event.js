@@ -1,16 +1,60 @@
+Blockly.JavaScript.allActorsOf = function (block) {
+    var set = new Set();
+    if (block.getInputTargetBlock('NEXT')) {
+        block.getInputTargetBlock('NEXT').getDescendants()
+            .filter(item => item.getActors)
+            .map(item => item.getActors())
+            .forEach(item => item.forEach(item => set.add(item)));
+    }
+    if (block.getInputTargetBlock('STMT')) {
+        block.getInputTargetBlock('STMT').getDescendants()
+            .filter(item => item.type == 'actor_object')
+            .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
+            .forEach(item => set.add(item));
+    }
+
+    return Array.from(set);
+}
+
 // constructor
 Blockly.JavaScript['signal_create'] = function (block) {
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    code = '';
+    var actors = Blockly.JavaScript.allActorsOf(block);
+
+    var code = '';
     code += 'game4k.createSignal()\n';
     if (next) code += next;
     code += '.subscribe(function (value) {\n';
     code += stmt;
-    code += '}).register([' + Blockly.JavaScript.allActorsDeclared(block).join(', ') + ']);\n\n';
+    code += '})';
+    if (actors.length > 0) {
+        code += actors.map(item => '.register(' + item + ')').join('');
+    }
+    code += ';\n\n';
 
     return code;
+};
+
+Blockly.JavaScript['signal_collide'] = function (block) {
+    var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
+    var key = block.getFieldValue('KEY');
+    var event = block.getFieldValue('EVENT');
+    var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
+
+    var code = '';
+    code += 'game4k.createSignal()\n';
+    code += '.map(function () {\n';
+    code += 'return game4k.game.physics.arcade.' + key + '(\n';
+    code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor1);
+    code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor2);
+    code += 'function (obj1, obj2) { %1 = obj1; %2 = obj2; }\n'.format(actor1, actor2);
+    code += ');\n';
+    code += '})' + event + '\n';
+    // TODO : manage event correctly
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['signal_destroy'] = function (block) {
@@ -59,24 +103,6 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
     var event = block.getFieldValue('EVENT');
 
     var code = key + event + '\n';
-    
-    return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['signal_collide'] = function (block) {
-    var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
-    var key = block.getFieldValue('KEY');
-    var event = block.getFieldValue('EVENT');
-    var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
-    
-    var code = '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.' + key + '(\n';
-    code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor1);
-    code += 'Game4kids.current.groups.get(\'%1\'),\n'.format(actor2);
-    code += 'function (obj1, obj2) { %1 = obj1; %2 = obj2; }\n'.format(actor1, actor2);
-    code += ');\n';
-    code += '})' + event + '\n';
-    // TODO : manage event correctly
     
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };

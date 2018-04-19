@@ -56,15 +56,6 @@ Blockly.JavaScript.check = function(varName) {
     return check;
 }
 
-Blockly.JavaScript.allActorsDeclared = function (block) {
-    var set = new Set();
-    var registerList = block.getDescendants()
-        .filter(item => item.type == 'actor_object')
-        .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
-        .forEach(item => set.add(item));
-    return Array.from(set);
-}
-
 // error management
 // TODO
 /*Blockly.JavaScript.manageError = function(message, file, line, col, err) {

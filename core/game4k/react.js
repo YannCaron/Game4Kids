@@ -36,11 +36,7 @@ Game4kids.React.Signal.prototype.emit = function (value) {
 }
 
 Game4kids.React.Signal.prototype.register = function (actors) {
-    if (typeof actors === 'array') {
-        actors.forEach(actor => Game4kids.current.registerActorSignals(actor, this))
-    } else {
-        Game4kids.current.registerActorSignals(actors, this);
-    }
+    Game4kids.current.registerActorSignals(actors, this);
     return this;
 }
 
@@ -202,19 +198,32 @@ Game4kids.Game.prototype.removeSignal = function (signal) {
 
 Game4kids.Game.prototype.registerActorSignals = function (actor, signal) {
     if (!this.actorSignals.has(actor)) {
-        this.actorSignals.set(actor, []);
+        this.actorSignals.set(actor, new Set());
     }
-    this.actorSignals.get(actor).push(signal);
+    this.actorSignals.get(actor).add(signal);
+}
+
+Game4kids.Game.prototype.hasSignalRemaine = function (signal) {
+    var result = false;
+    this.actorSignals.forEach(signals => {
+        if (signals.has(signal)) {
+            result = true;
+        }
+    });
+    return result;
 }
 
 Game4kids.Game.prototype.removeActorSignals = function (actor) {
     if (!this.actorSignals.has(actor)) return;
 
     var signals = this.actorSignals.get(actor);
-    for (var s in signals) {
-        this.removeSignal(signals[s]);
-    }
     this.actorSignals.delete(actor);
+
+    signals.forEach (signal => {
+        if (!this.hasSignalRemaine(signal)) {
+            this.removeSignal(signal);
+        }
+    });
 }
 
 Game4kids.Game.prototype.clearSignals = function () {
