@@ -128,7 +128,7 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(mapper());
+        signal.emit(mapper() || false);
     });
 
     return signal;
