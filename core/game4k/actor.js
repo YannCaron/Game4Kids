@@ -14,10 +14,28 @@ Game4kids.Actor.prototype.setBounce = function (bounce) {
     this.body.bounce.y = bounce;
 }
 
+Game4kids.Actor.prototype.jump = function (speed) {
+    var actor = this;
+    var savedBounce = this.body.bounce.y;
+
+    this.body.bounce.y = 1;
+    this.body.velocity.y = -speed;
+
+    Game4kids.current.createSignal()
+        .subscribe(function (value) {
+            actor.body.bounce.y = savedBounce;
+            this.destroy();
+        });
+}
+
 Game4kids.Actor.prototype.setFriction = function (friction) {
     friction = friction / 100;
     this.body.friction.x = friction;
     this.body.friction.y = friction;
+}
+
+Game4kids.Actor.prototype.setMass = function (mass) {
+    this.body.mass = mass / 100;
 }
 
 Game4kids.Actor.prototype.setScaleTo = function (factor) {

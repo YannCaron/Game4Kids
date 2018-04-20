@@ -63,7 +63,10 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     actor.checkWorldBounds = true;
     actor.outOfBoundsKill = true;
     this.physics.arcade.enable(actor);
+
+    // default params
     actor.setFriction(100);
+    actor.body.mass = 0;
 
     // set body size
     var size = Math.min(actor.body.width, actor.body.height);

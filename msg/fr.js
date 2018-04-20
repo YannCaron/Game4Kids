@@ -70,16 +70,18 @@ Blockly.Msg.BLOCK_ANGLE = "angle";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
 
 Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "la vélocité depuis l'angle";
-Blockly.Msg.BLOCK_SCALE = "agrandissement";
-Blockly.Msg.BLOCK_BOUNCE = "rebond";
-Blockly.Msg.BLOCK_FRICTION = "frottement";
+Blockly.Msg.BLOCK_SCALE = "pourcentage d'agrandissement";
+Blockly.Msg.BLOCK_BOUNCE = "pourcentage de rebond";
+Blockly.Msg.BLOCK_FRICTION = "pourcentage de frottement";
+Blockly.Msg.BLOCK_MASS = "pourcentage de poids";
 
 Blockly.Msg.BLOCK_COLLIDE_BOUNDE = "entre en collision avec les bords";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobiliser";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "tourner quand entre en collision";
 Blockly.Msg.BLOCK_DESTROY = "détruire";
 
-Blockly.Msg.BLOCK_MOVE_TO = "bouger vers";
+Blockly.Msg.BLOCK_JUMP = "sauter";
+//Blockly.Msg.BLOCK_MOVE_TO = "bouger vers";
 
 Blockly.Msg.BLOCK_IN = "dans";
 Blockly.Msg.BLOCK_FROM = "à partir de";

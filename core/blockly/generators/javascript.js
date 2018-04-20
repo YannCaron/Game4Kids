@@ -13,9 +13,10 @@ Blockly.JavaScript.initialize = function(workspace){
 Blockly.JavaScript.finalize = function(workspace) {
 
     // add all other variables
+    // TODO manage collision better
     workspace.getAllVariables()
         .map(item => item.name)
-        .filter(item => !Blockly.JavaScript.localVars.has(item))
+        //.filter(item => !Blockly.JavaScript.localVars.has(item))
         .forEach(item => Blockly.JavaScript.globalVars.add(item));
 
     // create global var line

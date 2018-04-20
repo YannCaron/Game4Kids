@@ -42,6 +42,7 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
     var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
+    var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
     var code = '';
     code += 'game4k.createSignal()\n';
@@ -52,6 +53,9 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     code += 'function (obj1, obj2) { %1 = obj1; %2 = obj2; }\n'.format(actor1, actor2);
     code += ');\n';
     code += '})' + event + '\n';
+    code += '.subscribe (function (value) {\n';
+    code += stmt;
+    code += '});\n'
     // TODO : manage event correctly
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];

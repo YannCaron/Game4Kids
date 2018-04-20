@@ -44,6 +44,8 @@ Blockly.Blocks['actor_get'] = {
         this.OPTIONS = [
             ["x", "x"],
             ["y", "y"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
         ];
 
@@ -76,6 +78,7 @@ Blockly.Blocks['actor_set'] = {
             [Blockly.Msg.BLOCK_SCALE, "setScaleTo(%1)"],
             [Blockly.Msg.BLOCK_BOUNCE, "setBounce(%1)"],
             [Blockly.Msg.BLOCK_FRICTION, "setFriction(%1)"],
+            [Blockly.Msg.BLOCK_MASS, "setMass(%1)"],
         ];
 
         this.appendValueInput("VAR")
@@ -135,6 +138,27 @@ Blockly.Blocks['actor_method0'] = {
             .setCheck(Blockly.Block.ACTOR_TYPE)
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['actor_method1'] = {
+    init: function () {
+        this.OPTIONS = [
+            [Blockly.Msg.BLOCK_JUMP, "jump (%1)"],
+        ];
+        this.appendValueInput("VAR")
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
+        this.appendValueInput("ARG1")
+            .setCheck('Number')
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
