@@ -2,10 +2,12 @@ Blockly.JavaScript.allActorsOf = function (block) {
 
     // get variable created in the statement to exclude
     var created = new Set();
-    block.getInputTargetBlock('STMT').getDescendants()
-        .filter(item => item.type == 'create_actor')
-        .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
-        .forEach(item => created.add(item));
+    if (block.getInputTargetBlock('STMT')) {
+        block.getInputTargetBlock('STMT').getDescendants()
+            .filter(item => item.type == 'create_actor')
+            .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
+            .forEach(item => created.add(item));
+    }
 
     var set = new Set();
     // get the signal chain used actors
@@ -137,6 +139,7 @@ Blockly.JavaScript['signal_collide'] = function (block) {
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
 /*
 Blockly.JavaScript['signal_with'] = function (block) {
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);

@@ -20,3 +20,6 @@ Number.prototype.radToDeg = function () {
     return this * 180 / Math.PI;
 }
 
+Number.prototype.degToRad = function () {
+    return this / 180 * Math.PI;
+}

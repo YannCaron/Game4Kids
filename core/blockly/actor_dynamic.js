@@ -41,13 +41,13 @@ Blockly.actorDynamic.ACTOR_METHOD1 =
 	Blockly.dynamic.buildShadowObject('VAR') +
 	Blockly.dynamic.buildShadowNumber('ARG1', 100) +
 	'</block>';
-/*
-Blockly.actorDynamic.ACTOR_METHOD3 =
-	'<block type="actor_method3">' +
+
+	/*
+Blockly.actorDynamic.ACTOR_METHOD2 =
+	'<block type="actor_method1">' +
 	Blockly.dynamic.buildShadowObject('VAR') +
 	Blockly.dynamic.buildShadowNumber('ARG1', 100) +
 	Blockly.dynamic.buildShadowNumber('ARG2', 100) +
-	Blockly.dynamic.buildShadowNumber('ARG3', 100) +
 	'</block>';
 */
 Blockly.actorDynamic.actorFlyoutCallback = function (workspace) {
@@ -72,7 +72,7 @@ Blockly.actorDynamic.actorFlyoutCallback = function (workspace) {
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_METHOD0));
 		xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_METHOD1));
-		//xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_METHOD3));
+		//xmlList.push(Blockly.Xml.xmlToDom(Blockly.actorDynamic.ACTOR_METHOD2));
 
 		//xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
     }

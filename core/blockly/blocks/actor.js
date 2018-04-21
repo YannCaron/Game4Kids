@@ -151,6 +151,8 @@ Blockly.Blocks['actor_method1'] = {
     init: function () {
         this.OPTIONS = [
             [Blockly.Msg.BLOCK_JUMP, "jump (%1)"],
+            [Blockly.Msg.BLOCK_DISP_FOREWARD, "displaceForeward (%1)"],
+            [Blockly.Msg.BLOCK_DISP_SIDEWAYS, "displaceSideways (%1)"],
         ];
         this.appendValueInput("VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)
@@ -168,22 +170,20 @@ Blockly.Blocks['actor_method1'] = {
     }
 };
 /*
-Blockly.Blocks['actor_method3'] = {
+Blockly.Blocks['actor_method2'] = {
     init: function () {
         this.OPTIONS = [
-            [Blockly.Msg.BLOCK_MOVE_TO, "moveTo(%3, %1, %2)"],
+            ['Displace from angle', "diplaceFromAngle(%1, %2)"],
         ];
 
         this.appendValueInput("VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)
-            .setCheck(Blockly.Block.ACTOR_TYPE)
+            .setCheck(Blockly.Block.ACTOR_TYPE);
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD");
         this.appendValueInput("ARG1")
             .setCheck('Number')
         this.appendValueInput("ARG2")
-            .setCheck('Number')
-        this.appendValueInput("ARG3")
             .setCheck('Number')
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);

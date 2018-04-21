@@ -83,3 +83,13 @@ Game4kids.Actor.prototype.rotateOnCollide = function () {
 Game4kids.Actor.prototype.cameraFollow = function () {
     this.game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON, 1, 0.1);
 }
+
+Game4kids.Actor.prototype.displaceForeward = function (dist) {
+    this.x += dist * Math.cos(this.angle.degToRad());
+    this.y += dist * Math.sin(this.angle.degToRad());
+}
+
+Game4kids.Actor.prototype.displaceSideways = function (dist) {
+    this.x += dist * Math.cos((this.angle - 90).degToRad());
+    this.y += dist * Math.sin((this.angle - 90).degToRad());
+}

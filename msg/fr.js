@@ -81,7 +81,8 @@ Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "tourner quand entre en collision";
 Blockly.Msg.BLOCK_DESTROY = "détruire";
 
 Blockly.Msg.BLOCK_JUMP = "sauter";
-//Blockly.Msg.BLOCK_MOVE_TO = "bouger vers";
+Blockly.Msg.BLOCK_DISP_FOREWARD = "déplace vers l'avant";
+Blockly.Msg.BLOCK_DISP_SIDEWAYS = "déplace latéralement";
 
 Blockly.Msg.BLOCK_IN = "dans";
 Blockly.Msg.BLOCK_FROM = "à partir de";
