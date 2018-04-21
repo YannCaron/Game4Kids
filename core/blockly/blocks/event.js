@@ -50,15 +50,6 @@ Blockly.Blocks['signal_create_collide'] = {
         this.setHelpUrl("");
     },
 
-    /*
-    // Not for collisions
-    getActors: function () {
-        var actors = [];
-        actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE));
-        actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE));
-        return actors;
-    }*/
-
 };
 
 Blockly.Blocks['signal_destroy'] = {
@@ -203,14 +194,12 @@ Blockly.Blocks['signal_collide'] = {
         this.setHelpUrl("");
     },
 
-    /*
-    // Not for collisions
     getActors: function () {
         var actors = [];
         actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE));
         actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE));
         return actors;
-    }*/
+    }
 
 };
 
