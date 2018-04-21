@@ -16,7 +16,7 @@ Blockly.JavaScript.finalize = function(workspace) {
     // TODO manage collision better
     workspace.getAllVariables()
         .map(item => item.name)
-        //.filter(item => !Blockly.JavaScript.localVars.has(item))
+        .filter(item => !Blockly.JavaScript.localVars.has(item))
         .forEach(item => Blockly.JavaScript.globalVars.add(item));
 
     // create global var line
