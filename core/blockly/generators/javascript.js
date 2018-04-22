@@ -1,13 +1,16 @@
 Blockly.JavaScript.localVars = null;
 
 Blockly.JavaScript.initialize = function(workspace){
-    Blockly.JavaScript.localVars = new Set();
 }
 
 Blockly.JavaScript.finalize = function(workspace) {
     Blockly.JavaScript.definitions_['variables'] =
         'var game4k = new Game4kids.Game(' + Blockly.Block.GAME_WIDTH + ', ' + Blockly.Block.GAME_HEIGHT + ', \'content_game\', { preload: preload, create: create});';
 
+}
+
+Blockly.JavaScript.startScope = function () {
+    Blockly.JavaScript.localVars = new Set();
 }
 
 Blockly.JavaScript.check = function(varName) {
