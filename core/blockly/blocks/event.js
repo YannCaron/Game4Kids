@@ -23,6 +23,8 @@ Blockly.Blocks['signal_create'] = {
     init: function () {
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.SIGNAL_TYPE)
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(this.fieldActorFactory(), "VAR")
             .appendField(Blockly.Msg.BLOCK_WHEN);
         this.appendStatementInput("STMT")
             .appendField(Blockly.Msg.BLOCK_DO)
@@ -203,30 +205,3 @@ Blockly.Blocks['signal_collide'] = {
     }
 
 };
-
-/*
-Blockly.Blocks['signal_with'] = {
-    init: function () {
-        this.KEYS = [
-            ["touche down", ".map(function () { return %1.body.touching.down })"],
-        ];
-
-        this.EVENTS = [
-            ['enter', '.toggle().whenEquals(true)'],
-            ['during', '.whenEquals(true)'],
-            ['exit', '.toggle().whenEquals(false)'],
-            ['hanging', '.whenEquals(false)']
-        ];
-
-        this.appendDummyInput()
-            .appendField("with")
-            .appendField(this.fieldActorFactory(), "VAR")
-            .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
-        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
-*/

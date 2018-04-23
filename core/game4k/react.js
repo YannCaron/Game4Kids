@@ -35,11 +35,6 @@ Game4kids.React.Signal.prototype.emit = function (value) {
     }
 }
 
-Game4kids.React.Signal.prototype.register = function (actors) {
-    Game4kids.current.registerActorSignals(actors, this);
-    return this;
-}
-
 // react.filters
 Game4kids.React.Signal.prototype.filter = function (predicate) {
     var signal = new Game4kids.React.Signal(this);
@@ -167,9 +162,12 @@ Game4kids.Game.prototype.updateEvent = function () {
 }
 
 // method
-Game4kids.Game.prototype.createSignal = function() {
+Game4kids.Game.prototype.createSignal = function(actor = null) {
     var signal = new Game4kids.React.Signal();
     this.signals.push(signal);
+
+    if (actor != null) this.registerActorSignals(actor, signal);
+
     return signal;
 }
 
@@ -193,16 +191,6 @@ Game4kids.Game.prototype.registerActorSignals = function (actor, signal) {
     this.actorSignals.get(actor).add(signal);
 }
 
-Game4kids.Game.prototype.hasSignalRemaine = function (signal) {
-    var result = false;
-    this.actorSignals.forEach(signals => {
-        if (signals.has(signal)) {
-            result = true;
-        }
-    });
-    return result;
-}
-
 Game4kids.Game.prototype.removeActorSignals = function (actor) {
     if (!this.actorSignals.has(actor)) return;
 
@@ -210,9 +198,7 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
     this.actorSignals.delete(actor);
 
     signals.forEach (signal => {
-        if (!this.hasSignalRemaine(signal)) {
-            this.removeSignal(signal);
-        }
+        this.removeSignal(signal);
     });
 }
 
