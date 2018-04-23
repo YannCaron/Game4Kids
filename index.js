@@ -526,6 +526,7 @@ Blockly.Generator.prototype.workspaceToCode = function (workspace) {
 
   // workaround for functional closure; change var to let
   Blockly.JavaScript.initialize(workspace);
+  Blockly.JavaScript.startScope();
 
   Blockly.Generator.generateGame(workspace, this, code, 0);
   code = code.join('\n');  // Blank line between each section.
