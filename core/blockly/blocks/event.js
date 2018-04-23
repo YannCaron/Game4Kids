@@ -25,6 +25,7 @@ Blockly.Blocks['signal_create'] = {
             .setCheck(Blockly.Block.SIGNAL_TYPE)
             .appendField(Blockly.Msg.BLOCK_WHEN);
         this.appendStatementInput("STMT")
+            .appendField(Blockly.Msg.BLOCK_DO)
             .setCheck(null);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
