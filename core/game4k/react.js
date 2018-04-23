@@ -156,10 +156,8 @@ Game4kids.Game.prototype.updateEvent = function () {
     this.count++;
 
     // loop on signals
-    for (var i in this.signals) {
-        var signal = this.signals[i];
-        signal.emit(this.count);
-    }
+    this.signals.forEach (signal => signal.emit(this.count));
+
 }
 
 // method
