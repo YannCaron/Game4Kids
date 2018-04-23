@@ -1,51 +1,15 @@
-Blockly.JavaScript.allActorsOf = function (block) {
-
-    // get variable created in the statement to exclude
-    var created = new Set();
-    if (block.getInputTargetBlock('STMT')) {
-        block.getInputTargetBlock('STMT').getDescendants()
-            .filter(item => item.type == 'create_actor')
-            .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
-            .forEach(item => created.add(item));
-    }
-
-    var set = new Set();
-    // get the signal chain used actors
-    if (block.getInputTargetBlock('NEXT')) {
-        block.getInputTargetBlock('NEXT').getDescendants()
-            .filter(item => item.getActors)
-            .map(item => item.getActors())
-            .forEach(item => item.forEach(item => set.add(item)));
-    }
-    // get the actor needed by the statement
-    if (block.getInputTargetBlock('STMT')) {
-        block.getInputTargetBlock('STMT').getDescendants()
-            .filter(item => item.type == 'actor_object')
-            .map(item => Blockly.JavaScript.variableDB_.getName(item.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE))
-            .filter(item => !created.has(item))
-            .forEach(item => set.add(item));
-    }
-
-    return Array.from(set);
-}
-
 // constructor
 Blockly.JavaScript['signal_create'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var next = Blockly.JavaScript.valueToCode(block, 'NEXT', Blockly.JavaScript.ORDER_ATOMIC);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    var actors = Blockly.JavaScript.allActorsOf(block);
-
     var code = '';
-    code += 'game4k.createSignal()\n';
+    code += 'game4k.createSignal(' + varName + ')\n';
     if (next) code += next;
     code += '.subscribe(function (value) {\n';
     code += stmt;
-    code += '})';
-    if (actors.length > 0) {
-        code += actors.map(item => '.register(' + item + ')').join('');
-    }
-    code += ';\n\n';
+    code += '});\n\n';
 
     return code;
 };
@@ -127,27 +91,14 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
 };
 
 Blockly.JavaScript['signal_collide'] = function (block) {
-    var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
-    var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
+    var actor = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR'), Blockly.Variables.NAME_TYPE);
 
     var code = '';
     code += '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.%1 (%2, %3);\n'.format(key, actor1, actor2);
+    code += 'return game4k.game.physics.arcade.%1 (this.getRoot().actor, %2);\n'.format(key, actor);
     code += '})%1\n'.format(event);
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
-
-/*
-Blockly.JavaScript['signal_with'] = function (block) {
-    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    var key = block.getFieldValue('KEY');
-    var event = block.getFieldValue('EVENT');
-
-    var code = key.format(varName) + event + '\n';
-
-    return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-*/
