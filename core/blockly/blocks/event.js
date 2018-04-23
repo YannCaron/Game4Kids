@@ -42,8 +42,8 @@ Blockly.Blocks['signal_create_collide'] = {
         this.appendDummyInput()
             .appendField("when all")
             .appendField(this.fieldActorFactory(), "ACTOR1")
-            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField("with all")
             .appendField(this.fieldActorFactory(), "ACTOR2");
         this.appendStatementInput("STMT")
@@ -138,9 +138,9 @@ Blockly.Blocks['signal_mouse'] = {
         ];
 
         this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField("mouse")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
@@ -172,9 +172,9 @@ Blockly.Blocks['signal_keyboard'] = {
         ];
 
         this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField("key")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
@@ -186,11 +186,10 @@ Blockly.Blocks['signal_keyboard'] = {
 Blockly.Blocks['signal_collide'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(this.fieldActorFactory(), "ACTOR1")
-            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField("with")
-            .appendField(this.fieldActorFactory(), "ACTOR2");
+            .appendField(this.fieldActorFactory(), "ACTOR");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");

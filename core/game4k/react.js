@@ -10,9 +10,10 @@ Game4kids.React = Game4kids.React || {
 
 // class
 // react
-Game4kids.React.Signal = function (parent = null) {
+Game4kids.React.Signal = function (parent = null, actor = null) {
     this.callback = null;
     this.parent = parent;
+    this.actor = actor;
 };
 
 Game4kids.React.Signal.prototype.destroy = function () {
@@ -122,7 +123,7 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(mapper() || false);
+        signal.emit(mapper.bind(this)() || false);
     });
 
     return signal;
@@ -163,7 +164,7 @@ Game4kids.Game.prototype.updateEvent = function () {
 
 // method
 Game4kids.Game.prototype.createSignal = function(actor = null) {
-    var signal = new Game4kids.React.Signal();
+    var signal = new Game4kids.React.Signal(null, actor);
     this.signals.push(signal);
 
     if (actor != null) this.registerActorSignals(actor, signal);

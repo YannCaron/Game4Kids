@@ -91,14 +91,13 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
 };
 
 Blockly.JavaScript['signal_collide'] = function (block) {
-    var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
-    var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
+    var actor = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR'), Blockly.Variables.NAME_TYPE);
 
     var code = '';
     code += '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.%1 (%2, %3);\n'.format(key, actor1, actor2);
+    code += 'return game4k.game.physics.arcade.%1 (this.getRoot().actor, %2);\n'.format(key, actor);
     code += '})%1\n'.format(event);
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
