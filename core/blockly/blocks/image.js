@@ -20,7 +20,7 @@ for (var category in Blockly4kids.gameImages) {
         getImage: function () {
             var img = this.getFieldValue('IMG');
             var pair = img.split('#');
-            return { 'key': pair[0], 'url': pair[1] };
+            return { 'key': pair[0], 'url': pair[1], 'data': img };
         }
     };
 }

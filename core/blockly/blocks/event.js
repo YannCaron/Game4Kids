@@ -38,16 +38,32 @@ Blockly.Blocks['signal_create'] = {
 };
 
 Blockly.Blocks['signal_create_collide'] = {
+    buildImageList: function () {
+        var images = this.workspace.getAllBlocks()
+            .filter(block => block.type.indexOf('game_image_') === 0 && block.type != 'game_image_' + Blockly.imageDynamic.BACKGROUND_CATEGORY)
+            .map(block => block.getImage())
+            .map(data => {
+                return [{ src: data.url, width: 50, height: 50 }, data.data];
+            });
+
+        if (images.length == 0) {
+            images = Blockly4kids.gameImages['PlanetCute'];
+        }
+        return images;
+    },
+
     init: function () {
+
         this.appendDummyInput()
-            .appendField("when all")
-            .appendField(this.fieldActorFactory(), "ACTOR1")
+            .appendField(Blockly.Msg.BLOCK_WHEN)
+            .appendField(new Blockly.FieldDropdown(this.buildImageList()), 'IMG1')
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
-            .appendField("with all")
-            .appendField(this.fieldActorFactory(), "ACTOR2");
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(new Blockly.FieldDropdown(this.buildImageList()), 'IMG2')
         this.appendStatementInput("STMT")
-            .setCheck(null);
+            .setCheck(null)
+            .appendField(Blockly.Msg.BLOCK_DO);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");

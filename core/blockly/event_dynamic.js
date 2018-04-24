@@ -1,11 +1,14 @@
 // create namespate
 Blockly.eventDynamic = Blockly.eventDynamic || {};
 
-Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE =
-    '<block type="signal_create_collide"></block>';
-
 Blockly.eventDynamic.SIGNAL_CREATE =
     '<block type="signal_create"></block>';
+
+Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE =
+    '<block type="signal_create_collide">' +
+    Blockly.dynamic.buildShadowImage('IMG1') +
+    Blockly.dynamic.buildShadowImage('IMG2') +
+    '</block>';
 
 Blockly.eventDynamic.SIGNAL_DESTROY =
     '<block type="signal_destroy"></block>';
@@ -29,16 +32,9 @@ Blockly.eventDynamic.SIGNAL_MOUSE =
 Blockly.eventDynamic.SIGNAL_KEYBOARD =
     '<block type="signal_keyboard"></block>';
 
-Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE =
-    '<block type="signal_create_collide"></block>';
-
 Blockly.eventDynamic.SIGNAL_COLLIDE =
     '<block type="signal_collide"></block>';
 
-    /*
-Blockly.eventDynamic.SIGNAL_WITH =
-    '<block type="signal_with"></block>';
-*/
 Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
 
     var xmlList = [];
@@ -47,17 +43,17 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
 
     // constructor
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
-
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE));
     }
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
-
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DESTROY));
 
+    // operator
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_OPERATOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COMBINE));
 
+    // method
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_IF));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_EVERY));
@@ -66,7 +62,6 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
 
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE));
-        //xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_WITH));
     }
 
     return xmlList;

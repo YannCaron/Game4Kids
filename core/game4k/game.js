@@ -58,7 +58,7 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
     // create actor
     var actor = new Game4kids.Actor(this.game, image, x, y);
-    this.groups.get(name).add(actor);
+    this.groups.get(image).add(actor);
     actor.anchor.setTo(0.5, 0.5);
     actor.checkWorldBounds = true;
     actor.outOfBoundsKill = true;
