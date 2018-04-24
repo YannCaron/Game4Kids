@@ -48,9 +48,6 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     // constructor
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
 
-    if (actorVariables.length > 0) {
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE));
-    }
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE));
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DESTROY));
@@ -67,6 +64,11 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE));
         //xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_WITH));
+    }
+
+    if (actorVariables.length > 0) {
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_STATIC)));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE));
     }
 
     return xmlList;

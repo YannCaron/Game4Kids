@@ -13,31 +13,54 @@ Game4kids.Game = function (width, height, content, state) {
 Game4kids.Game.prototype.preload = function () {
     Game4kids.current = this;
 
-    this.initGame();
-    this.initDebug();
-    this.initPause();
-    this.initEvent();
-        
-    // call state.preload
-    if (this._state && this._state.preload) this._state.preload();
+    try {
+        this.initGame();
+        this.initDebug();
+        this.initPause();
+        this.initEvent();
+
+        // call state.preload
+        if (this._state && this._state.preload) this._state.preload();
+    } catch (err) {
+        this.manageError(err);
+    }
+
 };
 
 Game4kids.Game.prototype.create = function () {
     // call state.create
-    if (this._state && this._state.create) this._state.create();
+    try {
+        if (this._state && this._state.create) this._state.create();
+    } catch (err) {
+        this.manageError(err);
+    }
 }
 
 Game4kids.Game.prototype.update = function () {
-    this.updateGame();
-    this.updateEvent();
+    try {
+        this.updateGame();
+        this.updateEvent();
 
-    // call state.update
-    if (this._state && this._state.update) this._state.update();
+        // call state.update
+        if (this._state && this._state.update) this._state.update();
+    } catch (err) {
+        this.manageError(err);
+    }
 }
 
 Game4kids.Game.prototype.render = function () {
-    this.renderDebug();
+    try {
+        this.renderDebug();
 
-    // call state.render
-    if (this._state && this._state.render) this._state.render();
+        // call state.render
+        if (this._state && this._state.render) this._state.render();
+    } catch (err) {
+        this.manageError(err);
+    }
+
+}
+
+Game4kids.Game.prototype.manageError = function (err) {
+    alert(`A ${err.name} occured !\n${err.message}\nLine: ${err.lineNumber}`);
+    throw "Game runtime error !"
 }

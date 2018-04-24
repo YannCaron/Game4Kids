@@ -44,10 +44,12 @@ Blockly.Blocks['signal_create_collide'] = {
             .appendField(this.fieldActorFactory(), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
+        this.appendDummyInput()
             .appendField("with all")
             .appendField(this.fieldActorFactory(), "ACTOR2");
         this.appendStatementInput("STMT")
-            .setCheck(null);
+            .setCheck(null)
+            .appendField(Blockly.Msg.BLOCK_DO);
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");
         this.setHelpUrl("");

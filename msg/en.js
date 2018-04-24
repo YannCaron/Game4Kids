@@ -35,6 +35,7 @@ Blockly.Msg.OBJECT_PROPERTIES = "properties";
 Blockly.Msg.OBJECT_METHODS = "methods";
 Blockly.Msg.OBJECT_EVENTS = "events";
 Blockly.Msg.OBJECT_OPERATOR = "operators";
+Blockly.Msg.OBJECT_STATIC = "static";
 
 // actor
 Blockly.Msg.BLOCK_CREATE = "create";

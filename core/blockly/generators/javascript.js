@@ -29,15 +29,3 @@ Blockly.JavaScript.check = function(varName) {
 
     return check;
 }
-
-// error management
-// TODO
-/*Blockly.JavaScript.manageError = function(message, file, line, col, err) {
-    alert(`A ${err.name} occured !\n${err.message}\nLine: ${err.lineNumber}`);
-    return false;
-}*/
-/*
-window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
-    alert("Error occured: " + errorMsg);//or any message
-    return false;
-}*/

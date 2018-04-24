@@ -1,11 +1,11 @@
 // const
-Game4kids.Game.KEY_CAPTURES = [Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT,
+Game4kids.Game.KEY_CAPTURES = [Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT, Phaser.Keyboard.DOWN, Phaser.Keyboard.UP,
     Phaser.Keyboard.SPACEBAR, Phaser.Keyboard.BACKSPACE, Phaser.Keyboard.DELETE, Phaser.Keyboard.ENTER,
     Phaser.Keyboard.PAGE_UP, Phaser.Keyboard.PAGE_DOWN, Phaser.Keyboard.HOME, Phaser.Keyboard.END];
 
 // constructor
 Game4kids.Game.prototype.initPause = function () {
-    this.input.keyboard.addKeyCapture(this.KEY_CAPTURES);
+    this.input.keyboard.addKeyCapture(Game4kids.Game.KEY_CAPTURES);
     this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
 }
 
