@@ -124,7 +124,6 @@ Blockly.Block.prototype.setAndShowWarning = function (text) {
 
 Blockly.Block.prototype.clearWarning = function () {
     this.setWarningText(null);
-    //this.warning.dispose();
 }
 // xml
 Blockly.Xml.xmlToDom = function (xml) {

@@ -581,7 +581,9 @@ Blockly.Generator.generatePreload = function (workspace, generator, code, ind) {
 Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   code.push(Code.indent(ind) + 'function create() {');
   code.push(Code.indent(ind + 1) + '// declare game');
-  code.push('');
+  if (workspace.getTopBlocks(true).length > 0) {
+    code.push(workspace.getTopBlocks(true)[0].lineCode());
+  }
 
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
@@ -685,13 +687,22 @@ Code.manageError = function (err) {
   console.log(err);
 
   var lines = Code.currentCode.split('\n');
-  if (err.lineNumber < lines.length) {
-    var line = lines[err.lineNumber - 1];
-    var id = line.substr(-20);
+  var lineNumber = err.lineNumber - 1;
+  var first = true;
 
-    var block = Code.workspace.getBlockById(id);
-    if (block != undefined) {
-      block.setAndShowWarning(err.message);
+  if (lineNumber < lines.length) {
+    while (lineNumber >= 0) {
+      var line = lines[lineNumber];
+      var id = line.substr(-20);
+
+      var block = Code.workspace.getBlockById(id);
+      if (block != undefined) {
+        block.setAndShowWarning(err.message + (first ? '' : '\nLine not fount, search in a next block.'));
+        return;
+      }
+
+      first = false;
+      lineNumber--;
     }
   }
 }

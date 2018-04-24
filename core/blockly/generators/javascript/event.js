@@ -27,7 +27,8 @@ Blockly.JavaScript['signal_combine'] = function (block) {
     var next2 = Blockly.JavaScript.valueToCode(block, 'NEXT2', Blockly.JavaScript.ORDER_ATOMIC);
     var operator = block.getFieldValue('OPERATOR');
 
-    var code = operator.format(next1, next2) + '\n';
+    var code = operator.format(next1, next2);
+    code += block.lineCode();
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -36,7 +37,8 @@ Blockly.JavaScript['signal_combine'] = function (block) {
 Blockly.JavaScript['signal_if'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = '.filter(function () { return ' + value + '; })\n';
+    var code = '.filter(function () { return ' + value + '; })';
+    code += block.lineCode();
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -44,7 +46,8 @@ Blockly.JavaScript['signal_if'] = function (block) {
 Blockly.JavaScript['signal_every'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = '.toTime().every(function () { return ' + value + '; })\n';
+    var code = '.toTime().every(function () { return ' + value + '; })';
+    code += block.lineCode();
     
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -53,8 +56,9 @@ Blockly.JavaScript['signal_mouse'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
 
-    var code = key + event + '\n';
-    
+    var code = key + event;
+    code += block.lineCode();
+
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -62,8 +66,9 @@ Blockly.JavaScript['signal_keyboard'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');
 
-    var code = key + event + '\n';
-    
+    var code = key + event;
+    code += block.lineCode();
+
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -74,7 +79,8 @@ Blockly.JavaScript['signal_collide'] = function (block) {
 
     var code = '';
     code += '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.%1 (this.getRoot().actor, %2);\n'.format(key, actor);
+    code += 'return game4k.game.physics.arcade.%1 (this.getRoot().actor, %2);'.format(key, actor);
+    code += block.lineCode();
     code += '})%1\n'.format(event);
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
