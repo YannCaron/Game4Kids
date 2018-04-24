@@ -35,7 +35,6 @@ Blockly.JavaScript['signal_create_collide'] = function (block) {
     code += '.subscribe (function (value) {\n';
     code += stmt;
     code += '});\n}\n'
-    // TODO : manage event correctly
 
     return code;
 };
