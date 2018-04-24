@@ -29,3 +29,7 @@ Blockly.JavaScript.check = function(varName) {
 
     return check;
 }
+
+Blockly.Block.prototype.lineCode = function () {
+    return `${Array(20).join('\t')}//id: ${this.id}\n`;
+}

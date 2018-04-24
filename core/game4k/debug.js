@@ -87,14 +87,16 @@ Game4kids.Game.prototype.logInfo = function () {
         var info = this.infos[i];
         var result = info.callback();
 
-        if (result.type == Phaser.SPRITE) {
-            this.game.debug.text(info.name + ': ', Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
-            y += Game4kids.Game.LINE_H;
-            this.game.debug.spriteInfo(result, Game4kids.Game.LOG_X * 2, y);
-            y += Game4kids.Game.LINE_H * 5;
-        } else {
-            this.game.debug.text(info.name + ': ' + result, Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
-            y += Game4kids.Game.LINE_H;
+        if (result != undefined) {
+            if (result.type == Phaser.SPRITE) {
+                this.game.debug.text(info.name + ': ', Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+                y += Game4kids.Game.LINE_H;
+                this.game.debug.spriteInfo(result, Game4kids.Game.LOG_X * 2, y);
+                y += Game4kids.Game.LINE_H * 5;
+            } else {
+                this.game.debug.text(info.name + ': ' + result, Game4kids.Game.LOG_X, y, Game4kids.Game.DEBUG_COLOR, Game4kids.Game.DEBUG_FONT);
+                y += Game4kids.Game.LINE_H;
+            }
         }
 
     }

@@ -9,7 +9,8 @@ Blockly.JavaScript['create_actor'] = function (block) {
     if (Blockly.JavaScript.check(varName)) {
         code += 'let ';
     }
-    code += varName + ' = game4k.createActor(\'' + varName + '\', ' + img + ', ' + x + ', ' + y + ');\n';
+    code += varName + ' = game4k.createActor(\'' + varName + '\', ' + img + ', ' + x + ', ' + y + ');';
+    code += block.lineCode();
 
     return code;
 };
@@ -43,7 +44,8 @@ Blockly.JavaScript['actor_set'] = function (block) {
     var property = block.getFieldValue('PROPERTY');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + '.' + property.format(arg1) + ";\n";
+    var code = varName + '.' + property.format(arg1) + ";";
+    code += block.lineCode();
     return code;
 };
 
@@ -52,7 +54,8 @@ Blockly.JavaScript['actor_method0'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
     var method = block.getFieldValue('METHOD');
 
-    var code = varName + '.' + method + ';\n';
+    var code = varName + '.' + method + ';';
+    code += block.lineCode();
     return code;
 };
 
@@ -61,7 +64,8 @@ Blockly.JavaScript['actor_method1'] = function (block) {
     var method = block.getFieldValue('METHOD');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + '.' + method.format(arg1) + ';\n';
+    var code = varName + '.' + method.format(arg1) + ';';
+    code += block.lineCode();
     return code;
 };
 

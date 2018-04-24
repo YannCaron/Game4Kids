@@ -648,11 +648,14 @@ Code.renderContent = function () {
 
 };
 
+Code.currentCode = '';
+
 // @Override
 Code.runJS = function () {
   Code.tabClick('game');
 
   Game4kids.Game.destroy();
+  Code.clearWarnings();
 
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
@@ -661,17 +664,34 @@ Code.runJS = function () {
       throw MSG['timeout'];
     }
   };
-  var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+  Code.currentCode = Blockly.JavaScript.workspaceToCode(Code.workspace);
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
-    eval(code);
+    eval(Code.currentCode);
   } catch (e) {
     alert(MSG['badCode'].replace('%1', e));
   }
 };
 
-// TODO to be use later
-Blockly.Block.prototype.setAndShowWarning = function (block, text) {
-  block.setWarningText(text);
-  block.warning.setVisible(true);
+Code.clearWarnings = function () {
+  Code.workspace.getAllBlocks().forEach(block => {
+    block.clearWarning();
+  });
+}
+
+Code.manageError = function (err) {
+  Code.tabClick('blocks');
+
+  console.log(err);
+
+  var lines = Code.currentCode.split('\n');
+  if (err.lineNumber < lines.length) {
+    var line = lines[err.lineNumber - 1];
+    var id = line.substr(-20);
+
+    var block = Code.workspace.getBlockById(id);
+    if (block != undefined) {
+      block.setAndShowWarning(err.message);
+    }
+  }
 }

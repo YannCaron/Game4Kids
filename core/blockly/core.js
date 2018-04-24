@@ -116,6 +116,16 @@ Blockly.Block.prototype.selectNearestActor = function (change) {
     }
 }
 
+// for error management purpose
+Blockly.Block.prototype.setAndShowWarning = function (text) {
+    this.setWarningText(text);
+    this.warning.setVisible(true);
+}
+
+Blockly.Block.prototype.clearWarning = function () {
+    this.setWarningText(null);
+    //this.warning.dispose();
+}
 // xml
 Blockly.Xml.xmlToDom = function (xml) {
     return Blockly.Xml.textToDom('<xml>' + xml + '</xml>').firstChild;

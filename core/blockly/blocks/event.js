@@ -37,26 +37,6 @@ Blockly.Blocks['signal_create'] = {
     }
 };
 
-Blockly.Blocks['signal_create_collide'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("when all")
-            .appendField(this.fieldActorFactory(), "ACTOR1")
-            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
-            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
-        this.appendDummyInput()
-            .appendField("with all")
-            .appendField(this.fieldActorFactory(), "ACTOR2");
-        this.appendStatementInput("STMT")
-            .setCheck(null)
-            .appendField(Blockly.Msg.BLOCK_DO);
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    },
-
-};
-
 Blockly.Blocks['signal_destroy'] = {
     init: function () {
         this.appendDummyInput()
@@ -204,5 +184,25 @@ Blockly.Blocks['signal_collide'] = {
         actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE));
         return actors;
     }
+
+};
+
+Blockly.Blocks['signal_create_collide'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("when all")
+            .appendField(this.fieldActorFactory(), "ACTOR1")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
+        this.appendDummyInput()
+            .appendField("with all")
+            .appendField(this.fieldActorFactory(), "ACTOR2");
+        this.appendStatementInput("STMT")
+            .setCheck(null)
+            .appendField(Blockly.Msg.BLOCK_DO);
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    },
 
 };
