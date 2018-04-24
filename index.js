@@ -582,10 +582,8 @@ Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
 
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
-    if (!block.runIn || block.runIn == 'create') {
-      var line = Blockly.Generator.blockToCode(generator, block);
-      code.push(line.replace(/^/gm, Code.indent(ind + 2)));
-    }
+    var line = Blockly.Generator.blockToCode(generator, block);
+    code.push(line.replace(/^/gm, Code.indent(ind + 2)));
   }
 
   code.push(Code.indent(ind) + '}\n');
@@ -597,10 +595,8 @@ Blockly.Generator.generateUpdate = function (workspace, generator, code, ind) {
 
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
-    if (block.runIn && block.runIn == 'update') {
-      var line = Blockly.Generator.blockToCode(generator, block);
-      code.push(line);
-    }
+    var line = Blockly.Generator.blockToCode(generator, block);
+    code.push(line);
   }
 
   code.push(Code.indent(ind) + '}\n');
@@ -612,10 +608,8 @@ Blockly.Generator.generateRender = function (workspace, generator, code, ind) {
 
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
-    if (block.runIn && block.runIn == 'render') {
-      var line = Blockly.Generator.blockToCode(generator, block);
-      code.push(line);
-    }
+    var line = Blockly.Generator.blockToCode(generator, block);
+    code.push(line);
   }
 
   code.push(Code.indent(ind) + '}\n');

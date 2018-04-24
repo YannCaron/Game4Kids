@@ -89,6 +89,33 @@ Blockly.Block.prototype.fieldActorFactory = function () {
         null, [Blockly.Block.ACTOR_TYPE], Blockly.Block.ACTOR_TYPE);
 }
 
+Blockly.Block.prototype.findNearestActorDeclaration = function () {
+    var parent = this.getParent();
+
+    while (parent != undefined) {
+        if (parent.type === 'create_actor') {
+            parentVariable = parent.getField('VAR').getVariable();
+            return parentVariable;
+        }
+
+        parent = parent.getParent();
+    }
+
+    return null;
+}
+
+Blockly.Block.prototype.selectNearestActor = function (change) {
+    var variable = this.getInputTargetBlock('VAR').getField('VAR').getVariable();
+    if (change.newParentId != undefined && this.hasChanged == undefined) {
+        var nearestDeclaredActor = this.findNearestActorDeclaration();
+
+        if (nearestDeclaredActor != null) {
+            this.getInputTargetBlock('VAR').getField('VAR').setValue(nearestDeclaredActor.getId());
+            this.hasChanged = true;
+        }
+    }
+}
+
 // xml
 Blockly.Xml.xmlToDom = function (xml) {
     return Blockly.Xml.textToDom('<xml>' + xml + '</xml>').firstChild;
