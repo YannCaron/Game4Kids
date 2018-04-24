@@ -697,7 +697,7 @@ Code.manageError = function (err) {
 
       var block = Code.workspace.getBlockById(id);
       if (block != undefined) {
-        block.setAndShowWarning(err.message + (first ? '' : '\nLine not fount, search in a next block.'));
+        block.setAndShowWarning(err.message + (first ? '' : '\n' + Blockly.Msg.OBJECT_LINE_NOT_FOUND));
         return;
       }
 

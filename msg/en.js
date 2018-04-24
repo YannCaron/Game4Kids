@@ -37,6 +37,9 @@ Blockly.Msg.OBJECT_EVENTS = "events";
 Blockly.Msg.OBJECT_OPERATOR = "operators";
 Blockly.Msg.OBJECT_STATIC = "static";
 
+// error
+Blockly.Msg.OBJECT_LINE_NOT_FOUND = "Line not found, search in a next block.";
+
 // actor
 Blockly.Msg.BLOCK_CREATE = "create";
 Blockly.Msg.BLOCK_GAME = "game";
