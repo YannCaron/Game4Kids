@@ -75,6 +75,29 @@ Blockly.Blocks['signal_combine'] = {
     }
 };
 
+// properties
+Blockly.Blocks['signal_count'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("count");
+        this.setOutput(true, 'Number');
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['signal_duration'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("duration");
+        this.setOutput(true, 'Number');
+        this.setColour(Blockly.Blocks.event.HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 // methods
 Blockly.Blocks['signal_if'] = {
     init: function () {

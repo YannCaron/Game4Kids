@@ -14,6 +14,9 @@ Game4kids.React.Signal = function (parent = null, actor = null) {
     this.callback = null;
     this.parent = parent;
     this.actor = actor;
+    this.count = 0;
+    this.duration = 0;
+    this.time = Game4kids.current.game.time.now;
 };
 
 Game4kids.React.Signal.prototype.destroy = function () {
@@ -31,6 +34,9 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 }
 
 Game4kids.React.Signal.prototype.emit = function (value) {
+    this.count++;
+    this.duration = (Game4kids.current.game.time.now - this.time) / 1000;
+    this.time = Game4kids.current.game.time.now;
     if (this.callback) {
         this.callback(value);
     }
@@ -41,7 +47,7 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        if (predicate(value)) {
+        if (predicate.call(this, value)) {
             signal.emit(value);
         }
     });

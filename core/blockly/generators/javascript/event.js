@@ -33,6 +33,17 @@ Blockly.JavaScript['signal_combine'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+// properties
+Blockly.JavaScript['signal_count'] = function (block) {
+    var code = 'this.count';
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['signal_duration'] = function (block) {
+    var code = 'this.duration';
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 // methods
 Blockly.JavaScript['signal_if'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
