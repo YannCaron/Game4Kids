@@ -76,21 +76,16 @@ Blockly.Blocks['signal_combine'] = {
 };
 
 // properties
-Blockly.Blocks['signal_count'] = {
+Blockly.Blocks['signal_property'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField("count");
-        this.setOutput(true, 'Number');
-        this.setColour(Blockly.Blocks.event.HUE);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
+        this.OPTIONS = [
+            ['count', 'count'],
+            ['duration', 'duration'],
+            ['time', 'time']
+        ];
 
-Blockly.Blocks['signal_duration'] = {
-    init: function () {
         this.appendDummyInput()
-            .appendField("duration");
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
         this.setOutput(true, 'Number');
         this.setColour(Blockly.Blocks.event.HUE);
         this.setTooltip("");

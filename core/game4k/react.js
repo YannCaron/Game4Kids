@@ -16,7 +16,8 @@ Game4kids.React.Signal = function (parent = null, actor = null) {
     this.actor = actor;
     this.count = 0;
     this.duration = 0;
-    this.time = Game4kids.current.game.time.now;
+    this.lapse = 0;
+    this.time = Game4kids.current.game.time.now / 1000;
 };
 
 Game4kids.React.Signal.prototype.destroy = function () {
@@ -35,8 +36,8 @@ Game4kids.React.Signal.prototype.getRoot = function () {
 
 Game4kids.React.Signal.prototype.emit = function (value) {
     this.count++;
-    this.duration = (Game4kids.current.game.time.now - this.time) / 1000;
-    this.time = Game4kids.current.game.time.now;
+    this.duration = (Game4kids.current.game.time.now / 1000) - this.time;
+    this.time = Game4kids.current.game.time.now / 1000;
     if (this.callback) {
         this.callback(value);
     }

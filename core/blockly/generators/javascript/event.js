@@ -34,13 +34,10 @@ Blockly.JavaScript['signal_combine'] = function (block) {
 };
 
 // properties
-Blockly.JavaScript['signal_count'] = function (block) {
-    var code = 'this.count';
-    return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
+Blockly.JavaScript['signal_property'] = function (block) {
+    var property = block.getFieldValue('PROPERTY');
 
-Blockly.JavaScript['signal_duration'] = function (block) {
-    var code = 'this.duration';
+    var code = 'this.' + property;
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 

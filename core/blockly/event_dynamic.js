@@ -10,11 +10,8 @@ Blockly.eventDynamic.SIGNAL_CREATE =
 Blockly.eventDynamic.SIGNAL_DESTROY =
     '<block type="signal_destroy"></block>';
 
-Blockly.eventDynamic.SIGNAL_COUNT =
-    '<block type="signal_count"></block>';
-
-Blockly.eventDynamic.SIGNAL_DURATION =
-    '<block type="signal_duration"></block>';
+Blockly.eventDynamic.SIGNAL_PROPERTY =
+    '<block type="signal_property"></block>';
 
 Blockly.eventDynamic.SIGNAL_COMBINE =
     '<block type="signal_combine"></block>';
@@ -59,8 +56,7 @@ Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DESTROY));
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_PROPERTIES)));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COUNT));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_DURATION));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_PROPERTY));
 
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_OPERATOR)));
     xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COMBINE));
