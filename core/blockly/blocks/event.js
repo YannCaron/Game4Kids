@@ -190,12 +190,12 @@ Blockly.Blocks['signal_collide'] = {
 Blockly.Blocks['signal_create_collide'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("when all")
+            .appendField("when any")
             .appendField(this.fieldActorFactory(), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
         this.appendDummyInput()
-            .appendField("with all")
+            .appendField("with any")
             .appendField(this.fieldActorFactory(), "ACTOR2");
         this.appendStatementInput("STMT")
             .setCheck(null)
