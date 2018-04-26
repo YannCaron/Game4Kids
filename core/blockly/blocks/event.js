@@ -80,8 +80,8 @@ Blockly.Blocks['signal_property'] = {
     init: function () {
         this.OPTIONS = [
             ['count', 'count'],
+            ['lapse', 'lapse'],
             ['duration', 'duration'],
-            ['time', 'time']
         ];
 
         this.appendDummyInput()
