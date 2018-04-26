@@ -33,6 +33,8 @@ Game4kids.Game.Groups = function (game) {
 
 // constructor
 Game4kids.Game.prototype.initGame = function () {
+    this.time.reset();
+    
     this.groups = new Game4kids.Game.Groups(this.game);
     this.maxActor = Game4kids.Game.DEFAULT_MAX_ACTOR;
     this.actorCount = 0;
