@@ -8,7 +8,9 @@ Game4kids.Anim = Game4kids.Anim || {
 };
 
 // class
-Game4kids.Anim.Sequence = function () {
+Game4kids.Anim.Sequence = function (target) {
+    this.target = target;
+
     this.factories_ = new Array();
     this.repeat_ = 0;
     this.currentRepeat_ = 0;
@@ -36,6 +38,8 @@ Game4kids.Anim.Sequence.prototype.onCompleted = function (callback) {
 }
 
 Game4kids.Anim.Sequence.prototype.playNext_ = function (index) {
+    if (!this.target.alive) return;
+
     if (index >= this.factories_.length) {
         if (this.repeat_ == -1) index = 0;
         else if (this.repeat_ > this.currentRepeat_) { index = 0; this.currentRepeat_++; }
