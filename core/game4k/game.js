@@ -88,8 +88,8 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     return actor;
 };
 
-Game4kids.Game.prototype.createTween = function(target) {
-    return new Game4kids.Tween(target, this.game, this.game.tweens);
+Game4kids.Game.prototype.createTween = function(target, parent = null) {
+    return new Game4kids.Tween(target, this.game, this.game.tweens, parent);
 }
 
 Game4kids.Game.prototype.clear = function () {

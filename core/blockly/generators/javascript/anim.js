@@ -10,7 +10,7 @@ Blockly.JavaScript['create_sequence'] = function (block) {
     Blockly.JavaScript.actorStack.pop();
     Blockly.JavaScript.sequenceStack.pop();
 
-    var code = 'new Game4kids.Sequence(%1)\n'.format(varName);
+    var code = 'new Game4kids.Sequence(%1, this)\n'.format(varName);
     //code += stmt.split('\n').filter(stmt => stmt.contains('.addFactory')).join('\n');
     code += stmt;
 
@@ -32,7 +32,7 @@ Blockly.JavaScript['sequence_statement'] = function (block) {
     var code = stmt;
 
     if (Arrays.getLast(Blockly.JavaScript.sequenceStack) == Blockly.JavaScript.SEQ) {
-        code = '.addFactory(function () { return new Game4kids.TweenExecutor(function () {\n%1}) })\n'.format(code);
+        code = '.addFactory(function () { return new Game4kids.TweenExecutor(function () {\n%1}, this) })\n'.format(code);
     }
 
     return code;
@@ -43,7 +43,7 @@ Blockly.JavaScript['create_tween'] = function (block) {
     /*var next2 = Blockly.JavaScript.valueToCode(block, 'NEXT2', Blockly.JavaScript.ORDER_ATOMIC);*/ // TODO
     var time = block.getFieldValue('TIME');
 
-    var code = 'game4k.createTween(%1)'.format(Arrays.getLast(Blockly.JavaScript.actorStack));
+    var code = 'game4k.createTween(%1, this)'.format(Arrays.getLast(Blockly.JavaScript.actorStack));
     code += next1;
     code += '.animate(%1)'.format(time);
 
