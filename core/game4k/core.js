@@ -63,6 +63,8 @@ Game4kids.Game.prototype.render = function () {
 // method
 Game4kids.Game.prototype.manageError = function (err) {
     alert(`A ${err.name} occured !\n${err.message}\nSource Line: ${err.lineNumber}`);
-    Code.manageError(err);
-    throw "Game runtime error !"
+    try {
+        Code.manageError(err);
+    } catch (e) {}
+    throw err;
 }

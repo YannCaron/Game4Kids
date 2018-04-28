@@ -27,6 +27,7 @@ var MSG = {
   catGame: "Jeu",
   catActor: "Acteur",
   catEvent: "Evénement",
+  catAnim: "Animation",
 };
 
 // object

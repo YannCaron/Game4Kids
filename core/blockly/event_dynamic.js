@@ -42,7 +42,7 @@ Blockly.eventDynamic.SIGNAL_COLLIDE =
 Blockly.eventDynamic.SIGNAL_WITH =
     '<block type="signal_with"></block>';
 */
-Blockly.eventDynamic.actorFlyoutCallback = function (workspace) {
+Blockly.eventDynamic.eventFlyoutCallback = function (workspace) {
 
     var xmlList = [];
 
