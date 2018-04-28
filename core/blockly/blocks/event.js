@@ -1,7 +1,3 @@
-// global
-Blockly.Blocks.event = {};
-Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
-
 Blockly.Blocks.event.COLLIDE_KEYS = function () {
     return [
         ["collide", "collide"],
@@ -31,7 +27,7 @@ Blockly.Blocks['signal_create'] = {
             .setCheck(null);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH);
         this.setHelpUrl("");
     }
@@ -43,7 +39,7 @@ Blockly.Blocks['signal_destroy'] = {
             .appendField(Blockly.Msg.BLOCK_DESTROY);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_DESTROY);
         this.setHelpUrl("");
 
@@ -69,7 +65,7 @@ Blockly.Blocks['signal_combine'] = {
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "OPERATOR");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -87,7 +83,7 @@ Blockly.Blocks['signal_property'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
         this.setOutput(true, 'Number');
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -101,7 +97,7 @@ Blockly.Blocks['signal_if'] = {
             .appendField("if");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -116,7 +112,7 @@ Blockly.Blocks['signal_every'] = {
             .appendField("seconds");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -143,7 +139,7 @@ Blockly.Blocks['signal_mouse'] = {
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -177,7 +173,7 @@ Blockly.Blocks['signal_keyboard'] = {
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -191,7 +187,7 @@ Blockly.Blocks['signal_collide'] = {
             .appendField("with")
             .appendField(this.fieldActorFactory(), "ACTOR");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },
@@ -218,7 +214,7 @@ Blockly.Blocks['signal_create_collide'] = {
         this.appendStatementInput("STMT")
             .setCheck(null)
             .appendField(Blockly.Msg.BLOCK_DO);
-        this.setColour(Blockly.Blocks.event.HUE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     },

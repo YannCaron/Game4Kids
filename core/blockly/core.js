@@ -69,6 +69,16 @@ Blockly.dynamic.buildShadowText = function (name, defaultValue = '') {
 };
 
 // block
+Blockly.Block.prototype.hasParentOfType = function (type) {
+    return this.getParent() && this.getParent().type == type;
+}
+
+Blockly.Block.prototype.containedByParentInput = function (input) {
+    return this.getParent().getInput(input)
+        && this.getParent().getInput(input).connection.targetConnection
+        && this.getParent().getInput(input).connection.targetConnection.sourceBlock_ == this
+}
+
 Blockly.Block.prototype.getLastCreatedActor = function () {
     var variables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
     if (variables.length <= 0) {

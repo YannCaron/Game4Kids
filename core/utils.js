@@ -7,13 +7,24 @@ String.prototype.format = function () {
     return result;
 }
 
-// array
-/*
-TODO : Problem with Phaser4Kids: Phaser.Game.prototype.addText
-Array.prototype.diff = function (a) {
-    return this.filter(function (i) { return a.indexOf(i) < 0; });
+String.prototype.startsWith = function (string) {
+    return this.indexOf(string) === 0;
 };
-*/
+
+String.prototype.contains = function (string) {
+    return this.indexOf(string) >= 0;
+};
+
+// array
+var Arrays = Arrays || {};
+
+Arrays.getLast = function (array) {
+    return array[array.length - 1];
+}
+
+Arrays.diff = function (a1, a2) {
+    return a1.filter(function (i) { return a2.indexOf(i) < 0; });
+};
 
 // number
 Number.prototype.radToDeg = function () {

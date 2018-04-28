@@ -1,7 +1,3 @@
-// global
-Blockly.Blocks.actor = {};
-Blockly.Blocks.actor.HUE = Blockly.Msg.ACTOR_HUE;
-
 // constructor
 Blockly.Blocks['create_actor'] = {
     init: function () {
@@ -20,7 +16,7 @@ Blockly.Blocks['create_actor'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_CREATE);
         this.setHelpUrl("");
     }
@@ -31,7 +27,7 @@ Blockly.Blocks['actor_object'] = {
         this.appendDummyInput()
             .appendField(this.fieldActorFactory(), "VAR");
         this.setOutput(true, Blockly.Block.ACTOR_TYPE);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_OBJECT);
         this.setHelpUrl("");
     }
@@ -57,7 +53,7 @@ Blockly.Blocks['actor_get'] = {
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
         this.setInputsInline(true);
         this.setOutput(true, "Number");
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 
@@ -95,7 +91,7 @@ Blockly.Blocks['actor_set'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 
@@ -121,7 +117,7 @@ Blockly.Blocks['actor_get1'] = {
             .setCheck(Blockly.Block.ACTOR_TYPE)
         this.setInputsInline(true);
         this.setOutput(true, "Number");
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 
@@ -147,7 +143,7 @@ Blockly.Blocks['actor_method0'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 
@@ -172,7 +168,7 @@ Blockly.Blocks['actor_method1'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 
@@ -198,7 +194,7 @@ Blockly.Blocks['actor_method2'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.actor.HUE);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
 

@@ -1,7 +1,3 @@
-// global
-Blockly.Blocks.game = {};
-Blockly.Blocks.game.HUE = Blockly.Msg.GAME_HUE;
-
 // Game
 Blockly.Blocks['create_game'] = {
   init: function () {
@@ -18,7 +14,7 @@ Blockly.Blocks['create_game'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_CREATE);
     this.setHelpUrl("");
   }
@@ -39,7 +35,7 @@ Blockly.Blocks['game_get'] = {
       .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_GET.format(Blockly.Block.optionList(this.OPTIONS)));
     this.setHelpUrl("");
   }
@@ -54,7 +50,7 @@ Blockly.Blocks['game_debug'] = {
       .appendField(new Blockly.FieldCheckbox("TRUE"), "APPLY");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_DEBUG);
     this.setHelpUrl("");
   }
@@ -69,7 +65,7 @@ Blockly.Blocks['debug_var'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_DEBUG_VAR);
     this.setHelpUrl("");
   }
@@ -84,7 +80,7 @@ Blockly.Blocks['debug_log'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG);
     this.setHelpUrl("");
   }
@@ -96,7 +92,7 @@ Blockly.Blocks['game_clear'] = {
       .appendField(Blockly.Msg.BLOCK_CLEAR);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_GAME_CLEAR);
     this.setHelpUrl("");
 
@@ -112,7 +108,7 @@ Blockly.Blocks['camera_follow'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.game.HUE);
+    this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_CAMERA_FOLLOW);
     this.setHelpUrl("");
 

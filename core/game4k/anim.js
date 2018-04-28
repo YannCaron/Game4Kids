@@ -42,16 +42,10 @@ Game4kids.Tween.prototype.onCompleted = function (callback) {
 Game4kids.TweenExecutor = function (command) {
     this._command = command;
     this._callback = null;
-    this._started = false;
 }
 
 Game4kids.TweenExecutor.prototype.onCompleted = function (callback) {
     this._callback = callback;
-
-    if (this._started) {
-        this._callback();
-    }
-
     return this;
 }
 
@@ -110,6 +104,7 @@ Game4kids.Sequence.prototype.playNext_ = function (index) {
     tween.onCompleted(function () {
         self.playNext_(index + 1);
     });
+    tween.start();
     return this;
 };
 

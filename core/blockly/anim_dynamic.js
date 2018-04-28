@@ -5,6 +5,10 @@ Blockly.animDynamic.CREATE_SEQUENCE =
     '<block type="create_sequence">' +
     '</block>';
 
+Blockly.animDynamic.SEQUENCE_STATEMENT =
+    '<block type="sequence_statement">' +
+    '</block>';
+
 Blockly.animDynamic.CREATE_TWEEN =
     '<block type="create_tween">' +
     '</block>';
@@ -12,6 +16,10 @@ Blockly.animDynamic.CREATE_TWEEN =
 Blockly.animDynamic.TWEEN_TO =
     '<block type="tween_to">' +
     Blockly.dynamic.buildShadowNumber('VALUE', 100) +
+    '</block>';
+
+Blockly.animDynamic.TWEEN_COMBINE =
+    '<block type="tween_combine">' +
     '</block>';
 
 Blockly.animDynamic.animFlyoutCallback = function (workspace) {
@@ -23,8 +31,10 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
     if (actorVariables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_SEQUENCE));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_STATEMENT));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_TO));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_COMBINE));
 
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_PROPERTIES)));
 

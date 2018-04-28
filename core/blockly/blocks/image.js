@@ -1,7 +1,3 @@
-// global
-Blockly.Blocks.image = {};
-Blockly.Blocks.image.HUE = Blockly.Msg.IMAGE_HUE;
-
 // dynamic images
 for (var category in Blockly4kids.gameImages) {
 
@@ -12,7 +8,7 @@ for (var category in Blockly4kids.gameImages) {
             this.appendDummyInput()
                 .appendField(new Blockly.FieldDropdown(Blockly4kids.gameImages[this.category]), 'IMG')
             this.setOutput(true, Blockly.Block.IMAGE_TYPE);
-            this.setColour(Blockly.Blocks.image.HUE);
+            this.setColour(Blockly.Msg.IMAGE_HUE);
             this.setTooltip(Blockly.Msg.TOOLTIP_GAME_IMAGE.format(this.category));
             this.setHelpUrl("");
         },

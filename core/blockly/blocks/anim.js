@@ -1,20 +1,15 @@
-// global
-Blockly.Blocks.anim = {};
-Blockly.Blocks.anim.HUE = Blockly.Msg.ANIM_HUE;
-
 Blockly.Blocks['create_sequence'] = {
     init: function () {
         this.appendValueInput("NEXT")
-            .setCheck("Anim")
-            .appendField(Blockly.Msg.BLOCK_WITH)
+            .setCheck(Blockly.Block.ANIM_TYPE)
+            .appendField("animation of")
             .appendField(this.fieldActorFactory(), "VAR")
-            .appendField(Blockly.Block.SEQUENCE_TYPE);
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.anim.HUE);
+        this.setColour(Blockly.Msg.ANIM_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
         //this.setOnChange(this.onChanged);
@@ -32,18 +27,34 @@ Blockly.Blocks['create_sequence'] = {
         }*/
 };
 
-Blockly.Blocks['create_tween'] = {
+Blockly.Blocks['sequence_statement'] = {
     init: function () {
-        this.appendValueInput("NEXT")
-            .setCheck(Blockly.Block.TWEEN_TYPE)
-            .appendField("animate")
-            .appendField(this.fieldActorFactory(), "VAR")
-            .appendField(new Blockly.FieldNumber(1, 0, 60), "TIME")
-            .appendField("second(s)");
+        this.appendDummyInput()
+            .appendField("then do");
+        this.appendStatementInput("STMT")
+            .setCheck(Blockly.Block.ANIM_TYPE);
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(300);
+        this.setColour(Blockly.Msg.ANIM_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['create_tween'] = {
+    init: function () {
+        this.appendValueInput("NEXT1")
+            .setCheck(Blockly.Block.TWEEN_TYPE)
+            .appendField("during")
+            .appendField(new Blockly.FieldNumber(1, 0, 60), "TIME")
+            .appendField("seconds");
+        /*this.appendValueInput("NEXT2")
+            .setCheck(Blockly.Block.TWEEN_TYPE)*/ // TODO
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -60,17 +71,31 @@ Blockly.Blocks['tween_to'] = {
 
         this.appendValueInput("VALUE")
             .setCheck("Number")
-            .appendField("property")
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
-        this.appendValueInput("NEXT")
-            .setCheck(Blockly.Block.TWEEN_TYPE)
-            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("set")
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY")
+            .appendField("to")
+        this.appendDummyInput()
             .appendField("relative")
             .appendField(new Blockly.FieldCheckbox("TRUE"), "RELATIVE")
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.TWEEN_TYPE);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['tween_combine'] = {
+    init: function () {
+        this.appendValueInput("NEXT1")
+            .setCheck(Blockly.Block.TWEEN_TYPE)
+        this.appendValueInput("NEXT2")
+            .setCheck(Blockly.Block.TWEEN_TYPE)
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("and");
         this.setInputsInline(false);
         this.setOutput(true, Blockly.Block.TWEEN_TYPE);
-        this.setColour(300);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
     }
