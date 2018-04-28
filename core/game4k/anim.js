@@ -12,7 +12,7 @@ Game4kids.Tween = function (target, game, manager, parent = null) {
     var self = this;
     this.onComplete.add(function () {
         if (self.parent_ && self.parent_.childCompleted) {
-            self.parent_.childCompleted(this);
+            self.parent_.childCompleted(self);
         }
     });
 };
@@ -56,6 +56,10 @@ Game4kids.TweenExecutor = function (command, parent = null) {
     this.callback_ = null;
     this.parent_ = parent;
     this.children_ = new Map();
+
+    if (this.parent_ && this.parent_.register) {
+        this.parent_.register(this);
+    }
 }
 
 Game4kids.TweenExecutor.prototype.register = function (object) {
@@ -65,12 +69,10 @@ Game4kids.TweenExecutor.prototype.register = function (object) {
 Game4kids.TweenExecutor.prototype.childCompleted = function (object) {
     this.children_.set(object, true);
 
-    if (this.callback_) {
-        var all = true;
-        this.children_.forEach(value => { if (!value) { all = false } });
-        if (all) {
-            this.callback_();
-        }
+    var all = true;
+    this.children_.forEach(value => { if (!value) { all = false } });
+    if (all) {
+        this.fireCompleted();
     }
 }
 
@@ -82,10 +84,19 @@ Game4kids.TweenExecutor.prototype.onCompleted = function (callback) {
 Game4kids.TweenExecutor.prototype.start = function () {
     this.command_();
 
-    if (this.callback_ && this.children_.length == 0) {
-        this.callback_();
+    if (this.children_.length == 0) {
+        this.fireCompleted();
     }
     return this;
+}
+
+Game4kids.TweenExecutor.prototype.fireCompleted = function () {
+    if (this.callback_) {
+        this.callback_();
+    }
+    if (this.parent_ && this.parent_.childCompleted) {
+        this.parent_.childCompleted(this);
+    }
 }
 
 // class
