@@ -61,7 +61,10 @@ Blockly.JavaScript['tween_to'] = function (block) {
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
     var relative = block.getFieldValue('RELATIVE') == 'TRUE';
 
-    var method = (relative) ? 'doRelative' : 'do';
+    var target = block.getInputTargetBlock('VALUE').type != 'math_number';
+
+    var method = (relative) ? 'doRelative' : (target) ? 'doTarget' : 'do';
+    if (target) value = 'function() { return %1;}'.format(value);
 
     var code = '.%1(\'%2\', %3)'.format(method, property, value);
 
