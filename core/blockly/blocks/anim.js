@@ -95,11 +95,24 @@ Blockly.Blocks['sequence_destroy'] = {
 
 Blockly.Blocks['create_tween'] = {
     init: function () {
+        this.OPTIONS = [
+            ['linear', 'Phaser.Easing.Default'],
+            ['accelerate', 'Phaser.Easing.Exponential.In'],
+            ['decelerate', 'Phaser.Easing.Exponential.Out'],
+            ['sin', 'Phaser.Easing.Sinusoidal.InOut'],
+            ['circular', 'Phaser.Easing.Circular.InOut'],
+            ['elastic', 'Phaser.Easing.Elastic.Out'],
+            ['bounce', 'Phaser.Easing.Bounce.Out'],
+            ['inertia', 'Phaser.Easing.Back.Out'],
+        ]
+
         this.appendValueInput("NEXT1")
             .setCheck(Blockly.Block.TWEEN_TYPE)
             .appendField("during")
             .appendField(new Blockly.FieldNumber(1, 0, 60), "TIME")
-            .appendField("seconds");
+            .appendField("seconds with easing")
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EASING")
+
         /*this.appendValueInput("NEXT2")
             .setCheck(Blockly.Block.TWEEN_TYPE)*/ // TODO
         this.setInputsInline(false);

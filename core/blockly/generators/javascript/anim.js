@@ -78,10 +78,11 @@ Blockly.JavaScript['create_tween'] = function (block) {
     var next1 = Blockly.JavaScript.valueToCode(block, 'NEXT1', Blockly.JavaScript.ORDER_ATOMIC);
     /*var next2 = Blockly.JavaScript.valueToCode(block, 'NEXT2', Blockly.JavaScript.ORDER_ATOMIC);*/ // TODO
     var time = block.getFieldValue('TIME');
+    var easing = block.getFieldValue('EASING');
 
     var code = 'game4k.createTween(%1, this)'.format(Arrays.getLast(Blockly.JavaScript.actorStack));
     code += next1;
-    code += '.animate(%1)'.format(time);
+    code += '.animate(%1).easing(%2)'.format(time, easing);
 
     if (Arrays.getLast(Blockly.JavaScript.sequenceStack) == Blockly.JavaScript.SEQ) {
         code = '.addFactory(function () { return %1 })'.format(code);
