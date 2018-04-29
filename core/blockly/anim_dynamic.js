@@ -29,6 +29,7 @@ Blockly.animDynamic.SEQUENCE_DESTROY =
 
 Blockly.animDynamic.CREATE_TWEEN =
     '<block type="create_tween">' +
+    Blockly.dynamic.buildShadowNumber('TIME', 0.75) +
     '</block>';
 
 Blockly.animDynamic.TWEEN_TO =

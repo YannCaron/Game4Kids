@@ -106,16 +106,18 @@ Blockly.Blocks['create_tween'] = {
             ['inertia', 'Phaser.Easing.Back.Out'],
         ]
 
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField("during")
         this.appendValueInput("NEXT1")
             .setCheck(Blockly.Block.TWEEN_TYPE)
-            .appendField("during")
-            .appendField(new Blockly.FieldNumber(1, 0, 60), "TIME")
-            .appendField("seconds with easing")
+            .appendField("seconds")
+        this.appendDummyInput()
+            .appendField("with easing")
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "EASING")
-
         /*this.appendValueInput("NEXT2")
             .setCheck(Blockly.Block.TWEEN_TYPE)*/ // TODO
-        this.setInputsInline(false);
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.TWEEN_HUE);
