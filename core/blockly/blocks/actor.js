@@ -73,6 +73,7 @@ Blockly.Blocks['actor_set'] = {
             [`${Blockly.Msg.BLOCK_GRAVITY} x`, "body.gravity.x = %1"],
             [`${Blockly.Msg.BLOCK_GRAVITY} y`, "body.gravity.y = %1"],
             [Blockly.Msg.BLOCK_ANGLE, "angle = %1"],
+            [Blockly.Msg.BLOCK_OPACITY, "opacity = %1"],
             [Blockly.Msg.BLOCK_SCALE.format('x'), "scaleX = %1"],
             [Blockly.Msg.BLOCK_SCALE.format('y'), "scaleY = %1"],
             [Blockly.Msg.BLOCK_BOUNCE, "setBounce(%1)"],

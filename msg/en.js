@@ -71,6 +71,7 @@ Blockly.Msg.TEXT = "the text";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
+Blockly.Msg.BLOCK_OPACITY = 'opacity in %'
 Blockly.Msg.BLOCK_VELOCITY = "velocity";
 Blockly.Msg.BLOCK_GRAVITY = "gravity";
 Blockly.Msg.BLOCK_ANGLE = "angle";

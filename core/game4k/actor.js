@@ -14,19 +14,12 @@ Game4kids.Actor.prototype.setBounce = function (bounce) {
     this.body.bounce.y = bounce;
 }
 
-Game4kids.Actor.prototype.jump = function (speed) {
-    var actor = this;
-    var savedBounce = this.body.bounce.y;
-
-    this.body.bounce.y = 1;
-    this.body.velocity.y = -speed;
-
-    Game4kids.current.createSignal()
-        .subscribe(function (value) {
-            actor.body.bounce.y = savedBounce;
-            this.destroy();
-        });
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'opacity', {
+    get: function () { return this.alpha * 100 },
+    set: function (value) { this.alpha = value / 100 },
+    enumerable: true,
+    configurable: true
+});
 
 Game4kids.Actor.prototype.setFriction = function (friction) {
     friction = friction / 100;
@@ -102,4 +95,18 @@ Game4kids.Actor.prototype.displaceForeward = function (dist) {
 Game4kids.Actor.prototype.displaceSideways = function (dist) {
     this.x += dist * Math.cos((this.angle - 90).degToRad());
     this.y += dist * Math.sin((this.angle - 90).degToRad());
+}
+
+Game4kids.Actor.prototype.jump = function (speed) {
+    var actor = this;
+    var savedBounce = this.body.bounce.y;
+
+    this.body.bounce.y = 1;
+    this.body.velocity.y = -speed;
+
+    Game4kids.current.createSignal()
+        .subscribe(function (value) {
+            actor.body.bounce.y = savedBounce;
+            this.destroy();
+        });
 }
