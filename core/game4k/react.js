@@ -1,7 +1,7 @@
 // namespace
 Game4kids.React = Game4kids.React || {
 
-    valueOf: function(f) {
+    valueOf: function (f) {
         if (typeof f === 'function') return f();
         else return f;
     },
@@ -51,7 +51,8 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        if (predicate.call(this, value)) {
+        arguments[0] = value;
+        if (predicate.call(this, ...arguments)) {
             arguments[0] = value;
             signal.emit(...arguments);
         }
@@ -63,11 +64,12 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
 Game4kids.React.Signal.prototype.toggle = function () {
     var self = this;
 
+    // manage here for collision
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
         
-        if (value != self.previous) {
-            self.previous = value;
+        if (values != self.previous) {
+            self.previous = values;
             return true;
         }
         return false;
@@ -75,7 +77,7 @@ Game4kids.React.Signal.prototype.toggle = function () {
 
 }
 
-Game4kids.React.Signal.prototype.every = function(interval) {
+Game4kids.React.Signal.prototype.every = function (interval) {
     var self = this;
 
     return this.filter(function (value) {
@@ -138,15 +140,25 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     this.subscribe(function (value) {
         arguments[0] = value;
         value = mapper.bind(this)(...arguments) || false;
-        arguments[0] = values;
+        arguments[0] = value;
         signal.emit(...arguments);
     });
 
     return signal;
 }
 
+Game4kids.React.Signal.prototype.mapEvent = function (mapper) {
+    var signal = new Game4kids.React.Signal(this);
+
+    this.subscribe(function (value) {
+        mapper.bind(this)(value, signal);
+    });
+
+    return signal;
+}
+
 Game4kids.React.Signal.prototype.toObject = function (object) {
-    return this.map(function() { return object; });
+    return this.map(function () { return object; });
 }
 
 Game4kids.React.Signal.prototype.toTime = function () {
@@ -172,12 +184,12 @@ Game4kids.Game.prototype.updateEvent = function () {
     this.count++;
 
     // loop on signals
-    this.signals.forEach (signal => signal.emit(this.count)); // Important! do not send argument list
+    this.signals.forEach(signal => signal.emit(this.count)); // Important! do not send argument list
 
 }
 
 // method
-Game4kids.Game.prototype.createSignal = function(actor = null) {
+Game4kids.Game.prototype.createSignal = function (actor = null) {
     var signal = new Game4kids.React.Signal(null, actor);
     this.signals.push(signal);
 
@@ -212,7 +224,7 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
     var signals = this.actorSignals.get(actor);
     this.actorSignals.delete(actor);
 
-    signals.forEach (signal => {
+    signals.forEach(signal => {
         this.removeSignal(signal);
     });
 }
