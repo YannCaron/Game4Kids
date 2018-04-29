@@ -118,7 +118,7 @@ Game4kids.TweenExecutor.prototype.childCompleted = function (object) {
 Game4kids.TweenExecutor.prototype.start = function () {
     this.command_();
 
-    if (this.children_.length == 0) {
+    if (this.children_.size == 0) {
         this.fireCompleted_();
     }
     return this;
@@ -200,11 +200,11 @@ Game4kids.Sequence.prototype.playNext_ = function (index) {
     if (!this.target_.alive) return;
     if (this.destroy_) return;
 
-    if (index == 0 && typeof this.repeat_ === 'function' && !this.repeat_()) return;
+    if (index == 0 && typeof this.repeat_ === 'function' && !this.repeat_()) { this.fireCompleted_(); return; };
     if (index >= this.factories_.length) {
         if (typeof this.repeat_ === 'function') {
             if (this.repeat_()) index = 0;
-            else return;
+            else { this.fireCompleted_(); return; };
         } else if (this.repeat_ == -1) index = 0;
         else if (this.repeat_ > this.currentRepeat_) { index = 0; this.currentRepeat_++; }
         else { this.fireCompleted_(); return; }
