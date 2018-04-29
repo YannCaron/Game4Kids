@@ -38,10 +38,6 @@ Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE =
 Blockly.eventDynamic.SIGNAL_COLLIDE =
     '<block type="signal_collide"></block>';
 
-/*
-Blockly.eventDynamic.SIGNAL_WITH =
-'<block type="signal_with"></block>';
-*/
 Blockly.eventDynamic.eventFlyoutCallback = function (workspace) {
 
     var xmlList = [];

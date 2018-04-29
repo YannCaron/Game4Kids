@@ -53,21 +53,21 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
     var actorVariables = workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
 
     if (actorVariables.length > 0) {
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_CONSTRUCTOR)));
+        // sequence
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_SEQUENCE)));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_SEQUENCE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_ALWAYS));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_LOOP));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_WHILE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_STATEMENT));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_DESTROY));
+
+        // animation
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_ANIMATION)));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_TO));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_COMBINE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_WAIT));
-
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_PROPERTIES)));
-
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_METHODS)));
     }
 
 
