@@ -79,8 +79,10 @@ Blockly.JavaScript['sequence_while'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['sequence_destroy'] = function (block) {
-    var code = 'this.destroy();';
+Blockly.JavaScript['sequence_do'] = function (block) {
+    var method = block.getFieldValue('METHOD');
+
+    var code = '%1;'.format(method);
     code += block.lineCode();
     return code;
 };

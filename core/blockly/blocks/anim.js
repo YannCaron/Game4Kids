@@ -2,8 +2,9 @@ Blockly.Blocks['create_sequence'] = {
     init: function () {
         this.appendValueInput("NEXT")
             .setCheck(Blockly.Block.ANIM_TYPE)
-            .appendField("animation of")
+            .appendField("with")
             .appendField(this.fieldActorFactory(), "VAR")
+            .appendField("animate")
         this.appendStatementInput("STMT")
             .setCheck(null);
         this.setInputsInline(false);
@@ -45,7 +46,7 @@ Blockly.Blocks['sequence_statement'] = {
 Blockly.Blocks['sequence_always'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("always");
+            .appendField("forever");
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.ANIM_TYPE);
         this.setColour(Blockly.Msg.ANIM_HUE);
@@ -80,10 +81,17 @@ Blockly.Blocks['sequence_while'] = {
     }
 };
 
-Blockly.Blocks['sequence_destroy'] = {
+Blockly.Blocks['sequence_do'] = {
     init: function () {
+        this.OPTIONS = [
+            ['destroy', 'this.destroy()'],
+            ['pause', 'new Game4kids.TweenLock(game4k, this).start()'],
+            ['resume', 'game4k.resume()'],
+        ]
+
         this.appendDummyInput()
-            .appendField("destroy");
+            .appendField("do")
+            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

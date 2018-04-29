@@ -23,8 +23,8 @@ Blockly.animDynamic.SEQUENCE_WHILE =
     Blockly.dynamic.buildShadowBoolean('VALUE', 'TRUE') +
     '</block>';
 
-Blockly.animDynamic.SEQUENCE_DESTROY =
-    '<block type="sequence_destroy">' +
+Blockly.animDynamic.SEQUENCE_DO =
+    '<block type="sequence_do">' +
     '</block>';
 
 Blockly.animDynamic.CREATE_TWEEN =
@@ -60,7 +60,7 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_LOOP));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_WHILE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_STATEMENT));
-        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_DESTROY));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.SEQUENCE_DO));
 
         // animation
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_ANIMATION)));

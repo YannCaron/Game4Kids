@@ -1,3 +1,18 @@
+// Global
+Game4kids.LOCK_NAME = 'lock'
+Game4kids.Game.prototype.currentLocked = null;
+
+Game4kids.Game.prototype.initAnim = function () {
+    this.currentLocked = null;
+}
+
+Game4kids.Game.prototype.resume = function () {
+    if (this.currentLocked) {
+        this.currentLocked.childCompleted(Game4kids.LOCK_NAME);
+        this.currentLocked = null;
+    }
+}
+
 // Tween
 // Tween.constructor
 Game4kids.Tween = function (target, game, manager, parent = null) {
@@ -48,6 +63,28 @@ Game4kids.Tween.prototype.animate = function (time) {
 // Tween.events
 Game4kids.Tween.prototype.onCompleted = function (callback) {
     this.onComplete.add(callback);
+}
+
+// TweenLock
+// TweenLock.constructor
+Game4kids.TweenLock = function (game, parent = null) {
+    this.game_ = game;
+    this.parent_ = parent;
+
+    if (this.parent_ && this.parent_.register) {
+        this.parent_.register(Game4kids.LOCK_NAME);
+        game.currentLocked = this.parent_;
+    }
+}
+
+// TweenLock.method
+Game4kids.TweenLock.prototype.start = function () {
+}
+
+// TweenLock.events
+Game4kids.TweenLock.prototype.onCompleted = function (callback) {
+    this.callback_ = callback;
+    return this;
 }
 
 // TweenExecutor
