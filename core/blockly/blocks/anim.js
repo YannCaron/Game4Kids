@@ -42,6 +42,57 @@ Blockly.Blocks['sequence_statement'] = {
     }
 };
 
+Blockly.Blocks['sequence_always'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("always");
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.ANIM_TYPE);
+        this.setColour(Blockly.Msg.ANIM_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['sequence_loop'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck("Number")
+            .appendField("loop");
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.ANIM_TYPE);
+        this.setColour(Blockly.Msg.ANIM_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['sequence_while'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck("Boolean")
+            .appendField("while");
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.ANIM_TYPE);
+        this.setColour(Blockly.Msg.ANIM_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['sequence_destroy'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("destroy");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.ANIM_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['create_tween'] = {
     init: function () {
         this.appendValueInput("NEXT1")

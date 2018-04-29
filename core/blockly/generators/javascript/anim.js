@@ -10,7 +10,8 @@ Blockly.JavaScript['create_sequence'] = function (block) {
     Blockly.JavaScript.actorStack.pop();
     Blockly.JavaScript.sequenceStack.pop();
 
-    var code = 'new Game4kids.Sequence(%1, this)\n'.format(varName);
+    var code = 'new Game4kids.Sequence(%1, this)%2'.format(varName, next);
+    code += block.lineCode();
     //code += stmt.split('\n').filter(stmt => stmt.contains('.addFactory')).join('\n');
     code += stmt;
 
@@ -29,12 +30,47 @@ Blockly.JavaScript['sequence_statement'] = function (block) {
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
     Blockly.JavaScript.sequenceStack.pop();
 
-    var code = stmt;
+    var code = '';
 
     if (Arrays.getLast(Blockly.JavaScript.sequenceStack) == Blockly.JavaScript.SEQ) {
-        code = '.addFactory(function () { return new Game4kids.TweenExecutor(function () {\n%1}, this) })\n'.format(code);
+        code = '.addFactory(function () { return new Game4kids.TweenExecutor(function () {'
+        code += block.lineCode();
+        code += 'try {\n'
+        code += stmt
+        code += '} catch (err) { game4k.manageError(err); }\n'
+        code += '}, this) })\n';
+    } else {
+        code = stmt;
     }
 
+    return code;
+};
+
+Blockly.JavaScript['sequence_always'] = function (block) {
+    var code = '.repeat(-1)';
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['sequence_loop'] = function (block) {
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = '.repeat(%1)'.format(value - 1);
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['sequence_while'] = function (block) {
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = '.repeat(function () { return %1; })'.format(value);
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['sequence_destroy'] = function (block) {
+    var code = 'this.destroy();';
+    code += block.lineCode();
     return code;
 };
 
@@ -48,10 +84,12 @@ Blockly.JavaScript['create_tween'] = function (block) {
     code += '.animate(%1)'.format(time);
 
     if (Arrays.getLast(Blockly.JavaScript.sequenceStack) == Blockly.JavaScript.SEQ) {
-        code = '.addFactory(function () { return %1 })\n'.format(code);
+        code = '.addFactory(function () { return %1 })'.format(code);
     } else {
-        code = '%1.start();\n'.format(code);
+        code = '%1.start();'.format(code);
     }
+    
+    code += block.lineCode();
 
     return code;
 };
