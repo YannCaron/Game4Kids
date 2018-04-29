@@ -1,7 +1,7 @@
 // namespace
 Game4kids.React = Game4kids.React || {
 
-    valueOf: function (f) {
+    valueOf: function(f) {
         if (typeof f === 'function') return f();
         else return f;
     },
@@ -65,7 +65,7 @@ Game4kids.React.Signal.prototype.toggle = function () {
 
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
-
+        
         if (value != self.previous) {
             self.previous = value;
             return true;
@@ -75,7 +75,7 @@ Game4kids.React.Signal.prototype.toggle = function () {
 
 }
 
-Game4kids.React.Signal.prototype.every = function (interval) {
+Game4kids.React.Signal.prototype.every = function(interval) {
     var self = this;
 
     return this.filter(function (value) {
@@ -136,7 +136,9 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        arguments[0] = mapper.bind(this)() || false;
+        arguments[0] = value;
+        value = mapper.bind(this)(...arguments) || false;
+        arguments[0] = values;
         signal.emit(...arguments);
     });
 
@@ -144,7 +146,7 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
 }
 
 Game4kids.React.Signal.prototype.toObject = function (object) {
-    return this.map(function () { return object; });
+    return this.map(function() { return object; });
 }
 
 Game4kids.React.Signal.prototype.toTime = function () {
@@ -170,15 +172,12 @@ Game4kids.Game.prototype.updateEvent = function () {
     this.count++;
 
     // loop on signals
-    this.signals.forEach(signal => {
-        arguments[0] = this.count;
-        signal.emit(...arguments);
-    });
+    this.signals.forEach (signal => signal.emit(this.count)); // Important! do not send argument list
 
 }
 
 // method
-Game4kids.Game.prototype.createSignal = function (actor = null) {
+Game4kids.Game.prototype.createSignal = function(actor = null) {
     var signal = new Game4kids.React.Signal(null, actor);
     this.signals.push(signal);
 
@@ -213,7 +212,7 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
     var signals = this.actorSignals.get(actor);
     this.actorSignals.delete(actor);
 
-    signals.forEach(signal => {
+    signals.forEach (signal => {
         this.removeSignal(signal);
     });
 }
