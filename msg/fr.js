@@ -75,7 +75,7 @@ Blockly.Msg.BLOCK_ANGLE = "angle";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
 
 Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "la vélocité depuis l'angle";
-Blockly.Msg.BLOCK_SCALE = "pourcentage d'agrandissement";
+Blockly.Msg.BLOCK_SCALE = "pourcentage d'agrandissement de %1";
 Blockly.Msg.BLOCK_BOUNCE = "pourcentage de rebond";
 Blockly.Msg.BLOCK_FRICTION = "pourcentage de frottement";
 Blockly.Msg.BLOCK_MASS = "pourcentage de poids";

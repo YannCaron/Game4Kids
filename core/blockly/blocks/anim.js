@@ -117,7 +117,8 @@ Blockly.Blocks['tween_to'] = {
             ["x", "x"],
             ["y", "y"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
-            [Blockly.Msg.BLOCK_SCALE, "scale"],
+            [Blockly.Msg.BLOCK_SCALE.format('x'), "scaleX"],
+            [Blockly.Msg.BLOCK_SCALE.format('y'), "scaleY"],
         ];
 
         this.appendValueInput("VALUE")

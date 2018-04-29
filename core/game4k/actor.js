@@ -38,9 +38,19 @@ Game4kids.Actor.prototype.setMass = function (mass) {
     this.body.mass = mass / 100;
 }
 
-Game4kids.Actor.prototype.setScaleTo = function (factor) {
-    this.scale.setTo(factor / 100, factor / 100);
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
+    get: function () { return this.scale.x * 100 },
+    set: function (value) { this.scale.x = value / 100 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'scaleY', {
+    get: function () { return this.scale.y * 100 },
+    set: function (value) { this.scale.y = value / 100 },
+    enumerable: true,
+    configurable: true
+});
 
 Phaser.Sprite.prototype.getAngleWith = function (actor) {
     return this.game.physics.arcade.angleBetween(this, actor).radToDeg();

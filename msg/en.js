@@ -75,7 +75,7 @@ Blockly.Msg.BLOCK_ANGLE = "angle";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
 
 Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "velocity from angle";
-Blockly.Msg.BLOCK_SCALE = "scale in %";
+Blockly.Msg.BLOCK_SCALE = "scale %1 in %";
 Blockly.Msg.BLOCK_BOUNCE = "bounce in %";
 Blockly.Msg.BLOCK_FRICTION = "friction in %";
 Blockly.Msg.BLOCK_MASS = "mass in %";
