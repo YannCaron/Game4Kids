@@ -40,6 +40,11 @@ Blockly.animDynamic.TWEEN_COMBINE =
     '<block type="tween_combine">' +
     '</block>';
 
+Blockly.animDynamic.TWEEN_WAIT =
+    '<block type="tween_wait">' +
+    Blockly.dynamic.buildShadowNumber('TIME', 0.75) +
+    '</block>';
+
 Blockly.animDynamic.animFlyoutCallback = function (workspace) {
 
     var xmlList = [];
@@ -57,6 +62,7 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_TO));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_COMBINE));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_WAIT));
 
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_PROPERTIES)));
 

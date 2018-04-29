@@ -165,3 +165,19 @@ Blockly.Blocks['tween_combine'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['tween_wait'] = {
+    init: function () {
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField("wait")
+        this.appendDummyInput()
+            .appendField("seconds");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};

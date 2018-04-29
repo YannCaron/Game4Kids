@@ -1,3 +1,14 @@
+// global
+Blockly.JavaScript.checkFactory = function (code) {
+    if (Arrays.getLast(Blockly.JavaScript.sequenceStack) == Blockly.JavaScript.SEQ) {
+        return '.addFactory(function () { return %1 })'.format(code);
+    } else {
+        return '%1\n.start();'.format(code);
+    }
+
+}
+
+// blocks
 Blockly.JavaScript['create_sequence'] = function (block) {
 
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
@@ -118,4 +129,15 @@ Blockly.JavaScript['tween_combine'] = function (block) {
     code += next2;
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['tween_wait'] = function (block) {
+    var time = Blockly.JavaScript.valueToCode(block, 'TIME', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = 'game4k.createTween(%1, this)'.format(Arrays.getLast(Blockly.JavaScript.actorStack));
+    code += '.animate(%1)'.format(time);
+    code = Blockly.JavaScript.checkFactory(code);
+    code += block.lineCode();
+
+    return code;
 };
