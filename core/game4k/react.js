@@ -147,16 +147,6 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     return signal;
 }
 
-Game4kids.React.Signal.prototype.mapEvent = function (mapper) {
-    var signal = new Game4kids.React.Signal(this);
-
-    this.subscribe(function (value) {
-        mapper.bind(this)(value, signal);
-    });
-
-    return signal;
-}
-
 Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, group2, toggle) {
     if (this.collisions == undefined) this.collisions = new Map();
 
