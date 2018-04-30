@@ -67,7 +67,7 @@ Game4kids.React.Signal.prototype.toggle = function () {
     // manage here for collision
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
-        
+
         if (value != self.previous) {
             self.previous = value;
             return true;
@@ -152,6 +152,47 @@ Game4kids.React.Signal.prototype.mapEvent = function (mapper) {
 
     this.subscribe(function (value) {
         mapper.bind(this)(value, signal);
+    });
+
+    return signal;
+}
+
+Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, group2, toggle) {
+    if (this.collisions == undefined) this.collisions = new Map();
+
+    var signal = new Game4kids.React.Signal(this);
+
+    var self = this;
+    this.subscribe(function (frame) {
+        Game4kids.current.game.physics.arcade[type](
+            Game4kids.current.groups.get(group1),
+            Game4kids.current.groups.get(group2),
+            function (obj1, obj2) {
+                var id = Math.pairing(obj1.renderOrderID, obj2.renderOrderID);
+
+                var data = self.collisions.get(id);
+                if (!data || frame > data.frame + 1 || !toggle) {
+                    if (group1 != group2) {
+                        signal.emit(true, obj1, obj2);
+                    } else {
+                        signal.emit(true, obj1);
+                        signal.emit(true, obj2);
+                    }
+                }
+                self.collisions.set(id, { frame: frame, obj1: obj1, obj2: obj2 });
+            });
+
+        for (let [key, data] of self.collisions) {
+            if (data.frame != frame) {
+                if (group1 != group2) {
+                    signal.emit(false, data.obj1, data.obj2);
+                } else {
+                    signal.emit(false, data.obj1);
+                    signal.emit(false, data.obj2);
+                }
+                self.collisions.delete(key);
+            }
+        }
     });
 
     return signal;

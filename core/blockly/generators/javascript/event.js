@@ -101,44 +101,14 @@ Blockly.JavaScript['signal_create_collide'] = function (block) {
     var actor2 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    /*
-    var code = '{\n';
-    code += 'let %1;\n'.format(actor1);
-    if (actor2 != actor1) {
-        code += 'let %1;\n'.format(actor2);
-    }
-    code += 'game4k.createSignal()\n';
-    code += '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.' + key + '(\n';
-    code += 'Game4kids.current.groups.get(\'%1\'),'.format(actor1);
-    code += block.lineCode();
-    code += 'Game4kids.current.groups.get(\'%1\'),'.format(actor2);
-    code += block.lineCode();
-    code += 'function (obj1, obj2) { %1 = obj1; %2 = obj2; }'.format(actor1, actor2);
-    code += block.lineCode();
-    code += ');\n';
-    code += '})' + event + '\n';
-    code += '.subscribe (function (value) {';
-    code += block.lineCode();
-    code += stmt;
-    code += '});\n}\n'*/
+    var toggle = event[0] == 1;
+    var value = event[1] == 1;
 
     code = 'game4k.createSignal()\n';
-    code += '.mapEvent(function (args, signal) {'
+    code += '.mapCollisionGroup(\'%1\', \'%2\', \'%3\', %4)'.format(key, actor1, actor2, toggle);
     code += block.lineCode();
-    code += 'game4k.game.physics.arcade.%1('.format(key);
-    code += block.lineCode();
-    code += 'Game4kids.current.groups.get(\'%1\'),'.format(actor1);
-    code += block.lineCode();
-    code += 'Game4kids.current.groups.get(\'%1\'),'.format(actor2);
-    code += block.lineCode();
-    code += 'function (obj1, obj2) {'
-    code += block.lineCode();
-    code += 'signal.emit(...args, obj1, obj2);'
-    code += block.lineCode();
-    code += '});\n';
-    code += '})\n%1\n'.format(event);
-    code += '.subscribe (function (value) {';
+    code += '.whenEquals(%1)\n'.format(value);
+    code += '.subscribe (function (value, %1) {'.format(actor1 == actor2 ? actor1 : actor1 + ', ' + actor2);
     code += block.lineCode();
     code += stmt;
     code += '});\n'

@@ -34,3 +34,8 @@ Number.prototype.radToDeg = function () {
 Number.prototype.degToRad = function () {
     return this / 180 * Math.PI;
 }
+
+// number
+Math.pairing = function (x, y) {
+    return (x ^ 2 + 3 * x + 2 * x * y + y + y ^ 2) / 2;
+}
