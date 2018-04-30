@@ -35,6 +35,9 @@ Blockly.eventDynamic.SIGNAL_KEYBOARD =
 Blockly.eventDynamic.SIGNAL_CREATE_COLLIDE =
     '<block type="signal_create_collide"></block>';
 
+Blockly.eventDynamic.SIGNAL_COLLIDE_BOUNDS =
+    '<block type="signal_collide_bounds"></block>';
+
 Blockly.eventDynamic.SIGNAL_COLLIDE =
     '<block type="signal_collide"></block>';
 
@@ -68,6 +71,7 @@ Blockly.eventDynamic.eventFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_KEYBOARD));
 
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE_BOUNDS));
 
         // static
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_STATIC)));

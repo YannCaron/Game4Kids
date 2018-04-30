@@ -94,6 +94,21 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['signal_collide_bounds'] = function (block) {
+    var event = block.getFieldValue('EVENT');
+
+    var code = '';
+    code += '.map(function () {\n';
+    code += 'return this.getRoot().actor.body.blocked.up'
+    code += ' || this.getRoot().actor.body.blocked.down'
+    code += ' || this.getRoot().actor.body.blocked.left'
+    code += ' || this.getRoot().actor.body.blocked.right;'
+    code += block.lineCode();
+    code += '})%1\n'.format(event);
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['signal_create_collide'] = function (block) {
     var actor1 = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE);
     var key = block.getFieldValue('KEY');

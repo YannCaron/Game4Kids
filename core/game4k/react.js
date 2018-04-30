@@ -62,18 +62,16 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
 }
 
 Game4kids.React.Signal.prototype.toggle = function () {
-    var self = this;
+    this.previous = null;
 
     // manage here for collision
     return this.filter(function (value) {
-        if (typeof self.previous === 'undefined') self.previous = null;
-
-        if (value != self.previous) {
-            self.previous = value;
+        if (value != this.previous) {
+            this.previous = value;
             return true;
         }
         return false;
-    });
+    }.bind(this));
 
 }
 
@@ -87,6 +85,20 @@ Game4kids.React.Signal.prototype.every = function (interval) {
             self.previous = value;
             return true;
         }
+        return false;
+    });
+}
+
+Game4kids.React.Signal.prototype.ignoreFirst = function () {
+    var self = this;
+
+    return this.filter(function (value) {
+        if (typeof self.first === 'undefined') self.first = true;
+
+        if (!self.first) {
+            return true;
+        }
+        self.first = false;
         return false;
     });
 }

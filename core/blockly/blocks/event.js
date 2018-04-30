@@ -5,7 +5,16 @@ Blockly.Blocks.event.COLLIDE_KEYS = function () {
     ];
 }
 
-Blockly.Blocks.event.COLLIDE_EVENTS = function () {
+Blockly.Blocks.event.SWITCH_EVENTS = function () {
+    return [
+        ['press', '.toggle().whenEquals(true)'],
+        ['pressing', '.whenEquals(true)'],
+        ['pressed', '.toggle().whenEquals(false)'],
+        ['not pressing', '.whenEquals(false)']
+    ];
+}
+
+Blockly.Blocks.event.CONTINUOUS_EVENTS = function () {
     return [
         ['enter', '.toggle().whenEquals(true)'],
         ['during', '.whenEquals(true)'],
@@ -126,15 +135,8 @@ Blockly.Blocks['signal_mouse'] = {
             ["right", ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
         ];
 
-        this.EVENTS = [
-            ['press', '.toggle().whenEquals(true)'],
-            ['pressing', '.whenEquals(true)'],
-            ['pressed', '.toggle().whenEquals(false)'],
-            ['not pressing', '.whenEquals(false)']
-        ];
-
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.SWITCH_EVENTS()), "EVENT")
             .appendField("mouse")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
@@ -144,6 +146,26 @@ Blockly.Blocks['signal_mouse'] = {
         this.setHelpUrl("");
     }
 };
+/*
+Blockly.Blocks['signal_mouse_movement'] = {
+    init: function () {
+        this.KEYS = [
+            ["move", ".map(function () { return game4k.game.input.activePointer.leftButton.isDown; })"],
+            ["over", ".map(function () { return game4k.game.input.activePointer.middleButton.isDown; })"],
+            ["drag", ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
+        ];
+
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
+            .appendField("mouse")
+            .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};*/
 
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
@@ -160,15 +182,8 @@ Blockly.Blocks['signal_keyboard'] = {
             this.KEYS.push([chars.charAt(i), '.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.' + chars.charAt(i) + '); })']);
         }
 
-        this.EVENTS = [
-            ['press', '.toggle().whenEquals(true)'],
-            ['pressing', '.whenEquals(true)'],
-            ['pressed', '.toggle().whenEquals(false)'],
-            ['not pressing', '.whenEquals(false)']
-        ];
-
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.SWITCH_EVENTS), "EVENT")
             .appendField("key")
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
@@ -182,7 +197,7 @@ Blockly.Blocks['signal_keyboard'] = {
 Blockly.Blocks['signal_collide'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_EVENTS()), "EVENT")
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField("with")
             .appendField(this.fieldActorFactory(), "ACTOR");
@@ -192,12 +207,18 @@ Blockly.Blocks['signal_collide'] = {
         this.setHelpUrl("");
     },
 
-    getActors: function () {
-        var actors = [];
-        actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR1'), Blockly.Variables.NAME_TYPE));
-        actors.push(Blockly.JavaScript.variableDB_.getName(this.getFieldValue('ACTOR2'), Blockly.Variables.NAME_TYPE));
-        return actors;
-    }
+};
+
+Blockly.Blocks['signal_collide_bounds'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
+            .appendField("collide bounds")
+        this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
+        this.setColour(Blockly.Msg.EVENT_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    },
 
 };
 
