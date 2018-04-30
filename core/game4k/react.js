@@ -68,8 +68,8 @@ Game4kids.React.Signal.prototype.toggle = function () {
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
         
-        if (values != self.previous) {
-            self.previous = values;
+        if (value != self.previous) {
+            self.previous = value;
             return true;
         }
         return false;
