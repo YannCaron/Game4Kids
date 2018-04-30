@@ -1,7 +1,7 @@
 // namespace
 Game4kids.React = Game4kids.React || {
 
-    valueOf: function(f) {
+    valueOf: function (f) {
         if (typeof f === 'function') return f();
         else return f;
     },
@@ -41,7 +41,8 @@ Game4kids.React.Signal.prototype.emit = function (value) {
     this.time = Game4kids.current.game.time.now;
     this.duration = (Game4kids.current.game.time.now - this.now) / 1000
     if (this.callback) {
-        this.callback(value);
+        arguments[0] = value;
+        this.callback(...arguments);
     }
 }
 
@@ -50,8 +51,10 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        if (predicate.call(this, value)) {
-            signal.emit(value);
+        arguments[0] = value;
+        if (predicate.call(this, ...arguments)) {
+            arguments[0] = value;
+            signal.emit(...arguments);
         }
     });
 
@@ -61,9 +64,10 @@ Game4kids.React.Signal.prototype.filter = function (predicate) {
 Game4kids.React.Signal.prototype.toggle = function () {
     var self = this;
 
+    // manage here for collision
     return this.filter(function (value) {
         if (typeof self.previous === 'undefined') self.previous = null;
-        
+
         if (value != self.previous) {
             self.previous = value;
             return true;
@@ -73,7 +77,7 @@ Game4kids.React.Signal.prototype.toggle = function () {
 
 }
 
-Game4kids.React.Signal.prototype.every = function(interval) {
+Game4kids.React.Signal.prototype.every = function (interval) {
     var self = this;
 
     return this.filter(function (value) {
@@ -117,11 +121,13 @@ Game4kids.React.Signal.prototype.combineWith = function (signal2) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(value);
+        arguments[0] = value;
+        signal.emit(...arguments);
     });
 
     signal2.subscribe(function (value) {
-        signal.emit(value);
+        arguments[0] = value;
+        signal.emit(...arguments);
     });
 
     return signal;
@@ -132,14 +138,58 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     var signal = new Game4kids.React.Signal(this);
 
     this.subscribe(function (value) {
-        signal.emit(mapper.bind(this)() || false);
+        arguments[0] = value;
+        value = mapper.bind(this)(...arguments) || false;
+        arguments[0] = value;
+        signal.emit(...arguments);
+    });
+
+    return signal;
+}
+
+Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, group2, toggle) {
+    if (this.collisions == undefined) this.collisions = new Map();
+
+    var signal = new Game4kids.React.Signal(this);
+
+    var self = this;
+    this.subscribe(function (frame) {
+        Game4kids.current.game.physics.arcade[type](
+            Game4kids.current.groups.get(group1),
+            Game4kids.current.groups.get(group2),
+            function (obj1, obj2) {
+                var id = Math.pairing(obj1.renderOrderID, obj2.renderOrderID);
+
+                var data = self.collisions.get(id);
+                if (!data || frame > data.frame + 1 || !toggle) {
+                    if (group1 != group2) {
+                        signal.emit(true, obj1, obj2);
+                    } else {
+                        signal.emit(true, obj1);
+                        signal.emit(true, obj2);
+                    }
+                }
+                self.collisions.set(id, { frame: frame, obj1: obj1, obj2: obj2 });
+            });
+
+        for (let [key, data] of self.collisions) {
+            if (data.frame != frame) {
+                if (group1 != group2) {
+                    signal.emit(false, data.obj1, data.obj2);
+                } else {
+                    signal.emit(false, data.obj1);
+                    signal.emit(false, data.obj2);
+                }
+                self.collisions.delete(key);
+            }
+        }
     });
 
     return signal;
 }
 
 Game4kids.React.Signal.prototype.toObject = function (object) {
-    return this.map(function() { return object; });
+    return this.map(function () { return object; });
 }
 
 Game4kids.React.Signal.prototype.toTime = function () {
@@ -165,12 +215,12 @@ Game4kids.Game.prototype.updateEvent = function () {
     this.count++;
 
     // loop on signals
-    this.signals.forEach (signal => signal.emit(this.count));
+    this.signals.forEach(signal => signal.emit(this.count)); // Important! do not send argument list
 
 }
 
 // method
-Game4kids.Game.prototype.createSignal = function(actor = null) {
+Game4kids.Game.prototype.createSignal = function (actor = null) {
     var signal = new Game4kids.React.Signal(null, actor);
     this.signals.push(signal);
 
@@ -205,7 +255,7 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
     var signals = this.actorSignals.get(actor);
     this.actorSignals.delete(actor);
 
-    signals.forEach (signal => {
+    signals.forEach(signal => {
         this.removeSignal(signal);
     });
 }
@@ -213,30 +263,3 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
 Game4kids.Game.prototype.clearSignals = function () {
     this.signals = [];
 }
-
-/*
-Game4kids.React.Signal.prototype.toEvent = function (object) {
-    var signal = new Game4kids.React.Signal(this);
-    var value = false;
-
-    this.subscribe(function (value) {
-        signal.emit(value);
-    });
-
-    factory(function (value) {
-        value = true;
-    });
-
-    return signal;
-}
-
-Game4kids.Game.prototype.createSignalFromEvent = function (factory) {
-    var signal = new Game4kids.React.Signal();
-
-    factory(function (value) {
-        signal.emit(value);
-    });
-
-    return signal;
-}
-*/
