@@ -34,6 +34,10 @@ Game4kids.Actor.prototype.setMass = function (mass) {
     this.body.mass = mass / 100;
 }
 
+Game4kids.Actor.prototype.setGravity = function (gravity) {
+    this.body.gravity.y = gravity * 100;
+}
+
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
     get: function () { return this.scale.x * 100 },
     set: function (value) { this.scale.x = value / 100 },
