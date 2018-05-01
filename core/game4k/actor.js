@@ -2,6 +2,9 @@
 Game4kids.Actor = function (game, image, x = 0, y = 0) {
     Phaser.Sprite.call(this, game, x, y, image);
     game.add.existing(this);
+
+    this.drag_ = false;
+    this.over_ = false;
 };
 
 Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
@@ -41,6 +44,28 @@ Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleY', {
     get: function () { return this.scale.y * 100 },
     set: function (value) { this.scale.y = value / 100 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'drag', {
+    get: function () {
+        if (!this.inputEnabled) {
+            this.enableInput_();
+        }
+        return this.drag_;
+    },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'over', {
+    get: function () {
+        if (!this.inputEnabled) {
+            this.enableInput_();
+        }
+        return this.over_;
+    },
     enumerable: true,
     configurable: true
 });
@@ -109,4 +134,27 @@ Game4kids.Actor.prototype.jump = function (speed) {
             actor.body.bounce.y = savedBounce;
             this.destroy();
         });
+}
+
+// private
+Game4kids.Actor.prototype.enableInput_ = function () {
+    this.inputEnabled = true;
+
+    // over
+    this.events.onInputOver.add(function () {
+        this.over_ = true;
+    }, this)
+
+    this.events.onInputOut.add(function () {
+        this.over_ = false;
+    }, this)
+
+    // drag
+    this.events.onInputDown.add(function () {
+        this.drag_ = true;
+    }, this)
+
+    this.events.onInputUp.add(function () {
+        this.drag_ = false;
+    }, this)
 }

@@ -70,6 +70,16 @@ Blockly.JavaScript['signal_mouse'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['signal_actor_mouse'] = function (block) {
+    var key = block.getFieldValue('KEY');
+    var event = block.getFieldValue('EVENT');
+
+    var code = key + event;
+    code += block.lineCode();
+
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['signal_keyboard'] = function (block) {
     var key = block.getFieldValue('KEY');
     var event = block.getFieldValue('EVENT');

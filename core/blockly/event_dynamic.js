@@ -26,6 +26,9 @@ Blockly.eventDynamic.SIGNAL_EVERY =
     Blockly.dynamic.buildShadowNumber('VALUE', 0.75) +
     '</block>';
 
+Blockly.eventDynamic.SIGNAL_ACTOR_MOUSE =
+    '<block type="signal_actor_mouse"></block>';
+
 Blockly.eventDynamic.SIGNAL_MOUSE =
     '<block type="signal_mouse"></block>';
 
@@ -68,6 +71,7 @@ Blockly.eventDynamic.eventFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_IF));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_EVERY));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_MOUSE));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_ACTOR_MOUSE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_KEYBOARD));
 
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.eventDynamic.SIGNAL_COLLIDE));

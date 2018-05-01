@@ -9,7 +9,7 @@ Blockly.Blocks.event.SWITCH_EVENTS = function () {
     return [
         ['press', '.toggle().whenEquals(true)'],
         ['pressing', '.whenEquals(true)'],
-        ['pressed', '.toggle().whenEquals(false)'],
+        ['pressed', '.toggle().whenEquals(false).ignoreFirst()'],
         ['not pressing', '.whenEquals(false)']
     ];
 }
@@ -18,7 +18,7 @@ Blockly.Blocks.event.CONTINUOUS_EVENTS = function () {
     return [
         ['enter', '.toggle().whenEquals(true)'],
         ['during', '.whenEquals(true)'],
-        ['exit', '.toggle().whenEquals(false)'],
+        ['exit', '.toggle().whenEquals(false).ignoreFirst()'],
         ['hanging', '.whenEquals(false)']
     ];
 }
@@ -146,13 +146,12 @@ Blockly.Blocks['signal_mouse'] = {
         this.setHelpUrl("");
     }
 };
-/*
-Blockly.Blocks['signal_mouse_movement'] = {
+
+Blockly.Blocks['signal_actor_mouse'] = {
     init: function () {
         this.KEYS = [
-            ["move", ".map(function () { return game4k.game.input.activePointer.leftButton.isDown; })"],
-            ["over", ".map(function () { return game4k.game.input.activePointer.middleButton.isDown; })"],
-            ["drag", ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
+            ["drag", ".map(function () { return this.getRoot().actor.drag; })"],
+            ["over", ".map(function () { return this.getRoot().actor.over; })"],
         ];
 
         this.appendDummyInput()
@@ -165,7 +164,7 @@ Blockly.Blocks['signal_mouse_movement'] = {
         this.setTooltip("");
         this.setHelpUrl("");
     }
-};*/
+};
 
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
