@@ -28,8 +28,12 @@ Blockly.JavaScript.finalize = function(workspace) {
 
 }
 
-Blockly.JavaScript.startScope = function () {
-    Blockly.JavaScript.localVars = new Set();
+Blockly.JavaScript.startScope = function (block = null) {
+    if (block && block.arguments_) {
+        Blockly.JavaScript.localVars = new Set(block.arguments_);
+    } else {
+        Blockly.JavaScript.localVars = new Set();
+    }
 }
 
 Blockly.JavaScript.check = function(varName) {
