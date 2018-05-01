@@ -71,24 +71,24 @@ Blockly.Msg.TEXT = "le text";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
-Blockly.Msg.BLOCK_OPACITY = 'pourcentage d\'opacity'
-Blockly.Msg.BLOCK_VELOCITY = "pourcentage de velocité";
-Blockly.Msg.BLOCK_GRAVITY = "pourcentage de gravité";
+Blockly.Msg.BLOCK_OPACITY = 'opacité en %'
+Blockly.Msg.BLOCK_VELOCITY = "velocité en %";
+Blockly.Msg.BLOCK_GRAVITY = "gravité en %";
 Blockly.Msg.BLOCK_ANGLE = "angle";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
 
 Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "la vélocité depuis l'angle";
-Blockly.Msg.BLOCK_SCALE = "pourcentage d'agrandissement de %1";
-Blockly.Msg.BLOCK_BOUNCE = "pourcentage de rebond";
-Blockly.Msg.BLOCK_FRICTION = "pourcentage de frottement";
-Blockly.Msg.BLOCK_MASS = "pourcentage de poids";
+Blockly.Msg.BLOCK_SCALE = "agrandissement en % de %1";
+Blockly.Msg.BLOCK_BOUNCE = "rebond en %";
+Blockly.Msg.BLOCK_FRICTION = "frottement en %";
+Blockly.Msg.BLOCK_MASS = "poids en %";
 
 Blockly.Msg.BLOCK_COLLIDE_BOUNDE = "entre en collision avec les bords";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobiliser";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "tourner quand entre en collision";
 Blockly.Msg.BLOCK_DESTROY = "détruire";
 
-Blockly.Msg.BLOCK_JUMP = "sauter";
+Blockly.Msg.BLOCK_JUMP = "saut en %";
 Blockly.Msg.BLOCK_DISP_FOREWARD = "déplace vers l'avant";
 Blockly.Msg.BLOCK_DISP_SIDEWAYS = "déplace latéralement";
 

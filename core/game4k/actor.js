@@ -10,6 +10,8 @@ Game4kids.Actor = function (game, image, x = 0, y = 0) {
 Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
 Game4kids.Actor.prototype.constructor = Game4kids.Actor;
 
+Game4kids.Actor.GRAVITY_FACTOR = 25;
+
 // accessor
 Game4kids.Actor.prototype.setBounce = function (bounce) {
     bounce = bounce / 100;
@@ -35,7 +37,7 @@ Game4kids.Actor.prototype.setMass = function (mass) {
 }
 
 Game4kids.Actor.prototype.setGravity = function (gravity) {
-    this.body.gravity.y = gravity * 100;
+    this.body.gravity.y = gravity * Game4kids.Actor.GRAVITY_FACTOR;
 }
 
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
@@ -131,7 +133,7 @@ Game4kids.Actor.prototype.jump = function (speed) {
     var savedBounce = this.body.bounce.y;
 
     this.body.bounce.y = 1;
-    this.body.velocity.y = -speed;
+    this.body.velocity.y = -(this.body.gravity.y * speed / 100);
 
     Game4kids.current.createSignal()
         .subscribe(function (value) {
