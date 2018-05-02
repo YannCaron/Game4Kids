@@ -89,7 +89,7 @@
         return sprite;
     }
 
-    var readContentRect_ = function (game, source) {
+    Phaser.readNinePatchContentRect = function (game, source) {
         var bmp = loadBitmap_(game, source);
 
         // read last lines pixels
@@ -103,7 +103,7 @@
         var w = hSpaces.filter((el, id) => id >= 1 && id <= 2).reduce(add_)
         var h = vSpaces.filter((el, id) => id >= 1 && id <= 2).reduce(add_)
 
-        return { x: x, y: y, width: w, height: h };
+        return { x: x, y: y, width: w, height: h, margin: { top: y, bottom: vSpaces[3], left: x, right: hSpaces[3]} };
     }
 
     // constructor
@@ -111,7 +111,7 @@
         Phaser.Sprite.call(this, game, x, y, createPatch_(game, source, width, height));
         game.add.existing(this);
 
-        this.content = readContentRect_(game, source);
+        this.content = Phaser.readNinePatchContentRect(game, source);
     };
 
     Phaser.NinePatch.prototype = Object.create(Phaser.Sprite.prototype);

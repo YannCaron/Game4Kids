@@ -1,6 +1,7 @@
 // const
 Game4kids.Game.DEFAULT_MAX_ACTOR = 500;
-Game4kids.Game.TEXT_STYLE = { font: "20px Courier New", fill: "#f7f7f7", align: "left" }; // another choice: DejaVu Sans Mono
+Game4kids.Game.TEXT_FONT = "Courier New"; // another choice: DejaVu Sans Mono
+Game4kids.Game.TEXT_STYLE = { font: `20px ${Game4kids.Game.TEXT_FONT}`, fill: "#f7f7f7", align: "left" }; 
 
 // attributes
 Game4kids.Game.prototype.maxActor = null;
