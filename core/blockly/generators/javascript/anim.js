@@ -34,7 +34,7 @@ Blockly.JavaScript['create_sequence'] = function (block) {
 
     return code;
 };
-
+/*
 Blockly.JavaScript['sequence_statement'] = function (block) {
 
     Blockly.JavaScript.sequenceStack.push(Blockly.JavaScript.STMT);
@@ -55,7 +55,7 @@ Blockly.JavaScript['sequence_statement'] = function (block) {
     }
 
     return code;
-};
+};*/
 
 Blockly.JavaScript['sequence_always'] = function (block) {
     var code = '.repeat(-1)';
@@ -107,7 +107,7 @@ Blockly.JavaScript['create_tween'] = function (block) {
 
     return code;
 };
-
+/*
 Blockly.JavaScript['tween_to'] = function (block) {
     var property = block.getFieldValue('PROPERTY');
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
@@ -142,4 +142,4 @@ Blockly.JavaScript['tween_wait'] = function (block) {
     code += block.lineCode();
 
     return code;
-};
+};*/
