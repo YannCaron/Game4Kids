@@ -5,12 +5,10 @@ Blockly.JavaScript.SEQ = 1;
 // attributes
 Blockly.JavaScript.localVars = null;
 Blockly.JavaScript.sequenceStack = null;
-Blockly.JavaScript.actorStack = null;
 
 // methods
 Blockly.JavaScript.initialize = function(workspace){
     Blockly.JavaScript.sequenceStack = [];
-    Blockly.JavaScript.actorStack = [];
 }
 
 Blockly.JavaScript.finalize = function(workspace) {

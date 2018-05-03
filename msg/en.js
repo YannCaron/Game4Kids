@@ -59,6 +59,7 @@ Blockly.Msg.BLOCK_TO = "to";
 Blockly.Msg.BLOCK_IN = "in";
 Blockly.Msg.BLOCK_DO = "do";
 Blockly.Msg.BLOCK_WHEN = "when";
+Blockly.Msg.BLOCK_THEN = "then";
 Blockly.Msg.BLOCK_ONCE = "once";
 Blockly.Msg.BLOCK_MOUSE_IN = "mouse in";
 Blockly.Msg.BLOCK_DEBUG = "debug";
@@ -68,6 +69,8 @@ Blockly.Msg.BLOCK_CLEAR = "clear";
 Blockly.Msg.PRINT = "print";
 Blockly.Msg.AT = "at";
 Blockly.Msg.TEXT = "the text";
+Blockly.Msg.BLOCK_ANIMATE = "animate";
+Blockly.Msg.BLOCK_DURING = "during";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
