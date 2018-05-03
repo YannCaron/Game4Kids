@@ -5,8 +5,8 @@ Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
 Blockly.Block.IMAGE_TYPE = 'Image';
 Blockly.Block.ACTOR_TYPE = 'Actor';
 Blockly.Block.SIGNAL_TYPE = 'Signal';
-Blockly.Block.SEQUENCE_TYPE = 'Sequence';
-Blockly.Block.TWEEN_TYPE = 'Tween';
+Blockly.Block.ANIM_TYPE = 'Anim';
+Blockly.Block.RELATIVE_TYPE = 'Relative';
 
 Blockly.Block.GAME_WIDTH = 1024;
 Blockly.Block.GAME_HEIGHT = 768;
@@ -67,6 +67,30 @@ Blockly.dynamic.buildShadowText = function (name, defaultValue = '') {
         '</shadow>' +
         '</value>';
 };
+
+Blockly.dynamic.connectToShadow = function (block, input, name, field, value) {
+    var shadowBlock = block.workspace.newBlock(name);
+    shadowBlock.setShadow(true);
+
+    shadowBlock.initSvg();
+    shadowBlock.render();
+    if (field != undefined) {
+        shadowBlock.setFieldValue(value, field);
+    }
+
+    block.getInput(input).connection.connect(shadowBlock.outputConnection);
+}
+
+Blockly.dynamic.connectToShadowNumber = function (block, input, value = 0) {
+    var shadowBlock = block.workspace.newBlock('math_number');
+    shadowBlock.setShadow(true);
+
+    shadowBlock.initSvg();
+    shadowBlock.render();
+    shadowBlock.setFieldValue(value, 'NUM');
+
+    block.getInput(input).connection.connect(shadowBlock.outputConnection);
+}
 
 // block
 Blockly.Block.prototype.hasParentOfType = function (type) {

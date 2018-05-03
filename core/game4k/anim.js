@@ -149,8 +149,7 @@ Game4kids.TweenExecutor.prototype.fireCompleted_ = function () {
 
 // Sequence
 // Sequence.constructor
-Game4kids.Sequence = function (target, parent = null) {
-    this.target_ = target;
+Game4kids.Sequence = function (parent = null) {
     this.parent_ = parent;
 
     this.factories_ = new Array();
@@ -197,7 +196,6 @@ Game4kids.Sequence.prototype.onCompleted = function (callback) {
 
 // Sequence.private
 Game4kids.Sequence.prototype.playNext_ = function (index) {
-    if (!this.target_.alive) return;
     if (this.destroy_) return;
 
     if (index == 0 && typeof this.repeat_ === 'function' && !this.repeat_()) { this.fireCompleted_(); return; };
