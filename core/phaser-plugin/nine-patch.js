@@ -123,4 +123,8 @@
         return group.add(new Phaser.NinePatch(this.game, source, width, height, x, y));
     };
 
+    Phaser.GameObjectCreator.prototype.ninePatch = function (x, y, width, height, source, group) {
+        return new Phaser.NinePatch(this.game, source, width, height, x, y);
+    };
+
 })(Phaser)

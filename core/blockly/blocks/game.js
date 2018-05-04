@@ -4,7 +4,7 @@ Blockly.Blocks['create_game'] = {
     this.appendDummyInput()
       .appendField('%1 %2 %3'.format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_GAME, Blockly.Msg.BLOCK_SET))
     this.appendValueInput("IMG")
-      .setCheck(Blockly.Block.IMAGE_TYPE)
+      .setCheck([Blockly.Block.IMAGE_TYPE, "Colour"])
     this.appendValueInput("W")
       .setCheck("Number")
       .appendField(Blockly.Msg.BLOCK_W_TO);
