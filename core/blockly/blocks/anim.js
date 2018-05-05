@@ -99,6 +99,22 @@ Blockly.Blocks['create_sequence'] = {
         Blockly.Extensions.apply('create_sequence_mutator', this, true);
     },
 };
+/*
+// TODO
+new Blockly.MutatorBuilder('create_sequence_sequence')
+    .addMixin('create_sequence_then',
+        (block, i) => {
+            block.appendDummyInput('THEN' + i)
+                .appendField('then animate')
+            block.appendStatementInput('STMT' + i)
+                .appendField(Blockly.Msg.BLOCK_DO);
+        },
+        (block, i) => {
+            block.removeInput('THEN' + i);
+            block.removeInput('STMT' + i);
+        })
+    .register('create_sequence_mutator');
+*/
 
 // Sequence.mixin
 Blockly.Blocks['create_sequence_sequence'] = {
@@ -246,11 +262,6 @@ Blockly.Constants.Anim.CONTROLS_SEQUENCE_MUTATOR_MIXIN = {
         }
         return containerBlock;
     },
-    /**
-     * Reconfigure this block based on the mutator dialog's components.
-     * @param {!Blockly.Block} containerBlock Root block in mutator.
-     * @this Blockly.Block
-     */
     compose: function (containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         // Count number of inputs.
@@ -277,11 +288,6 @@ Blockly.Constants.Anim.CONTROLS_SEQUENCE_MUTATOR_MIXIN = {
             Blockly.Mutator.reconnect(statementConnections[i], this, 'STMT' + i);
         }
     },
-    /**
-     * Store pointers to any connected child blocks.
-     * @param {!Blockly.Block} containerBlock Root block in mutator.
-     * @this Blockly.Block
-     */
     saveConnections: function (containerBlock) {
         var clauseBlock = containerBlock.nextConnection.targetBlock();
         var i = 1;
@@ -300,11 +306,6 @@ Blockly.Constants.Anim.CONTROLS_SEQUENCE_MUTATOR_MIXIN = {
                 clauseBlock.nextConnection.targetBlock();
         }
     },
-    /**
-     * Modify this block to have the correct number of inputs.
-     * @this Blockly.Block
-     * @private
-     */
     updateShape_: function () {
         // Delete everything.
         var i = 1;
