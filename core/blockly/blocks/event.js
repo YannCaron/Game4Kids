@@ -73,7 +73,7 @@ Blockly.Blocks['signal_combine'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_COMBINE);
         this.setHelpUrl("");
     }
 };
@@ -91,7 +91,7 @@ Blockly.Blocks['signal_property'] = {
             .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
         this.setOutput(true, 'Number');
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_PROPERTY.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
     }
 };
@@ -105,7 +105,7 @@ Blockly.Blocks['signal_if'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_IF);
         this.setHelpUrl("");
     }
 };
@@ -120,7 +120,7 @@ Blockly.Blocks['signal_every'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_EVERY);
         this.setHelpUrl("");
     }
 };
@@ -140,7 +140,7 @@ Blockly.Blocks['signal_mouse'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_MOUSE);
         this.setHelpUrl("");
     }
 };
@@ -159,7 +159,7 @@ Blockly.Blocks['signal_actor_mouse'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_ACTOR_MOUSE);
         this.setHelpUrl("");
     }
 };
@@ -186,7 +186,7 @@ Blockly.Blocks['signal_keyboard'] = {
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_KEYBOARD);
         this.setHelpUrl("");
     }
 };
@@ -200,7 +200,7 @@ Blockly.Blocks['signal_collide'] = {
             .appendField(this.fieldActorFactory(), "ACTOR");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE);
         this.setHelpUrl("");
     },
 
@@ -213,7 +213,7 @@ Blockly.Blocks['signal_collide_bounds'] = {
             .appendField(Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT)
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE_BOUNDS);
         this.setHelpUrl("");
     },
 
@@ -239,7 +239,7 @@ Blockly.Blocks['signal_create_collide'] = {
             .setCheck(null)
             .appendField(Blockly.Msg.BLOCK_DO);
         this.setColour(Blockly.Msg.EVENT_HUE);
-        this.setTooltip("");
+        this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE);
         this.setHelpUrl("");
     },
 

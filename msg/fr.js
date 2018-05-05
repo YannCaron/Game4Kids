@@ -154,9 +154,20 @@ Blockly.Msg.TOOLTIP_GAME_DEBUG = "affiche les indications de déboguage du jeu."
 Blockly.Msg.TOOLTIP_GAME_DEBUG_VAR = "affiche les indications de déboguage d'une variable en particulier.";
 Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "affiche un message dans le journal.";
 
-Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "crée un nouvel énénement qui sera appeller tout le temps.";
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "crée un nouvel événement qui sera appeller tout le temps.";
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH = "crée un nouvel événement pour un acteur.\ncet événement sera appelé tout le temps.";
 Blockly.Msg.TOOLTIP_SIGNAL_DESTROY = "détruit l'événement courent.\npeut-être uniquement placé dans un bloque événement";
+Blockly.Msg.TOOLTIP_SIGNAL_COMBINE = "combine two event together.\n";
+
+Blockly.Msg.TOOLTIP_SIGNAL_PROPERTY = "obtient la valeur de l'événement.\nles valeurs sont:\n%1";
+Blockly.Msg.TOOLTIP_SIGNAL_IF = "l'événement sera appelé quand la condition est remplie."
+Blockly.Msg.TOOLTIP_SIGNAL_EVERY = "l'événement sera appelé periodiquement après un lapse de temps."
+Blockly.Msg.TOOLTIP_SIGNAL_MOUSE = "événement de click de la sourie."
+Blockly.Msg.TOOLTIP_SIGNAL_ACTOR_MOUSE = "événement de glissé déposé."
+Blockly.Msg.TOOLTIP_SIGNAL_KEYBOARD = "événement clavier."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE = "événement de collision."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE_BOUNDS = "événement de collision avec la bordure du jeu."
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE = "événement de collision entre deux acteurs."
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "la caméra suit l'acteur.";
 Blockly.Msg.TOOLTIP_PRINT = "écrit un texte à l'écran.";

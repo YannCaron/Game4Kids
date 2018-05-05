@@ -157,6 +157,17 @@ Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "show a message in logger.";
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "create a new event called every time.";
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH = "create a new event on an actor.\nthe event is called every time.";
 Blockly.Msg.TOOLTIP_SIGNAL_DESTROY = "destroy the current event.\ncan only be placed on an event block.";
+Blockly.Msg.TOOLTIP_SIGNAL_COMBINE = "combine two event together.\n";
+Blockly.Msg.TOOLTIP_SIGNAL_PROPERTY = "get the event property.\nproperties are:\n%1";
+Blockly.Msg.TOOLTIP_SIGNAL_IF = "event will be called only if the condition is fulfilled."
+Blockly.Msg.TOOLTIP_SIGNAL_EVERY = "event will be called according the time lapse."
+Blockly.Msg.TOOLTIP_SIGNAL_MOUSE = "mouse click event."
+Blockly.Msg.TOOLTIP_SIGNAL_ACTOR_MOUSE = "mouse drag/over event."
+Blockly.Msg.TOOLTIP_SIGNAL_KEYBOARD = "keyboard event."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE = "actor collision event."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE_BOUNDS = "actor collision with game bounds event."
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE = "two actors collision event."
+
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "camera follow the actor.";
 Blockly.Msg.TOOLTIP_PRINT = "print a text on the screen.";
