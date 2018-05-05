@@ -99,19 +99,16 @@ Blockly.Blocks['create_sequence'] = {
         Blockly.Extensions.apply('create_sequence_mutator', this, true);
     },
 };
-/*
+
 // TODO
+/*
 new Blockly.MutatorBuilder('create_sequence_sequence')
-    .addMixin('create_sequence_then',
+    .addMixin('create_sequence_then', ['THEN', 'STMT'],
         (block, i) => {
             block.appendDummyInput('THEN' + i)
                 .appendField('then animate')
             block.appendStatementInput('STMT' + i)
                 .appendField(Blockly.Msg.BLOCK_DO);
-        },
-        (block, i) => {
-            block.removeInput('THEN' + i);
-            block.removeInput('STMT' + i);
         })
     .register('create_sequence_mutator');
 */

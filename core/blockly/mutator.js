@@ -6,8 +6,8 @@ Blockly.MutatorBuilder = function (name) {
 
 Blockly.MutatorBuilder.SEPARATOR = ';';
 
-Blockly.MutatorBuilder.prototype.addMixin = function (name, builder, clearer) {
-    this.mixins_.set(name, {builder : builder, clearer : clearer});
+Blockly.MutatorBuilder.prototype.addMixin = function (name, inputs, builder) {
+    this.mixins_.set(name, {inputs: inputs, builder : builder});
     return this;
 }
 
@@ -26,16 +26,23 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
         },
         updateShape_: function () {
             // Delete everything.
-            var counts = this.initMap_(0)
-            for (var key of this.structure_) {
-                counts[key] += 1;
-                self.mixins_.get(key).clearer(this, counts[key]);
+            var keys = new Set(Array.from(self.mixins_.keys()));
+            for (var key of keys) {
+                for (var input of self.mixins_.get(key).inputs) {
+                    var i = 1;
+                    while (this.getInput(input + i)) {
+                        console.log('remove ' + input + i);
+                        this.removeInput(input + i);
+                        i++;
+                    }
+                }
             }
 
             // Rebuild block.
-            counts = this.initMap_(0)
+            var counts = this.initMap_(0)
             for (var key of this.structure_) {
                 counts[key] += 1;
+                console.log(counts[key]);
                 self.mixins_.get(key).builder(this, counts[key]);
             }
         },
