@@ -1,25 +1,25 @@
 Blockly.Blocks.event.COLLIDE_KEYS = function () {
     return [
-        ["collide", "collide"],
-        ["overlap", "overlap"],
+        [Blockly.Msg.BLOCK_COLLIDE, "collide"],
+        [Blockly.Msg.BLOCK_OVERLAP, "overlap"],
     ];
 }
 
 Blockly.Blocks.event.SWITCH_EVENTS = function () {
     return [
-        ['press', '.toggle().whenEquals(true)'],
-        ['pressing', '.whenEquals(true)'],
-        ['pressed', '.toggle().whenEquals(false).ignoreFirst()'],
-        ['not pressing', '.whenEquals(false)']
+        [Blockly.Msg.BLOCK_PRESS, '.toggle().whenEquals(true)'],
+        [Blockly.Msg.BLOCK_PRESSING, '.whenEquals(true)'],
+        [Blockly.Msg.BLOCK_PRESSED, '.toggle().whenEquals(false).ignoreFirst()'],
+        [Blockly.Msg.BLOCK_PRESSING, '.whenEquals(false)']
     ];
 }
 
 Blockly.Blocks.event.CONTINUOUS_EVENTS = function () {
     return [
-        ['enter', '.toggle().whenEquals(true)'],
-        ['during', '.whenEquals(true)'],
-        ['exit', '.toggle().whenEquals(false).ignoreFirst()'],
-        ['hanging', '.whenEquals(false)']
+        [Blockly.Msg.BLOCK_ENTER, '.toggle().whenEquals(true)'],
+        [Blockly.Msg.BLOCK_DURING, '.whenEquals(true)'],
+        [Blockly.Msg.BLOCK_EXIT, '.toggle().whenEquals(false).ignoreFirst()'],
+        [Blockly.Msg.BLOCK_HANGING, '.whenEquals(false)']
     ];
 }
 
@@ -55,14 +55,12 @@ Blockly.Blocks['signal_destroy'] = {
     }
 };
 
-// TODO : translate from here
-
 // operators
 Blockly.Blocks['signal_combine'] = {
     init: function () {
         this.OPTIONS = [
-            ['and', '%1%2'],
-            ['or', '%1.combineWith(\ngame4k.createSignal()%2)'],
+            [Blockly.Msg.BLOCK_AND, '%1%2'],
+            [Blockly.Msg.BLOCK_OR, '%1.combineWith(\ngame4k.createSignal()%2)'],
         ];
 
         this.appendValueInput("NEXT1")
@@ -84,9 +82,9 @@ Blockly.Blocks['signal_combine'] = {
 Blockly.Blocks['signal_property'] = {
     init: function () {
         this.OPTIONS = [
-            ['count', 'count'],
-            ['duration', 'duration'],
-            ['time', 'time']
+            [Blockly.Msg.BLOCK_COUNT, 'count'],
+            [Blockly.Msg.BLOCK_TIME, 'lapse'],
+            [Blockly.Msg.BLOCK_DURATION, 'duration'],
         ];
 
         this.appendDummyInput()
@@ -103,7 +101,7 @@ Blockly.Blocks['signal_if'] = {
     init: function () {
         this.appendValueInput("VALUE")
             .setCheck("Boolean")
-            .appendField("if");
+            .appendField(Blockly.Msg.BLOCK_IF);
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
@@ -116,9 +114,9 @@ Blockly.Blocks['signal_every'] = {
     init: function () {
         this.appendValueInput("VALUE")
             .setCheck("Number")
-            .appendField("every");
+            .appendField(Blockly.Msg.BLOCK_EVERY);
         this.appendDummyInput()
-            .appendField("seconds");
+            .appendField(Blockly.Msg.BLOCK_SECONDS);
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
@@ -130,14 +128,14 @@ Blockly.Blocks['signal_every'] = {
 Blockly.Blocks['signal_mouse'] = {
     init: function () {
         this.KEYS = [
-            ["left", ".map(function () { return game4k.game.input.activePointer.leftButton.isDown; })"],
-            ["middle", ".map(function () { return game4k.game.input.activePointer.middleButton.isDown; })"],
-            ["right", ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
+            [Blockly.Msg.BLOCK_LEFT, ".map(function () { return game4k.game.input.activePointer.leftButton.isDown; })"],
+            [Blockly.Msg.BLOCK_MIDDLE, ".map(function () { return game4k.game.input.activePointer.middleButton.isDown; })"],
+            [Blockly.Msg.BLOCK_RIGHT, ".map(function () { return game4k.game.input.activePointer.rightButton.isDown; })"],
         ];
 
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.SWITCH_EVENTS()), "EVENT")
-            .appendField("mouse")
+            .appendField(Blockly.Msg.BLOCK_MOUSE_BUTTON)
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
@@ -150,13 +148,13 @@ Blockly.Blocks['signal_mouse'] = {
 Blockly.Blocks['signal_actor_mouse'] = {
     init: function () {
         this.KEYS = [
-            ["drag", ".map(function () { return this.getRoot().actor.drag; })"],
-            ["over", ".map(function () { return this.getRoot().actor.over; })"],
+            [Blockly.Msg.BLOCK_DRAG, ".map(function () { return this.getRoot().actor.drag; })"],
+            [Blockly.Msg.BLOCK_OVER, ".map(function () { return this.getRoot().actor.over; })"],
         ];
 
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
-            .appendField("mouse")
+            .appendField(Blockly.Msg.BLOCK_MOUSE)
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
@@ -169,12 +167,12 @@ Blockly.Blocks['signal_actor_mouse'] = {
 Blockly.Blocks['signal_keyboard'] = {
     init: function () {
         this.KEYS = [
-            ["← left", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
-            ["→ right", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
-            ["↑ up", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
-            ["↓ down", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
-            ["↲ enter", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
-            ["  space", ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
+            ["← %1".format(Blockly.Msg.BLOCK_LEFT), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })"],
+            ["→ %1".format(Blockly.Msg.BLOCK_RIGHT), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })"],
+            ["↑ %1".format(Blockly.Msg.BLOCK_UP), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP); })"],
+            ["↓ %1".format(Blockly.Msg.BLOCK_DOWN), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })"],
+            ["↲ %1".format(Blockly.Msg.BLOCK_RETURN), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.ENTER); })"],
+            ["  %1".format(Blockly.Msg.BLOCK_SPACE), ".map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR); })"],
         ];
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         for (var i = 0; i < chars.length; i++) {
@@ -183,7 +181,7 @@ Blockly.Blocks['signal_keyboard'] = {
 
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.SWITCH_EVENTS), "EVENT")
-            .appendField("key")
+            .appendField(Blockly.Msg.BLOCK_KEY)
             .appendField(new Blockly.FieldDropdown(this.KEYS), "KEY")
         this.setInputsInline(true);
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
@@ -198,7 +196,7 @@ Blockly.Blocks['signal_collide'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
-            .appendField("with")
+            .appendField(Blockly.Msg.BLOCK_WITH)
             .appendField(this.fieldActorFactory(), "ACTOR");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
@@ -212,7 +210,7 @@ Blockly.Blocks['signal_collide_bounds'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
-            .appendField("collide bounds")
+            .appendField(Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT)
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip("");
@@ -224,18 +222,18 @@ Blockly.Blocks['signal_collide_bounds'] = {
 Blockly.Blocks['signal_create_collide'] = {
     init: function () {
         this.EVENTS = [
-            ['enter', '11'],
-            ['during', '01'],
-            ['exit', '10'],
+            [Blockly.Msg.BLOCK_ENTER, '11'],
+            [Blockly.Msg.BLOCK_DURING, '01'],
+            [Blockly.Msg.BLOCK_EXIT, '10'],
         ];
 
         this.appendDummyInput()
-            .appendField("when any")
+            .appendField("%1 %2".format(Blockly.Msg.BLOCK_WHEN, Blockly.Msg.BLOCK_ANY))
             .appendField(this.fieldActorFactory(), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
         this.appendDummyInput()
-            .appendField("with any")
+            .appendField("%1 %2".format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_ANY))
             .appendField(this.fieldActorFactory(), "ACTOR2");
         this.appendStatementInput("STMT")
             .setCheck(null)

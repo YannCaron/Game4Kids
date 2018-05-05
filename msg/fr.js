@@ -60,6 +60,7 @@ Blockly.Msg.BLOCK_IN = "en";
 Blockly.Msg.BLOCK_DO = "faire";
 Blockly.Msg.BLOCK_WHEN = "quand";
 Blockly.Msg.BLOCK_THEN = "puis";
+Blockly.Msg.BLOCK_ANY = "un";
 Blockly.Msg.BLOCK_ONCE = "une fois seulement";
 Blockly.Msg.BLOCK_MOUSE_IN = "la sourie en";
 Blockly.Msg.BLOCK_DEBUG = "débogue";
@@ -70,7 +71,12 @@ Blockly.Msg.PRINT = "écrit";
 Blockly.Msg.AT = "à";
 Blockly.Msg.TEXT = "le text";
 Blockly.Msg.BLOCK_ANIMATE = "anime";
-Blockly.Msg.BLOCK_DURING = "pendant";
+Blockly.Msg.BLOCK_AND = "et";
+Blockly.Msg.BLOCK_OR = "ou";
+Blockly.Msg.BLOCK_IF = "si";
+Blockly.Msg.BLOCK_MOUSE = "que la souris";
+Blockly.Msg.BLOCK_MOUSE_BUTTON = "le bouton de la souris à";
+Blockly.Msg.BLOCK_KEY = "la touche clavier";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -86,7 +92,7 @@ Blockly.Msg.BLOCK_BOUNCE = "rebond en %";
 Blockly.Msg.BLOCK_FRICTION = "frottement en %";
 Blockly.Msg.BLOCK_MASS = "poids en %";
 
-Blockly.Msg.BLOCK_COLLIDE_BOUNDE = "entre en collision avec les bords";
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS = "entre en collision avec les bords";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobiliser";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "tourner quand entre en collision";
 Blockly.Msg.BLOCK_DESTROY = "détruire";
@@ -100,6 +106,35 @@ Blockly.Msg.BLOCK_FROM = "à partir de";
 Blockly.Msg.BLOCK_EVERY = "toutes les";
 
 Blockly.Msg.CAMERA_FOLLOW = "la caméra suit";
+
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT = "la collision avec les bords";
+Blockly.Msg.BLOCK_COLLIDE = "la collision";
+Blockly.Msg.BLOCK_OVERLAP = "le contact";
+
+Blockly.Msg.BLOCK_PRESS = "on a juste appuyé sur";
+Blockly.Msg.BLOCK_PRESSING = "on appui sur";
+Blockly.Msg.BLOCK_PRESSED = "on a appuyé sur";
+Blockly.Msg.BLOCK_NOT_PRESSING = "on relache";
+
+Blockly.Msg.BLOCK_ENTER = "juste avant";
+Blockly.Msg.BLOCK_DURING = "pendant";
+Blockly.Msg.BLOCK_EXIT = "juste après";
+Blockly.Msg.BLOCK_HANGING = "après";
+
+Blockly.Msg.BLOCK_COUNT = "compte";
+Blockly.Msg.BLOCK_TIME = "interval de temps";
+Blockly.Msg.BLOCK_DURATION = "temps écoulé";
+
+Blockly.Msg.BLOCK_LEFT = "gauche";
+Blockly.Msg.BLOCK_MIDDLE = "millieu";
+Blockly.Msg.BLOCK_RIGHT = "droite";
+Blockly.Msg.BLOCK_UP = "haut";
+Blockly.Msg.BLOCK_DOWN = "bas";
+Blockly.Msg.BLOCK_SPACE = "éspace";
+Blockly.Msg.BLOCK_RETURN = "entrer";
+
+Blockly.Msg.BLOCK_DRAG = "glisse";
+Blockly.Msg.BLOCK_OVER = "passe au dessus";
 
 // tool tips
 Blockly.Msg.TOOLTIP_GAME_IMAGE = "selectione une image pour l'acteur dans la catégorie %1.";

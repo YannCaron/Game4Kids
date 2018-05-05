@@ -131,7 +131,7 @@ Blockly.Blocks['actor_get1'] = {
 Blockly.Blocks['actor_method0'] = {
     init: function () {
         this.OPTIONS = [
-            [Blockly.Msg.BLOCK_COLLIDE_BOUNDE, "body.collideWorldBounds = true"],
+            [Blockly.Msg.BLOCK_COLLIDE_BOUNDS, "body.collideWorldBounds = true"],
             [Blockly.Msg.BLOCK_IMMOVABLE, "body.immovable = true"],
             [Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE, "rotateOnCollide()"],
             [Blockly.Msg.BLOCK_DESTROY, "kill()"],

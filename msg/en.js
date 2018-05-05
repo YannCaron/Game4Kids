@@ -60,6 +60,7 @@ Blockly.Msg.BLOCK_IN = "in";
 Blockly.Msg.BLOCK_DO = "do";
 Blockly.Msg.BLOCK_WHEN = "when";
 Blockly.Msg.BLOCK_THEN = "then";
+Blockly.Msg.BLOCK_ANY = "any"
 Blockly.Msg.BLOCK_ONCE = "once";
 Blockly.Msg.BLOCK_MOUSE_IN = "mouse in";
 Blockly.Msg.BLOCK_DEBUG = "debug";
@@ -70,7 +71,12 @@ Blockly.Msg.PRINT = "print";
 Blockly.Msg.AT = "at";
 Blockly.Msg.TEXT = "the text";
 Blockly.Msg.BLOCK_ANIMATE = "animate";
-Blockly.Msg.BLOCK_DURING = "during";
+Blockly.Msg.BLOCK_AND = "and";
+Blockly.Msg.BLOCK_OR = "or";
+Blockly.Msg.BLOCK_IF = "if";
+Blockly.Msg.BLOCK_MOUSE = "mouse";
+Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse";
+Blockly.Msg.BLOCK_KEY = "key";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -86,7 +92,7 @@ Blockly.Msg.BLOCK_BOUNCE = "bounce in %";
 Blockly.Msg.BLOCK_FRICTION = "friction in %";
 Blockly.Msg.BLOCK_MASS = "mass in %";
 
-Blockly.Msg.BLOCK_COLLIDE_BOUNDE = "collide bounds";
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS = "collide bounds";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobilize";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "rotate when collide";
 Blockly.Msg.BLOCK_DESTROY = "destroy";
@@ -101,6 +107,34 @@ Blockly.Msg.BLOCK_EVERY = "every";
 
 Blockly.Msg.CAMERA_FOLLOW = "camera follow";
 
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT = "collide with bounds";
+Blockly.Msg.BLOCK_COLLIDE = "collide";
+Blockly.Msg.BLOCK_OVERLAP = "overlap";
+
+Blockly.Msg.BLOCK_PRESS = "press";
+Blockly.Msg.BLOCK_PRESSING = "pressing";
+Blockly.Msg.BLOCK_PRESSED = "pressed";
+Blockly.Msg.BLOCK_NOT_PRESSING = "releasing";
+
+Blockly.Msg.BLOCK_ENTER = "enter";
+Blockly.Msg.BLOCK_DURING = "during";
+Blockly.Msg.BLOCK_EXIT = "exit";
+Blockly.Msg.BLOCK_HANGING = "hanging";
+
+Blockly.Msg.BLOCK_COUNT = "count"
+Blockly.Msg.BLOCK_TIME = "time lapse"
+Blockly.Msg.BLOCK_DURATION = "duration"
+
+Blockly.Msg.BLOCK_LEFT = "left";
+Blockly.Msg.BLOCK_MIDDLE = "middle";
+Blockly.Msg.BLOCK_RIGHT = "right";
+Blockly.Msg.BLOCK_UP = "up";
+Blockly.Msg.BLOCK_DOWN = "down";
+Blockly.Msg.BLOCK_SPACE = "space";
+Blockly.Msg.BLOCK_RETURN = "enter";
+
+Blockly.Msg.BLOCK_DRAG = "drag";
+Blockly.Msg.BLOCK_OVER = "over";
 
 // tool tips
 Blockly.Msg.TOOLTIP_GAME_IMAGE = "select the actor image in set %1.";
