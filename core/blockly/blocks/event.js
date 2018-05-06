@@ -10,7 +10,7 @@ Blockly.Blocks.event.SWITCH_EVENTS = function () {
         [Blockly.Msg.BLOCK_PRESS, '.toggle().whenEquals(true)'],
         [Blockly.Msg.BLOCK_PRESSING, '.whenEquals(true)'],
         [Blockly.Msg.BLOCK_PRESSED, '.toggle().whenEquals(false).ignoreFirst()'],
-        [Blockly.Msg.BLOCK_PRESSING, '.whenEquals(false)']
+        [Blockly.Msg.BLOCK_NOT_PRESSING, '.whenEquals(false)']
     ];
 }
 

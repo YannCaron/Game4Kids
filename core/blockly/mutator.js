@@ -31,7 +31,6 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
                 for (var input of self.mixins_.get(key).inputs) {
                     var i = 1;
                     while (this.getInput(input + i)) {
-                        console.log('remove ' + input + i);
                         this.removeInput(input + i);
                         i++;
                     }
@@ -42,24 +41,23 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
             var counts = this.initMap_(0)
             for (var key of this.structure_) {
                 counts[key] += 1;
-                console.log(counts[key]);
                 self.mixins_.get(key).builder(this, counts[key]);
             }
         },
+        // save to HTML page
         mutationToDom: function () {
             if (this.structure_.length == 0) {
                 return null;
             }
             var container = document.createElement('mutation');
             container.setAttribute('structure', this.structure_.join(Blockly.MutatorBuilder.SEPARATOR));
-            console.log(this.structure_);
             return container;
         },
         domToMutation: function (xmlElement) {
-            console.log(xmlElement);
             this.structure_ = xmlElement.getAttribute('structure').split(Blockly.MutatorBuilder.SEPARATOR);
             this.updateShape_();
         },
+        // build from dialog
         decompose: function (workspace) {
             var containerBlock = workspace.newBlock(self.name_);
             containerBlock.initSvg();
@@ -72,78 +70,55 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
             }
             return containerBlock;
         },
-        /**
-         * Reconfigure this block based on the mutator dialog's components.
-         * @param {!Blockly.Block} containerBlock Root block in mutator.
-         * @this Blockly.Block
-         */
         compose: function (containerBlock) {
             var clauseBlock = containerBlock.nextConnection.targetBlock();
             this.structure_ = [];
-            var connections = this.initMap_([null]);
+            var connections = {};
 
             while (clauseBlock) {
                 this.structure_.push(clauseBlock.type);
 
-                clauseBlock = clauseBlock.nextConnection &&
-                    clauseBlock.nextConnection.targetBlock();
-            }
-            this.updateShape_();
-            // TODO reconnect
-
-            /*
-            var clauseBlock = containerBlock.nextConnection.targetBlock();
-            // Count number of inputs.
-            this.thenCount_ = 0;
-            var valueConnections = [null];
-            var statementConnections = [null];
-            var elseStatementConnection = null;
-            while (clauseBlock) {
-                switch (clauseBlock.type) {
-                    case 'create_sequence_then':
-                        this.thenCount_++;
-                        valueConnections.push(clauseBlock.valueConnection_);
-                        statementConnections.push(clauseBlock.statementConnection_);
-                        break;
-                    default:
-                        throw 'Unknown block type.';
+                for (var inp of self.mixins_.get(clauseBlock.type).inputs) {
+                    if (clauseBlock.connections_) {
+                        connections[clauseBlock.type] = clauseBlock.connections_;
+                    }
                 }
+
                 clauseBlock = clauseBlock.nextConnection &&
                     clauseBlock.nextConnection.targetBlock();
             }
             this.updateShape_();
-            // Reconnect any child blocks.
-            for (var i = 1; i <= this.thenCount_; i++) {
-                Blockly.Mutator.reconnect(statementConnections[i], this, 'STMT' + i);
-            }*/
+
+            for (var key in connections) {
+                for (var data of connections[key]) {
+                    if (data != null) {
+                        Blockly.Mutator.reconnect(data.connection, this, data.name);
+                    }
+                }
+            }
         },
-        /**
-         * Store pointers to any connected child blocks.
-         * @param {!Blockly.Block} containerBlock Root block in mutator.
-         * @this Blockly.Block
-         */
+        // save state
         saveConnections: function (containerBlock) {
-            /*
             var clauseBlock = containerBlock.nextConnection.targetBlock();
             while (clauseBlock) {
-            }*/
-            // TODO save connections
 
-            var clauseBlock = containerBlock.nextConnection.targetBlock();
-            var i = 1;
-            while (clauseBlock) {
-                switch (clauseBlock.type) {
-                    case 'create_sequence_then':
-                        var inputDo = this.getInput('STMT' + i);
-                        clauseBlock.statementConnection_ =
-                            inputDo && inputDo.connection.targetConnection;
+                clauseBlock.connections_ = [];
+                for (var inp of self.mixins_.get(clauseBlock.type).inputs) {
+                    var i = 1;
+                    while (this.getInput(inp + i)) {
+                        var inputName = inp + i;
+                        var input = this.getInput(inputName);
+
+                        if (input.connection != null) {
+                            clauseBlock.connections_.push({name:inputName , connection: input && input.connection.targetConnection});
+                        }
                         i++;
-                        break;
-                    default:
-                        throw 'Unknown block type.';
+                    }
                 }
+
                 clauseBlock = clauseBlock.nextConnection &&
                     clauseBlock.nextConnection.targetBlock();
+
             }
         }
     }
