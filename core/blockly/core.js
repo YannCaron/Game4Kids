@@ -147,13 +147,15 @@ Blockly.Block.prototype.getLastCreatedActor = function () {
 }
 
 Blockly.Block.prototype.selectNearestActor = function (change) {
-    var variable = this.getField('VAR').getVariable();
-    
-    if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
-        var nearestDeclaredActor = this.findNearestActorDeclaration();
+    if (this.getField('VAR')) {
+        var variable = this.getField('VAR').getVariable();
 
-        if (nearestDeclaredActor != null) {
-            this.getField('VAR').setValue(nearestDeclaredActor.getId());
+        if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
+            var nearestDeclaredActor = this.findNearestActorDeclaration();
+
+            if (nearestDeclaredActor != null) {
+                this.getField('VAR').setValue(nearestDeclaredActor.getId());
+            }
         }
     }
 }

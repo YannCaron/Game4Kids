@@ -111,8 +111,6 @@ Blockly.Blocks['camera_follow'] = {
     this.setColour(Blockly.Msg.GAME_HUE);
     this.setTooltip(Blockly.Msg.TOOLTIP_CAMERA_FOLLOW);
     this.setHelpUrl("");
-
-    this.setOnChange(this.selectNearestActor);
   }
 };
 
