@@ -82,6 +82,8 @@ Blockly.Msg.BLOCK_SECONDS = "seconds";
 
 Blockly.Msg.BLOCK_OPACITY = 'opacité en %'
 Blockly.Msg.BLOCK_VELOCITY = "velocité en %";
+Blockly.Msg.BLOCK_ACCELERATION = "accélération";
+Blockly.Msg.BLOCK_MAX_VELOCITY = "vélocité maximum";
 Blockly.Msg.BLOCK_GRAVITY = "gravité en %";
 Blockly.Msg.BLOCK_ANGLE = "angle";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
