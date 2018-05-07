@@ -68,7 +68,7 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     this.physics.arcade.enable(actor);
 
     // default params
-    actor.setFriction(100);
+    actor.friction = 100;
     actor.body.mass = 1;
 
     // set body size
