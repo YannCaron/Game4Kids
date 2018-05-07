@@ -166,7 +166,7 @@ Game4kids.Actor.prototype.displaceSideways = function (dist) {
 }
 
 Game4kids.Actor.prototype.jump = function (speed) {
-    var actor = this;
+    var self = this;
     var savedBounce = this.body.bounce.y;
 
     this.body.bounce.y = 1;
@@ -174,9 +174,15 @@ Game4kids.Actor.prototype.jump = function (speed) {
 
     Game4kids.current.createSignal()
         .subscribe(function (value) {
-            actor.body.bounce.y = savedBounce;
+            self.body.bounce.y = savedBounce;
             this.destroy();
         });
+}
+
+Game4kids.Actor.prototype.elasticTo = function (target) {
+    var speed = this.getDistanceWith(target) * 5;
+    this.angle = this.getAngleWith(target);
+    this.velocityFromAngle = speed;
 }
 
 Game4kids.Actor.Speech = function (actor, string) {
