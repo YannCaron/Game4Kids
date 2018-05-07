@@ -113,9 +113,13 @@ Blockly.Block.optionList = function (options) {
 
 Blockly.Block.DEFAULT_ACTOR = 'actor';
 
-Blockly.Block.prototype.fieldActorFactory = function () {
+Blockly.Block.prototype.fieldActorFactory = function (selectLast) {
+    var value = selectLast ? this.getLastCreatedActor() : Blockly.Block.DEFAULT_ACTOR;
+
+    this.setOnChange(this.selectNearestActor);
+
     return new Blockly.FieldVariable(
-        Blockly.Block.DEFAULT_ACTOR,
+        value,
         null, [Blockly.Block.ACTOR_TYPE], Blockly.Block.ACTOR_TYPE);
 }
 
@@ -134,14 +138,22 @@ Blockly.Block.prototype.findNearestActorDeclaration = function () {
     return null;
 }
 
+Blockly.Block.prototype.getLastCreatedActor = function () {
+    var variables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
+    if (variables.length <= 0) {
+        return null;
+    }
+    return variables[variables.length - 1].name;
+}
+
 Blockly.Block.prototype.selectNearestActor = function (change) {
-    var variable = this.getInputTargetBlock('VAR').getField('VAR').getVariable();
+    var variable = this.getField('VAR').getVariable();
     
     if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
         var nearestDeclaredActor = this.findNearestActorDeclaration();
 
         if (nearestDeclaredActor != null) {
-            this.getInputTargetBlock('VAR').getField('VAR').setValue(nearestDeclaredActor.getId());
+            this.getField('VAR').setValue(nearestDeclaredActor.getId());
         }
     }
 }

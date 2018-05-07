@@ -3,7 +3,7 @@ Blockly.Blocks['create_actor'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.BLOCK_CREATE)
-            .appendField(this.fieldActorFactory(), "VAR");
+            .appendField(this.fieldActorFactory(true), "VAR");
         this.appendValueInput("IMG")
             .setCheck(Blockly.Block.IMAGE_TYPE)
             .appendField(Blockly.Msg.BLOCK_WITH)
@@ -57,8 +57,6 @@ Blockly.Blocks['actor_get'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
 };
@@ -88,7 +86,7 @@ Blockly.Blocks['actor_set'] = {
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
             [`${Blockly.Msg.BLOCK_ACCELERATION} x`, "body.acceleration.x"],
             [`${Blockly.Msg.BLOCK_ACCELERATION} y`, "body.acceleration.y"],
-            [Blockly.Msg.BLOCK_MAX_VELOCITY, "maxVelocity"],
+            [Blockly.Msg.BLOCK_MAX_VELOCITY, "body.maxVelocity"],
             [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
@@ -115,8 +113,6 @@ Blockly.Blocks['actor_set'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
 };
@@ -160,8 +156,6 @@ Blockly.Blocks['actor_get1'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
 };
@@ -188,8 +182,6 @@ Blockly.Blocks['actor_method0'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 };
 
@@ -213,8 +205,6 @@ Blockly.Blocks['actor_method1'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 };
 /*
@@ -239,8 +229,6 @@ Blockly.Blocks['actor_method2'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
 
     }
 };*/
