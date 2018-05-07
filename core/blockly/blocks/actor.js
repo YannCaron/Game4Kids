@@ -63,6 +63,22 @@ Blockly.Blocks['actor_get'] = {
 
 };
 
+Blockly.Blocks['actor_get_custom'] = {
+    init: function () {
+        this.appendValueInput("VAR")
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+            .appendField(Blockly.Msg.BLOCK_WITH)
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.BLOCK_GET)
+            .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
+        this.setInputsInline(true);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
+        this.setOutput(true, null);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET_CUSTOM);
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['actor_set'] = {
     init: function () {
         this.OPTIONS = [
@@ -100,6 +116,25 @@ Blockly.Blocks['actor_set'] = {
         this.setOnChange(this.selectNearestActor);
     }
 
+};
+
+Blockly.Blocks['actor_set_custom'] = {
+    init: function () {
+        this.appendValueInput("VAR")
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+        this.appendValueInput("ARG1")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.BLOCK_SET)
+            .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
+            .appendField(Blockly.Msg.BLOCK_TO)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET_CUSTOM);
+        this.setHelpUrl("");
+    }
 };
 
 Blockly.Blocks['actor_get1'] = {
