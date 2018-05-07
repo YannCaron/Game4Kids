@@ -93,6 +93,18 @@ Object.defineProperty(Game4kids.Actor.prototype, 'over', {
     enumerable: true,
     configurable: true
 });
+//maxVelocity
+Object.defineProperty(Game4kids.Actor.prototype, 'maxVelocity', {
+    get: function () {
+        return this.body.maxVelocity.x;
+    },
+    set: function (value) {
+        this.body.maxVelocity.x = value;
+        this.body.maxVelocity.y = value;
+    },
+    enumerable: true,
+    configurable: true
+});
 
 Object.defineProperty(Game4kids.Actor.prototype, 'velocityFromAngle', {
     get: function () {

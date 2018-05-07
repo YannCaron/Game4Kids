@@ -88,7 +88,7 @@ Blockly.Blocks['actor_set'] = {
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
             [`${Blockly.Msg.BLOCK_ACCELERATION} x`, "body.acceleration.x"],
             [`${Blockly.Msg.BLOCK_ACCELERATION} y`, "body.acceleration.y"],
-            [Blockly.Msg.BLOCK_MAX_VELOCITY, "body.maxVelocity"],
+            [Blockly.Msg.BLOCK_MAX_VELOCITY, "maxVelocity"],
             [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
