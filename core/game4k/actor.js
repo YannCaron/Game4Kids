@@ -179,12 +179,6 @@ Game4kids.Actor.prototype.jump = function (speed) {
         });
 }
 
-Game4kids.Actor.prototype.elasticTo = function (target) {
-    var speed = this.getDistanceWith(target) * 5;
-    this.angle = this.getAngleWith(target);
-    this.velocityFromAngle = speed;
-}
-
 Game4kids.Actor.Speech = function (actor, string) {
     this.actor_ = actor;
     this.text_ = null;

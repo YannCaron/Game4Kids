@@ -208,27 +208,6 @@ Blockly.Blocks['actor_method1'] = {
     }
 };
 
-Blockly.Blocks['actor_method_with'] = {
-    init: function () {
-        this.OPTIONS = [
-            ["elastic", "elasticTo"],
-        ];
-        this.appendValueInput("VAR")
-            .appendField(Blockly.Msg.BLOCK_WITH)
-            .setCheck(Blockly.Block.ACTOR_TYPE)
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown(this.OPTIONS), "METHOD")
-        this.appendValueInput("ARG1")
-            .setCheck(Blockly.Block.ACTOR_TYPE)
-            .appendField(Blockly.Msg.BLOCK_WITH)
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Msg.ACTOR_HUE);
-        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
-        this.setHelpUrl("");
-    }
-};
 /*
 Blockly.Blocks['actor_method2'] = {
     init: function () {

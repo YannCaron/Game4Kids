@@ -53,12 +53,6 @@ Blockly.actorDynamic.ACTOR_METHOD1 =
 	Blockly.dynamic.buildShadowNumber('ARG1', 100) +
 	'</block>';
 
-Blockly.actorDynamic.ACTOR_METHOD_WITH =
-	'<block type="actor_method_with">' +
-	Blockly.dynamic.buildShadowObject('VAR') +
-	Blockly.dynamic.buildShadowObject('ARG1') +
-	'</block>';
-
 	/*
 Blockly.actorDynamic.ACTOR_METHOD2 =
 	'<block type="actor_method1">' +

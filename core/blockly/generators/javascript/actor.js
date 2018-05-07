@@ -87,16 +87,6 @@ Blockly.JavaScript['actor_method1'] = function (block) {
     return code;
 };
 
-Blockly.JavaScript['actor_method_with'] = function (block) {
-    var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
-    var method = block.getFieldValue('METHOD');
-    var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
-
-    var code = varName + '.' + method + '(' + arg1 + ');';
-    code += block.lineCode();
-    return code;
-};
-
 /*
 Blockly.JavaScript['actor_method2'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
