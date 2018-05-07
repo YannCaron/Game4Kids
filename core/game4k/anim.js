@@ -1,6 +1,7 @@
 // Global
 Game4kids.LOCK_NAME = 'lock'
 Game4kids.Game.prototype.currentLocked = null;
+Game4kids.Game.prototype.anims = null;
 
 Game4kids.Game.prototype.initAnim = function () {
     this.currentLocked = null;
@@ -18,6 +19,7 @@ Game4kids.Game.prototype.resume = function () {
 Game4kids.Tween = function (target, game, manager, parent = null) {
     Phaser.Tween.call(this, target, game, manager);
     this.parent_ = parent;
+    this.target_ = target;
     this.provider_ = {};
 
     if (this.parent_ && this.parent_.register) {
@@ -55,8 +57,19 @@ Game4kids.Tween.prototype.doTarget = function (property, getter) {
 }
 
 Game4kids.Tween.prototype.animate = function (time) {
-    this.to(this.provider_, time * 1000);
-    this.provider_ = {};
+    if (this.target_.alive) {
+        this.to(this.provider_, time * 1000);
+        this.provider_ = {};
+    } else {
+        this.destroy();
+    }
+    return this;
+}
+
+Game4kids.Tween.prototype.destroy = function () {
+    if (this.parent_ != null && this.parent_.destroy) {
+        this.parent_.destroy();
+    }
     return this;
 }
 
@@ -147,6 +160,15 @@ Game4kids.TweenExecutor.prototype.fireCompleted_ = function () {
     }
 }
 
+Game4kids.TweenExecutor.prototype.destroy = function () {
+    if (this.parent_ != null && this.parent_.destroy) {
+        this.parent_.destroy();
+    } else {
+        this.destroy_ = true;
+    }
+    return this;
+}
+
 // Sequence
 // Sequence.constructor
 Game4kids.Sequence = function (parent = null) {
@@ -179,7 +201,7 @@ Game4kids.Sequence.prototype.repeat = function (repeat) {
     return this;
 }
 
-Game4kids.TweenExecutor.prototype.destroy = function () {
+Game4kids.Sequence.prototype.destroy = function () {
     if (this.parent_ != null && this.parent_.destroy) {
         this.parent_.destroy();
     } else {
