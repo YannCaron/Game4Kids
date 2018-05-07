@@ -103,14 +103,6 @@ Blockly.Block.prototype.containedByParentInput = function (input) {
         && this.getParent().getInput(input).connection.targetConnection.sourceBlock_ == this
 }
 
-Blockly.Block.prototype.getLastCreatedActor = function () {
-    var variables = this.workspace.getVariablesOfType(Blockly.Block.ACTOR_TYPE);
-    if (variables.length <= 0) {
-        return null;
-    }
-    return variables[variables.length - 1].name;
-}
-
 Blockly.Block.optionList = function (options) {
     var result = [];
     for (var i in options) {
@@ -119,9 +111,11 @@ Blockly.Block.optionList = function (options) {
     return result.join('\n');
 }
 
+Blockly.Block.DEFAULT_ACTOR = 'actor';
+
 Blockly.Block.prototype.fieldActorFactory = function () {
     return new Blockly.FieldVariable(
-        this.getLastCreatedActor(),
+        Blockly.Block.DEFAULT_ACTOR,
         null, [Blockly.Block.ACTOR_TYPE], Blockly.Block.ACTOR_TYPE);
 }
 
@@ -142,12 +136,12 @@ Blockly.Block.prototype.findNearestActorDeclaration = function () {
 
 Blockly.Block.prototype.selectNearestActor = function (change) {
     var variable = this.getInputTargetBlock('VAR').getField('VAR').getVariable();
-    if (change.newParentId != undefined && this.hasChanged == undefined) {
+    
+    if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
         var nearestDeclaredActor = this.findNearestActorDeclaration();
 
         if (nearestDeclaredActor != null) {
             this.getInputTargetBlock('VAR').getField('VAR').setValue(nearestDeclaredActor.getId());
-            this.hasChanged = true;
         }
     }
 }
