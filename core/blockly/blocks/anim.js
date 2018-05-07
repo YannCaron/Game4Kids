@@ -100,6 +100,18 @@ Blockly.Blocks['create_sequence'] = {
     },
 };
 
+// mutator
+new Blockly.MutatorBuilder('create_sequence_sequence')
+    .addMixin('create_sequence_then', ['THEN', 'STMT'],
+        (block, i) => {
+            block.appendDummyInput('THEN' + i)
+                .appendField('then animate')
+            block.appendStatementInput('STMT' + i)
+                .appendField(Blockly.Msg.BLOCK_DO);
+        })
+    .register('create_sequence_mutator');
+
+
 // Sequence.mixin
 Blockly.Blocks['create_sequence_sequence'] = {
     init: function () {
@@ -212,118 +224,3 @@ Blockly.Blocks['sequence_do'] = {
         this.setHelpUrl("");
     }
 };
-
-// TODO: Create generic mutator
-Blockly.Constants.Anim = Blockly.Constants.Anim || {
-}
-
-Blockly.Constants.Anim.CONTROLS_SEQUENCE_MUTATOR_MIXIN = {
-    thenCount_: 0,
-
-    mutationToDom: function () {
-        if (!this.thenCount_) {
-            return null;
-        }
-        var container = document.createElement('mutation');
-        if (this.thenCount_) {
-            container.setAttribute('then', this.thenCount_);
-        }
-        return container;
-    },
-    domToMutation: function (xmlElement) {
-        this.thenCount_ = parseInt(xmlElement.getAttribute('then'), 10) || 0;
-        this.updateShape_();
-    },
-    decompose: function (workspace) {
-        var containerBlock = workspace.newBlock('create_sequence_sequence');
-        containerBlock.initSvg();
-        var connection = containerBlock.nextConnection;
-        for (var i = 1; i <= this.thenCount_; i++) {
-            var thenBlock = workspace.newBlock('create_sequence_then');
-            thenBlock.initSvg();
-            connection.connect(thenBlock.previousConnection);
-            connection = thenBlock.nextConnection;
-        }
-        return containerBlock;
-    },
-    /**
-     * Reconfigure this block based on the mutator dialog's components.
-     * @param {!Blockly.Block} containerBlock Root block in mutator.
-     * @this Blockly.Block
-     */
-    compose: function (containerBlock) {
-        var clauseBlock = containerBlock.nextConnection.targetBlock();
-        // Count number of inputs.
-        this.thenCount_ = 0;
-        var valueConnections = [null];
-        var statementConnections = [null];
-        var elseStatementConnection = null;
-        while (clauseBlock) {
-            switch (clauseBlock.type) {
-                case 'create_sequence_then':
-                    this.thenCount_++;
-                    valueConnections.push(clauseBlock.valueConnection_);
-                    statementConnections.push(clauseBlock.statementConnection_);
-                    break;
-                default:
-                    throw 'Unknown block type.';
-            }
-            clauseBlock = clauseBlock.nextConnection &&
-                clauseBlock.nextConnection.targetBlock();
-        }
-        this.updateShape_();
-        // Reconnect any child blocks.
-        for (var i = 1; i <= this.thenCount_; i++) {
-            Blockly.Mutator.reconnect(statementConnections[i], this, 'STMT' + i);
-        }
-    },
-    /**
-     * Store pointers to any connected child blocks.
-     * @param {!Blockly.Block} containerBlock Root block in mutator.
-     * @this Blockly.Block
-     */
-    saveConnections: function (containerBlock) {
-        var clauseBlock = containerBlock.nextConnection.targetBlock();
-        var i = 1;
-        while (clauseBlock) {
-            switch (clauseBlock.type) {
-                case 'create_sequence_then':
-                    var inputDo = this.getInput('STMT' + i);
-                    clauseBlock.statementConnection_ =
-                        inputDo && inputDo.connection.targetConnection;
-                    i++;
-                    break;
-                default:
-                    throw 'Unknown block type.';
-            }
-            clauseBlock = clauseBlock.nextConnection &&
-                clauseBlock.nextConnection.targetBlock();
-        }
-    },
-    /**
-     * Modify this block to have the correct number of inputs.
-     * @this Blockly.Block
-     * @private
-     */
-    updateShape_: function () {
-        // Delete everything.
-        var i = 1;
-        while (this.getInput('STMT' + i)) {
-            this.removeInput('THEN' + i);
-            this.removeInput('STMT' + i);
-            i++;
-        }
-        // Rebuild block.
-        for (var i = 1; i <= this.thenCount_; i++) {
-            this.appendDummyInput('THEN' + i)
-                .appendField('then animate')
-            this.appendStatementInput('STMT' + i)
-                .appendField(Blockly.Msg.BLOCK_DO);
-
-        }
-    }
-};
-
-Blockly.Extensions.registerMutator('create_sequence_mutator',
-    Blockly.Constants.Anim.CONTROLS_SEQUENCE_MUTATOR_MIXIN, null,
-    ['create_sequence_then']);

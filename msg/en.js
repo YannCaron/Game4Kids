@@ -1,5 +1,5 @@
 var MSG = {
-  title: `Code4Kids ${Blockly.Msg.VERSION} - Game rules are yours !`,
+  title: `${Blockly.Msg.NAME} ${Blockly.Msg.VERSION} - Game rules are yours !`,
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",
@@ -60,6 +60,7 @@ Blockly.Msg.BLOCK_IN = "in";
 Blockly.Msg.BLOCK_DO = "do";
 Blockly.Msg.BLOCK_WHEN = "when";
 Blockly.Msg.BLOCK_THEN = "then";
+Blockly.Msg.BLOCK_ANY = "any"
 Blockly.Msg.BLOCK_ONCE = "once";
 Blockly.Msg.BLOCK_MOUSE_IN = "mouse in";
 Blockly.Msg.BLOCK_DEBUG = "debug";
@@ -70,7 +71,12 @@ Blockly.Msg.PRINT = "print";
 Blockly.Msg.AT = "at";
 Blockly.Msg.TEXT = "the text";
 Blockly.Msg.BLOCK_ANIMATE = "animate";
-Blockly.Msg.BLOCK_DURING = "during";
+Blockly.Msg.BLOCK_AND = "and";
+Blockly.Msg.BLOCK_OR = "or";
+Blockly.Msg.BLOCK_IF = "if";
+Blockly.Msg.BLOCK_MOUSE = "mouse";
+Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse button";
+Blockly.Msg.BLOCK_KEY = "keyboard key";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -86,10 +92,12 @@ Blockly.Msg.BLOCK_BOUNCE = "bounce in %";
 Blockly.Msg.BLOCK_FRICTION = "friction in %";
 Blockly.Msg.BLOCK_MASS = "mass in %";
 
-Blockly.Msg.BLOCK_COLLIDE_BOUNDE = "collide bounds";
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS = "collide bounds";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobilize";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "rotate when collide";
 Blockly.Msg.BLOCK_DESTROY = "destroy";
+Blockly.Msg.BLOCK_TOFRONT = "bring to front";
+Blockly.Msg.BLOCK_TOBACK = "send to back";
 
 Blockly.Msg.BLOCK_JUMP = "jump in %";
 Blockly.Msg.BLOCK_DISP_FOREWARD = "displace foreward";
@@ -101,6 +109,34 @@ Blockly.Msg.BLOCK_EVERY = "every";
 
 Blockly.Msg.CAMERA_FOLLOW = "camera follow";
 
+Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT = "collide with bounds";
+Blockly.Msg.BLOCK_COLLIDE = "collide";
+Blockly.Msg.BLOCK_OVERLAP = "overlap";
+
+Blockly.Msg.BLOCK_PRESS = "press";
+Blockly.Msg.BLOCK_PRESSING = "pressing";
+Blockly.Msg.BLOCK_PRESSED = "pressed";
+Blockly.Msg.BLOCK_NOT_PRESSING = "releasing";
+
+Blockly.Msg.BLOCK_ENTER = "enter";
+Blockly.Msg.BLOCK_DURING = "during";
+Blockly.Msg.BLOCK_EXIT = "exit";
+Blockly.Msg.BLOCK_HANGING = "hanging";
+
+Blockly.Msg.BLOCK_COUNT = "count"
+Blockly.Msg.BLOCK_TIME = "time lapse"
+Blockly.Msg.BLOCK_DURATION = "duration"
+
+Blockly.Msg.BLOCK_LEFT = "left";
+Blockly.Msg.BLOCK_MIDDLE = "middle";
+Blockly.Msg.BLOCK_RIGHT = "right";
+Blockly.Msg.BLOCK_UP = "up";
+Blockly.Msg.BLOCK_DOWN = "down";
+Blockly.Msg.BLOCK_SPACE = "space";
+Blockly.Msg.BLOCK_RETURN = "enter";
+
+Blockly.Msg.BLOCK_DRAG = "drag";
+Blockly.Msg.BLOCK_OVER = "over";
 
 // tool tips
 Blockly.Msg.TOOLTIP_GAME_IMAGE = "select the actor image in set %1.";
@@ -123,6 +159,17 @@ Blockly.Msg.TOOLTIP_GAME_DEBUG_LOG = "show a message in logger.";
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE = "create a new event called every time.";
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE_WITH = "create a new event on an actor.\nthe event is called every time.";
 Blockly.Msg.TOOLTIP_SIGNAL_DESTROY = "destroy the current event.\ncan only be placed on an event block.";
+Blockly.Msg.TOOLTIP_SIGNAL_COMBINE = "combine two event together.\n";
+Blockly.Msg.TOOLTIP_SIGNAL_PROPERTY = "get the event property.\nproperties are:\n%1";
+Blockly.Msg.TOOLTIP_SIGNAL_IF = "event will be called only if the condition is fulfilled."
+Blockly.Msg.TOOLTIP_SIGNAL_EVERY = "event will be called periodically according the time lapse."
+Blockly.Msg.TOOLTIP_SIGNAL_MOUSE = "mouse click event."
+Blockly.Msg.TOOLTIP_SIGNAL_ACTOR_MOUSE = "mouse drag/over event."
+Blockly.Msg.TOOLTIP_SIGNAL_KEYBOARD = "keyboard event."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE = "actor collision event."
+Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE_BOUNDS = "actor collision with game bounds event."
+Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE = "two actors collision event."
+
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "camera follow the actor.";
 Blockly.Msg.TOOLTIP_PRINT = "print a text on the screen.";

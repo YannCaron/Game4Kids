@@ -1,0 +1,435 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Game",
+				"Game4kids"
+			],
+			[
+				"init",
+				"initMap_"
+			],
+			[
+				"set",
+				"setComment"
+			],
+			[
+				"Gene",
+				"GenerateEvents"
+			],
+			[
+				"Data",
+				"DataPointUtils"
+			],
+			[
+				"agent",
+				"agentNode"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/cyann/projects/web/Game4Kids/core/game4k/actor.js",
+			"settings":
+			{
+				"buffer_size": 7235,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/cyann/projects/web/Game4Kids/core/blockly/blocks/actor.js",
+			"settings":
+			{
+				"buffer_size": 7740,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/cyann/projects/web/Game4Kids/js/FileSaver.js",
+			"settings":
+			{
+				"buffer_size": 5668,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/cyann/projects/web/Game4Kids/test.html",
+			"settings":
+			{
+				"buffer_size": 1293,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+			],
+			[
+				"",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Execute file",
+					""
+				],
+				[
+					"Execute project",
+					""
+				]
+			],
+			[
+				"Execute file",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 629.0
+	},
+	"console":
+	{
+		"height": 280.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/cyann/projects/web/Game4Kids",
+		"/home/cyann/projects/web/Game4Kids/js",
+		"/home/cyann/projects/web/Game4Kids/js/jszip",
+		"/home/cyann/projects/web/Game4Kids/msg"
+	],
+	"file_history":
+	[
+		"/home/cyann/projects/web/Game4Kids/js/FileSaver.js",
+		"/home/cyann/projects/web/Game4Kids/msg/en.js",
+		"/home/cyann/projects/web/Game4Kids/msg/fr.js",
+		"/home/cyann/projects/web/Game4Kids/js/jszip/FileSaver.js",
+		"/home/cyann/projects/web/Game4Kids/core/game4k/game.js",
+		"/home/cyann/projects/web/Game4Kids/index.js",
+		"/home/cyann/projects/web/Game4Kids/index.html",
+		"/home/cyann/projects/web/Game4Kids/msg/global.js",
+		"/home/cyann/projects/web/Game4Kids/core/blockly/blocks/actor.js",
+		"/home/cyann/projects/web/Game4Kids/core/blockly/generators/javascript/actor.js",
+		"/home/cyann/projects/web/Game4Kids/core/game4k/actor.js",
+		"/home/cyann/projects/web/Game4Kids/core/blockly/blocks/anim.js",
+		"/home/cyann/projects/web/Game4Kids/core/blockly/blocks/event.js",
+		"/home/cyann/projects/web/Game4Kids/core/blockly/mutator.js",
+		"//gesfileclust1/CARONYN$/Desktop/Game4Kids/msg/en.js",
+		"//gesfileclust1/CARONYN$/Desktop/Game4Kids/core/blockly/blocks/event.js",
+		"//gesfileclust1/CARONYN$/Desktop/Game4Kids/msg/fr.js",
+		"//gesfileclust1/CARONYN$/Desktop/Game4Kids/core/blockly/blocks/actor.js",
+		"//gesfileclust1/CARONYN$/Desktop/Game4Kids/test.html",
+		"/C/Users/caronyn/Documents/ISupConfigTools/ISupConverter/outputs/ops/emradio.config.xml"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"BLOCK_DESTROY",
+			"bringToFront",
+			"title",
+			"generated",
+			" = %1",
+			"bounce",
+			"FromAn",
+			"console",
+			"connection",
+			"thenBlock",
+			"valueConnection_",
+			"counts",
+			"createMap_",
+			"createCounts_",
+			"self.structure_",
+			"self.s",
+			"mutation",
+			"createCounts_",
+			"this.structure_",
+			"this",
+			"CONTROLS_SEQUENCE_MUTATOR_MIXIN",
+			"pendan",
+			"mouse",
+			"any",
+			"colli",
+			"\"mouse\"",
+			"time",
+			"if",
+			"and",
+			"Code"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			";",
+			"INT",
+			"BOOL",
+			"INT",
+			"",
+			";"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/cyann/projects/web/Game4Kids/core/game4k/actor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7235,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2700.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/cyann/projects/web/Game4Kids/core/blockly/blocks/actor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5160,
+								5160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1732.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/cyann/projects/web/Game4Kids/js/FileSaver.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								440,
+								440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/cyann/projects/web/Game4Kids/test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								311,
+								311
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 311.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Execute file",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 260.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

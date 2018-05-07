@@ -14,13 +14,17 @@ Game4kids.Actor.TEXT_STYLE = { font: `16px ${Game4kids.Game.TEXT_FONT}`, fill: "
 Game4kids.Actor.GRAVITY_FACTOR = 25;
 Game4kids.Actor.SAY_PLACEMENT_FACTOR = 0.25;
 
-
 // accessor
-Game4kids.Actor.prototype.setBounce = function (bounce) {
-    bounce = bounce / 100;
-    this.body.bounce.x = bounce;
-    this.body.bounce.y = bounce;
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
+    get: function () { return this.body.bounce.x * 100 },
+    set: function (value) { 
+        value = value / 100;
+        this.body.bounce.x = value;
+        this.body.bounce.y = value;
+    },
+    enumerable: true,
+    configurable: true
+});
 
 Object.defineProperty(Game4kids.Actor.prototype, 'opacity', {
     get: function () { return this.alpha * 100 },
@@ -29,19 +33,30 @@ Object.defineProperty(Game4kids.Actor.prototype, 'opacity', {
     configurable: true
 });
 
-Game4kids.Actor.prototype.setFriction = function (friction) {
-    friction = friction / 100;
-    this.body.friction.x = friction;
-    this.body.friction.y = friction;
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'friction', {
+    get: function () { return this.body.friction.x * 100 },
+    set: function (value) { 
+        value = value / 100;
+        this.body.friction.x = value;
+        this.body.friction.y = value;
+    },
+    enumerable: true,
+    configurable: true
+});
 
-Game4kids.Actor.prototype.setMass = function (mass) {
-    this.body.mass = mass / 100;
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'mass', {
+    get: function () { return this.body.mass * 100 },
+    set: function (value) { this.body.mass = value / 100; },
+    enumerable: true,
+    configurable: true
+});
 
-Game4kids.Actor.prototype.setGravity = function (gravity) {
-    this.body.gravity.y = gravity * Game4kids.Actor.GRAVITY_FACTOR;
-}
+Object.defineProperty(Game4kids.Actor.prototype, 'gravity', {
+    get: function () { return this.body.gravity.y / Game4kids.Actor.GRAVITY_FACTOR; },
+    set: function (value) { this.body.gravity.y = value * Game4kids.Actor.GRAVITY_FACTOR;; },
+    enumerable: true,
+    configurable: true
+});
 
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
     get: function () { return this.scale.x * 100 },
@@ -79,16 +94,23 @@ Object.defineProperty(Game4kids.Actor.prototype, 'over', {
     configurable: true
 });
 
+Object.defineProperty(Game4kids.Actor.prototype, 'velocityFromAngle', {
+    get: function () {
+        return Math.sqrt(Math.pow(this.body.velocity.x, 2) + Math.pow(this.body.velocity.y, 2));
+    },
+    set: function (value) {
+        this.game.physics.arcade.velocityFromRotation(this.rotation, value, this.body.velocity);
+    },
+    enumerable: true,
+    configurable: true
+});
+
 Phaser.Sprite.prototype.getAngleWith = function (actor) {
     return this.game.physics.arcade.angleBetween(this, actor).radToDeg();
 }
 
 Phaser.Sprite.prototype.getDistanceWith = function (actor) {
     return this.game.physics.arcade.distanceBetween(this, actor);
-}
-
-Game4kids.Actor.prototype.setVelocityFromAngle = function (speed) {
-    this.game.physics.arcade.velocityFromRotation(this.rotation, speed, this.body.velocity);
 }
 
 Game4kids.Actor.prototype.rotateOnCollide = function () {
@@ -171,6 +193,30 @@ Game4kids.Actor.Speech.prototype.build = function (string) {
 Game4kids.Actor.prototype.say = function (string) {
     var speech = new Game4kids.Actor.Speech(this, string);
     speech.build();
+}
+
+Game4kids.Actor.prototype.toFront = function () {
+    if (this.parent) {
+        this.parent.bringToTop(this);
+
+        if (this.parent.parent) {
+            this.parent.parent.bringToTop(this.parent);
+        }
+    }
+}
+
+Game4kids.Actor.prototype.toBack = function () {
+    if (this.parent) {
+        this.parent.sendToBack(this);
+
+        if (this.parent.parent) {
+            this.parent.parent.sendToBack(this.parent);
+
+            if (Game4kids.current.background) {
+                this.parent.parent.sendToBack(Game4kids.current.background);
+            }
+        }
+    }
 }
 
 // private

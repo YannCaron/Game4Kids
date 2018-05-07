@@ -42,6 +42,7 @@ Blockly.Blocks['actor_get'] = {
             ["y", "y"],
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
+            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
         ];
 
@@ -65,19 +66,19 @@ Blockly.Blocks['actor_get'] = {
 Blockly.Blocks['actor_set'] = {
     init: function () {
         this.OPTIONS = [
-            ["x", "x = %1"],
-            ["y", "y = %1"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x = %1"],
-            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y = %1"],
-            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "setVelocityFromAngle(%1)"],
-            [Blockly.Msg.BLOCK_GRAVITY, "setGravity(%1)"],
-            [Blockly.Msg.BLOCK_ANGLE, "angle = %1"],
-            [Blockly.Msg.BLOCK_OPACITY, "opacity = %1"],
-            [Blockly.Msg.BLOCK_SCALE.format('x'), "scaleX = %1"],
-            [Blockly.Msg.BLOCK_SCALE.format('y'), "scaleY = %1"],
-            [Blockly.Msg.BLOCK_BOUNCE, "setBounce(%1)"],
-            [Blockly.Msg.BLOCK_FRICTION, "setFriction(%1)"],
-            [Blockly.Msg.BLOCK_MASS, "setMass(%1)"],
+            ["x", "x"],
+            ["y", "y"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
+            [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
+            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
+            [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
+            [Blockly.Msg.BLOCK_ANGLE, "angle"],
+            [Blockly.Msg.BLOCK_OPACITY, "opacity"],
+            [Blockly.Msg.BLOCK_SCALE.format('x'), "scaleX"],
+            [Blockly.Msg.BLOCK_SCALE.format('y'), "scaleY"],
+            [Blockly.Msg.BLOCK_BOUNCE, "bounce"],
+            [Blockly.Msg.BLOCK_FRICTION, "friction"],
+            [Blockly.Msg.BLOCK_MASS, "mass"],
         ];
 
         this.appendValueInput("VAR")
@@ -131,10 +132,12 @@ Blockly.Blocks['actor_get1'] = {
 Blockly.Blocks['actor_method0'] = {
     init: function () {
         this.OPTIONS = [
-            [Blockly.Msg.BLOCK_COLLIDE_BOUNDE, "body.collideWorldBounds = true"],
+            [Blockly.Msg.BLOCK_COLLIDE_BOUNDS, "body.collideWorldBounds = true"],
             [Blockly.Msg.BLOCK_IMMOVABLE, "body.immovable = true"],
             [Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE, "rotateOnCollide()"],
             [Blockly.Msg.BLOCK_DESTROY, "kill()"],
+            [Blockly.Msg.BLOCK_TOFRONT, "toFront()"],
+            [Blockly.Msg.BLOCK_TOBACK, "toBack", "toBack()"],
         ];
         this.appendValueInput("VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)
@@ -155,9 +158,9 @@ Blockly.Blocks['actor_method0'] = {
 Blockly.Blocks['actor_method1'] = {
     init: function () {
         this.OPTIONS = [
-            [Blockly.Msg.BLOCK_JUMP, "jump (%1)"],
-            [Blockly.Msg.BLOCK_DISP_FOREWARD, "displaceForeward (%1)"],
-            [Blockly.Msg.BLOCK_DISP_SIDEWAYS, "displaceSideways (%1)"],
+            [Blockly.Msg.BLOCK_JUMP, "jump"],
+            [Blockly.Msg.BLOCK_DISP_FOREWARD, "displaceForeward"],
+            [Blockly.Msg.BLOCK_DISP_SIDEWAYS, "displaceSideways"],
         ];
         this.appendValueInput("VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)

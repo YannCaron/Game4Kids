@@ -44,7 +44,7 @@ Blockly.JavaScript['actor_set'] = function (block) {
     var property = block.getFieldValue('PROPERTY');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + '.' + property.format(arg1) + ";";
+    var code = varName + '.' + property + '=' + arg1 + ';';
     code += block.lineCode();
     return code;
 };
@@ -64,7 +64,7 @@ Blockly.JavaScript['actor_method1'] = function (block) {
     var method = block.getFieldValue('METHOD');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + '.' + method.format(arg1) + ';';
+    var code = varName + '.' + method + '(' + arg1 + ');';
     code += block.lineCode();
     return code;
 };
