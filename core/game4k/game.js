@@ -59,7 +59,7 @@ Game4kids.Game.prototype.createGame = function (w, h) {
 };
 
 Object.defineProperty(Game4kids.Game.prototype, 'bgImage', {
-    set: function (value) { this.game.add.tileSprite(0, 0, this.game.width, this.game.height, value); },
+    set: function (value) { this.game.add.tileSprite(0, 0, this.game.world.bounds.width, this.game.world.bounds.height, value); },
     enumerable: true,
     configurable: true
 });
