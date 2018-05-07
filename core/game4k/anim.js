@@ -5,6 +5,7 @@ Game4kids.Game.prototype.anims = null;
 
 Game4kids.Game.prototype.initAnim = function () {
     this.currentLocked = null;
+    this.anims = new Set();
 }
 
 Game4kids.Game.prototype.resume = function () {
@@ -12,6 +13,11 @@ Game4kids.Game.prototype.resume = function () {
         this.currentLocked.childCompleted(Game4kids.LOCK_NAME);
         this.currentLocked = null;
     }
+}
+
+Game4kids.Game.prototype.clearAnims = function () {
+    this.anims.forEach(sequence => sequence.destroy());
+    this.anims.clear();
 }
 
 // Tween
@@ -181,6 +187,8 @@ Game4kids.Sequence = function (parent = null) {
 
     if (this.parent_ && this.parent_.register) {
         this.parent_.register(this);
+    } else {
+        Game4kids.current.anims.add(this);
     }
 };
 
@@ -206,6 +214,7 @@ Game4kids.Sequence.prototype.destroy = function () {
         this.parent_.destroy();
     } else {
         this.destroy_ = true;
+        Game4kids.current.anims.delete(this);
     }
     return this;
 }

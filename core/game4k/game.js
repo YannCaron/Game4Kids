@@ -117,6 +117,9 @@ Game4kids.Game.prototype.clear = function () {
     // clear signals
     this.clearSignals();
 
+    // clear anims
+    this.clearAnims();
+
 };
 
 Game4kids.Game.prototype.checkNbActor = function (actor) {
