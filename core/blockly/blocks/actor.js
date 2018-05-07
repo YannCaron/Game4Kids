@@ -123,7 +123,7 @@ Blockly.Blocks['actor_set_custom'] = {
             .appendField(Blockly.Msg.BLOCK_WITH)
             .setCheck(Blockly.Block.ACTOR_TYPE)
         this.appendValueInput("ARG1")
-            .setCheck("Number")
+            .setCheck()
             .appendField(Blockly.Msg.BLOCK_SET)
             .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
             .appendField(Blockly.Msg.BLOCK_TO)
