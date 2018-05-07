@@ -14,7 +14,6 @@ Game4kids.Actor.TEXT_STYLE = { font: `16px ${Game4kids.Game.TEXT_FONT}`, fill: "
 Game4kids.Actor.GRAVITY_FACTOR = 25;
 Game4kids.Actor.SAY_PLACEMENT_FACTOR = 0.25;
 
-
 // accessor
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
     get: function () { return this.body.bounce.x * 100 },
@@ -166,6 +165,30 @@ Game4kids.Actor.prototype.jump = function (speed) {
             actor.body.bounce.y = savedBounce;
             this.destroy();
         });
+}
+
+Game4kids.Actor.prototype.toFront = function () {
+    if (this.parent) {
+        this.parent.bringToTop(this);
+
+        if (this.parent.parent) {
+            this.parent.parent.bringToTop(this.parent);
+        }
+    }
+}
+
+Game4kids.Actor.prototype.toBack = function () {
+    if (this.parent) {
+        this.parent.sendToBack(this);
+
+        if (this.parent.parent) {
+            this.parent.parent.sendToBack(this.parent);
+
+            if (Game4kids.current.background) {
+                this.parent.parent.sendToBack(Game4kids.current.background);
+            }
+        }
+    }
 }
 
 Game4kids.Actor.prototype.say = function (string) {

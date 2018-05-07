@@ -40,6 +40,8 @@ Game4kids.Game.prototype.initGame = function () {
     this.maxActor = Game4kids.Game.DEFAULT_MAX_ACTOR;
     this.actorCount = 0;
     this.texts = [];
+
+    this.background = null;
 }
 
 Game4kids.Game.prototype.updateGame = function () {
@@ -53,7 +55,7 @@ Game4kids.Game.prototype.updateGame = function () {
 
 // methods
 Game4kids.Game.prototype.createGame = function (w, h, bg) {
-    this.game.add.tileSprite(0, 0, w, h, bg);
+    this.background = this.game.add.tileSprite(0, 0, w, h, bg);
     this.game.world.setBounds(0, 0, w, h);
 };
 

@@ -136,6 +136,8 @@ Blockly.Blocks['actor_method0'] = {
             [Blockly.Msg.BLOCK_IMMOVABLE, "body.immovable = true"],
             [Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE, "rotateOnCollide()"],
             [Blockly.Msg.BLOCK_DESTROY, "kill()"],
+            [Blockly.Msg.BLOCK_TOFRONT, "toFront()"],
+            [Blockly.Msg.BLOCK_TOBACK, "toBack", "toBack()"],
         ];
         this.appendValueInput("VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)

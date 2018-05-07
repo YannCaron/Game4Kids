@@ -1,5 +1,5 @@
 var MSG = {
-  title: `Code4Kids ${Blockly.Msg.VERSION} - Game rules are yours !`,
+  title: `${Blockly.Msg.NAME} ${Blockly.Msg.VERSION} - Game rules are yours !`,
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",
@@ -75,8 +75,8 @@ Blockly.Msg.BLOCK_AND = "and";
 Blockly.Msg.BLOCK_OR = "or";
 Blockly.Msg.BLOCK_IF = "if";
 Blockly.Msg.BLOCK_MOUSE = "mouse";
-Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse";
-Blockly.Msg.BLOCK_KEY = "key";
+Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse button";
+Blockly.Msg.BLOCK_KEY = "keyboard key";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -96,6 +96,8 @@ Blockly.Msg.BLOCK_COLLIDE_BOUNDS = "collide bounds";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobilize";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "rotate when collide";
 Blockly.Msg.BLOCK_DESTROY = "destroy";
+Blockly.Msg.BLOCK_TOFRONT = "bring to front";
+Blockly.Msg.BLOCK_TOBACK = "send to back";
 
 Blockly.Msg.BLOCK_JUMP = "jump in %";
 Blockly.Msg.BLOCK_DISP_FOREWARD = "displace foreward";

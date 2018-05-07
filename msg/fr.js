@@ -1,5 +1,5 @@
 var MSG = {
-  title: `Code4Kids ${Blockly.Msg.VERSION} - tes règles du jeu.`,
+  title: `${Blockly.Msg.NAME} ${Blockly.Msg.VERSION} - tes règles du jeu.`,
   blocks: "Blocs",
   linkTooltip: "Sauvegarder et lier aux blocs.",
   runTooltip: "Lancer le programme défini par les blocs dans l’espace de travail.",
@@ -96,6 +96,8 @@ Blockly.Msg.BLOCK_COLLIDE_BOUNDS = "entre en collision avec les bords";
 Blockly.Msg.BLOCK_IMMOVABLE = "immobiliser";
 Blockly.Msg.BLOCK_ROTATE_WHEN_COLLIDE = "tourner quand entre en collision";
 Blockly.Msg.BLOCK_DESTROY = "détruire";
+Blockly.Msg.BLOCK_TOFRONT = "mettre devant";
+Blockly.Msg.BLOCK_TOBACK = "mettre derrière";
 
 Blockly.Msg.BLOCK_JUMP = "saut en %";
 Blockly.Msg.BLOCK_DISP_FOREWARD = "déplace vers l'avant";
