@@ -12,6 +12,10 @@ def toCodeName(filename, replace):
 
 file = open(OUTPUT_FILE, 'w');
 
+# Header
+file.write('// GENERATED FILE.\n');
+file.write('\n')
+
 # package
 file.write('// package\n');
 file.write('var Blockly4kids = Blockly4kids || {};\n');

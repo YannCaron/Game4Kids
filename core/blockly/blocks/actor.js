@@ -3,7 +3,7 @@ Blockly.Blocks['create_actor'] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg.BLOCK_CREATE)
-            .appendField(this.fieldActorFactory(), "VAR");
+            .appendField(this.fieldActorFactory(true), "VAR");
         this.appendValueInput("IMG")
             .setCheck(Blockly.Block.IMAGE_TYPE)
             .appendField(Blockly.Msg.BLOCK_WITH)
@@ -57,10 +57,24 @@ Blockly.Blocks['actor_get'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
+};
+
+Blockly.Blocks['actor_get_custom'] = {
+    init: function () {
+        this.appendValueInput("VAR")
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+            .appendField(Blockly.Msg.BLOCK_WITH)
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.BLOCK_GET)
+            .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
+        this.setInputsInline(true);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
+        this.setOutput(true, null);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET_CUSTOM);
+        this.setHelpUrl("");
+    }
 };
 
 Blockly.Blocks['actor_set'] = {
@@ -70,6 +84,9 @@ Blockly.Blocks['actor_set'] = {
             ["y", "y"],
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
+            [`${Blockly.Msg.BLOCK_ACCELERATION} x`, "body.acceleration.x"],
+            [`${Blockly.Msg.BLOCK_ACCELERATION} y`, "body.acceleration.y"],
+            [Blockly.Msg.BLOCK_MAX_VELOCITY, "body.maxVelocity"],
             [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
@@ -96,10 +113,27 @@ Blockly.Blocks['actor_set'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
+};
+
+Blockly.Blocks['actor_set_custom'] = {
+    init: function () {
+        this.appendValueInput("VAR")
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .setCheck(Blockly.Block.ACTOR_TYPE)
+        this.appendValueInput("ARG1")
+            .setCheck()
+            .appendField(Blockly.Msg.BLOCK_SET)
+            .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
+            .appendField(Blockly.Msg.BLOCK_TO)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.ACTOR_HUE);
+        this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_SET_CUSTOM);
+        this.setHelpUrl("");
+    }
 };
 
 Blockly.Blocks['actor_get1'] = {
@@ -122,8 +156,6 @@ Blockly.Blocks['actor_get1'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_GET.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 
 };
@@ -150,8 +182,6 @@ Blockly.Blocks['actor_method0'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 };
 
@@ -175,10 +205,9 @@ Blockly.Blocks['actor_method1'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
     }
 };
+
 /*
 Blockly.Blocks['actor_method2'] = {
     init: function () {
@@ -201,8 +230,6 @@ Blockly.Blocks['actor_method2'] = {
         this.setColour(Blockly.Msg.ACTOR_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_ACTOR_ACTION.format(Blockly.Block.optionList(this.OPTIONS)));
         this.setHelpUrl("");
-
-        this.setOnChange(this.selectNearestActor);
 
     }
 };*/

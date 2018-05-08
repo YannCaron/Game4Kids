@@ -54,10 +54,21 @@ Game4kids.Game.prototype.updateGame = function () {
 // properties
 
 // methods
-Game4kids.Game.prototype.createGame = function (w, h, bg) {
-    this.background = this.game.add.tileSprite(0, 0, w, h, bg);
+Game4kids.Game.prototype.createGame = function (w, h) {
     this.game.world.setBounds(0, 0, w, h);
 };
+
+Object.defineProperty(Game4kids.Game.prototype, 'bgImage', {
+    set: function (value) { this.game.add.tileSprite(0, 0, this.game.world.bounds.width, this.game.world.bounds.height, value); },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Game.prototype, 'bgColor', {
+    set: function (value) { this.game.stage.backgroundColor = value; },
+    enumerable: true,
+    configurable: true
+});
 
 Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
@@ -105,6 +116,9 @@ Game4kids.Game.prototype.clear = function () {
 
     // clear signals
     this.clearSignals();
+
+    // clear anims
+    this.clearAnims();
 
 };
 

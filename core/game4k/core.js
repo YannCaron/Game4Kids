@@ -18,6 +18,7 @@ Game4kids.Game.prototype.preload = function () {
         this.initDebug();
         this.initPause();
         this.initEvent();
+        this.initAnim();
 
         // call state.preload
         if (this._state && this._state.preload) this._state.preload();

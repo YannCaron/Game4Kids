@@ -93,6 +93,18 @@ Object.defineProperty(Game4kids.Actor.prototype, 'over', {
     enumerable: true,
     configurable: true
 });
+//maxVelocity
+Object.defineProperty(Game4kids.Actor.prototype, 'maxVelocity', {
+    get: function () {
+        return this.body.maxVelocity.x;
+    },
+    set: function (value) {
+        this.body.maxVelocity.x = value;
+        this.body.maxVelocity.y = value;
+    },
+    enumerable: true,
+    configurable: true
+});
 
 Object.defineProperty(Game4kids.Actor.prototype, 'velocityFromAngle', {
     get: function () {
@@ -154,7 +166,7 @@ Game4kids.Actor.prototype.displaceSideways = function (dist) {
 }
 
 Game4kids.Actor.prototype.jump = function (speed) {
-    var actor = this;
+    var self = this;
     var savedBounce = this.body.bounce.y;
 
     this.body.bounce.y = 1;
@@ -162,9 +174,37 @@ Game4kids.Actor.prototype.jump = function (speed) {
 
     Game4kids.current.createSignal()
         .subscribe(function (value) {
-            actor.body.bounce.y = savedBounce;
+            self.body.bounce.y = savedBounce;
             this.destroy();
         });
+}
+
+Game4kids.Actor.Speech = function (actor, string) {
+    this.actor_ = actor;
+    this.text_ = null;
+    this.patch = null;
+}
+
+Game4kids.Actor.Speech.prototype.build = function (string) {
+    if (typeof string == Array) string = string.join('\n');
+
+    var content = Phaser.readNinePatchContentRect(this.actor_.game, 'speech');
+    var x = this.actor_.x + Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width;
+    var y = this.actor_.y - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width + h);
+
+    // create text
+    this.text_ = new Phaser.Text(this.actor_.game, x + content.x, content.y, string, Game4kids.Actor.TEXT_STYLE)
+
+    var w = this.text_.width + content.margin.left + content.margin.right;
+    var h = this.text_.height + content.margin.top + content.margin.bottom;
+
+    this.patch = this.actor_.addChild(game4k.game.make.ninePatch(0, 0, w, h, 'speech'));
+    this.actor_.addChild(this.text_);
+}
+
+Game4kids.Actor.prototype.say = function (string) {
+    var speech = new Game4kids.Actor.Speech(this, string);
+    speech.build();
 }
 
 Game4kids.Actor.prototype.toFront = function () {
@@ -189,23 +229,6 @@ Game4kids.Actor.prototype.toBack = function () {
             }
         }
     }
-}
-
-Game4kids.Actor.prototype.say = function (string) {
-    var content = Phaser.readNinePatchContentRect(this.game, 'speech');
-
-    // create text
-    var text = game4k.game.add.text(0, 0, string, Game4kids.Actor.TEXT_STYLE);
-
-    var w = text.width + content.margin.left + content.margin.right;
-    var h = text.height + content.margin.top + content.margin.bottom;
-    var x = this.x + Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width;
-    var y = this.y - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width + h);
-
-    var patch = game4k.game.add.ninePatch(x, y, w, h, 'speech');
-    text.x = x + content.x;
-    text.y = y + content.y;
-    this.game.world.bringToTop(text);
 }
 
 // private

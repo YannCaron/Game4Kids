@@ -30,6 +30,14 @@ Blockly.JavaScript['actor_get'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['actor_get_custom'] = function (block) {
+    var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
+    var property = block.getFieldValue('PROPERTY');
+
+    var code = varName + '.' + property;
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['actor_get1'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
     var property = block.getFieldValue('PROPERTY');
@@ -40,6 +48,16 @@ Blockly.JavaScript['actor_get1'] = function (block) {
 };
 
 Blockly.JavaScript['actor_set'] = function (block) {
+    var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
+    var property = block.getFieldValue('PROPERTY');
+    var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = varName + '.' + property + '=' + arg1 + ';';
+    code += block.lineCode();
+    return code;
+};
+
+Blockly.JavaScript['actor_set_custom'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
     var property = block.getFieldValue('PROPERTY');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
