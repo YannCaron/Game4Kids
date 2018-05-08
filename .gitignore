@@ -1,4 +1,10 @@
-# for development purpose
+# IDE
+/.project
+/.pydevproject
+/.settings/
 
-test.html
-test.js/
+# For development purpose
+/test.html
+/test.js/
+
+
