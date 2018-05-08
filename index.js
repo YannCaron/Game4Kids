@@ -196,7 +196,7 @@ Code.LANG = Code.getLang();
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript', 'game'];
+Code.TABS_ = ['blocks', 'javascript', 'xml', 'game'];
 
 Code.selected = 'blocks';
 
@@ -205,6 +205,27 @@ Code.selected = 'blocks';
  * @param {string} clickedName Name of tab clicked.
  */
 Code.tabClick = function (clickedName) {
+  // If the XML tab was open, save and render the content.
+  if (document.getElementById('tab_xml').className == 'tabon') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlText = xmlTextarea.value;
+    var xmlDom = null;
+    try {
+      xmlDom = Blockly.Xml.textToDom(xmlText);
+    } catch (e) {
+      var q =
+          window.confirm(MSG['badXml'].replace('%1', e));
+      if (!q) {
+        // Leave the user on the XML tab.
+        return;
+      }
+    }
+    if (xmlDom) {
+      Code.workspace.clear();
+      Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
+    }
+  }
+
   if (document.getElementById('tab_blocks').className == 'tabon') {
     Code.workspace.setVisible(false);
   }
@@ -640,7 +661,13 @@ Code.renderContent = function () {
   var content = document.getElementById('content_' + Code.selected);
   // Initialize the pane.
   var pause = true;
-  if (content.id == 'content_javascript') {
+  if (content.id == 'content_xml') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlDom = Blockly.Xml.workspaceToDom(Code.workspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    xmlTextarea.value = xmlText;
+    xmlTextarea.focus();
+  } else if (content.id == 'content_javascript') {
     Code.attemptCodeGeneration(Blockly.JavaScript, 'js');
   } else if (content.id == 'content_game') {
     pause = false;
