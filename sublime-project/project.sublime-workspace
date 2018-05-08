@@ -59,10 +59,10 @@
 			}
 		},
 		{
-			"file": "/home/cyann/projects/web/Game4Kids/test.html",
+			"file": "/home/cyann/projects/web/Game4Kids/msg/global.js",
 			"settings":
 			{
-				"buffer_size": 1293,
+				"buffer_size": 497,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -131,6 +131,7 @@
 	],
 	"file_history":
 	[
+		"/home/cyann/projects/web/Game4Kids/test.html",
 		"/home/cyann/projects/web/Game4Kids/js/FileSaver.js",
 		"/home/cyann/projects/web/Game4Kids/msg/en.js",
 		"/home/cyann/projects/web/Game4Kids/msg/fr.js",
@@ -315,26 +316,24 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/home/cyann/projects/web/Game4Kids/test.html",
+					"file": "/home/cyann/projects/web/Game4Kids/msg/global.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1293,
+						"buffer_size": 497,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								311,
-								311
+								497,
+								497
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
