@@ -42,7 +42,11 @@ Game4kids.React.Signal.prototype.emit = function (value) {
     this.duration = (Game4kids.current.game.time.now - this.now) / 1000
     if (this.callback) {
         arguments[0] = value;
-        this.callback(...arguments);
+        if (this.actor != null) {
+            this.callback(...arguments, this.actor);
+        } else {
+            this.callback(...arguments);
+        }
     }
 }
 

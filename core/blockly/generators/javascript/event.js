@@ -8,7 +8,7 @@ Blockly.JavaScript['signal_create'] = function (block) {
     code += 'game4k.createSignal(' + varName + ')';
     code += block.lineCode();
     if (next) code += next;
-    code += '.subscribe(function (value) {\n';
+    code += '.subscribe(function (value, ' + varName + ') {\n';
     code += stmt;
     code += '});\n';
 
