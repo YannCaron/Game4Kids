@@ -41,7 +41,7 @@ Blockly.gameDynamic.buildDebugVar = function (value) {
 
 Blockly.gameDynamic.DEBUG_LOG = 
     '<block type="debug_log">' +
-        Blockly.dynamic.buildShadowText('TEXT', Blockly.Msg.BLOCK_DEBUG_MSG) +
+        Blockly.dynamic.buildShadowText('TEXT') +
     '</block>';
 
 Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
