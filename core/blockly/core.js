@@ -8,8 +8,8 @@ Blockly.Block.SIGNAL_TYPE = 'Signal';
 Blockly.Block.ANIM_TYPE = 'Anim';
 Blockly.Block.RELATIVE_TYPE = 'Relative';
 
-Blockly.Block.GAME_WIDTH = 1024;
-Blockly.Block.GAME_HEIGHT = 768;
+Blockly.Block.GAME_WIDTH = function () { return window.innerWidth - 1; };
+Blockly.Block.GAME_HEIGHT = function () { return window.innerHeight - 88; };
 
 Blockly.Block.BACKGROUND_CATEGORY = 'Background';
 

@@ -77,6 +77,7 @@ Blockly.Msg.BLOCK_IF = "si";
 Blockly.Msg.BLOCK_MOUSE = "que la souris";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "le bouton de la souris à";
 Blockly.Msg.BLOCK_KEY = "la touche clavier";
+Blockly.Msg.BLOCK_DEBUG_MSG = `J'aime ${Blockly.Msg.NAME} !`;
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 

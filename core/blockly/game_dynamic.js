@@ -4,8 +4,8 @@ Blockly.gameDynamic = Blockly.gameDynamic || {};
 Blockly.gameDynamic.CREATE_GAME =
     '<block type="create_game">' +
     Blockly.dynamic.buildShadowBackground('IMG') +
-    Blockly.dynamic.buildShadowNumber('W', Blockly.Block.GAME_WIDTH) +
-    Blockly.dynamic.buildShadowNumber('H', Blockly.Block.GAME_HEIGHT) +
+    Blockly.dynamic.buildShadowNumber('W', Blockly.Block.GAME_WIDTH()) +
+    Blockly.dynamic.buildShadowNumber('H', Blockly.Block.GAME_HEIGHT()) +
     '</block>';
 
 Blockly.gameDynamic.GAME_GET =
@@ -41,7 +41,7 @@ Blockly.gameDynamic.buildDebugVar = function (value) {
 
 Blockly.gameDynamic.DEBUG_LOG = 
     '<block type="debug_log">' +
-        Blockly.dynamic.buildShadowText('TEXT', 'I love game 4 kids (G4K) !') +
+        Blockly.dynamic.buildShadowText('TEXT', Blockly.Msg.BLOCK_DEBUG_MSG) +
     '</block>';
 
 Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
