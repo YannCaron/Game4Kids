@@ -24,7 +24,7 @@ Blockly.Blocks['create_tween'] = {
 
         this.appendValueInput("VALUE")
             .setCheck(["Number", Blockly.Block.RELATIVE_TYPE])
-            .appendField("with")
+            .appendField(Blockly.Msg.BLOCK_WITH)
             .appendField(this.fieldActorFactory(), "VAR")
             .appendField("set")
             .appendField(new Blockly.FieldDropdown(this.PROPERTIES), "PROPERTY")
@@ -35,6 +35,32 @@ Blockly.Blocks['create_tween'] = {
         this.appendDummyInput()
             .appendField("easing")
             .appendField(new Blockly.FieldDropdown(this.EASINGS), "EASING")
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['create_tween_apply'] = {
+    init: function () {
+        this.PROPERTIES = [
+            ["← → horizontally", "body.velocity.x"],
+            ["↑ ↓ vertically", "body.velocity.y"],
+        ];
+
+        this.appendValueInput("VALUE")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(this.fieldActorFactory(), "VAR")
+            .appendField("move")
+            .appendField(new Blockly.FieldDropdown(this.PROPERTIES), "PROPERTY")
+            .appendField("to")
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.BLOCK_DURING)
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

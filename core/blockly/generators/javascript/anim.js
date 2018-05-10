@@ -22,6 +22,20 @@ Blockly.JavaScript['create_tween'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['create_tween_apply'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var property = block.getFieldValue('PROPERTY');
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
+    var time = Blockly.JavaScript.valueToCode(block, 'TIME', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = 'game4k.createTween(%1, this)'.format(varName);
+    code += '.apply (function () { %1.%2=%3; }, function () { %1.%2=0; })'.format(varName, property, value);
+    code += '.animate(%1).start();'.format(time);
+    code += block.lineCode();
+
+    return code;
+};
+
 Blockly.JavaScript['tween_relative'] = function (block) {
     var sign = block.getFieldValue('SIGN');
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);

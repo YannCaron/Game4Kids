@@ -62,6 +62,13 @@ Game4kids.Tween.prototype.doTarget = function (property, getter) {
     return this;
 }
 
+Game4kids.Tween.prototype.apply = function (applier, reset) {
+    this.onUpdateCallback(applier);
+    this.onComplete.add(reset);
+
+    return this;
+}
+
 Game4kids.Tween.prototype.animate = function (time) {
     if (this.target_.alive == undefined || this.target_.alive) {
         this.to(this.provider_, time * 1000);
