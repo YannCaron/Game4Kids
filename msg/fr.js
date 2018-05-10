@@ -39,6 +39,7 @@ Blockly.Msg.OBJECT_OPERATOR = "opérateurs";
 Blockly.Msg.OBJECT_STATIC = "statique";
 Blockly.Msg.OBJECT_SEQUENCE = "séquence";
 Blockly.Msg.OBJECT_ANIMATION = "animation";
+Blockly.Msg.OBJECT_MISC = "divers";
 
 // error
 Blockly.Msg.OBJECT_LINE_NOT_FOUND = "La line exacte n'a pas été trouvée, cherchez une bloque en dessous.";
@@ -77,6 +78,7 @@ Blockly.Msg.BLOCK_IF = "si";
 Blockly.Msg.BLOCK_MOUSE = "que la souris";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "le bouton de la souris à";
 Blockly.Msg.BLOCK_KEY = "la touche clavier";
+Blockly.Msg.FOR_EACH = "pour tous les";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -152,6 +154,7 @@ Blockly.Msg.TOOLTIP_ACTOR_SET_CUSTOM = "crée une nouvelle propriété à l'acte
 Blockly.Msg.TOOLTIP_ACTOR_ACTION = "exécute une action sur l'objet.\nles méthodes sont :\n%1";
 Blockly.Msg.TOOLTIP_ACTOR_EVERY = "exécute une action en fonction du temps.\nles événements sont :\n%1";
 Blockly.Msg.TOOLTIP_ACTOR_COLLIDE = "exécute une action quand les acteurs entrent en collision ensemble.";
+Blockly.Msg.TOOLTIP_LOOP_ACTORS_AT = "boucle sur tous les acteurs à la position donnée.";
 
 Blockly.Msg.TOOLTIP_GAME_CREATE = "crée le jeu.";
 Blockly.Msg.TOOLTIP_GAME_CLEAR = "supprimer tous les acteurs du jeu.";

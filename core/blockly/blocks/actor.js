@@ -233,3 +233,26 @@ Blockly.Blocks['actor_method2'] = {
 
     }
 };*/
+
+Blockly.Blocks['loop_actors_at'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.FOR_EACH)
+            .appendField(this.fieldActorFactory(true), "VAR");
+        this.appendValueInput("X")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.AT)
+            .appendField("x");
+        this.appendValueInput("Y")
+            .setCheck("Number")
+            .appendField("y");
+        this.appendStatementInput("STMT")
+            .setCheck(null);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.LOOPS_HUE);
+        this.setTooltip(Blockly.Msg.TOOLTIP_LOOP_ACTORS_AT);
+        this.setHelpUrl("");
+    }
+};

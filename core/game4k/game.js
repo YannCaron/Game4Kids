@@ -1,7 +1,7 @@
 // const
 Game4kids.Game.DEFAULT_MAX_ACTOR = 500;
 Game4kids.Game.TEXT_FONT = "Courier New"; // another choice: DejaVu Sans Mono
-Game4kids.Game.TEXT_STYLE = { font: `20px ${Game4kids.Game.TEXT_FONT}`, fill: "#f7f7f7", align: "left" }; 
+Game4kids.Game.TEXT_STYLE = { font: `20px ${Game4kids.Game.TEXT_FONT}`, fill: "#f7f7f7", align: "left" };
 
 // attributes
 Game4kids.Game.prototype.maxActor = null;
@@ -35,7 +35,7 @@ Game4kids.Game.Groups = function (game) {
 // constructor
 Game4kids.Game.prototype.initGame = function () {
     this.time.reset();
-    
+
     this.groups = new Game4kids.Game.Groups(this.game);
     this.maxActor = Game4kids.Game.DEFAULT_MAX_ACTOR;
     this.actorCount = 0;
@@ -102,7 +102,7 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     return actor;
 };
 
-Game4kids.Game.prototype.createTween = function(target, parent = null) {
+Game4kids.Game.prototype.createTween = function (target, parent = null) {
     return new Game4kids.Tween(target, this.game, this.game.tweens, parent);
 }
 
@@ -143,4 +143,17 @@ Game4kids.Game.prototype.clearTexts = function () {
         this.texts[t].textObject.destroy()
     }
     this.texts = [];
+}
+
+Game4kids.Game.prototype.getObjectsAt = function (x, y) {
+    var set = new Set();
+
+    for (var g in this.groups.groups) {
+        var actors = this.physics.arcade.getObjectsAtLocation(x, y, this.groups.groups[g]);
+        for (var actor of actors) {
+            set.add(actor);
+        }
+    }
+
+    return Array.from(set);
 }

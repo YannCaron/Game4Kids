@@ -97,3 +97,18 @@ Blockly.JavaScript['actor_method2'] = function (block) {
     var code = varName + '.' + method.format(arg1, arg2, arg3) + ';\n';
     return code;
 };*/
+
+Blockly.JavaScript['loop_actors_at'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
+    var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
+    var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
+
+    code = 'for (let %1 of game4k.getObjectsAt(%2, %3)) {'.format(varName, x, y);
+    code += block.lineCode();
+    code += stmt;
+    code += '}';
+    code += block.lineCode();
+
+    return code;
+};

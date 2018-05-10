@@ -39,6 +39,7 @@ Blockly.Msg.OBJECT_OPERATOR = "operators";
 Blockly.Msg.OBJECT_STATIC = "static";
 Blockly.Msg.OBJECT_SEQUENCE = "sequence";
 Blockly.Msg.OBJECT_ANIMATION = "animation";
+Blockly.Msg.OBJECT_MISC = "miscellaneous";
 
 // error
 Blockly.Msg.OBJECT_LINE_NOT_FOUND = "Line not found, search in a next block.";
@@ -77,6 +78,7 @@ Blockly.Msg.BLOCK_IF = "if";
 Blockly.Msg.BLOCK_MOUSE = "mouse";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse button";
 Blockly.Msg.BLOCK_KEY = "keyboard key";
+Blockly.Msg.FOR_EACH = "for each";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
@@ -152,6 +154,7 @@ Blockly.Msg.TOOLTIP_ACTOR_SET_CUSTOM = "create a new actor property and set valu
 Blockly.Msg.TOOLTIP_ACTOR_ACTION = "execute action on actor.\nmethods are:\n%1";
 Blockly.Msg.TOOLTIP_ACTOR_EVERY = "execute an action in time.\nevents are:\n%1";
 Blockly.Msg.TOOLTIP_ACTOR_COLLIDE = "execute an action when actor collides together.";
+Blockly.Msg.TOOLTIP_LOOP_ACTORS_AT = "loop on each actor at a certain position.";
 
 Blockly.Msg.TOOLTIP_GAME_CREATE = "create the game.";
 Blockly.Msg.TOOLTIP_GAME_CLEAR = "destroy all the game actors.";
