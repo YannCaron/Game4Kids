@@ -28,6 +28,8 @@ Blockly.Blocks['game_get'] = {
       [Blockly.Msg.BLOCK_HEIGHT, "world.height"],
       ["%1 x".format(Blockly.Msg.BLOCK_MOUSE_IN), "input.activePointer.x"],
       ["%1 y".format(Blockly.Msg.BLOCK_MOUSE_IN), "input.activePointer.y"],
+      ["camera x", "camera.x"],
+      ["camera y", "camera.y"],
     ];
 
     this.appendDummyInput()
