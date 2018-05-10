@@ -70,6 +70,30 @@ Object.defineProperty(Game4kids.Game.prototype, 'bgColor', {
     configurable: true
 });
 
+Object.defineProperty(Game4kids.Game.prototype, 'cameraXDelta', {
+    get: function () {
+        if (this.lastCameraX == undefined) {
+            return 0;
+        } else {
+            return this.game.camera.x - this.lastCameraX;
+        }
+    },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Game.prototype, 'cameraYDelta', {
+    get: function () {
+        if (this.lastCameraY == undefined) {
+            return 0;
+        } else {
+            return this.game.camera.y - this.lastCameraY;
+        }
+    },
+    enumerable: true,
+    configurable: true
+});
+
 Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
     // create actor

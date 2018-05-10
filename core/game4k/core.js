@@ -42,6 +42,9 @@ Game4kids.Game.prototype.update = function () {
         this.updateGame();
         this.updateEvent();
 
+        this.lastCameraX = this.game.camera.x;
+        this.lastCameraY = this.game.camera.y;
+
         // call state.update
         if (this._state && this._state.update) this._state.update();
     } catch (err) {

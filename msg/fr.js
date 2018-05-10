@@ -111,6 +111,8 @@ Blockly.Msg.BLOCK_IN = "dans";
 Blockly.Msg.BLOCK_FROM = "à partir de";
 Blockly.Msg.BLOCK_EVERY = "toutes les";
 
+Blockly.Msg.CAMERA = "camera";
+Blockly.Msg.CAMERA_DELTA = "déplacement de la caméra en";
 Blockly.Msg.CAMERA_FOLLOW = "la caméra suit";
 
 Blockly.Msg.BLOCK_COLLIDE_BOUNDS_EVENT = "la collision avec les bords";

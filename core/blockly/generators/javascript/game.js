@@ -20,7 +20,7 @@ Blockly.JavaScript['create_game'] = function (block) {
 Blockly.JavaScript['game_get'] = function (block) {
   var method = block.getFieldValue('PROPERTY');
 
-  var code = 'game4k.game.' + method;
+  var code = 'game4k.' + method;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 

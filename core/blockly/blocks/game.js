@@ -24,12 +24,14 @@ Blockly.Blocks['game_get'] = {
 
   init: function () {
     this.OPTIONS = [
-      [Blockly.Msg.BLOCK_WIDTH, "world.width"],
-      [Blockly.Msg.BLOCK_HEIGHT, "world.height"],
-      ["%1 x".format(Blockly.Msg.BLOCK_MOUSE_IN), "input.activePointer.x"],
-      ["%1 y".format(Blockly.Msg.BLOCK_MOUSE_IN), "input.activePointer.y"],
-      ["camera x", "camera.x"],
-      ["camera y", "camera.y"],
+      [Blockly.Msg.BLOCK_WIDTH, "game.world.width"],
+      [Blockly.Msg.BLOCK_HEIGHT, "game.world.height"],
+      ["%1 x".format(Blockly.Msg.BLOCK_MOUSE_IN), "game.input.activePointer.x"],
+      ["%1 y".format(Blockly.Msg.BLOCK_MOUSE_IN), "game.input.activePointer.y"],
+      ["%1 x".format(Blockly.Msg.CAMERA), "game.camera.x"],
+      ["%1 y".format(Blockly.Msg.CAMERA), "game.camera.y"],
+      ["%1 x".format(Blockly.Msg.CAMERA_DELTA), "cameraXDelta"],
+      ["%1 y".format(Blockly.Msg.CAMERA_DELTA), "cameraYDelta"],
     ];
 
     this.appendDummyInput()
