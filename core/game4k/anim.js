@@ -63,10 +63,11 @@ Game4kids.Tween.prototype.doTarget = function (property, getter) {
 }
 
 Game4kids.Tween.prototype.animate = function (time) {
-    if (this.target_.alive) {
+    if (this.target_.alive == undefined || this.target_.alive) {
         this.to(this.provider_, time * 1000);
         this.provider_ = {};
     } else {
+        console.log('HERE');
         this.destroy();
     }
     return this;
