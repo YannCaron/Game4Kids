@@ -76,6 +76,7 @@ Blockly.JavaScript['create_sequence'] = function (block) {
         n++;
     } while (block.getInput('STMT' + n));
     code += '.start();';
+    code += block.lineCode();
 
     return code;
 };

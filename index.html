@@ -30,6 +30,7 @@
 	<script src="resources.js"></script>
 	<script src="core/blockly/core.js"></script>
 	<script src="core/blockly/mutator.js"></script>
+	<script src="core/blockly/blocks/blocks.js"></script>
 	<script src="core/blockly/blocks/image.js"></script>
 	<script src="core/blockly/blocks/game.js"></script>
 	<script src="core/blockly/blocks/actor.js"></script>
@@ -38,6 +39,7 @@
 	<script src="core/blockly/generators/javascript.js"></script>
 	<script src="core/blockly/generators/javascript/variables.js"></script>
 	<script src="core/blockly/generators/javascript/procedures.js"></script>
+	<script src="core/blockly/generators/javascript/blocks.js"></script>
 	<script src="core/blockly/generators/javascript/image.js"></script>
 	<script src="core/blockly/generators/javascript/game.js"></script>
 	<script src="core/blockly/generators/javascript/actor.js"></script>
@@ -110,6 +112,23 @@
 		<category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
 			<block type="controls_if"></block>
 			<block type="logic_compare"></block>
+			<block type="logic_between">
+				<value name="VALUE">
+					<shadow type="math_number">
+						<field name="NUM">50</field>
+					</shadow>
+				</value>
+				<value name="ARG1">
+					<shadow type="math_number">
+						<field name="NUM">0</field>
+					</shadow>
+				</value>
+				<value name="ARG2">
+					<shadow type="math_number">
+						<field name="NUM">100</field>
+					</shadow>
+				</value>
+			</block>
 			<block type="logic_operation"></block>
 			<block type="logic_negate"></block>
 			<block type="logic_boolean"></block>
