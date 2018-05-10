@@ -29,7 +29,7 @@ Blockly.JavaScript['create_tween_apply'] = function (block) {
     var time = Blockly.JavaScript.valueToCode(block, 'TIME', Blockly.JavaScript.ORDER_ATOMIC);
 
     var code = 'game4k.createTween(%1, this)'.format(varName);
-    code += '.apply (function () { %1.%2=%3; }, function () { %1.%2=0; })'.format(varName, property, value);
+    code += '.apply (function () { %1.%2 = %3 / %4; }, function () { %1.%2 = 0; })'.format(varName, property, value, time);
     code += '.animate(%1).start();'.format(time);
     code += block.lineCode();
 
