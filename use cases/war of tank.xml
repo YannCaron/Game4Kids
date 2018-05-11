@@ -1,0 +1,552 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="Actor" id="nf4F6g!i{_F/`#@);s$s">player</variable>
+    <variable type="Actor" id="-R7zfswiqNfg=yQJ;XV=">target</variable>
+    <variable type="Actor" id="!dm(]9;)f9MY5KJ)mQJ%">tour</variable>
+    <variable type="Actor" id="S^XvKn:[`?*FDeqV[0nJ">bullet</variable>
+  </variables>
+  <block type="game_debug" id="-gaI)*FeQ=O]Jq2QZErH" x="180" y="60">
+    <field name="APPLY">FALSE</field>
+    <next>
+      <block type="create_game" id="W]Ww~8/.^+)Ah*%zzQwj">
+        <value name="IMG">
+          <shadow type="game_image_Background" id=".Yk8e$4D6iQ]A_]TKjgq">
+            <field name="IMG">Background-tile-1#assets/img/Background/tile 1.png</field>
+          </shadow>
+        </value>
+        <value name="W">
+          <shadow type="math_number" id="!Yu_[+qU3)s?RmRWqA+?">
+            <field name="NUM">1279</field>
+          </shadow>
+        </value>
+        <value name="H">
+          <shadow type="math_number" id="@{!y|^vNOE)Z758:VZ!W">
+            <field name="NUM">843</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="create_actor" id="u=e$?h,2f89(praj6r@J">
+            <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+            <value name="IMG">
+              <shadow type="game_image_PlanetCute" id="0y!VZ+E+Nd`#-r*;/h,*">
+                <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+              </shadow>
+              <block type="game_image_SpaceArt" id="(Dc,_#Yp9nH=KLOCo%4P">
+                <field name="IMG">SpaceArt-enemyRed4#assets/img/SpaceArt/enemyRed4.png</field>
+              </block>
+            </value>
+            <value name="X">
+              <shadow type="math_number" id="c2E=i7#~g?pN,a9l1YW0">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+            <value name="Y">
+              <shadow type="math_number" id="%0Al-fADCefoI_()On4S">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="actor_set" id="Tt6`Z4kA1{+7%r3bHZSP">
+                <field name="PROPERTY">scaleX</field>
+                <value name="VAR">
+                  <shadow type="actor_object" id="b[);-@I:#ZG?cfzL9xpT">
+                    <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                  </shadow>
+                </value>
+                <value name="ARG1">
+                  <shadow type="math_number" id="K%wCt,Xl88paN|pl`8).">
+                    <field name="NUM">150</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="actor_set" id="Js+s~nrevrD=K?B2_JwQ">
+                    <field name="PROPERTY">scaleY</field>
+                    <value name="VAR">
+                      <shadow type="actor_object" id="u+b_v$H-NT?:TL$$bzW3">
+                        <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                      </shadow>
+                    </value>
+                    <value name="ARG1">
+                      <shadow type="math_number" id="Zu)J.=^mTbA6?=)LEw*3">
+                        <field name="NUM">150</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="actor_method0" id="t4~`n:.%pu.pP`xC_`~Q">
+                        <field name="METHOD">body.collideWorldBounds = true</field>
+                        <value name="VAR">
+                          <shadow type="actor_object" id="AxTH`uK^J0W%uW5FR=M%">
+                            <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="signal_create" id="X62lN:-EOF%$HNS0~w=6">
+                            <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                            <value name="NEXT">
+                              <block type="signal_keyboard" id="XIc=uI2t?gKvC%}U~DUS">
+                                <field name="EVENT">.whenEquals(true)</field>
+                                <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP); })</field>
+                              </block>
+                            </value>
+                            <statement name="STMT">
+                              <block type="actor_set" id=";*yYTp`]lzq02XC]^W`Z">
+                                <field name="PROPERTY">velocityFromAngle</field>
+                                <value name="VAR">
+                                  <shadow type="actor_object" id="By7{Ng+i)OZN25*XPyOk">
+                                    <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                  </shadow>
+                                </value>
+                                <value name="ARG1">
+                                  <shadow type="math_number" id="T/VZ1gN$[Xd=LY]1/`J6">
+                                    <field name="NUM">250</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="signal_create" id="1I:h(2E^0;O!I|kzT^y6">
+                                <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                <value name="NEXT">
+                                  <block type="signal_keyboard" id="[-vRTMgr!ZxY.JBzP[Ck">
+                                    <field name="EVENT">.toggle().whenEquals(false).ignoreFirst()</field>
+                                    <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP); })</field>
+                                  </block>
+                                </value>
+                                <statement name="STMT">
+                                  <block type="actor_set" id=")D.mP)=rja}o/alpId()">
+                                    <field name="PROPERTY">velocityFromAngle</field>
+                                    <value name="VAR">
+                                      <shadow type="actor_object" id="(h,F=}1#E?fY3kd;,^;C">
+                                        <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="ARG1">
+                                      <shadow type="math_number" id="pup5!EvQ+y4;m}ATt3i#">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="signal_create" id="Qoo:Ln73lz?JwY7`8O_G">
+                                    <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                    <value name="NEXT">
+                                      <block type="signal_keyboard" id="5eX2/w9/gWOw%?xkwSc#">
+                                        <field name="EVENT">.whenEquals(true)</field>
+                                        <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })</field>
+                                      </block>
+                                    </value>
+                                    <statement name="STMT">
+                                      <block type="actor_set" id="{+Eeu)L36ww(awzMucxH">
+                                        <field name="PROPERTY">angle</field>
+                                        <value name="VAR">
+                                          <shadow type="actor_object" id="ahogBC3vnN6~*YF,.bkI">
+                                            <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="ARG1">
+                                          <shadow type="math_number" id="12W7qz5c2m|-V3:HacXU">
+                                            <field name="NUM">100</field>
+                                          </shadow>
+                                          <block type="math_arithmetic" id="v52q7]r`X@0haUZ,F~mj">
+                                            <field name="OP">MINUS</field>
+                                            <value name="A">
+                                              <shadow type="math_number" id="5N.pOt-gDL}-*2j#Tn/d">
+                                                <field name="NUM">1</field>
+                                              </shadow>
+                                              <block type="actor_get" id="gM*1::Q0Y!|1vD/$Y$sN">
+                                                <field name="PROPERTY">angle</field>
+                                                <value name="VAR">
+                                                  <shadow type="actor_object" id="IMR(*a*4z,-IhNH3~@3+">
+                                                    <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <shadow type="math_number" id="%8,o@k_fTT=}BG*)0u0V">
+                                                <field name="NUM">5</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="signal_create" id=":c@crC=![vp4pq9W;9j_">
+                                        <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                        <value name="NEXT">
+                                          <block type="signal_keyboard" id="daU~NM;2{KKoI~yfd3L.">
+                                            <field name="EVENT">.whenEquals(true)</field>
+                                            <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })</field>
+                                          </block>
+                                        </value>
+                                        <statement name="STMT">
+                                          <block type="actor_set" id="cu.o33c`gh[S}RS^%lDc">
+                                            <field name="PROPERTY">angle</field>
+                                            <value name="VAR">
+                                              <shadow type="actor_object" id="`~Pa0Kx]QKr:9r_2:2Ws">
+                                                <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                              </shadow>
+                                            </value>
+                                            <value name="ARG1">
+                                              <shadow type="math_number" id="12W7qz5c2m|-V3:HacXU">
+                                                <field name="NUM">100</field>
+                                              </shadow>
+                                              <block type="math_arithmetic" id="JMO7wJY:!{34=Y)f09Lr">
+                                                <field name="OP">ADD</field>
+                                                <value name="A">
+                                                  <shadow type="math_number" id="5N.pOt-gDL}-*2j#Tn/d">
+                                                    <field name="NUM">1</field>
+                                                  </shadow>
+                                                  <block type="actor_get" id="JQj@|G1GS3Hx;MNrUxDn">
+                                                    <field name="PROPERTY">angle</field>
+                                                    <value name="VAR">
+                                                      <shadow type="actor_object" id="Ulo:Lej]AnPW~jY?/|[-">
+                                                        <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                                      </shadow>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <shadow type="math_number" id="v$J?GZq)O$Z!^0j#V#H?">
+                                                    <field name="NUM">5</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="create_actor" id="{HMM`#tsc#:iPD,aN+{e">
+                                            <field name="VAR" id="-R7zfswiqNfg=yQJ;XV=" variabletype="Actor">target</field>
+                                            <value name="IMG">
+                                              <shadow type="game_image_PlanetCute" id="+9~g{TFQ+)HUrUr9UJzd">
+                                                <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                              </shadow>
+                                              <block type="game_image_ShootingGallery" id="i^|FS}/OATIlB$`6mwGS">
+                                                <field name="IMG">ShootingGallery-crosshair-red-large#assets/img/ShootingGallery/crosshair_red_large.png</field>
+                                              </block>
+                                            </value>
+                                            <value name="X">
+                                              <shadow type="math_number" id="L7{@jSrCVEBl^6/2qW}+">
+                                                <field name="NUM">100</field>
+                                              </shadow>
+                                            </value>
+                                            <value name="Y">
+                                              <shadow type="math_number" id="5BPW.qjk!wV]=c#d*fdZ">
+                                                <field name="NUM">100</field>
+                                              </shadow>
+                                            </value>
+                                            <next>
+                                              <block type="signal_create" id="Y#_[4qr^O?E|-D_4bc59">
+                                                <field name="VAR" id="-R7zfswiqNfg=yQJ;XV=" variabletype="Actor">target</field>
+                                                <statement name="STMT">
+                                                  <block type="actor_set" id=",[w%t|D+MbaMdna14%Ql">
+                                                    <field name="PROPERTY">x</field>
+                                                    <value name="VAR">
+                                                      <shadow type="actor_object" id="LjNUf|B(cZG)6|W6kmf6">
+                                                        <field name="VAR" id="-R7zfswiqNfg=yQJ;XV=" variabletype="Actor">target</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <value name="ARG1">
+                                                      <shadow type="math_number" id="XvQ6kD5pnnd+Ek/#]5V|">
+                                                        <field name="NUM">100</field>
+                                                      </shadow>
+                                                      <block type="game_get" id="=*?@Cm2sm$`J;6Ynw:R}">
+                                                        <field name="PROPERTY">game.input.activePointer.x</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="actor_set" id="wTZu[;!xN%dk!KSI#%_0">
+                                                        <field name="PROPERTY">y</field>
+                                                        <value name="VAR">
+                                                          <shadow type="actor_object" id=".fbLrdfV$T8y,WGprS*]">
+                                                            <field name="VAR" id="-R7zfswiqNfg=yQJ;XV=" variabletype="Actor">target</field>
+                                                          </shadow>
+                                                        </value>
+                                                        <value name="ARG1">
+                                                          <shadow type="math_number" id="XvQ6kD5pnnd+Ek/#]5V|">
+                                                            <field name="NUM">100</field>
+                                                          </shadow>
+                                                          <block type="game_get" id="VSC{6/MByb@gGII_^Fsw">
+                                                            <field name="PROPERTY">game.input.activePointer.y</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="create_actor" id="(LLsWH@j1T5!P5WN.E}q">
+                                                    <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                    <value name="IMG">
+                                                      <shadow type="game_image_PlanetCute" id="jB+#1Fp*R_Z.n)KBRfM{">
+                                                        <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                                      </shadow>
+                                                      <block type="game_image_SpaceArt" id="#]Dze9Sdm1/fJ1.{q|c7">
+                                                        <field name="IMG">SpaceArt-enemyRed5#assets/img/SpaceArt/enemyRed5.png</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="X">
+                                                      <shadow type="math_number" id="0ohc8*hr#08FQx6Xu5S_">
+                                                        <field name="NUM">100</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <value name="Y">
+                                                      <shadow type="math_number" id="y^+.hYX@u_ev(]i{@2a|">
+                                                        <field name="NUM">100</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <next>
+                                                      <block type="actor_set" id="pHTKwDy*T8.laP44kn8B">
+                                                        <field name="PROPERTY">scaleX</field>
+                                                        <value name="VAR">
+                                                          <shadow type="actor_object" id="sjApo4sXY;0mjeMtf^On">
+                                                            <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                          </shadow>
+                                                        </value>
+                                                        <value name="ARG1">
+                                                          <shadow type="math_number" id="30!m[E))6?D,sN_8MK7a">
+                                                            <field name="NUM">75</field>
+                                                          </shadow>
+                                                        </value>
+                                                        <next>
+                                                          <block type="actor_set" id="F2*.SKfaq(;=Xrm/yf~3">
+                                                            <field name="PROPERTY">scaleY</field>
+                                                            <value name="VAR">
+                                                              <shadow type="actor_object" id="Hhb)u}B/H/z#Lc/O)s/M">
+                                                                <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                              </shadow>
+                                                            </value>
+                                                            <value name="ARG1">
+                                                              <shadow type="math_number" id="cLsOnQF%K#11y#.|0W8o">
+                                                                <field name="NUM">75</field>
+                                                              </shadow>
+                                                            </value>
+                                                            <next>
+                                                              <block type="signal_create" id="Qp#CDG]?sIFao;v;Vb@W">
+                                                                <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                <statement name="STMT">
+                                                                  <block type="actor_set" id="mk!%KQj+2}tz9FuA|iGE">
+                                                                    <field name="PROPERTY">x</field>
+                                                                    <value name="VAR">
+                                                                      <shadow type="actor_object" id="_N/Tp4-xsnzG14a=0ZGA">
+                                                                        <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                    <value name="ARG1">
+                                                                      <shadow type="math_number" id="XvQ6kD5pnnd+Ek/#]5V|">
+                                                                        <field name="NUM">100</field>
+                                                                      </shadow>
+                                                                      <block type="actor_get" id="77cYE4w,WwZ-:8l$@3kz">
+                                                                        <field name="PROPERTY">x</field>
+                                                                        <value name="VAR">
+                                                                          <shadow type="actor_object" id="T2onKUd3mv$Hz=?yd5_o">
+                                                                            <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="actor_set" id=":nafnHd]/NKjSNP2sLz3">
+                                                                        <field name="PROPERTY">y</field>
+                                                                        <value name="VAR">
+                                                                          <shadow type="actor_object" id="A8/|`a?N#+By1F_wwczV">
+                                                                            <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                        <value name="ARG1">
+                                                                          <shadow type="math_number" id="XvQ6kD5pnnd+Ek/#]5V|">
+                                                                            <field name="NUM">100</field>
+                                                                          </shadow>
+                                                                          <block type="actor_get" id="`UlQ`BY7^P(=*SXkHC{N">
+                                                                            <field name="PROPERTY">y</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id=",4=ml%D9jue955*^4iBr">
+                                                                                <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="actor_set" id="S=?e?yg(l*Kj.-!S=[la">
+                                                                            <field name="PROPERTY">angle</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id="n{A!%.TZd_DR]V!@q.dG">
+                                                                                <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                            <value name="ARG1">
+                                                                              <shadow type="math_number" id="4{!0#gdNIKYUr9ZX?m!1">
+                                                                                <field name="NUM">100</field>
+                                                                              </shadow>
+                                                                              <block type="actor_get1" id="jCMiF4t8m~DcEUos(1{_">
+                                                                                <field name="PROPERTY">getAngleWith</field>
+                                                                                <value name="VAR">
+                                                                                  <shadow type="actor_object" id="2W(vnI4A$B6CY5}oEn2(">
+                                                                                    <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                                <value name="ARG1">
+                                                                                  <shadow type="actor_object" id="yUg!]89.EPTR=UV@B-c[">
+                                                                                    <field name="VAR" id="-R7zfswiqNfg=yQJ;XV=" variabletype="Actor">target</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </statement>
+                                                                <next>
+                                                                  <block type="signal_create" id="nhd0Guefi)B7[!27oh4M">
+                                                                    <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                    <value name="NEXT">
+                                                                      <block type="signal_combine" id="*f(ev/wiZwy7FcAyAGJl">
+                                                                        <field name="OPERATOR">%1%2</field>
+                                                                        <value name="NEXT1">
+                                                                          <block type="signal_mouse" id="^@GfbtL.HWdfA+v!,B;W">
+                                                                            <field name="EVENT">.whenEquals(true)</field>
+                                                                            <field name="KEY">.map(function () { return game4k.game.input.activePointer.leftButton.isDown; })</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="NEXT2">
+                                                                          <block type="signal_every" id="(E$mVDGJzbl)a]q0c9qd">
+                                                                            <value name="VALUE">
+                                                                              <shadow type="math_number" id="{F9xD.Z}6NsSq-Tcix[r">
+                                                                                <field name="NUM">0.1</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <statement name="STMT">
+                                                                      <block type="create_actor" id="~3~Kdpp0uP;EZ3/)om2)">
+                                                                        <field name="VAR" id="S^XvKn:[`?*FDeqV[0nJ" variabletype="Actor">bullet</field>
+                                                                        <value name="IMG">
+                                                                          <shadow type="game_image_PlanetCute" id="YS[3E5mAlOoeQ6TTyC-H">
+                                                                            <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                                                          </shadow>
+                                                                          <block type="game_image_SpaceArt" id="djCAnb3Pk?N?1.52o)ly">
+                                                                            <field name="IMG">SpaceArt-laserGreen#assets/img/SpaceArt/laserGreen.png</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="X">
+                                                                          <shadow type="math_number" id="frw-Txh9`9IHVNx.txBn">
+                                                                            <field name="NUM">100</field>
+                                                                          </shadow>
+                                                                          <block type="actor_get" id=",kpw_Hr`YwwkBu?xQMOO">
+                                                                            <field name="PROPERTY">x</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id="At[8$j?`hFyZgGOY]Q%;">
+                                                                                <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="Y">
+                                                                          <shadow type="math_number" id=",gdG*FypZd[zTtrE%e8e">
+                                                                            <field name="NUM">100</field>
+                                                                          </shadow>
+                                                                          <block type="actor_get" id="[:(!lr/NENvc{TR=)otI">
+                                                                            <field name="PROPERTY">y</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id="!Jcdb4DFvlC9fwlvz)Z1">
+                                                                                <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="actor_set" id="w@E:SK[Zsi|FQ^02hNkF">
+                                                                            <field name="PROPERTY">angle</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id="YQ0v$6CZz8afe{@h#8hz">
+                                                                                <field name="VAR" id="S^XvKn:[`?*FDeqV[0nJ" variabletype="Actor">bullet</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                            <value name="ARG1">
+                                                                              <shadow type="math_number" id="4{!0#gdNIKYUr9ZX?m!1">
+                                                                                <field name="NUM">100</field>
+                                                                              </shadow>
+                                                                              <block type="actor_get" id="x_P@tb.xU8MMOn)^qDxA">
+                                                                                <field name="PROPERTY">angle</field>
+                                                                                <value name="VAR">
+                                                                                  <shadow type="actor_object" id="Q9,!4@RI;H~97J5D7-HO">
+                                                                                    <field name="VAR" id="!dm(]9;)f9MY5KJ)mQJ%" variabletype="Actor">tour</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="actor_method1" id="Y?V^;nMdA#G?U$z-7`oS">
+                                                                                <field name="METHOD">displaceForeward</field>
+                                                                                <value name="VAR">
+                                                                                  <shadow type="actor_object" id="*9`^T-|kC]jnEn$Su:W@">
+                                                                                    <field name="VAR" id="S^XvKn:[`?*FDeqV[0nJ" variabletype="Actor">bullet</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                                <value name="ARG1">
+                                                                                  <shadow type="math_number" id="*ir49m%CoA$ESJ0Fk[Ry">
+                                                                                    <field name="NUM">50</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="actor_set" id=")GG6W8fbhX2-=.Kaj3-h">
+                                                                                    <field name="PROPERTY">velocityFromAngle</field>
+                                                                                    <value name="VAR">
+                                                                                      <shadow type="actor_object" id="tzSfD}`+A4MXl-m(,JTV">
+                                                                                        <field name="VAR" id="S^XvKn:[`?*FDeqV[0nJ" variabletype="Actor">bullet</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                    <value name="ARG1">
+                                                                                      <shadow type="math_number" id="LW)iVB4bS)3p6m5tb@fC">
+                                                                                        <field name="NUM">500</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </statement>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

@@ -169,14 +169,12 @@ Game4kids.Game.prototype.clearTexts = function () {
     this.texts = [];
 }
 
-Game4kids.Game.prototype.getObjectsAt = function (x, y) {
+Game4kids.Game.prototype.getObjectsAt = function (x, y, groupName) {
     var set = new Set();
 
-    for (var g in this.groups.groups) {
-        var actors = this.physics.arcade.getObjectsAtLocation(x, y, this.groups.groups[g]);
-        for (var actor of actors) {
-            set.add(actor);
-        }
+    var actors = this.physics.arcade.getObjectsAtLocation(x, y, this.groups.get(groupName));
+    for (var actor of actors) {
+        set.add(actor);
     }
 
     return Array.from(set);

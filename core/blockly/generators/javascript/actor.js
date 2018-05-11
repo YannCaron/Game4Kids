@@ -104,7 +104,7 @@ Blockly.JavaScript['loop_actors_at'] = function (block) {
     var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
     var stmt = Blockly.JavaScript.statementToCode(block, 'STMT');
 
-    code = 'for (let %1 of game4k.getObjectsAt(%2, %3)) {'.format(varName, x, y);
+    code = 'for (let %1 of game4k.getObjectsAt(%2, %3, \'%1\')) {'.format(varName, x, y);
     code += block.lineCode();
     code += stmt;
     code += '}';
