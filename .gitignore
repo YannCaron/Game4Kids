@@ -1,10 +1,55 @@
-# IDE
+#
+# Project specific excludes
+#
+
+/test.html
+/test.js/
+
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.class
+*.dmg
+*.ear
+*.gz
+*.iso
+*.jar
+*.rar
+*.sar
+*.tar
+*.war
+*.zip
+
+# IntelliJ project files 
+/.idea/
+/*.iml
+/*.ipr
+/*.iws
+
+# eclipse project file
+/.classpath
 /.project
 /.pydevproject
 /.settings/
 
-# For development purpose
-/test.html
-/test.js/
+# NetBeans specific
+/build/
+/dist/
+/nbactions.xml
+/nbbuild/
+/nb-configuration.xml
+/nbdist/
+/nbproject/private/
 
+# sublime project files
+/sublime-project/
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
 
