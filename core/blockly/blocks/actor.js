@@ -40,6 +40,8 @@ Blockly.Blocks['actor_get'] = {
         this.OPTIONS = [
             ["x", "x"],
             ["y", "y"],
+            [Blockly.Msg.BLOCK_WIDTH, "width"],
+            [Blockly.Msg.BLOCK_HEIGHT, "height"],
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
             [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
