@@ -1,3 +1,5 @@
+// GENERATED FILE.
+
 // package
 var Blockly4kids = Blockly4kids || {};
 
@@ -56,6 +58,7 @@ Blockly4kids.gameImages['Animals'] = [
 	[{ src: 'assets/img/Animals/rhino.png', width: 50, height: 50 }, 'Animals-rhino#assets/img/Animals/rhino.png'],
 	[{ src: 'assets/img/Animals/sloth-sq.png', width: 50, height: 50 }, 'Animals-sloth-sq#assets/img/Animals/sloth-sq.png'],
 	[{ src: 'assets/img/Animals/sloth.png', width: 50, height: 50 }, 'Animals-sloth#assets/img/Animals/sloth.png'],
+	[{ src: 'assets/img/Animals/snake-nu.png', width: 50, height: 50 }, 'Animals-snake-nu#assets/img/Animals/snake-nu.png'],
 	[{ src: 'assets/img/Animals/snake-sq.png', width: 50, height: 50 }, 'Animals-snake-sq#assets/img/Animals/snake-sq.png'],
 	[{ src: 'assets/img/Animals/snake.png', width: 50, height: 50 }, 'Animals-snake#assets/img/Animals/snake.png'],
 	[{ src: 'assets/img/Animals/walrus-sq.png', width: 50, height: 50 }, 'Animals-walrus-sq#assets/img/Animals/walrus-sq.png'],
