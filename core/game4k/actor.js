@@ -58,6 +58,16 @@ Object.defineProperty(Game4kids.Actor.prototype, 'gravity', {
     configurable: true
 });
 
+Object.defineProperty(Game4kids.Actor.prototype, 'scaleXY', {
+    get: function () { return this.scale.x * 100 },
+    set: function (value) { 
+        this.scale.x = value / 100; 
+        this.scale.y = value / 100; 
+    },
+    enumerable: true,
+    configurable: true
+});
+
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleX', {
     get: function () { return this.scale.x * 100 },
     set: function (value) { this.scale.x = value / 100 },

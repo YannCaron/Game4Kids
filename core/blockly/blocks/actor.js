@@ -93,6 +93,7 @@ Blockly.Blocks['actor_set'] = {
             [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
             [Blockly.Msg.BLOCK_OPACITY, "opacity"],
+            [Blockly.Msg.BLOCK_SCALE.format(''), "scaleXY"],
             [Blockly.Msg.BLOCK_SCALE.format('x'), "scaleX"],
             [Blockly.Msg.BLOCK_SCALE.format('y'), "scaleY"],
             [Blockly.Msg.BLOCK_BOUNCE, "bounce"],
