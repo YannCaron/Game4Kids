@@ -1,0 +1,1098 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+   <variables>
+     <variable type="Actor" id="hEk%?od.8fM!(R1p6J[D">viseur</variable>
+     <variable type="Actor" id="=7!T/|:W/cOhhu]9zsza">canard</variable>
+     <variable type="" id="]~O`*cRRcZUeW:XYT6iL">score</variable>
+     <variable type="" id="8-M.M$t;Ib2F2S?6Fj6v">soll</variable>
+     <variable type="Actor" id="Ut@/Ky-E$Cp,Rp=S4{m(">sol</variable>
+     <variable type="Actor" id="dS7OnaD[|$tBYKXUYIbU">gun</variable>
+     <variable type="Actor" id="u!(:b~0V0yp2Ijd-C|h8">rideau</variable>
+     <variable type="" id="6)EVlJ^Mis0Ce]5e_U4y">rido</variable>
+   </variables>
+   <block type="signal_create_collide" id="4WLH`vLVQI:47Y~HxZ,4" x="940" 
+y="-140">
+     <field name="ACTOR1" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+     <field name="EVENT">01</field>
+     <field name="KEY">overlap</field>
+     <field name="ACTOR2" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+     <statement name="STMT">
+       <block type="signal_create" id="_xGoWPoKLr{m%6IFC}8w">
+         <field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+         <value name="NEXT">
+           <block type="signal_mouse" id="nT_5gx4^$D~:ddR0E9mT">
+             <field 
+name="EVENT">.toggle().whenEquals(false).ignoreFirst()</field>
+             <field name="KEY">.map(function () { return 
+game4k.game.input.activePointer.leftButton.isDown; })</field>
+           </block>
+         </value>
+         <statement name="STMT">
+           <block type="actor_method0" id="Xe.yxL@K(!1EoH2+|dOC">
+             <field name="METHOD">kill()</field>
+             <value name="VAR">
+               <shadow type="actor_object" id="_WX-g@U}E_Vk7$,6vcgi">
+                 <field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+               </shadow>
+             </value>
+             <next>
+               <block type="math_change" id="-vHJ.98]y{+XE[G7;.si">
+                 <field name="VAR" id="]~O`*cRRcZUeW:XYT6iL" 
+variabletype="">score</field>
+                 <value name="DELTA">
+                   <shadow type="math_number" id="/_#Da|u^Gi#uNsJ}S-:K">
+                     <field name="NUM">1</field>
+                   </shadow>
+                 </value>
+               </block>
+             </next>
+           </block>
+         </statement>
+       </block>
+     </statement>
+   </block>
+   <block type="create_game" id="w^0qu|#L}vC)LeZe(YYM" x="20" y="60">
+     <value name="IMG">
+       <shadow type="game_image_Background" id="u(2!;-HfNbR9;jz{N5E+">
+         <field 
+name="IMG">Background-sky#assets/img/Background/sky.png</field>
+       </shadow>
+     </value>
+     <value name="W">
+       <shadow type="math_number" id="mQlyUlSB{*fZ]uLQJY!z">
+         <field name="NUM">1733</field>
+       </shadow>
+     </value>
+     <value name="H">
+       <shadow type="math_number" id="hJ3Ncm,|$bD?4T/ux^S[">
+         <field name="NUM">814</field>
+       </shadow>
+     </value>
+     <next>
+       <block type="variables_set" id="?gc+?$``W^eVM1#hoH`j">
+         <field name="VAR" id="]~O`*cRRcZUeW:XYT6iL" 
+variabletype="">score</field>
+         <field name="GLOBAL">FALSE</field>
+         <value name="VALUE">
+           <block type="math_number" id="g,6Qo3%I^pyxpJXxe|:!">
+             <field name="NUM">10</field>
+           </block>
+         </value>
+         <next>
+           <block type="variables_set" id="09.%iQsS8smzdThyK^mk">
+             <field name="VAR" id="8-M.M$t;Ib2F2S?6Fj6v" 
+variabletype="">soll</field>
+             <field name="GLOBAL">FALSE</field>
+             <value name="VALUE">
+               <block type="math_number" id="b~,U0dN7~G@5=!]Q}F{O">
+                 <field name="NUM">50</field>
+               </block>
+             </value>
+             <next>
+               <block type="create_actor" id="#z9!;TZ}2UbQ!y@bU8MH">
+                 <field name="VAR" id="Ut@/Ky-E$Cp,Rp=S4{m(" 
+variabletype="Actor">sol</field>
+                 <value name="IMG">
+                   <shadow type="game_image_PlanetCute" 
+id="sd-F/*Fgg~pnL~p!Ac$2">
+                     <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                   </shadow>
+                   <block type="game_image_ShootingGallery" 
+id="2RFli[-u3{E[EBeIe-$?">
+                     <field 
+name="IMG">ShootingGallery-grass2#assets/img/ShootingGallery/grass2.png</field>
+                   </block>
+                 </value>
+                 <value name="X">
+                   <shadow type="math_number" id="Cb[*g4ug9Ya2%B22l=[(">
+                     <field name="NUM">100</field>
+                   </shadow>
+                   <block type="variables_get" id="IR:2oOa+`qq_bVgBjcrG">
+                     <field name="VAR" id="8-M.M$t;Ib2F2S?6Fj6v" 
+variabletype="">soll</field>
+                   </block>
+                 </value>
+                 <value name="Y">
+                   <shadow type="math_number" id="`XCL7CHs^_nwh1!XO#iX">
+                     <field name="NUM">814</field>
+                   </shadow>
+                 </value>
+                 <next>
+                   <block type="actor_method0" id="3iZlK({*M7J#|CDxQE.2">
+                     <field name="METHOD">toFront()</field>
+                     <value name="VAR">
+                       <shadow type="actor_object" 
+id="N)L)iVRQ]@c_#$MK?#i@">
+                         <field name="VAR" id="Ut@/Ky-E$Cp,Rp=S4{m(" 
+variabletype="Actor">sol</field>
+                       </shadow>
+                     </value>
+                     <next>
+                       <block type="controls_repeat_ext" 
+id="bG_ReKqPletCw}e/H?cJ">
+                         <value name="TIMES">
+                           <shadow type="math_number" 
+id="8oK-cZrD$mM,0N6Gy-88">
+                             <field name="NUM">8</field>
+                           </shadow>
+                         </value>
+                         <statement name="DO">
+                           <block type="create_actor" 
+id="ztkVf=!A5o?d;#[LB4VM">
+                             <field name="VAR" id="Ut@/Ky-E$Cp,Rp=S4{m(" 
+variabletype="Actor">sol</field>
+                             <value name="IMG">
+                               <shadow type="game_image_PlanetCute" 
+id="sd-F/*Fgg~pnL~p!Ac$2">
+                                 <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                               </shadow>
+                               <block type="game_image_ShootingGallery" 
+id="jZ2E5+au:5~GtZ=_eAZK">
+                                 <field 
+name="IMG">ShootingGallery-grass2#assets/img/ShootingGallery/grass2.png</field>
+                               </block>
+                             </value>
+                             <value name="X">
+                               <shadow type="math_number" 
+id="Cb[*g4ug9Ya2%B22l=[(">
+                                 <field name="NUM">100</field>
+                               </shadow>
+                               <block type="variables_get" 
+id="K-1QAaAq:W:?t,`IAQ_D">
+                                 <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                               </block>
+                             </value>
+                             <value name="Y">
+                               <shadow type="math_number" 
+id="trW5TN+:|i3-CanwmEjC">
+                                 <field name="NUM">814</field>
+                               </shadow>
+                             </value>
+                             <next>
+                               <block type="actor_method0" 
+id="wDA~#W_W=Qa}G)+^(yg?">
+                                 <field name="METHOD">toFront()</field>
+                                 <value name="VAR">
+                                   <shadow type="actor_object" 
+id="4gY9X@N|h.o31t!?=qJK">
+                                     <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                   </shadow>
+                                 </value>
+                                 <next>
+                                   <block type="math_change" 
+id="-aqxrFk3!i;`!SV3^,Kz">
+                                     <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                                     <value name="DELTA">
+                                       <shadow type="math_number" 
+id="(4OS!#[b{Q=`b70(e}J=">
+                                         <field name="NUM">130</field>
+                                       </shadow>
+                                     </value>
+                                   </block>
+                                 </next>
+                               </block>
+                             </next>
+                           </block>
+                         </statement>
+                         <next>
+                           <block type="controls_repeat_ext" 
+id="c{o`)|;7(;{n8kvECV+%">
+                             <value name="TIMES">
+                               <shadow type="math_number" 
+id="n:=T[m#O@o%c^UZm:cay">
+                                 <field name="NUM">2</field>
+                               </shadow>
+                             </value>
+                             <statement name="DO">
+                               <block type="create_actor" 
+id="*+Dr2_6,R*Za?,ya~0^S">
+                                 <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                 <value name="IMG">
+                                   <shadow type="game_image_PlanetCute" 
+id="sd-F/*Fgg~pnL~p!Ac$2">
+                                     <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                   </shadow>
+                                   <block 
+type="game_image_ShootingGallery" id="X@Z:Cseb~)sf7U^:xxh6">
+                                     <field 
+name="IMG">ShootingGallery-water1#assets/img/ShootingGallery/water1.png</field>
+                                   </block>
+                                 </value>
+                                 <value name="X">
+                                   <shadow type="math_number" 
+id="Cb[*g4ug9Ya2%B22l=[(">
+                                     <field name="NUM">100</field>
+                                   </shadow>
+                                   <block type="variables_get" 
+id="qHDP$JI3~Y4oa6e7l$WP">
+                                     <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                                   </block>
+                                 </value>
+                                 <value name="Y">
+                                   <shadow type="math_number" 
+id="FK72M]i{*24=Q+s|^_S[">
+                                     <field name="NUM">800</field>
+                                   </shadow>
+                                 </value>
+                                 <next>
+                                   <block type="actor_method0" 
+id="-O9Wy[E^MJ$Gw]2M(Y}m">
+                                     <field name="METHOD">toFront()</field>
+                                     <value name="VAR">
+                                       <shadow type="actor_object" 
+id="UN+OC+86e=!^z8FQ*cH5">
+                                         <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                       </shadow>
+                                     </value>
+                                     <next>
+                                       <block type="math_change" 
+id=":oIQEXzIom]rllP7X2DJ">
+                                         <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                                         <value name="DELTA">
+                                           <shadow type="math_number" 
+id="I!AlRdlp1.KOqp6]nsSq">
+                                             <field name="NUM">130</field>
+                                           </shadow>
+                                         </value>
+                                       </block>
+                                     </next>
+                                   </block>
+                                 </next>
+                               </block>
+                             </statement>
+                             <next>
+                               <block type="controls_repeat_ext" 
+id="baF-g/jsM!w|D9m4=.=A">
+                                 <value name="TIMES">
+                                   <shadow type="math_number" 
+id="/3_CLGB9eg4*Z*:zO[wb">
+                                     <field name="NUM">4</field>
+                                   </shadow>
+                                 </value>
+                                 <statement name="DO">
+                                   <block type="create_actor" 
+id="%g58J-QZz(%S_H|}t0=W">
+                                     <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                     <value name="IMG">
+                                       <shadow 
+type="game_image_PlanetCute" id="sd-F/*Fgg~pnL~p!Ac$2">
+                                         <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                       </shadow>
+                                       <block 
+type="game_image_ShootingGallery" id="^${zDKKgNIv59n-:IJPJ">
+                                         <field 
+name="IMG">ShootingGallery-grass2#assets/img/ShootingGallery/grass2.png</field>
+                                       </block>
+                                     </value>
+                                     <value name="X">
+                                       <shadow type="math_number" 
+id="Cb[*g4ug9Ya2%B22l=[(">
+                                         <field name="NUM">100</field>
+                                       </shadow>
+                                       <block type="variables_get" 
+id="l?^)@OhEr9bCR;n1z.xk">
+                                         <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                                       </block>
+                                     </value>
+                                     <value name="Y">
+                                       <shadow type="math_number" 
+id="OLC7!=iR#aG[EdCGt4kD">
+                                         <field name="NUM">814</field>
+                                       </shadow>
+                                     </value>
+                                     <next>
+                                       <block type="actor_method0" 
+id="/143oDOlK)u[-|@50u{{">
+                                         <field 
+name="METHOD">toFront()</field>
+                                         <value name="VAR">
+                                           <shadow type="actor_object" 
+id="6,lh4`OkH^:pIt!g/0o?">
+                                             <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                           </shadow>
+                                         </value>
+                                         <next>
+                                           <block type="math_change" 
+id="C/Fr@RZ]o(t4)lnCJLj*">
+                                             <field name="VAR" 
+id="8-M.M$t;Ib2F2S?6Fj6v" variabletype="">soll</field>
+                                             <value name="DELTA">
+                                               <shadow 
+type="math_number" id=":Y,wO%+kUo7Ma0.KcX)w">
+                                                 <field 
+name="NUM">130</field>
+                                               </shadow>
+                                             </value>
+                                           </block>
+                                         </next>
+                                       </block>
+                                     </next>
+                                   </block>
+                                 </statement>
+                                 <next>
+                                   <block type="create_actor" 
+id=":NH:zHZf7#|)zGuW3VH1">
+                                     <field name="VAR" 
+id="=7!T/|:W/cOhhu]9zsza" variabletype="Actor">canard</field>
+                                     <value name="IMG">
+                                       <shadow 
+type="game_image_PlanetCute" id="M?}DbE6z@{wZ927CzU+H">
+                                         <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                       </shadow>
+                                       <block 
+type="game_image_ShootingGallery" id="J;eHoRv9N4$mm}z+^C!t">
+                                         <field 
+name="IMG">ShootingGallery-duck-outline-target-yellow#assets/img/ShootingGallery/duck_outline_target_yellow.png</field>
+                                       </block>
+                                     </value>
+                                     <value name="X">
+                                       <shadow type="math_number" 
+id="FI(tM(~41hE5dVl[ozE2">
+                                         <field name="NUM">-10</field>
+                                       </shadow>
+                                     </value>
+                                     <value name="Y">
+                                       <shadow type="math_number" 
+id="BD6`pw~TS+:2WLoC#/f#">
+                                         <field name="NUM">-10</field>
+                                       </shadow>
+                                     </value>
+                                     <next>
+                                       <block type="actor_method0" 
+id="}%@`SUd77hk+KCCM`##|">
+                                         <field 
+name="METHOD">body.collideWorldBounds = true</field>
+                                         <value name="VAR">
+                                           <shadow type="actor_object" 
+id="y;o{J7KUVOq3RsF#.%|C">
+                                             <field name="VAR" 
+id="=7!T/|:W/cOhhu]9zsza" variabletype="Actor">canard</field>
+                                           </shadow>
+                                         </value>
+                                         <next>
+                                           <block type="signal_create" 
+id="p1{N(Nn:33`dLk3yuyuj">
+                                             <field name="VAR" 
+id="Ut@/Ky-E$Cp,Rp=S4{m(" variabletype="Actor">sol</field>
+                                             <value name="NEXT">
+                                               <block 
+type="signal_every" id="3l|hMm;hgP=WolDY)REG">
+                                                 <value name="VALUE">
+                                                   <shadow 
+type="math_number" id="}dUUXdKmyxSo(}MdT-j1">
+                                                     <field 
+name="NUM">0.5</field>
+                                                   </shadow>
+                                                 </value>
+                                               </block>
+                                             </value>
+                                             <statement name="STMT">
+                                               <block 
+type="create_actor" id="BDNYp(7FJYindNOQG9i~">
+                                                 <field name="VAR" 
+id="=7!T/|:W/cOhhu]9zsza" variabletype="Actor">canard</field>
+                                                 <value name="IMG">
+                                                   <shadow 
+type="game_image_PlanetCute" id="M?}DbE6z@{wZ927CzU+H">
+                                                     <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                                   </shadow>
+                                                   <block 
+type="game_image_ShootingGallery" id="Ty?)_!kp)xEq(7$`5sMc">
+                                                     <field 
+name="IMG">ShootingGallery-duck-outline-white#assets/img/ShootingGallery/duck_outline_white.png</field>
+                                                   </block>
+                                                 </value>
+                                                 <value name="X">
+                                                   <shadow 
+type="math_number" id="@Ggv!pJ8?S!^A(jRY-Ml">
+                                                     <field 
+name="NUM">60</field>
+                                                   </shadow>
+                                                 </value>
+                                                 <value name="Y">
+                                                   <shadow 
+type="math_number" id="/|#2MgStkFZ$Y{13F6I5">
+                                                     <field 
+name="NUM">100</field>
+                                                   </shadow>
+                                                   <block 
+type="math_random_int" id="oRK^6W)T]uQ.sl_p~qir">
+                                                     <value name="FROM">
+                                                       <shadow 
+type="math_number" id="($$v2li:6_#Vub=C0XVU">
+                                                         <field 
+name="NUM">50</field>
+</shadow>
+                                                     </value>
+                                                     <value name="TO">
+                                                       <shadow 
+type="math_number" id="nX;LyEt_qW[%DxSm`dY+">
+                                                         <field 
+name="NUM">500</field>
+</shadow>
+                                                     </value>
+                                                   </block>
+                                                 </value>
+                                                 <next>
+                                                   <block 
+type="actor_set" id="PR2=}qK4cl?,B/.%JTHI">
+                                                     <field 
+name="PROPERTY">angle</field>
+                                                     <value name="VAR">
+                                                       <shadow 
+type="actor_object" id="@U#]:nO,dr+Rie%kfjrr">
+                                                         <field 
+name="VAR" id="=7!T/|:W/cOhhu]9zsza" variabletype="Actor">canard</field>
+</shadow>
+                                                     </value>
+                                                     <value name="ARG1">
+                                                       <shadow 
+type="math_number" id=")DNT#_P[2Kx;Sk2ag`j@">
+                                                         <field 
+name="NUM">180</field>
+</shadow>
+                                                     </value>
+                                                     <next>
+                                                       <block 
+type="actor_set" id="~)T#E--Dka?b4e`Q3)Wu">
+                                                         <field 
+name="PROPERTY">scaleX</field>
+                                                         <value name="VAR">
+<shadow type="actor_object" id="f{/O*QPa+.gt/wV3DGRD">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+</shadow>
+</value>
+                                                         <value name="ARG1">
+<shadow type="math_number" id="i%f78Dl3ADv|D65]czez">
+<field name="NUM">-50</field>
+</shadow>
+</value>
+<next>
+<block type="actor_set" id="^:X(p]6N]Oyc#X+w~S3V">
+<field name="PROPERTY">scaleY</field>
+<value name="VAR">
+<shadow type="actor_object" id="{#`L+^qwn2K!1)aL!bsl">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+</shadow>
+</value>
+<value name="ARG1">
+<shadow type="math_number" id="80MHF`q*j`=RzWPn3E/C">
+<field name="NUM">-50</field>
+</shadow>
+</value>
+<next>
+<block type="actor_set" id="3*DtfnFyT_h)sE8Eg!-F">
+<field name="PROPERTY">body.velocity.x</field>
+<value name="VAR">
+<shadow type="actor_object" id="c|oJWGM$Iwa={MvE[)n*">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+</shadow>
+</value>
+<value name="ARG1">
+<shadow type="math_number" id="/vwfPvBm81T,x=nN:Q?3">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block type="actor_method0" id=";H-g/m%3vExaEF:D3I#(">
+<field name="METHOD">body.collideWorldBounds = true</field>
+<value name="VAR">
+<shadow type="actor_object" id="!KGnmr;{/P$4^J^C+`JM">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+</shadow>
+</value>
+<next>
+<block type="signal_create" id="/{$v~v2S;hZ2i:U9(IbX">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+<value name="NEXT">
+<block type="signal_collide_bounds" id="O)M$jCUNDEvh:]xZoYgD">
+<field name="EVENT">.whenEquals(true)</field>
+</block>
+</value>
+<statement name="STMT">
+<block type="math_change" id="?y]U-@q1l3k|~)/fs+4X">
+<field name="VAR" id="]~O`*cRRcZUeW:XYT6iL" variabletype="">score</field>
+<value name="DELTA">
+<shadow type="math_number" id="p:h2aznx:NvK(=23yJsh">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+<next>
+<block type="actor_method0" id="^9=*Oe!+F[yU%IO^HT~5">
+<field name="METHOD">kill()</field>
+<value name="VAR">
+<shadow type="actor_object" id="Spf=GMLt!5ZXimq-E,!u">
+<field name="VAR" id="=7!T/|:W/cOhhu]9zsza" 
+variabletype="Actor">canard</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+                                                     </next>
+                                                   </block>
+                                                 </next>
+                                               </block>
+                                             </statement>
+                                           </block>
+                                         </next>
+                                       </block>
+                                     </next>
+                                   </block>
+                                 </next>
+                               </block>
+                             </next>
+                           </block>
+                         </next>
+                       </block>
+                     </next>
+                   </block>
+                 </next>
+               </block>
+             </next>
+           </block>
+         </next>
+       </block>
+     </next>
+   </block>
+   <block type="create_actor" id="#F:I9G|!{^vztm8!EU9^" x="900" y="60">
+     <field name="VAR" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+     <value name="IMG">
+       <shadow type="game_image_PlanetCute" id="/k,[In`eGa;%hV[dHLTd">
+         <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+       </shadow>
+       <block type="game_image_ShootingGallery" id="z_sQarW~SB_XvG+)?!d8">
+         <field 
+name="IMG">ShootingGallery-crosshair-outline-small#assets/img/ShootingGallery/crosshair_outline_small.png</field>
+       </block>
+     </value>
+     <value name="X">
+       <shadow type="math_number" id="]j7N[L]j[BP~P%XMAEOS">
+         <field name="NUM">100</field>
+       </shadow>
+       <block type="game_get" id="]::3.s/;%,k1hd3CE_uO">
+         <field name="PROPERTY">game.input.activePointer.x</field>
+       </block>
+     </value>
+     <value name="Y">
+       <shadow type="math_number" id="Z?#4JCBOecE-F:8U,Q^K">
+         <field name="NUM">100</field>
+       </shadow>
+       <block type="game_get" id="j=!uw/n+kO94~UiWF1P{">
+         <field name="PROPERTY">game.input.activePointer.y</field>
+       </block>
+     </value>
+     <next>
+       <block type="actor_method0" id="lCPm;?i~wXY/T1WcuqY(">
+         <field name="METHOD">toFront()</field>
+         <value name="VAR">
+           <shadow type="actor_object" id="_Qz]_ujN!INy%v2{3j4o">
+             <field name="VAR" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+           </shadow>
+         </value>
+         <next>
+           <block type="signal_create" id="Smt0HE0ZU1vgBDXIN5]s">
+             <field name="VAR" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+             <value name="NEXT">
+               <block type="signal_every" id="Esf6q31jv;+mhf^J](Y6">
+                 <value name="VALUE">
+                   <shadow type="math_number" id="DEAXR:Cal64*s#9,Bnt4">
+                     <field name="NUM">0.001</field>
+                   </shadow>
+                 </value>
+               </block>
+             </value>
+             <statement name="STMT">
+               <block type="actor_set" id="_@^8w(d][|Mlme](B5gq">
+                 <field name="PROPERTY">x</field>
+                 <value name="VAR">
+                   <shadow type="actor_object" id="^k5-yGS~9!H60RuM)J}R">
+                     <field name="VAR" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+                   </shadow>
+                 </value>
+                 <value name="ARG1">
+                   <shadow type="math_number" id="yP;_:tUBW#6R$I3efu:)">
+                     <field name="NUM">100</field>
+                   </shadow>
+                   <block type="game_get" id="*{S[oT{t#xrBe*2*r{lR">
+                     <field 
+name="PROPERTY">game.input.activePointer.x</field>
+                   </block>
+                 </value>
+                 <next>
+                   <block type="actor_set" id="]]9X!TGGkPl]6IaOgr!d">
+                     <field name="PROPERTY">y</field>
+                     <value name="VAR">
+                       <shadow type="actor_object" 
+id="`Cbocb|gqHOBL#A5T#tf">
+                         <field name="VAR" id="hEk%?od.8fM!(R1p6J[D" 
+variabletype="Actor">viseur</field>
+                       </shadow>
+                     </value>
+                     <value name="ARG1">
+                       <shadow type="math_number" id="yP;_:tUBW#6R$I3efu:)">
+                         <field name="NUM">100</field>
+                       </shadow>
+                       <block type="game_get" id="K(D#G{5De:=t*_ErIt$(">
+                         <field 
+name="PROPERTY">game.input.activePointer.y</field>
+                       </block>
+                     </value>
+                   </block>
+                 </next>
+               </block>
+             </statement>
+             <next>
+               <block type="create_actor" id="y(I1}lY;)Uo|NJ0O}2!@">
+                 <field name="VAR" id="dS7OnaD[|$tBYKXUYIbU" 
+variabletype="Actor">gun</field>
+                 <value name="IMG">
+                   <shadow type="game_image_PlanetCute" 
+id="Hae4)fbL6h+}US[]3#T!">
+                     <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                   </shadow>
+                   <block type="game_image_ShootingGallery" 
+id="kpHHn998|g*I/+?#5C9w">
+                     <field 
+name="IMG">ShootingGallery-rifle#assets/img/ShootingGallery/rifle.png</field>
+                   </block>
+                 </value>
+                 <value name="X">
+                   <shadow type="math_number" id="J1Bzg/{;GFo$+u,2qD^G">
+                     <field name="NUM">866</field>
+                   </shadow>
+                 </value>
+                 <value name="Y">
+                   <shadow type="math_number" id="lChSevUyx9r+8}[MXKn[">
+                     <field name="NUM">814</field>
+                   </shadow>
+                 </value>
+                 <next>
+                   <block type="signal_create" id="6`8Q+%U!@PqYi=MezY#x">
+                     <field name="VAR" id="dS7OnaD[|$tBYKXUYIbU" 
+variabletype="Actor">gun</field>
+                     <value name="NEXT">
+                       <block type="signal_every" id="EjK0w`Dcr6Jcy6P|TipO">
+                         <value name="VALUE">
+                           <shadow type="math_number" 
+id="?G!VvMt)O/wU)YX9rJ,~">
+                             <field name="NUM">0.001</field>
+                           </shadow>
+                         </value>
+                       </block>
+                     </value>
+                     <statement name="STMT">
+                       <block type="actor_set" id="63DU!K(^/h{3anO+DLM@">
+                         <field name="PROPERTY">scaleX</field>
+                         <value name="VAR">
+                           <shadow type="actor_object" 
+id="oKwtrjR?J}Xrydcx${xa">
+                             <field name="VAR" id="dS7OnaD[|$tBYKXUYIbU" 
+variabletype="Actor">gun</field>
+                           </shadow>
+                         </value>
+                         <value name="ARG1">
+                           <shadow type="math_number" 
+id="c_0~E1)~v7oZuff6(~Mk">
+                             <field name="NUM">100</field>
+                           </shadow>
+                           <block type="math_arithmetic" 
+id="bH2{SlhCp4auQ%{;IH0?">
+                             <field name="OP">MULTIPLY</field>
+                             <value name="A">
+                               <shadow type="math_number" 
+id="DfHQ@7V/HaWMS=g8SBHv">
+                                 <field name="NUM">1</field>
+                               </shadow>
+                               <block type="math_arithmetic" 
+id="s(;iY?+8#)iG!4*5*T|o">
+                                 <field name="OP">ADD</field>
+                                 <value name="A">
+                                   <shadow type="math_number" 
+id="zjv@0r[=uT`=$%n/APb=">
+                                     <field name="NUM">1</field>
+                                   </shadow>
+                                   <block type="actor_get1" 
+id=":jqKaM*a`2dgl!eYD{W2">
+                                     <field 
+name="PROPERTY">getAngleWith</field>
+                                     <value name="VAR">
+                                       <shadow type="actor_object" 
+id="{+nD5ks+Cv{@/GZ,~uU!">
+                                         <field name="VAR" 
+id="dS7OnaD[|$tBYKXUYIbU" variabletype="Actor">gun</field>
+                                       </shadow>
+                                     </value>
+                                     <value name="ARG1">
+                                       <shadow type="actor_object" 
+id="QW%xqSD%yKH)a09q%gxb">
+                                         <field name="VAR" 
+id="hEk%?od.8fM!(R1p6J[D" variabletype="Actor">viseur</field>
+                                       </shadow>
+                                     </value>
+                                   </block>
+                                 </value>
+                                 <value name="B">
+                                   <shadow type="math_number" 
+id="z^_860tDaqT7gMd5J]I(">
+                                     <field name="NUM">100</field>
+                                   </shadow>
+                                 </value>
+                               </block>
+                             </value>
+                             <value name="B">
+                               <shadow type="math_number" 
+id="@LLFdb7YTGi-Gv;{(nM`">
+                                 <field name="NUM">-2</field>
+                               </shadow>
+                             </value>
+                           </block>
+                         </value>
+                       </block>
+                     </statement>
+                     <next>
+                       <block type="create_actor" id="(Y3kLk8:FO4fFeid`M0%">
+                         <field name="VAR" id="u!(:b~0V0yp2Ijd-C|h8" 
+variabletype="Actor">rideau</field>
+                         <value name="IMG">
+                           <shadow type="game_image_PlanetCute" 
+id="591hv?b_1!Gc=RT1pqRo">
+                             <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                           </shadow>
+                           <block type="game_image_ShootingGallery" 
+id="Am4+Lhr4$4=3[3R=6DmG">
+                             <field 
+name="IMG">ShootingGallery-curtain#assets/img/ShootingGallery/curtain.png</field>
+                           </block>
+                         </value>
+                         <value name="X">
+                           <shadow type="math_number" 
+id="80.I!Jtx:9BttC!^B_eQ">
+                             <field name="NUM">50</field>
+                           </shadow>
+                         </value>
+                         <value name="Y">
+                           <shadow type="math_number" 
+id="rB@moe/OeRk/gip=K;-%">
+                             <field name="NUM">400</field>
+                           </shadow>
+                         </value>
+                         <next>
+                           <block type="actor_method0" 
+id="kc(r0{MPMe*6yJeNmr)x">
+                             <field name="METHOD">toFront()</field>
+                             <value name="VAR">
+                               <shadow type="actor_object" 
+id="Z9#6QBG4Ppt`2H@ZqOA`">
+                                 <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                               </shadow>
+                             </value>
+                             <next>
+                               <block type="actor_set" 
+id="p-Xo#Dm0A22zwHoGnV7o">
+                                 <field name="PROPERTY">scaleY</field>
+                                 <value name="VAR">
+                                   <shadow type="actor_object" 
+id="p.CiFA=9j:ueE^yQLL$e">
+                                     <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                                   </shadow>
+                                 </value>
+                                 <value name="ARG1">
+                                   <shadow type="math_number" 
+id="140Ue/p5GRK@XPx|4(Eh">
+                                     <field name="NUM">200</field>
+                                   </shadow>
+                                 </value>
+                                 <next>
+                                   <block type="actor_set" 
+id=".r[o];|B_Spa9-nEsMs;">
+                                     <field name="PROPERTY">angle</field>
+                                     <value name="VAR">
+                                       <shadow type="actor_object" 
+id="J^idZ-U$@_MK:)w+Vs.*">
+                                         <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                                       </shadow>
+                                     </value>
+                                     <value name="ARG1">
+                                       <shadow type="math_number" 
+id="W@Of3ose2n7VZPWca4SM">
+                                         <field name="NUM">0</field>
+                                       </shadow>
+                                     </value>
+                                     <next>
+                                       <block type="create_actor" 
+id="{tVHo^1+a*1%Pck@Sn73">
+                                         <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                                         <value name="IMG">
+                                           <shadow 
+type="game_image_PlanetCute" id="591hv?b_1!Gc=RT1pqRo">
+                                             <field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                                           </shadow>
+                                           <block 
+type="game_image_ShootingGallery" id="zx-)RP/2z?`z~zvW|J*V">
+                                             <field 
+name="IMG">ShootingGallery-curtain#assets/img/ShootingGallery/curtain.png</field>
+                                           </block>
+                                         </value>
+                                         <value name="X">
+                                           <shadow type="math_number" 
+id="q0Y4)TGISyF.lsxh*j1.">
+                                             <field name="NUM">1680</field>
+                                           </shadow>
+                                         </value>
+                                         <value name="Y">
+                                           <shadow type="math_number" 
+id="Ke0v[|Ktgs%ks)g}yd_X">
+                                             <field name="NUM">400</field>
+                                           </shadow>
+                                         </value>
+                                         <next>
+                                           <block type="actor_method0" 
+id="GPPTar9zRr/Ta6+D?3N^">
+                                             <field 
+name="METHOD">toFront()</field>
+                                             <value name="VAR">
+                                               <shadow 
+type="actor_object" id="n][Bl[EHA1m@UP=T-;[@">
+                                                 <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                                               </shadow>
+                                             </value>
+                                             <next>
+                                               <block type="actor_set" 
+id="_6I,zgEu+VgY.+3A6*L~">
+                                                 <field 
+name="PROPERTY">scaleY</field>
+                                                 <value name="VAR">
+                                                   <shadow 
+type="actor_object" id="V*]i0}LQ^C33_3bqS.nR">
+                                                     <field name="VAR" 
+id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+                                                   </shadow>
+                                                 </value>
+                                                 <value name="ARG1">
+                                                   <shadow 
+type="math_number" id="_r!.^kUNtn;)tOJv~]wz">
+                                                     <field 
+name="NUM">200</field>
+                                                   </shadow>
+                                                 </value>
+                                                 <next>
+                                                   <block 
+type="actor_set" id="LPSf@ol)OSc-Ml86MJJ9">
+                                                     <field 
+name="PROPERTY">scaleX</field>
+                                                     <value name="VAR">
+                                                       <shadow 
+type="actor_object" id="cot]i[zq.?`Nr(Y.8aEt">
+                                                         <field 
+name="VAR" id="u!(:b~0V0yp2Ijd-C|h8" variabletype="Actor">rideau</field>
+</shadow>
+                                                     </value>
+                                                     <value name="ARG1">
+                                                       <shadow 
+type="math_number" id="Nq+}X#Uf}D(C*QgqnY|h">
+                                                         <field 
+name="NUM">-100</field>
+</shadow>
+                                                     </value>
+                                                     <next>
+                                                       <block 
+type="actor_set" id="upzt}6=9jvFYBA%;](lt">
+                                                         <field 
+name="PROPERTY">angle</field>
+                                                         <value name="VAR">
+<shadow type="actor_object" id="[FwcvXx=inC1MNAtJwLg">
+<field name="VAR" id="u!(:b~0V0yp2Ijd-C|h8" 
+variabletype="Actor">rideau</field>
+</shadow>
+</value>
+                                                         <value name="ARG1">
+<shadow type="math_number" id="co0*wz3d{Sduu4e;78{l">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="variables_set" id="=q:r_4tKYt0HRjP-=xA4">
+<field name="VAR" id="6)EVlJ^Mis0Ce]5e_U4y" variabletype="">rido</field>
+<field name="GLOBAL">FALSE</field>
+<value name="VALUE">
+<block type="math_number" id="c0bXKN26|g,_o0,8zDU/">
+<field name="NUM">100</field>
+</block>
+</value>
+<next>
+<block type="controls_repeat_ext" id=",=^zuZ8s,,A4z/JO]Io6">
+<value name="TIMES">
+<shadow type="math_number" id="x`4)mJaDlj;6O}1E:hmG">
+<field name="NUM">7</field>
+</shadow>
+</value>
+<statement name="DO">
+<block type="create_actor" id="3)O#ZnD%e;Sp14Vh`ek?">
+<field name="VAR" id="u!(:b~0V0yp2Ijd-C|h8" 
+variabletype="Actor">rideau</field>
+<value name="IMG">
+<shadow type="game_image_PlanetCute" id="591hv?b_1!Gc=RT1pqRo">
+<field 
+name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+</shadow>
+<block type="game_image_ShootingGallery" id="wkiY=`fAKj)%[$`!#j$+">
+<field 
+name="IMG">ShootingGallery-curtain-straight#assets/img/ShootingGallery/curtain_straight.png</field>
+</block>
+</value>
+<value name="X">
+<shadow type="math_number" id="kEI;D,Tf}dUDaet8fu$p">
+<field name="NUM">100</field>
+</shadow>
+<block type="variables_get" id="](8(8$yA[9R,Pz(p{?jI">
+<field name="VAR" id="6)EVlJ^Mis0Ce]5e_U4y" variabletype="">rido</field>
+</block>
+</value>
+<value name="Y">
+<shadow type="math_number" id="r%!M7Hgj1B{VNC*]tq#y">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="actor_method0" id="C=1~BqNQi6]).BHL=oSF">
+<field name="METHOD">toFront()</field>
+<value name="VAR">
+<shadow type="actor_object" id="fYbJ:)/4IRBGpLt$aejs">
+<field name="VAR" id="u!(:b~0V0yp2Ijd-C|h8" 
+variabletype="Actor">rideau</field>
+</shadow>
+</value>
+<next>
+<block type="math_change" id="}rl4vDTvV(_l{Czx+s7)">
+<field name="VAR" id="6)EVlJ^Mis0Ce]5e_U4y" variabletype="">rido</field>
+<value name="DELTA">
+<shadow type="math_number" id="%$l.i_%0d{ekj}azrq=F">
+<field name="NUM">256</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block type="game_print" id="/4eS~3J3o8yGYAks#TmN">
+<value name="X">
+<shadow type="math_number" id="A0cgxKt3;(`u.[xy7WD}">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<value name="Y">
+<shadow type="math_number" id="op6Y5=tEF[r(Hr^Xm#{_">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<value name="TEXT">
+<block type="text" id="x{cv=z7`~~Fkz,-*|lLu">
+<field name="TEXT">Score = </field>
+</block>
+</value>
+<next>
+<block type="game_print" id="s=gJ4RWUj(k:5t3V0|+%">
+<value name="X">
+<shadow type="math_number" id=":6{_eqMPB8)Tq~ANj7cW">
+<field name="NUM">20</field>
+</shadow>
+</value>
+<value name="Y">
+<shadow type="math_number" id="8:VYg`buY7jTR,s5]sfn">
+<field name="NUM">120</field>
+</shadow>
+</value>
+<value name="TEXT">
+<block type="variables_get" id="zD$0RtWvG6)6;9dVvz!p">
+<field name="VAR" id="]~O`*cRRcZUeW:XYT6iL" variabletype="">score</field>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+                                                     </next>
+                                                   </block>
+                                                 </next>
+                                               </block>
+                                             </next>
+                                           </block>
+                                         </next>
+                                       </block>
+                                     </next>
+                                   </block>
+                                 </next>
+                               </block>
+                             </next>
+                           </block>
+                         </next>
+                       </block>
+                     </next>
+                   </block>
+                 </next>
+               </block>
+             </next>
+           </block>
+         </next>
+       </block>
+     </next>
+   </block>
+</xml>
+
+
