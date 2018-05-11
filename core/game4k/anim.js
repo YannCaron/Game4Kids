@@ -56,7 +56,14 @@ Game4kids.Tween.prototype.doRelative = function (property, value) {
 
 Game4kids.Tween.prototype.doTarget = function (property, getter) {
     Object.defineProperty(this.provider_, property, {
-        get: function () { return getter(); },
+        get: function () {
+            try {
+                this.lastDoTargetValue = getter();
+                return this.lastDoTargetValue;
+            } catch (ex) {
+                return this.lastDoTargetValue == undefined ? 0 : this.lastDoTargetValue;
+            }
+        },
         enumerable: true
     });
     return this;

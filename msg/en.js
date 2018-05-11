@@ -79,6 +79,8 @@ Blockly.Msg.BLOCK_MOUSE = "mouse";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse button";
 Blockly.Msg.BLOCK_KEY = "keyboard key";
 Blockly.Msg.FOR_EACH = "for each";
+Blockly.Msg.BLOCK_GLOBAL = "global";
+Blockly.Msg.BLOCK_TO_VALUE = "to";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
