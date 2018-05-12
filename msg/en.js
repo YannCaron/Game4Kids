@@ -79,7 +79,7 @@ Blockly.Msg.BLOCK_MOUSE = "mouse";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "mouse button";
 Blockly.Msg.BLOCK_KEY = "keyboard key";
 Blockly.Msg.FOR_EACH = "for each";
-Blockly.Msg.BLOCK_GLOBAL = "global";
+Blockly.Msg.BLOCK_SET_GLOBAL = "set global";
 Blockly.Msg.BLOCK_TO_VALUE = "to";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
@@ -181,8 +181,9 @@ Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE = "actor collision event."
 Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE_BOUNDS = "actor collision with game bounds event."
 Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE = "two actors collision event."
 
-
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "camera follow the actor.";
 Blockly.Msg.TOOLTIP_PRINT = "print a text on the screen.";
+
+Blockly.Msg.VARIABLES_GLOBAL_TOOLTIP = "Create a global variable and set it to be equal to the input.";
 
 Blockly.Msg.ALERT_MAX_ACTOR = "maximum actor [%1] reached !\nyou cannot create another one.";

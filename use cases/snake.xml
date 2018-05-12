@@ -83,9 +83,8 @@
                       <block type="logic_null" id=";:1_IRy](OZSL,V|QOWz"></block>
                     </value>
                     <next>
-                      <block type="variables_set" id="l5NO@G*yo6mnJo]mSnUS">
+                      <block type="variables_global" id="@K}oHhn^nLK-(P29L,Ie">
                         <field name="VAR" id="!PrYgm3ipvy]@$PgOh3O" variabletype="">last</field>
-                        <field name="GLOBAL">TRUE</field>
                         <value name="VALUE">
                           <block type="actor_object" id="1Z(`MAPjmVio/sB]}GD?">
                             <field name="VAR" id="La-K|Jjg,3(roJdjLm:3" variabletype="Actor">head</field>
@@ -94,7 +93,6 @@
                         <next>
                           <block type="variables_set" id="L#m++y7B)bmQ+sx@(9lY">
                             <field name="VAR" id="a1hf-DZFZsMC*a[KRf59" variabletype="">direction</field>
-                            <field name="GLOBAL">FALSE</field>
                             <value name="VALUE">
                               <block type="math_number" id="V;J,WThE,(We)e75T]|W">
                                 <field name="NUM">0</field>
@@ -156,7 +154,6 @@
                                                 <statement name="STMT">
                                                   <block type="variables_set" id="_FCb)Y{FU52NFFt8u/gq">
                                                     <field name="VAR" id="F#f9yWTp6Brt3!1TajrB" variabletype="">x</field>
-                                                    <field name="GLOBAL">FALSE</field>
                                                     <value name="VALUE">
                                                       <block type="math_number" id="MS]cx9pfnFZGF8JI0+4~">
                                                         <field name="NUM">-1</field>
@@ -165,7 +162,6 @@
                                                     <next>
                                                       <block type="variables_set" id="4hWXlbQ#o+UvSK)83Yom">
                                                         <field name="VAR" id=";ZB4W=dX`3Pk#ebhP[4Z" variabletype="">y</field>
-                                                        <field name="GLOBAL">FALSE</field>
                                                         <value name="VALUE">
                                                           <block type="math_number" id="_uY1+9gGpeQIv[VG50:V">
                                                             <field name="NUM">-1</field>
@@ -174,7 +170,6 @@
                                                         <next>
                                                           <block type="variables_set" id="%CZ5m@TO[{Li86`HzD9-">
                                                             <field name="VAR" id="3:.^PO#5UyqTH`l6U{|o" variabletype="Actor">tail</field>
-                                                            <field name="GLOBAL">FALSE</field>
                                                             <value name="VALUE">
                                                               <block type="variables_get" id="QR2dnY1V%=^Qy3El^]^r">
                                                                 <field name="VAR" id="!PrYgm3ipvy]@$PgOh3O" variabletype="">last</field>
@@ -219,7 +214,6 @@
                                                                     <statement name="DO">
                                                                       <block type="variables_set" id="RsmXGr#=G8n:7qY~^@O*">
                                                                         <field name="VAR" id="8x88JnJ=KfRXfHssSaDW" variabletype="Actor">next</field>
-                                                                        <field name="GLOBAL">FALSE</field>
                                                                         <value name="VALUE">
                                                                           <block type="actor_get_custom" id="41PgE@-*k`I?H}{+gb[2">
                                                                             <field name="PROPERTY">next</field>
@@ -275,7 +269,6 @@
                                                                                 <next>
                                                                                   <block type="variables_set" id="@S8Swu}7j+x+0kO::s;S">
                                                                                     <field name="VAR" id="3:.^PO#5UyqTH`l6U{|o" variabletype="Actor">tail</field>
-                                                                                    <field name="GLOBAL">FALSE</field>
                                                                                     <value name="VALUE">
                                                                                       <block type="actor_object" id="MUo^Q1h~VjNe4EBf7eO}">
                                                                                         <field name="VAR" id="8x88JnJ=KfRXfHssSaDW" variabletype="Actor">next</field>
@@ -565,7 +558,6 @@
                                                     <statement name="STMT">
                                                       <block type="variables_set" id=":76)9?_/xob$W2eEfQy+">
                                                         <field name="VAR" id="a1hf-DZFZsMC*a[KRf59" variabletype="">direction</field>
-                                                        <field name="GLOBAL">FALSE</field>
                                                         <value name="VALUE">
                                                           <block type="math_number" id="Xp?$gZ9S1ZGx^wUI4(cL">
                                                             <field name="NUM">0</field>
@@ -585,7 +577,6 @@
                                                         <statement name="STMT">
                                                           <block type="variables_set" id="CDrf$8yPEA[E{ZK60dv1">
                                                             <field name="VAR" id="a1hf-DZFZsMC*a[KRf59" variabletype="">direction</field>
-                                                            <field name="GLOBAL">FALSE</field>
                                                             <value name="VALUE">
                                                               <block type="math_number" id="0vp%E~8FZCpdaDslhI!-">
                                                                 <field name="NUM">1</field>
@@ -605,7 +596,6 @@
                                                             <statement name="STMT">
                                                               <block type="variables_set" id="l-(3MeO_UVR7!utfoX^0">
                                                                 <field name="VAR" id="a1hf-DZFZsMC*a[KRf59" variabletype="">direction</field>
-                                                                <field name="GLOBAL">FALSE</field>
                                                                 <value name="VALUE">
                                                                   <block type="math_number" id="S^%f(2]NTLl^OaiP4LII">
                                                                     <field name="NUM">2</field>
@@ -625,7 +615,6 @@
                                                                 <statement name="STMT">
                                                                   <block type="variables_set" id="T[QU`$7{0w[c3i?@,j%b">
                                                                     <field name="VAR" id="a1hf-DZFZsMC*a[KRf59" variabletype="">direction</field>
-                                                                    <field name="GLOBAL">FALSE</field>
                                                                     <value name="VALUE">
                                                                       <block type="math_number" id="TGV9#Xy1*5(Y6XS~@dj8">
                                                                         <field name="NUM">3</field>
@@ -720,7 +709,6 @@
                 <next>
                   <block type="variables_set" id="W-fwynCA~!OmWM.*YWNB">
                     <field name="VAR" id="!PrYgm3ipvy]@$PgOh3O" variabletype="">last</field>
-                    <field name="GLOBAL">TRUE</field>
                     <value name="VALUE">
                       <block type="actor_object" id="QL!l,BEHm%ak4x}J^lff">
                         <field name="VAR" id="3:.^PO#5UyqTH`l6U{|o" variabletype="Actor">tail</field>
@@ -819,7 +807,6 @@
     <statement name="STACK">
       <block type="variables_set" id="REw[E^dZf/A+SZ%LPcHD">
         <field name="VAR" id="MVnMa,Ink~K?BLWuQwoh" variabletype="">img</field>
-        <field name="GLOBAL">FALSE</field>
         <value name="VALUE">
           <block type="lists_create_with" id="8iv7Ldf~ahi*@cOszVTR" inline="true">
             <mutation items="3"></mutation>
@@ -843,7 +830,6 @@
         <next>
           <block type="variables_set" id="$%jsXZ0LVrwRupFX!E#p">
             <field name="VAR" id="F#f9yWTp6Brt3!1TajrB" variabletype="">x</field>
-            <field name="GLOBAL">FALSE</field>
             <value name="VALUE">
               <block type="math_random_int" id="|^Z{B{VVpP_JIQqekx)c">
                 <value name="FROM">
@@ -877,7 +863,6 @@
             <next>
               <block type="variables_set" id="}]q2Q)8M$L=.Q@R}@+r4">
                 <field name="VAR" id=";ZB4W=dX`3Pk#ebhP[4Z" variabletype="">y</field>
-                <field name="GLOBAL">FALSE</field>
                 <value name="VALUE">
                   <block type="math_random_int" id=".fV/BveA0@=R)wN^ZHx3">
                     <value name="FROM">

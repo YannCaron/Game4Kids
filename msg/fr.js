@@ -79,7 +79,7 @@ Blockly.Msg.BLOCK_MOUSE = "que la souris";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "le bouton de la souris à";
 Blockly.Msg.BLOCK_KEY = "la touche clavier";
 Blockly.Msg.FOR_EACH = "pour tous les";
-Blockly.Msg.BLOCK_GLOBAL = "global";
+Blockly.Msg.BLOCK_SET_GLOBAL = "crée la variable globale";
 Blockly.Msg.BLOCK_TO_VALUE = "avec la valeur";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
@@ -184,5 +184,7 @@ Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE = "événement de collision entre deux
 
 Blockly.Msg.TOOLTIP_CAMERA_FOLLOW = "la caméra suit l'acteur.";
 Blockly.Msg.TOOLTIP_PRINT = "écrit un texte à l'écran.";
+
+Blockly.Msg.VARIABLES_GLOBAL_TOOLTIP = "Crée la variable globale et la fixe pour qu’elle soit égale à la valeur de l’entrée.";
 
 Blockly.Msg.ALERT_MAX_ACTOR = "le nombre maximum d'acteur [%1] à été ateint.\nvous ne pouvez plus en créer d'autre.";

@@ -1,6 +1,11 @@
 // create namespace
 Blockly.gameDynamic = Blockly.gameDynamic || {};
 
+Blockly.gameDynamic.VARIABLES_GLOBAL =
+    '<block type="variables_global">' +
+    Blockly.dynamic.buildShadowNumber('VALUE', 0) +
+    '</block>';
+
 Blockly.gameDynamic.CREATE_GAME =
     '<block type="create_game">' +
     Blockly.dynamic.buildShadowBackground('IMG') +
@@ -39,9 +44,9 @@ Blockly.gameDynamic.buildDebugVar = function (value) {
         '</block>';
 }
 
-Blockly.gameDynamic.DEBUG_LOG = 
+Blockly.gameDynamic.DEBUG_LOG =
     '<block type="debug_log">' +
-        Blockly.dynamic.buildShadowText('TEXT') +
+    Blockly.dynamic.buildShadowText('TEXT') +
     '</block>';
 
 Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
@@ -82,6 +87,9 @@ Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
     if (variables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.buildGamePrint(variables[0].name)));
     }
+
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_MISC)));
+    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.VARIABLES_GLOBAL));
 
     // events
     //xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
