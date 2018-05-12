@@ -35,6 +35,10 @@ Game4kids.React.Signal.prototype.getRoot = function () {
     return this;
 }
 
+Game4kids.React.Signal.prototype.setParent = function(parent) {
+    this.parent = parent;
+}
+
 Game4kids.React.Signal.prototype.emit = function (value) {
     this.count++;
     this.lapse = (Game4kids.current.game.time.now - this.time) / 1000;
@@ -135,6 +139,7 @@ Game4kids.React.Signal.prototype.whenEquals = function (compare) {
 // react.combine
 Game4kids.React.Signal.prototype.combineWith = function (signal2) {
     var signal = new Game4kids.React.Signal(this);
+    signal2.getRoot().setParent(this);
 
     this.subscribe(function (value) {
         arguments[0] = value;
