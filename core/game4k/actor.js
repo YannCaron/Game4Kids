@@ -253,6 +253,8 @@ Game4kids.Actor.Speech = function (actor, msg, parent = null) {
     this.patch_ = null;
 }
 
+Game4kids.Actor.Speech.SPEECH_PATCH_ID = 'ui-speech';
+
 Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLock.prototype);
 Game4kids.Actor.Speech.prototype.constructor = Game4kids.Actor.Speech;
 
@@ -264,7 +266,7 @@ Game4kids.Actor.Speech.prototype.countWords = function () {
 Game4kids.Actor.Speech.prototype.start = function () {
 
     this.lock();
-    var content = Phaser.readNinePatchContentRect(this.actor_.game, 'speech');
+    var content = Phaser.readNinePatchContentRect(this.actor_.game, Game4kids.Actor.Speech.SPEECH_PATCH_ID);
 
     // create text
     this.text_ = new Phaser.Text(this.actor_.game, 0, 0, this.msg_, Game4kids.Actor.TEXT_STYLE)
@@ -275,7 +277,7 @@ Game4kids.Actor.Speech.prototype.start = function () {
     var px = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
     var py = - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height + h);
 
-    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, 'speech'));
+    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, Game4kids.Actor.Speech.SPEECH_PATCH_ID));
     this.patch_.x = px;
     this.patch_.y = py;
 
