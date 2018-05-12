@@ -48,7 +48,7 @@
         var bmp = loadBitmap_(game, source);
 
         // read first lines pixels
-        var hSpaces = readTileInfo_(bmp.width, i => bmp.getPixelRGB(i, 0).color);
+        var hSpaces = readTileInfo_(bmp.width - 1, i => bmp.getPixelRGB(i, 0).color);
         var vSpaces = readTileInfo_(bmp.height - 1, i => bmp.getPixelRGB(0, i).color);
 
         if (hSpaces.length != 4 || vSpaces.length != 4) throw 'Bad nine patch format.\nMust contain tile informations in first ans last lines of pixels.';

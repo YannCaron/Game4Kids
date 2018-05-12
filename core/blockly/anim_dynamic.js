@@ -13,6 +13,12 @@ Blockly.animDynamic.CREATE_TWEEN_APPLY =
     Blockly.dynamic.buildShadowNumber('TIME', 0.75) +
     '</block>';
 
+Blockly.animDynamic.CREATE_TWEEN_SAY =
+    '<block type="create_tween_say">' +
+    Blockly.dynamic.buildShadowText('VALUE', '') +
+    Blockly.dynamic.buildShadowNumber('TIME', 0) +
+    '</block>';
+
 Blockly.animDynamic.TWEEN_RELATIVE =
     '<block type="tween_relative">' +
     Blockly.dynamic.buildShadowNumber('VALUE', 100) +
@@ -60,6 +66,7 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_RELATIVE));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_APPLY));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_SAY));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_WAIT));
 
         // sequence

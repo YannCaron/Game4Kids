@@ -10,14 +10,17 @@ Game4kids.Actor = function (game, image, x = 0, y = 0) {
 Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
 Game4kids.Actor.prototype.constructor = Game4kids.Actor;
 
-Game4kids.Actor.TEXT_STYLE = { font: `16px ${Game4kids.Game.TEXT_FONT}`, fill: "#0f0f0f", align: "left" }; 
+Game4kids.Actor.TEXT_STYLE = { font: `16px ${Game4kids.Game.TEXT_FONT}`, fill: "#0f0f0f", align: "left" };
 Game4kids.Actor.GRAVITY_FACTOR = 25;
+
+// A CM1 french student read 120 words by minut then 0.5s by word
+Game4kids.Actor.WORD_BY_SECOND = 0.5;
 Game4kids.Actor.SAY_PLACEMENT_FACTOR = 0.25;
 
 // accessor
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
     get: function () { return this.body.bounce.x * 100 },
-    set: function (value) { 
+    set: function (value) {
         value = value / 100;
         this.body.bounce.x = value;
         this.body.bounce.y = value;
@@ -35,7 +38,7 @@ Object.defineProperty(Game4kids.Actor.prototype, 'opacity', {
 
 Object.defineProperty(Game4kids.Actor.prototype, 'friction', {
     get: function () { return this.body.friction.x * 100 },
-    set: function (value) { 
+    set: function (value) {
         value = value / 100;
         this.body.friction.x = value;
         this.body.friction.y = value;
@@ -60,9 +63,9 @@ Object.defineProperty(Game4kids.Actor.prototype, 'gravity', {
 
 Object.defineProperty(Game4kids.Actor.prototype, 'scaleXY', {
     get: function () { return this.scale.x * 100 },
-    set: function (value) { 
-        this.scale.x = value / 100; 
-        this.scale.y = value / 100; 
+    set: function (value) {
+        this.scale.x = value / 100;
+        this.scale.y = value / 100;
     },
     enumerable: true,
     configurable: true
@@ -189,32 +192,70 @@ Game4kids.Actor.prototype.jump = function (speed) {
         });
 }
 
-Game4kids.Actor.Speech = function (actor, string) {
+Game4kids.Actor.Speech = function (actor, msg) {
+    this.rawMsg_ = msg;
+    if (msg instanceof Array) msg = msg.join('\n');
+
+    this.game_ = actor.game;
     this.actor_ = actor;
+    this.msg_ = msg;
     this.text_ = null;
-    this.patch = null;
+    this.patch_ = null;
 }
 
-Game4kids.Actor.Speech.prototype.build = function (string) {
-    if (typeof string == Array) string = string.join('\n');
+Game4kids.Actor.Speech.prototype.countWords = function () {
+    var string = (this.rawMsg_ instanceof Array) ? this.rawMsg_.join(' ') : this.rawMsg_;
+    return string.split(' ').length;
+}
+
+Game4kids.Actor.Speech.prototype.build = function () {
 
     var content = Phaser.readNinePatchContentRect(this.actor_.game, 'speech');
-    var x = this.actor_.x + Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width;
-    var y = this.actor_.y - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.width + h);
 
     // create text
-    this.text_ = new Phaser.Text(this.actor_.game, x + content.x, content.y, string, Game4kids.Actor.TEXT_STYLE)
+    this.text_ = new Phaser.Text(this.actor_.game, 0, 0, this.msg_, Game4kids.Actor.TEXT_STYLE)
 
     var w = this.text_.width + content.margin.left + content.margin.right;
     var h = this.text_.height + content.margin.top + content.margin.bottom;
 
-    this.patch = this.actor_.addChild(game4k.game.make.ninePatch(0, 0, w, h, 'speech'));
+    var px = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
+    var py = - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height + h);
+
+    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, 'speech'));
+    this.patch_.x = px;
+    this.patch_.y = py;
+
     this.actor_.addChild(this.text_);
+    this.text_.x = this.patch_.x + content.x;
+    this.text_.y = this.patch_.y + content.y;
 }
 
-Game4kids.Actor.prototype.say = function (string) {
+Game4kids.Actor.Speech.prototype.destroy = function () {
+    this.patch_.destroy();
+    this.text_.destroy();
+}
+
+Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
     var speech = new Game4kids.Actor.Speech(this, string);
     speech.build();
+
+    if (parent && parent.register) {
+        parent.register(this);
+    }
+
+    if (time <= 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
+
+    var self = this;
+    Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%
+        .toTime().every(function () { return time; })																			//id: 8C(HTGcK/pNAgwFUEns|
+        .subscribe(function (value, speech) {
+            speech.destroy();
+            if (parent && parent.childCompleted) {
+                parent.childCompleted(self);
+            }
+            this.destroy();
+        });
+
 }
 
 Game4kids.Actor.prototype.toFront = function () {

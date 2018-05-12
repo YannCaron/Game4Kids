@@ -70,6 +70,25 @@ Blockly.Blocks['create_tween_apply'] = {
     }
 };
 
+Blockly.Blocks['create_tween_say'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck(["String", "Array"])
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(this.fieldActorFactory(), "VAR")
+            .appendField("say")
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.BLOCK_DURING)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 // Tween.attribute
 Blockly.Blocks['tween_relative'] = {
     init: function () {

@@ -36,6 +36,18 @@ Blockly.JavaScript['create_tween_apply'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['create_tween_say'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
+    var time = Blockly.JavaScript.valueToCode(block, 'TIME', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = '%1.say(%2, %3, this);'.format(varName, value, time);
+    code += block.lineCode();
+
+    return code;
+};
+
+
 Blockly.JavaScript['tween_relative'] = function (block) {
     var sign = block.getFieldValue('SIGN');
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
