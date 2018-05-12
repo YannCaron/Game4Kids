@@ -79,8 +79,8 @@ Blockly.Msg.BLOCK_MOUSE = "que la souris";
 Blockly.Msg.BLOCK_MOUSE_BUTTON = "le bouton de la souris à";
 Blockly.Msg.BLOCK_KEY = "la touche clavier";
 Blockly.Msg.FOR_EACH = "pour tous les";
-Blockly.Msg.BLOCK_SET_GLOBAL = "crée la variable globale";
-Blockly.Msg.BLOCK_TO_VALUE = "avec la valeur";
+Blockly.Msg.BLOCK_SET_GLOBAL = "fixer globale";
+Blockly.Msg.BLOCK_TO_VALUE = "à";
 
 Blockly.Msg.BLOCK_SECONDS = "seconds";
 
