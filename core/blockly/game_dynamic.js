@@ -86,10 +86,11 @@ Blockly.gameDynamic.gameFlyoutCallback = function (workspace) {
 
     if (variables.length > 0) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.buildGamePrint(variables[0].name)));
-    }
 
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_MISC)));
-    xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.VARIABLES_GLOBAL));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_MISC)));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.gameDynamic.VARIABLES_GLOBAL));
+
+    }
 
     // events
     //xmlList.push(Blockly.Xml.xmlToDom(Blockly.dynamic.buildLabel(Blockly.Msg.OBJECT_EVENTS)));
