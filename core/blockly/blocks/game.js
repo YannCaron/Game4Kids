@@ -1,10 +1,9 @@
 // Game
 Blockly.Blocks['create_game'] = {
   init: function () {
-    this.appendDummyInput()
-      .appendField('%1 %2 %3'.format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_GAME, Blockly.Msg.BLOCK_SET))
     this.appendValueInput("IMG")
       .setCheck([Blockly.Block.IMAGE_TYPE, "Colour"])
+      .appendField('%1 %2 %3'.format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_GAME, Blockly.Msg.BLOCK_SET))
     this.appendValueInput("W")
       .setCheck("Number")
       .appendField(Blockly.Msg.BLOCK_W_TO);
@@ -24,18 +23,20 @@ Blockly.Blocks['game_get'] = {
 
   init: function () {
     this.OPTIONS = [
-      [Blockly.Msg.BLOCK_WIDTH, "game.world.width"],
-      [Blockly.Msg.BLOCK_HEIGHT, "game.world.height"],
-      ["%1 x".format(Blockly.Msg.BLOCK_MOUSE_IN), "game.input.activePointer.x"],
-      ["%1 y".format(Blockly.Msg.BLOCK_MOUSE_IN), "game.input.activePointer.y"],
-      ["%1 x".format(Blockly.Msg.CAMERA), "game.camera.x"],
-      ["%1 y".format(Blockly.Msg.CAMERA), "game.camera.y"],
-      ["%1 x".format(Blockly.Msg.CAMERA_DELTA), "cameraXDelta"],
-      ["%1 y".format(Blockly.Msg.CAMERA_DELTA), "cameraYDelta"],
+      [Blockly.Msg.BLOCK_WIDTH, "game4k.game.world.width"],
+      [Blockly.Msg.BLOCK_HEIGHT, "game4k.game.world.height"],
+      [Blockly.Msg.BLOCK_WINDOW_WIDTH, "Blockly.Block.windowWidth()"],
+      [Blockly.Msg.BLOCK_WINDOW_HEIGHT, "Blockly.Block.windowHeight()"],
+      ["%1 x".format(Blockly.Msg.BLOCK_MOUSE_IN), "game4k.game.input.activePointer.x"],
+      ["%1 y".format(Blockly.Msg.BLOCK_MOUSE_IN), "game4k.game.input.activePointer.y"],
+      ["%1 x".format(Blockly.Msg.CAMERA), "game4k.game.camera.x"],
+      ["%1 y".format(Blockly.Msg.CAMERA), "game4k.game.camera.y"],
+      ["%1 x".format(Blockly.Msg.CAMERA_DELTA), "game4k.cameraXDelta"],
+      ["%1 y".format(Blockly.Msg.CAMERA_DELTA), "game4k.cameraYDelta"],
     ];
 
     this.appendDummyInput()
-      .appendField('%1 %2 %3'.format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_GAME, Blockly.Msg.BLOCK_GET))
+      .appendField(Blockly.Msg.BLOCK_GET)
       .appendField(new Blockly.FieldDropdown(this.OPTIONS), "PROPERTY");
     this.setInputsInline(true);
     this.setOutput(true, "Number");

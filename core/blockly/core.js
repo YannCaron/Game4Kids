@@ -8,8 +8,8 @@ Blockly.Block.SIGNAL_TYPE = 'Signal';
 Blockly.Block.ANIM_TYPE = 'Anim';
 Blockly.Block.RELATIVE_TYPE = 'Relative';
 
-Blockly.Block.GAME_WIDTH = function () { return window.innerWidth - 1; };
-Blockly.Block.GAME_HEIGHT = function () { return window.innerHeight - 88; };
+Blockly.Block.windowWidth = function () { return window.innerWidth - 1; };
+Blockly.Block.windowHeight = function () { return window.innerHeight - 88; };
 
 Blockly.Block.BACKGROUND_CATEGORY = 'Background';
 
@@ -31,6 +31,22 @@ Blockly.dynamic.buildShadowObject = function (name) {
         '<shadow type="actor_object"></shadow>' +
         '</value>';
 }
+
+Blockly.dynamic.buildShadowGameGetWidth = function () {
+    return '<value name="W">' +
+        '<shadow type="game_get">' +
+        '<field name="PROPERTY">Blockly.Block.windowWidth()</field>' +
+        '</shadow>' +
+        '</value>';
+};
+
+Blockly.dynamic.buildShadowGameGetHeight = function () {
+    return '<value name="H">' +
+        '<shadow type="game_get">' +
+        '<field name="PROPERTY">Blockly.Block.windowHeight()</field>' +
+        '</shadow>' +
+        '</value>';
+};
 
 Blockly.dynamic.buildShadowBackground = function (name) {
     return '<value name="' + name + '">' +

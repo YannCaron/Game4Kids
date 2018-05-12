@@ -1,11 +1,10 @@
 // constructor
 Blockly.Blocks['create_actor'] = {
     init: function () {
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.BLOCK_CREATE)
-            .appendField(this.fieldActorFactory(true), "VAR");
         this.appendValueInput("IMG")
             .setCheck(Blockly.Block.IMAGE_TYPE)
+            .appendField(Blockly.Msg.BLOCK_CREATE)
+            .appendField(this.fieldActorFactory(true), "VAR")
             .appendField(Blockly.Msg.BLOCK_WITH)
         this.appendValueInput("X")
             .setCheck("Number")

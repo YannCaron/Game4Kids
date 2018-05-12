@@ -9,8 +9,8 @@ Blockly.gameDynamic.VARIABLES_GLOBAL =
 Blockly.gameDynamic.CREATE_GAME =
     '<block type="create_game">' +
     Blockly.dynamic.buildShadowBackground('IMG') +
-    Blockly.dynamic.buildShadowNumber('W', Blockly.Block.GAME_WIDTH()) +
-    Blockly.dynamic.buildShadowNumber('H', Blockly.Block.GAME_HEIGHT()) +
+    Blockly.dynamic.buildShadowNumber('W', 1000) +
+    Blockly.dynamic.buildShadowNumber('H', 700) +
     '</block>';
 
 Blockly.gameDynamic.GAME_GET =
