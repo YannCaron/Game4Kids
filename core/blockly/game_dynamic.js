@@ -28,10 +28,7 @@ Blockly.gameDynamic.buildGamePrint = function (value) {
     return '<block type="game_print">' +
         Blockly.dynamic.buildShadowNumber('X', 30) +
         Blockly.dynamic.buildShadowNumber('Y', 30) +
-        '<value name="TEXT"><block type="text_join" inline="true">' +
-        Blockly.dynamic.buildShadowText('ADD0', value + ' = ') +
-        Blockly.dynamic.buildShadowVariable('ADD1', value) +
-        '</block></value>' +
+        Blockly.dynamic.buildShadowText('TEXT', '') +
         '</block>';
 }
 
