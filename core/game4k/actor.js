@@ -241,7 +241,7 @@ Game4kids.Actor.prototype.enableInput_ = function () {
 
 // Actor.speech
 Game4kids.Actor.Speech = function (actor, msg, parent = null) {
-    Game4kids.TweenLock.call(this, parent);
+    Game4kids.TweenLockNode.call(this, parent);
 
     this.rawMsg_ = msg;
     if (msg instanceof Array) msg = msg.join('\n');
@@ -255,7 +255,7 @@ Game4kids.Actor.Speech = function (actor, msg, parent = null) {
 
 Game4kids.Actor.Speech.SPEECH_PATCH_ID = 'ui-speech';
 
-Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLockNode.prototype);
 Game4kids.Actor.Speech.prototype.constructor = Game4kids.Actor.Speech;
 
 Game4kids.Actor.Speech.prototype.countWords = function () {

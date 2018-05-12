@@ -30,18 +30,57 @@ Game4kids.Game.prototype.clearAnims = function () {
 // TweenLock.constructor
 Game4kids.TweenLock = function (parent = null) {
     this.parent_ = parent;
+    this.callback_ = null;
 }
 
 // TweenLock.method
 Game4kids.TweenLock.prototype.lock = function () {
-    if (this.parent_ && this.parent_.register) {
-        this.parent_.register(this);
+    if (this.parent_ && this.parent_.lockChild) {
+        this.parent_.lockChild(this);
     }
 }
 
 Game4kids.TweenLock.prototype.unlock = function () {
-    if (this.parent_ && this.parent_.childCompleted) {
-        this.parent_.childCompleted(this);
+    if (this.parent_ && this.parent_.unlockChild) {
+        this.parent_.unlockChild(this);
+    }
+
+    if (this.callback_) {
+        this.callback_();
+    }
+}
+
+// TweenLock.events
+Game4kids.TweenLock.prototype.onCompleted = function (callback) {
+    this.callback_ = callback;
+    return this;
+}
+
+// TweenLockNode
+// TweenLockNode.constructor
+Game4kids.TweenLockNode = function(parent = null) {
+    Game4kids.TweenLock.call(this, parent);
+    this.children_ = new Map();
+}
+
+Game4kids.TweenLockNode.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.TweenLockNode.prototype.constructor = Game4kids.TweenLockNode;
+
+// TweenLockNode.method
+Game4kids.TweenLockNode.prototype.lockChild = function (object) {
+    this.children_.set(object, false);
+}
+
+Game4kids.TweenLockNode.prototype.unlockChild = function (object) {
+    this.children_.set(object, true);
+    this.checkChildren();
+}
+
+Game4kids.TweenLockNode.prototype.checkChildren = function (object) {
+    var allUnlocked = true;
+    this.children_.forEach(value => { if (!value) { allUnlocked = false } });
+    if (allUnlocked) {
+        this.unlock();
     }
 }
 
@@ -124,37 +163,23 @@ Game4kids.Tween.prototype.onCompleted = function (callback) {
 // TweenExecutor
 // TweenExecutor.constructor
 Game4kids.TweenExecutor = function (command, parent = null) {
-    Game4kids.TweenLock.call(this, parent);
+    Game4kids.TweenLockNode.call(this, parent);
 
     this.command_ = command.bind(this);
     this.callback_ = null;
     this.children_ = new Map();
 }
 
-Game4kids.TweenExecutor.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.TweenExecutor.prototype = Object.create(Game4kids.TweenLockNode.prototype);
 Game4kids.TweenExecutor.prototype.constructor = Game4kids.TweenExecutor;
 
 // TweenExecutor.methods
-Game4kids.TweenExecutor.prototype.register = function (object) {
-    this.children_.set(object, false);
-}
-
-Game4kids.TweenExecutor.prototype.childCompleted = function (object) {
-    this.children_.set(object, true);
-
-    var all = true;
-    this.children_.forEach(value => { if (!value) { all = false } });
-    if (all) {
-        this.fireCompleted_();
-    }
-}
-
 Game4kids.TweenExecutor.prototype.start = function () {
     this.lock();
     this.command_();
 
     if (this.children_.size == 0) {
-        this.fireCompleted_();
+        this.checkChildren();
     }
     return this;
 }
@@ -164,20 +189,6 @@ Game4kids.TweenExecutor.prototype.destroy = function () {
         this.parent_.destroy();
     }
     return this;
-}
-
-// TweenExecutor.events
-Game4kids.TweenExecutor.prototype.onCompleted = function (callback) {
-    this.callback_ = callback;
-    return this;
-}
-
-// TweenExecutor.private
-Game4kids.TweenExecutor.prototype.fireCompleted_ = function () {
-    if (this.callback_) {
-        this.callback_();
-    }
-    this.unlock();
 }
 
 Game4kids.TweenExecutor.prototype.destroy = function () {
@@ -199,7 +210,7 @@ Game4kids.Sequence = function (parent = null) {
     this.repeat_ = 0;
     this.currentRepeat_ = 0;
 
-    if (!(this.parent_ && this.parent_.register)) {
+    if (!(this.parent_ && this.parent_.lockChild)) {
         Game4kids.current.anims.add(this);
     }
 };
