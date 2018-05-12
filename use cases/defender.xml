@@ -1,17 +1,18 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <variables>
+    <variable type="" id="ee{nA^dfCBf}9/R~Y}o#">img</variable>
     <variable type="" id="v1tlEvZxoa4G,Lk^5/!U">x</variable>
     <variable type="" id="R,9sx:=D25sSSV1lw`]0">y</variable>
-    <variable type="" id="ee{nA^dfCBf}9/R~Y}o#">img</variable>
+    <variable type="" id="3:d#?vfC^(Bh5m)^n.T7">time</variable>
     <variable type="" id="=)dbbu1{|pcCF^:V(,J-">tower</variable>
     <variable type="Actor" id="7mpGyxbO/ug$}!F$7I+(">shoot</variable>
     <variable type="Actor" id="9VylJ9CrFHv2fOz_Fz];">enemy</variable>
     <variable type="" id="uP.W2zERH`.kB/57MLTY">targetEnemy</variable>
-    <variable type="Actor" id="g,z0Gs1;Nk1E*(C5U$t-">place</variable>
     <variable type="Actor" id="]DGC3$c6InX|c~=np`LH">tower</variable>
+    <variable type="Actor" id="g,z0Gs1;Nk1E*(C5U$t-">place</variable>
     <variable type="Actor" id="|6Rn)LeK?9V,hddnW*dt">play</variable>
   </variables>
-  <block type="procedures_defnoreturn" id="zlt/_kX+bs%Wi)f:XU)?" collapsed="true" x="700" y="20">
+  <block type="procedures_defnoreturn" id="zlt/_kX+bs%Wi)f:XU)?" x="-620" y="-100">
     <field name="NAME">buildPlaces</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
@@ -409,7 +410,7 @@
       </block>
     </statement>
   </block>
-  <block type="create_game" id="tSoAO-xyuYPwT2T17[gH" x="100" y="60">
+  <block type="create_game" id="tSoAO-xyuYPwT2T17[gH" x="20" y="20">
     <value name="IMG">
       <shadow type="game_image_Background" id="x@J+JIYXtW-2=T{PgBsW">
         <field name="IMG">Background-tile-2#assets/img/Background/tile 2.png</field>
@@ -426,10 +427,10 @@
       </shadow>
     </value>
     <next>
-      <block type="variables_global" id="$*~#f3s-R(_(u9!3^66.">
+      <block type="variables_global" id="g4r55LZDPC1u%.*I~8Tm">
         <field name="VAR" id="uP.W2zERH`.kB/57MLTY" variabletype="">targetEnemy</field>
         <value name="VALUE">
-          <shadow type="math_number" id="rqCveTsZx]W*`SrdGp9$">
+          <shadow type="math_number" id="F2zZz9UNlVo{K4EEhh+N">
             <field name="NUM">0</field>
           </shadow>
           <block type="logic_null" id="K.eF.f`~KWpQm`bOOYrj"></block>
@@ -461,6 +462,7 @@
                       <arg name="img"></arg>
                       <arg name="x"></arg>
                       <arg name="y"></arg>
+                      <arg name="time"></arg>
                     </mutation>
                     <value name="ARG0">
                       <block type="game_image_SpaceArt" id="#9TSpXwmWSq#T?noVIL#">
@@ -477,6 +479,11 @@
                         <field name="NUM">100</field>
                       </block>
                     </value>
+                    <value name="ARG3">
+                      <block type="math_number" id="M7=M-jI/.:i6[2V`J_OO">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
                   </block>
                 </statement>
                 <next>
@@ -489,7 +496,7 @@
                     </value>
                     <value name="TO">
                       <shadow type="math_number" id="g=MNO/+G[Uc8r2l6`)9I">
-                        <field name="NUM">1050</field>
+                        <field name="NUM">850</field>
                       </shadow>
                     </value>
                     <value name="BY">
@@ -503,6 +510,7 @@
                           <arg name="img"></arg>
                           <arg name="x"></arg>
                           <arg name="y"></arg>
+                          <arg name="time"></arg>
                         </mutation>
                         <value name="ARG0">
                           <block type="game_image_SpaceArt" id="}66%Av19ShrQ#UISCipr">
@@ -519,6 +527,11 @@
                             <field name="NUM">200</field>
                           </block>
                         </value>
+                        <value name="ARG3">
+                          <block type="math_number" id="f+A4X^zFIgB@k+}7{BrH">
+                            <field name="NUM">0.5</field>
+                          </block>
+                        </value>
                       </block>
                     </statement>
                     <next>
@@ -528,13 +541,13 @@
                           <shadow type="game_image_PlanetCute" id="fO7IHXfBHJeXwranEP?u">
                             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
                           </shadow>
-                          <block type="game_image_SpaceArt" id=",cAFgVT[:z({VlM5A#p{">
-                            <field name="IMG">SpaceArt-ufoGreen#assets/img/SpaceArt/ufoGreen.png</field>
+                          <block type="game_image_Board" id="M{IfF68mETid4^wylL{R">
+                            <field name="IMG">Board-dieRed-border5#assets/img/Board/dieRed_border5.png</field>
                           </block>
                         </value>
                         <value name="X">
                           <shadow type="math_number" id="7laTOWEb%]AYrkFb%iRh">
-                            <field name="NUM">100</field>
+                            <field name="NUM">200</field>
                           </shadow>
                         </value>
                         <value name="Y">
@@ -546,9 +559,25 @@
                           <block type="signal_create" id="Dk{2{5NSg]Sn!{M!!e*,">
                             <field name="VAR" id="|6Rn)LeK?9V,hddnW*dt" variabletype="Actor">play</field>
                             <value name="NEXT">
-                              <block type="signal_actor_mouse" id="PwK{vfV+[A-?cxpsx)3H">
-                                <field name="EVENT">.toggle().whenEquals(true)</field>
-                                <field name="KEY">.map(function () { return this.getRoot().actor.drag; })</field>
+                              <block type="signal_combine" id="8vZzi-SyTh-Z`e-j{W}b">
+                                <field name="OPERATOR">%1.combineWith(
+game4k.createSignal()%2)
+                                </field>
+                                <value name="NEXT1">
+                                  <block type="signal_every" id="IyPX!qtK)v70Bq^_Nwx=">
+                                    <value name="VALUE">
+                                      <shadow type="math_number" id="._nQ,cX!Fbw~0eDojKh-">
+                                        <field name="NUM">2</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="NEXT2">
+                                  <block type="signal_actor_mouse" id="d8=2xrucK_m%|bq4]S]$">
+                                    <field name="EVENT">.toggle().whenEquals(true)</field>
+                                    <field name="KEY">.map(function () { return this.getRoot().actor.drag; })</field>
+                                  </block>
+                                </value>
                               </block>
                             </value>
                             <statement name="STMT">
@@ -608,78 +637,12 @@
       </block>
     </next>
   </block>
-  <block type="procedures_defnoreturn" id="_UuDwLP+3|Jii@I6CC%!" x="1020" y="20">
-    <mutation>
-      <arg name="x" varid="v1tlEvZxoa4G,Lk^5/!U"></arg>
-      <arg name="y" varid="R,9sx:=D25sSSV1lw`]0"></arg>
-    </mutation>
-    <field name="NAME">buildPlace</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
-    <statement name="STACK">
-      <block type="create_actor" id="SC|{nz|R^;7W}@%?$/fS">
-        <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
-        <value name="IMG">
-          <shadow type="game_image_PlanetCute" id="XN:a9uO5Q`?}%@[wWYeN">
-            <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
-          </shadow>
-          <block type="game_image_Brick" id="-F;c|JY{S3BqTtX+{:q;">
-            <field name="IMG">Brick-element-grey-diamond-glossy#assets/img/Brick/element_grey_diamond_glossy.png</field>
-          </block>
-        </value>
-        <value name="X">
-          <shadow type="math_number" id="xn0uJ$8^T$^!8;Oj/*Pu">
-            <field name="NUM">100</field>
-          </shadow>
-          <block type="variables_get" id="wp[Y.tt:YcGkXUL}M-!l">
-            <field name="VAR" id="v1tlEvZxoa4G,Lk^5/!U" variabletype="">x</field>
-          </block>
-        </value>
-        <value name="Y">
-          <shadow type="math_number" id="ngbAHr@e)V!ij~v[h{t5">
-            <field name="NUM">100</field>
-          </shadow>
-          <block type="variables_get" id="w[0@0H~pu[QHQy@2ZlJF">
-            <field name="VAR" id="R,9sx:=D25sSSV1lw`]0" variabletype="">y</field>
-          </block>
-        </value>
-        <next>
-          <block type="actor_set" id="X38Nk:Sm-A;{poEg)@Ma">
-            <field name="PROPERTY">scaleX</field>
-            <value name="VAR">
-              <shadow type="actor_object" id="fyB6~ffEnX1*w75t`4X_">
-                <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
-              </shadow>
-            </value>
-            <value name="ARG1">
-              <shadow type="math_number" id="1t|I.:q6U_U$*Ts,971T">
-                <field name="NUM">75</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="actor_set" id="wTx~nk5MO~f1-1P;cQ`B">
-                <field name="PROPERTY">scaleY</field>
-                <value name="VAR">
-                  <shadow type="actor_object" id="xvUZ!(O)qO{PY0V?4_7a">
-                    <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
-                  </shadow>
-                </value>
-                <value name="ARG1">
-                  <shadow type="math_number" id="c,jWm}{eXg{nYR#8-$iy">
-                    <field name="NUM">75</field>
-                  </shadow>
-                </value>
-              </block>
-            </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="procedures_defnoreturn" id="=o5twgQ}jc}fZ)3R@coy" x="700" y="180">
+  <block type="procedures_defnoreturn" id="=o5twgQ}jc}fZ)3R@coy" collapsed="true" x="700" y="180">
     <mutation>
       <arg name="img" varid="ee{nA^dfCBf}9/R~Y}o#"></arg>
       <arg name="x" varid="v1tlEvZxoa4G,Lk^5/!U"></arg>
       <arg name="y" varid="R,9sx:=D25sSSV1lw`]0"></arg>
+      <arg name="time" varid="3:d#?vfC^(Bh5m)^n.T7"></arg>
     </mutation>
     <field name="NAME">build tower</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
@@ -1043,6 +1006,9 @@
                                           <shadow type="math_number" id="8Fv[{}[LmBV3xcb-Y34g">
                                             <field name="NUM">1</field>
                                           </shadow>
+                                          <block type="variables_get" id="gn]}d+$`so7V[b$2qEzx">
+                                            <field name="VAR" id="3:d#?vfC^(Bh5m)^n.T7" variabletype="">time</field>
+                                          </block>
                                         </value>
                                       </block>
                                     </value>
@@ -1084,6 +1050,9 @@
                                           <shadow type="math_number" id="bdfx(qpBaWAR2++?gmG2">
                                             <field name="NUM">0.5</field>
                                           </shadow>
+                                          <block type="variables_get" id="Sx^dt%Kf:uRa.9U-Oa@/">
+                                            <field name="VAR" id="3:d#?vfC^(Bh5m)^n.T7" variabletype="">time</field>
+                                          </block>
                                         </value>
                                       </block>
                                     </statement>
@@ -1116,7 +1085,74 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="Rym_aZ)`c7dbM_iSeenD" collapsed="true" x="1460" y="540">
+  <block type="procedures_defnoreturn" id="_UuDwLP+3|Jii@I6CC%!" x="1420" y="180">
+    <mutation>
+      <arg name="x" varid="v1tlEvZxoa4G,Lk^5/!U"></arg>
+      <arg name="y" varid="R,9sx:=D25sSSV1lw`]0"></arg>
+    </mutation>
+    <field name="NAME">buildPlace</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="create_actor" id="SC|{nz|R^;7W}@%?$/fS">
+        <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
+        <value name="IMG">
+          <shadow type="game_image_PlanetCute" id="XN:a9uO5Q`?}%@[wWYeN">
+            <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+          </shadow>
+          <block type="game_image_Brick" id="-F;c|JY{S3BqTtX+{:q;">
+            <field name="IMG">Brick-element-grey-diamond-glossy#assets/img/Brick/element_grey_diamond_glossy.png</field>
+          </block>
+        </value>
+        <value name="X">
+          <shadow type="math_number" id="xn0uJ$8^T$^!8;Oj/*Pu">
+            <field name="NUM">100</field>
+          </shadow>
+          <block type="variables_get" id="wp[Y.tt:YcGkXUL}M-!l">
+            <field name="VAR" id="v1tlEvZxoa4G,Lk^5/!U" variabletype="">x</field>
+          </block>
+        </value>
+        <value name="Y">
+          <shadow type="math_number" id="ngbAHr@e)V!ij~v[h{t5">
+            <field name="NUM">100</field>
+          </shadow>
+          <block type="variables_get" id="w[0@0H~pu[QHQy@2ZlJF">
+            <field name="VAR" id="R,9sx:=D25sSSV1lw`]0" variabletype="">y</field>
+          </block>
+        </value>
+        <next>
+          <block type="actor_set" id="X38Nk:Sm-A;{poEg)@Ma">
+            <field name="PROPERTY">scaleX</field>
+            <value name="VAR">
+              <shadow type="actor_object" id="fyB6~ffEnX1*w75t`4X_">
+                <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
+              </shadow>
+            </value>
+            <value name="ARG1">
+              <shadow type="math_number" id="1t|I.:q6U_U$*Ts,971T">
+                <field name="NUM">75</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="actor_set" id="wTx~nk5MO~f1-1P;cQ`B">
+                <field name="PROPERTY">scaleY</field>
+                <value name="VAR">
+                  <shadow type="actor_object" id="xvUZ!(O)qO{PY0V?4_7a">
+                    <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
+                  </shadow>
+                </value>
+                <value name="ARG1">
+                  <shadow type="math_number" id="c,jWm}{eXg{nYR#8-$iy">
+                    <field name="NUM">75</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Rym_aZ)`c7dbM_iSeenD" x="1460" y="540">
     <mutation>
       <arg name="tower" varid="=)dbbu1{|pcCF^:V(,J-"></arg>
     </mutation>
@@ -1215,7 +1251,7 @@
       </block>
     </statement>
   </block>
-  <block type="signal_create_collide" id="XLsqMPEw[PR.,0i9~`Z@" x="-340" y="660">
+  <block type="signal_create_collide" id="XLsqMPEw[PR.,0i9~`Z@" x="-580" y="860">
     <field name="ACTOR1" id="7mpGyxbO/ug$}!F$7I+(" variabletype="Actor">shoot</field>
     <field name="EVENT">01</field>
     <field name="KEY">overlap</field>
@@ -1420,7 +1456,7 @@
                                 <field name="PROPERTY">body.velocity.x</field>
                                 <value name="VALUE">
                                   <shadow type="math_number" id="wt{,tz,8E7$^C$`c/u_O">
-                                    <field name="NUM">475</field>
+                                    <field name="NUM">550</field>
                                   </shadow>
                                 </value>
                                 <value name="TIME">
@@ -1453,7 +1489,7 @@
                                 <field name="PROPERTY">body.velocity.y</field>
                                 <value name="VALUE">
                                   <shadow type="math_number" id="VvGZ;9l}+8ia(8~n_ARz">
-                                    <field name="NUM">450</field>
+                                    <field name="NUM">500</field>
                                   </shadow>
                                 </value>
                                 <value name="TIME">
