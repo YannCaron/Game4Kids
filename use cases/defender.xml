@@ -17,7 +17,6 @@
     <statement name="STACK">
       <block type="variables_set" id="no}/w+o3T5FBN!-k!94F">
         <field name="VAR" id="v1tlEvZxoa4G,Lk^5/!U" variabletype="">x</field>
-        <field name="GLOBAL">FALSE</field>
         <value name="VALUE">
           <block type="math_number" id="fu)/3Lv#o#jny`*W).7r">
             <field name="NUM">-50</field>
@@ -26,7 +25,6 @@
         <next>
           <block type="variables_set" id="A(]]0dg)m~[W@S}?n{u{">
             <field name="VAR" id="R,9sx:=D25sSSV1lw`]0" variabletype="">y</field>
-            <field name="GLOBAL">FALSE</field>
             <value name="VALUE">
               <block type="math_number" id="5%?)TZ#X:+Hlna~|h78B">
                 <field name="NUM">250</field>
@@ -428,10 +426,12 @@
       </shadow>
     </value>
     <next>
-      <block type="variables_set" id="A{46)t~u,dC:F($~BwcZ">
+      <block type="variables_global" id="$*~#f3s-R(_(u9!3^66.">
         <field name="VAR" id="uP.W2zERH`.kB/57MLTY" variabletype="">targetEnemy</field>
-        <field name="GLOBAL">TRUE</field>
         <value name="VALUE">
+          <shadow type="math_number" id="rqCveTsZx]W*`SrdGp9$">
+            <field name="NUM">0</field>
+          </shadow>
           <block type="logic_null" id="K.eF.f`~KWpQm`bOOYrj"></block>
         </value>
         <next>
@@ -554,7 +554,6 @@
                             <statement name="STMT">
                               <block type="variables_set" id="7)p$A4t^z{{W$l`UrsYg">
                                 <field name="VAR" id="ee{nA^dfCBf}9/R~Y}o#" variabletype="">img</field>
-                                <field name="GLOBAL">FALSE</field>
                                 <value name="VALUE">
                                   <block type="lists_create_with" id=".E7ogk#0|%kb3z|,?ySi" inline="true">
                                     <mutation items="3"></mutation>
@@ -1296,7 +1295,6 @@
                     <next>
                       <block type="variables_set" id="ai(wW5=gp{-RXRzFeXf3">
                         <field name="VAR" id="uP.W2zERH`.kB/57MLTY" variabletype="">targetEnemy</field>
-                        <field name="GLOBAL">TRUE</field>
                         <value name="VALUE">
                           <block type="logic_null" id="v^vlv9+h|uiw)bCpUD|7"></block>
                         </value>
@@ -1403,7 +1401,6 @@
                         <statement name="STMT">
                           <block type="variables_set" id="{6Xuc])Np:P5M,|_Vy!,">
                             <field name="VAR" id="uP.W2zERH`.kB/57MLTY" variabletype="">targetEnemy</field>
-                            <field name="GLOBAL">TRUE</field>
                             <value name="VALUE">
                               <block type="actor_object" id="#4kL9vCwXafN5i1Y4qgs">
                                 <field name="VAR" id="9VylJ9CrFHv2fOz_Fz];" variabletype="Actor">enemy</field>
@@ -1502,7 +1499,6 @@
                             <statement name="STMT5">
                               <block type="variables_set" id="4IHt}]@$h4ZDJAKUES^b">
                                 <field name="VAR" id="uP.W2zERH`.kB/57MLTY" variabletype="">targetEnemy</field>
-                                <field name="GLOBAL">TRUE</field>
                                 <value name="VALUE">
                                   <block type="logic_null" id="gm:Z8B[eIfu=w=dHU!Q#"></block>
                                 </value>
