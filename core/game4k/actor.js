@@ -293,7 +293,7 @@ Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
     var speech = new Game4kids.Actor.Speech(this, string, parent);
     speech.start();
 
-    if (time <= 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
+    if (time < 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
 
     var self = this;
     Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%

@@ -70,6 +70,18 @@ Blockly.Blocks['create_tween_apply'] = {
     }
 };
 
+Blockly.Blocks['tween_auto'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("auto");
+        this.setInputsInline(true);
+        this.setOutput(true, Blockly.Block.ANIM_TIME_TYPE);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 Blockly.Blocks['create_tween_say'] = {
     init: function () {
         this.appendValueInput("VALUE")
@@ -78,7 +90,7 @@ Blockly.Blocks['create_tween_say'] = {
             .appendField(this.fieldActorFactory(), "VAR")
             .appendField("say")
         this.appendValueInput("TIME")
-            .setCheck("Number")
+            .setCheck(["Number", Blockly.Block.ANIM_TIME_TYPE])
             .appendField(Blockly.Msg.BLOCK_DURING)
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);

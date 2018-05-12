@@ -36,6 +36,10 @@ Blockly.JavaScript['create_tween_apply'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['tween_auto'] = function (block) {
+    return ['-1', Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['create_tween_say'] = function (block) {
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);

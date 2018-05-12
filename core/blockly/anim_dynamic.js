@@ -16,7 +16,7 @@ Blockly.animDynamic.CREATE_TWEEN_APPLY =
 Blockly.animDynamic.CREATE_TWEEN_SAY =
     '<block type="create_tween_say">' +
     Blockly.dynamic.buildShadowText('VALUE', '') +
-    Blockly.dynamic.buildShadowNumber('TIME', 0) +
+    Blockly.dynamic.buildShadow('TIME', 'tween_auto', 0) +
     '</block>';
 
 Blockly.animDynamic.TWEEN_RELATIVE =
@@ -31,9 +31,7 @@ Blockly.animDynamic.TWEEN_WAIT =
 
 Blockly.animDynamic.CREATE_SEQUENCE =
     '<block type="create_sequence">' +
-    '<value name="NEXT">' +
-    '<shadow type="sequence_once"></shadow>' +
-    '</value>' +
+    Blockly.dynamic.buildShadow('NEXT', 'sequence_once', '') +
     '</block>';
 
 Blockly.animDynamic.SEQUENCE_ALWAYS =

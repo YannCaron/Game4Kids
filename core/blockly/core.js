@@ -4,8 +4,8 @@ Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;
 
 Blockly.Block.IMAGE_TYPE = 'Image';
 Blockly.Block.ACTOR_TYPE = 'Actor';
-Blockly.Block.SIGNAL_TYPE = 'Signal';
 Blockly.Block.ANIM_TYPE = 'Anim';
+Blockly.Block.ANIM_TIME_TYPE = 'AnimTime';
 Blockly.Block.RELATIVE_TYPE = 'Relative';
 
 Blockly.Block.windowWidth = function () { return window.innerWidth - 1; };
@@ -18,6 +18,12 @@ Blockly.dynamic = Blockly.dynamic || {};
 
 Blockly.dynamic.buildLabel = function (name) {
     return '<label text="' + name + '"></label>';
+}
+
+Blockly.dynamic.buildShadow = function (name, type, value) {
+    return '<value name="' + name + '">' +
+        '<shadow type="' + type + '">' + value + '</shadow>' +
+        '</value>';
 }
 
 Blockly.dynamic.buildShadowVariable = function (name, value = '') {
