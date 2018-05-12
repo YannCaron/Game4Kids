@@ -1,23 +1,48 @@
 // Global
-Game4kids.LOCK_NAME = 'lock'
-Game4kids.Game.prototype.currentLocked = null;
+Game4kids.Game.prototype.currentLock = null;
 Game4kids.Game.prototype.anims = null;
 
 Game4kids.Game.prototype.initAnim = function () {
-    this.currentLocked = null;
+    this.currentLock = null;
     this.anims = new Set();
 }
 
-Game4kids.Game.prototype.resume = function () {
-    if (this.currentLocked) {
-        this.currentLocked.childCompleted(Game4kids.LOCK_NAME);
-        this.currentLocked = null;
+Game4kids.Game.prototype.pauseTween = function (parent = null) {
+    this.resumeTween();
+
+    this.currentLock = new Game4kids.TweenLock(parent);
+    this.currentLock.lock();
+}
+
+Game4kids.Game.prototype.resumeTween = function () {
+    if (this.currentLock) {
+        this.currentLock.unlock();
+        this.currentLock = null;
     }
 }
 
 Game4kids.Game.prototype.clearAnims = function () {
     this.anims.forEach(sequence => sequence.destroy());
     this.anims.clear();
+}
+
+// TweenLock
+// TweenLock.constructor
+Game4kids.TweenLock = function (parent = null) {
+    this.parent_ = parent;
+}
+
+// TweenLock.method
+Game4kids.TweenLock.prototype.lock = function () {
+    if (this.parent_ && this.parent_.register) {
+        this.parent_.register(this);
+    }
+}
+
+Game4kids.TweenLock.prototype.unlock = function () {
+    if (this.parent_ && this.parent_.childCompleted) {
+        this.parent_.childCompleted(this);
+    }
 }
 
 // Tween
@@ -27,16 +52,11 @@ Game4kids.Tween = function (target, game, manager, parent = null) {
     this.parent_ = parent;
     this.target_ = target;
     this.provider_ = {};
-
-    if (this.parent_ && this.parent_.register) {
-        this.parent_.register(this);
-    }
+    this.lock_ = new Game4kids.TweenLock(parent);
 
     var self = this;
     this.onComplete.add(function () {
-        if (self.parent_ && self.parent_.childCompleted) {
-            self.parent_.childCompleted(self);
-        }
+        self.lock_.unlock();
     });
 };
 
@@ -77,6 +97,8 @@ Game4kids.Tween.prototype.apply = function (applier, reset) {
 }
 
 Game4kids.Tween.prototype.animate = function (time) {
+    this.lock_.lock();
+
     if (this.target_.alive == undefined || this.target_.alive) {
         this.to(this.provider_, time * 1000);
         this.provider_ = {};
@@ -99,40 +121,18 @@ Game4kids.Tween.prototype.onCompleted = function (callback) {
     this.onComplete.add(callback);
 }
 
-// TweenLock
-// TweenLock.constructor
-Game4kids.TweenLock = function (game, parent = null) {
-    this.game_ = game;
-    this.parent_ = parent;
-
-    if (this.parent_ && this.parent_.register) {
-        this.parent_.register(Game4kids.LOCK_NAME);
-        game.currentLocked = this.parent_;
-    }
-}
-
-// TweenLock.method
-Game4kids.TweenLock.prototype.start = function () {
-}
-
-// TweenLock.events
-Game4kids.TweenLock.prototype.onCompleted = function (callback) {
-    this.callback_ = callback;
-    return this;
-}
-
 // TweenExecutor
 // TweenExecutor.constructor
 Game4kids.TweenExecutor = function (command, parent = null) {
+    Game4kids.TweenLock.call(this, parent);
+
     this.command_ = command.bind(this);
     this.callback_ = null;
-    this.parent_ = parent;
     this.children_ = new Map();
-
-    if (this.parent_ && this.parent_.register) {
-        this.parent_.register(this);
-    }
 }
+
+Game4kids.TweenExecutor.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.TweenExecutor.prototype.constructor = Game4kids.TweenExecutor;
 
 // TweenExecutor.methods
 Game4kids.TweenExecutor.prototype.register = function (object) {
@@ -150,6 +150,7 @@ Game4kids.TweenExecutor.prototype.childCompleted = function (object) {
 }
 
 Game4kids.TweenExecutor.prototype.start = function () {
+    this.lock();
     this.command_();
 
     if (this.children_.size == 0) {
@@ -176,9 +177,7 @@ Game4kids.TweenExecutor.prototype.fireCompleted_ = function () {
     if (this.callback_) {
         this.callback_();
     }
-    if (this.parent_ && this.parent_.childCompleted) {
-        this.parent_.childCompleted(this);
-    }
+    this.unlock();
 }
 
 Game4kids.TweenExecutor.prototype.destroy = function () {
@@ -193,19 +192,21 @@ Game4kids.TweenExecutor.prototype.destroy = function () {
 // Sequence
 // Sequence.constructor
 Game4kids.Sequence = function (parent = null) {
-    this.parent_ = parent;
+    Game4kids.TweenLock.call(this, parent);
 
     this.factories_ = new Array();
     this.destroy_ = false;
     this.repeat_ = 0;
     this.currentRepeat_ = 0;
 
-    if (this.parent_ && this.parent_.register) {
-        this.parent_.register(this);
-    } else {
+    if (!(this.parent_ && this.parent_.register)) {
         Game4kids.current.anims.add(this);
     }
 };
+
+Game4kids.Sequence.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.Sequence.prototype.constructor = Game4kids.Sequence;
+
 
 // Sequence.methods
 Game4kids.Sequence.prototype.addFactory = function (factory) {
@@ -214,6 +215,7 @@ Game4kids.Sequence.prototype.addFactory = function (factory) {
 };
 
 Game4kids.Sequence.prototype.start = function () {
+    this.lock();
     this.playNext_(0);
     return this;
 };
@@ -267,7 +269,5 @@ Game4kids.Sequence.prototype.fireCompleted_ = function () {
     if (this.callback_) {
         this.callback_();
     }
-    if (this.parent_ && this.parent_.childCompleted) {
-        this.parent_.childCompleted(this);
-    }
+    this.unlock();
 }

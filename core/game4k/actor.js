@@ -192,72 +192,6 @@ Game4kids.Actor.prototype.jump = function (speed) {
         });
 }
 
-Game4kids.Actor.Speech = function (actor, msg) {
-    this.rawMsg_ = msg;
-    if (msg instanceof Array) msg = msg.join('\n');
-
-    this.game_ = actor.game;
-    this.actor_ = actor;
-    this.msg_ = msg;
-    this.text_ = null;
-    this.patch_ = null;
-}
-
-Game4kids.Actor.Speech.prototype.countWords = function () {
-    var string = (this.rawMsg_ instanceof Array) ? this.rawMsg_.join(' ') : this.rawMsg_;
-    return string.split(' ').length;
-}
-
-Game4kids.Actor.Speech.prototype.build = function () {
-
-    var content = Phaser.readNinePatchContentRect(this.actor_.game, 'speech');
-
-    // create text
-    this.text_ = new Phaser.Text(this.actor_.game, 0, 0, this.msg_, Game4kids.Actor.TEXT_STYLE)
-
-    var w = this.text_.width + content.margin.left + content.margin.right;
-    var h = this.text_.height + content.margin.top + content.margin.bottom;
-
-    var px = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
-    var py = - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height + h);
-
-    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, 'speech'));
-    this.patch_.x = px;
-    this.patch_.y = py;
-
-    this.actor_.addChild(this.text_);
-    this.text_.x = this.patch_.x + content.x;
-    this.text_.y = this.patch_.y + content.y;
-}
-
-Game4kids.Actor.Speech.prototype.destroy = function () {
-    this.patch_.destroy();
-    this.text_.destroy();
-}
-
-Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
-    var speech = new Game4kids.Actor.Speech(this, string);
-    speech.build();
-
-    if (parent && parent.register) {
-        parent.register(this);
-    }
-
-    if (time <= 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
-
-    var self = this;
-    Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%
-        .toTime().every(function () { return time; })																			//id: 8C(HTGcK/pNAgwFUEns|
-        .subscribe(function (value, speech) {
-            speech.destroy();
-            if (parent && parent.childCompleted) {
-                parent.childCompleted(self);
-            }
-            this.destroy();
-        });
-
-}
-
 Game4kids.Actor.prototype.toFront = function () {
     if (this.parent) {
         this.parent.bringToTop(this);
@@ -303,4 +237,70 @@ Game4kids.Actor.prototype.enableInput_ = function () {
     this.events.onInputUp.add(function () {
         this.drag_ = false;
     }, this)
+}
+
+// Actor.speech
+Game4kids.Actor.Speech = function (actor, msg, parent = null) {
+    Game4kids.TweenLock.call(this, parent);
+
+    this.rawMsg_ = msg;
+    if (msg instanceof Array) msg = msg.join('\n');
+
+    this.game_ = actor.game;
+    this.actor_ = actor;
+    this.msg_ = msg;
+    this.text_ = null;
+    this.patch_ = null;
+}
+
+Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLock.prototype);
+Game4kids.Actor.Speech.prototype.constructor = Game4kids.Actor.Speech;
+
+Game4kids.Actor.Speech.prototype.countWords = function () {
+    var string = (this.rawMsg_ instanceof Array) ? this.rawMsg_.join(' ') : this.rawMsg_;
+    return string.split(' ').length;
+}
+
+Game4kids.Actor.Speech.prototype.start = function () {
+
+    this.lock();
+    var content = Phaser.readNinePatchContentRect(this.actor_.game, 'speech');
+
+    // create text
+    this.text_ = new Phaser.Text(this.actor_.game, 0, 0, this.msg_, Game4kids.Actor.TEXT_STYLE)
+
+    var w = this.text_.width + content.margin.left + content.margin.right;
+    var h = this.text_.height + content.margin.top + content.margin.bottom;
+
+    var px = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
+    var py = - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height + h);
+
+    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, 'speech'));
+    this.patch_.x = px;
+    this.patch_.y = py;
+
+    this.actor_.addChild(this.text_);
+    this.text_.x = this.patch_.x + content.x;
+    this.text_.y = this.patch_.y + content.y;
+}
+
+Game4kids.Actor.Speech.prototype.destroy = function () {
+    this.patch_.destroy();
+    this.text_.destroy();
+}
+
+Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
+    var speech = new Game4kids.Actor.Speech(this, string, parent);
+    speech.start();
+
+    if (time <= 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
+
+    var self = this;
+    Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%
+        .toTime().every(function () { return time; })																			//id: 8C(HTGcK/pNAgwFUEns|
+        .subscribe(function (value, speech) {
+            speech.destroy();
+            speech.unlock();
+            this.destroy();
+        });
 }

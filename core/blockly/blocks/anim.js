@@ -253,8 +253,8 @@ Blockly.Blocks['sequence_while'] = {
 Blockly.Blocks['sequence_do'] = {
     init: function () {
         this.OPTIONS = [
-            ['pause', 'new Game4kids.TweenLock(game4k, this).start()'],
-            ['resume', 'game4k.resume()'],
+            ['pause', 'game4k.pauseTween(this)'],
+            ['resume', 'game4k.resumeTween()'],
             ['destroy', 'this.destroy()'],
         ]
 
