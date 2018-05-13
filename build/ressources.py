@@ -1,57 +1,81 @@
-import os
+#!/usr/bin/env python
+"""
+Build global index for resources
+"""
 import glob
 
 ASSETS = '../assets/'
 OUTPUT_FILE = '../resources.js'
 
-def toRootPath(filename):
-	return filename.replace('../', '')
 
-def toCodeName(filename, replace):
-	return filename.replace(replace, '').replace('.png', '').replace('/', '-').replace(' ', '-').replace('_', '-')
-
-file = open(OUTPUT_FILE, 'w');
-
-# Header
-file.write('// GENERATED FILE.\n');
-file.write('\n')
-
-# package
-file.write('// package\n');
-file.write('var Blockly4kids = Blockly4kids || {};\n');
-file.write('\n')
-
-# images
-file.write('// game images for actor creation\n');
-file.write('Blockly4kids.gameImages = {};\n');
-for directory in sorted(glob.iglob(ASSETS + 'img/*')):
-	category = toCodeName(directory, ASSETS + 'img/')
-	file.write('Blockly4kids.gameImages[\'' + category + '\'] = [\n');
-
-	first = True
-	for filename in sorted(glob.iglob(directory + '/*.png')):
-		key = toCodeName(filename, ASSETS + 'img/')
-		filenameRelative = toRootPath(filename)
-
-		if not first: file.write(',\n')
-		first = False
-
-		file.write('\t[{ src: \'')
-		file.write(filenameRelative)
-		file.write('\', width: 50, height: 50 }, ')
-		file.write('\'')
-		file.write(key)
-		file.write('#')
-		file.write(filenameRelative)
-		file.write('\'')
-		file.write(']')
-
-	file.write('\n];\n')
+def to_root_path(filename):
+    """
+    return full path for filename
+    """
+    return filename.replace('../', '')
 
 
-file.close()
+def to_code_name(filename, replace):
+    """
+    normalize filename
+    """
+    return filename.replace(replace, "")\
+        .replace(".png", "")\
+        .replace("/", "-")\
+        .replace(" ", "-")\
+        .replace("_", "-")
 
-file=open(OUTPUT_FILE,'r')
-lines = file.readlines()
-#print (''.join(lines))
-file.close()
+
+def main():
+    """
+    main
+    """
+    output_file = open(OUTPUT_FILE, 'w')
+
+    # Header
+    output_file.write('// GENERATED FILE.\n')
+    output_file.write('\n')
+
+    # package
+    output_file.write('// package\n')
+    output_file.write('var Blockly4kids = Blockly4kids || {};\n')
+    output_file.write('\n')
+
+    # images
+    output_file.write('// game images for actor creation\n')
+    output_file.write('Blockly4kids.gameImages = {};\n')
+    for directory in sorted(glob.iglob(ASSETS + 'img/*')):
+        category = to_code_name(directory, ASSETS + 'img/')
+        output_file.write('Blockly4kids.gameImages[\'' + category + '\'] = [\n')
+
+        first = True
+        for filename in sorted(glob.iglob(directory + '/*.png')):
+            key = to_code_name(filename, ASSETS + 'img/')
+            filename_relative = to_root_path(filename)
+
+            if not first:
+                output_file.write(',\n')
+            first = False
+
+            output_file.write('\t[{ src: \'')
+            output_file.write(filename_relative)
+            output_file.write('\', width: 50, height: 50 }, ')
+            output_file.write('\'')
+            output_file.write(key)
+            output_file.write('#')
+            output_file.write(filename_relative)
+            output_file.write('\'')
+            output_file.write(']')
+
+        output_file.write('\n];\n')
+
+    output_file.close()
+
+    output_file = open(OUTPUT_FILE, 'r')
+    # lines =
+    output_file.readlines()
+    # print (''.join(lines))
+    output_file.close()
+
+
+main()
