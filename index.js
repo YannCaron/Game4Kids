@@ -586,6 +586,7 @@ Blockly.Generator.generatePreload = function (workspace, generator, code, ind) {
   code.push(Code.indent(ind) + 'function preload() {');
   code.push(Code.indent(ind + 1) + '// preload all ressources');
   code.push(Code.indent(ind + 1) + 'game4k.game.load.image(\'' + Game4kids.Actor.SPEECH_PATCH_ID + '\', \'assets/ui/speech.9.png\');');
+  code.push(Code.indent(ind + 1) + 'game4k.game.load.image(\'' + Game4kids.Actor.SPEECH_BUTTON_ID + '\', \'assets/ui/button.9.png\');');
 
   // put all images on preload
   var images = new Set();

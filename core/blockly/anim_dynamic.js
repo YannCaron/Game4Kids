@@ -24,6 +24,11 @@ Blockly.animDynamic.CREATE_TWEEN_ASK_KEY =
     Blockly.dynamic.buildShadowText('VALUE', '') +
     '</block>';
 
+Blockly.animDynamic.CREATE_TWEEN_ASK_BUTTONS =
+    '<block type="create_tween_ask_buttons">' +
+    Blockly.dynamic.buildShadowText('VALUE', '') +
+    '</block>';
+
 Blockly.animDynamic.TWEEN_RELATIVE =
     '<block type="tween_relative">' +
     Blockly.dynamic.buildShadowNumber('VALUE', 100) +
@@ -71,6 +76,7 @@ Blockly.animDynamic.animFlyoutCallback = function (workspace) {
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_APPLY));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_SAY));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_ASK_KEY));
+        xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.CREATE_TWEEN_ASK_BUTTONS));
         xmlList.push(Blockly.Xml.xmlToDom(Blockly.animDynamic.TWEEN_WAIT));
 
         // sequence

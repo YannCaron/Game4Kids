@@ -122,6 +122,25 @@ Blockly.Blocks['create_tween_ask_key'] = {
     }
 };
 
+Blockly.Blocks['create_tween_ask_buttons'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck(["String", "Array"])
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(this.fieldActorFactory(), "VAR")
+            .appendField("ask")
+        this.appendStatementInput("STMT1")
+            .setCheck(null)
+            .appendField(new Blockly.FieldTextInput("yes"), "BUTTON1");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 // Tween.attribute
 Blockly.Blocks['tween_relative'] = {
     init: function () {

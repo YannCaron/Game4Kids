@@ -66,6 +66,30 @@ Blockly.JavaScript['create_tween_ask_key'] = function (block) {
     return code;
 };
 
+Blockly.JavaScript['create_tween_ask_buttons'] = function (block) {
+    var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
+
+    var code = '%1.askButtons(%2, ['.format(varName, value);
+    code += block.lineCode();
+
+    var n = 1;
+    do {
+        var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON' + n), Blockly.Variables.NAME_TYPE);
+        var stmt = Blockly.JavaScript.statementToCode(block, 'STMT' + n);
+
+        code += '{name: \'%1\', callback: function () { %2 }},'.format(button, stmt);
+        code += block.lineCode();
+
+        n++;
+    } while (block.getInput('STMT' + n));
+
+    code += '], this);'.format(varName, value);
+    code += block.lineCode();
+
+    return code;
+};
+
 Blockly.JavaScript['tween_relative'] = function (block) {
     var sign = block.getFieldValue('SIGN');
     var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
