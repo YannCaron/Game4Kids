@@ -101,6 +101,27 @@ Blockly.Blocks['create_tween_say'] = {
     }
 };
 
+Blockly.Blocks['create_tween_ask_key'] = {
+    init: function () {
+        this.appendValueInput("VALUE")
+            .setCheck(["String", "Array"])
+            .appendField(Blockly.Msg.BLOCK_WITH)
+            .appendField(this.fieldActorFactory(), "VAR")
+            .appendField("ask")
+        this.appendDummyInput()
+            .appendField("and wait a key");
+        this.appendStatementInput("STMT")
+            .setCheck(null)
+            .appendField(new Blockly.FieldVariable("key"), "KEY");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
 // Tween.attribute
 Blockly.Blocks['tween_relative'] = {
     init: function () {
