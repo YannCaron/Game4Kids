@@ -51,7 +51,7 @@
         var hSpaces = readTileInfo_(bmp.width - 1, i => bmp.getPixelRGB(i, 0).color);
         var vSpaces = readTileInfo_(bmp.height - 1, i => bmp.getPixelRGB(0, i).color);
 
-        if (hSpaces.length != 4 || vSpaces.length != 4) throw 'Bad nine patch format.\nMust contain tile informations in first ans last lines of pixels.';
+        if (hSpaces.length != 4 || vSpaces.length != 4) throw 'Bad nine patch format [' + source + '].\nMust contain tile informations in first and last lines of pixels.';
 
         var topLeft = createTile_(game, source, hSpaces, vSpaces, 1, 1);
         var topCenter = createTile_(game, source, hSpaces, vSpaces, 2, 1);
@@ -108,9 +108,8 @@
 
     // constructor
     Phaser.NinePatch = function (game, source, width, height, x = 0, y = 0) {
-        Phaser.Sprite.call(this, game, x, y, createPatch_(game, source, width, height));
-        game.add.existing(this);
-
+        var sprite = createPatch_(game, source, width, height);
+        Phaser.Sprite.call(this, game, x, y, sprite);
         this.content = Phaser.readNinePatchContentRect(game, source);
     };
 

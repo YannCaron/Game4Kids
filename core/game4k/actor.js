@@ -11,11 +11,13 @@ Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
 Game4kids.Actor.prototype.constructor = Game4kids.Actor;
 
 Game4kids.Actor.TEXT_STYLE = { font: `16px ${Game4kids.Game.TEXT_FONT}`, fill: "#0f0f0f", align: "left" };
+
 Game4kids.Actor.GRAVITY_FACTOR = 25;
 
 // A CM1 french student read 120 words by minut then 0.5s by word
 Game4kids.Actor.WORD_BY_SECOND = 0.5;
 Game4kids.Actor.SAY_PLACEMENT_FACTOR = 0.25;
+Game4kids.Actor.SPEECH_PATCH_ID = 'ui-speech';
 
 // accessor
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
@@ -249,11 +251,8 @@ Game4kids.Actor.Speech = function (actor, msg, parent = null) {
     this.game_ = actor.game;
     this.actor_ = actor;
     this.msg_ = msg;
-    this.text_ = null;
     this.patch_ = null;
 }
-
-Game4kids.Actor.Speech.SPEECH_PATCH_ID = 'ui-speech';
 
 Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLockNode.prototype);
 Game4kids.Actor.Speech.prototype.constructor = Game4kids.Actor.Speech;
@@ -266,29 +265,18 @@ Game4kids.Actor.Speech.prototype.countWords = function () {
 Game4kids.Actor.Speech.prototype.start = function () {
 
     this.lock();
-    var content = Phaser.readNinePatchContentRect(this.actor_.game, Game4kids.Actor.Speech.SPEECH_PATCH_ID);
 
-    // create text
-    this.text_ = new Phaser.Text(this.actor_.game, 0, 0, this.msg_, Game4kids.Actor.TEXT_STYLE)
+    var x = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
+    var y = - Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height;
 
-    var w = this.text_.width + content.margin.left + content.margin.right;
-    var h = this.text_.height + content.margin.top + content.margin.bottom;
-
-    var px = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
-    var py = - (Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height + h);
-
-    this.patch_ = this.actor_.addChild(this.game_.make.ninePatch(0, 0, w, h, Game4kids.Actor.Speech.SPEECH_PATCH_ID));
-    this.patch_.x = px;
-    this.patch_.y = py;
-
-    this.actor_.addChild(this.text_);
-    this.text_.x = this.patch_.x + content.x;
-    this.text_.y = this.patch_.y + content.y;
+    this.patch_ = this.actor_.addChild(
+        new Game4kids.PatchText(this.actor_.game, Game4kids.Actor.SPEECH_PATCH_ID, this.msg_, x, y, Game4kids.Actor.TEXT_STYLE)
+    );
+    this.patch_.y -= this.patch_.height;
 }
 
 Game4kids.Actor.Speech.prototype.destroy = function () {
     this.patch_.destroy();
-    this.text_.destroy();
 }
 
 Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
@@ -314,7 +302,6 @@ Game4kids.Actor.prototype.askKey = function (string, callback, parent = null) {
     var self = this;
     this.game.input.keyboard.onPressCallback = function (key) {
         callback_(key);
-        console.log(speech.children_);
         speech.destroy();
         speech.checkChildren();
         self.game.input.keyboard.onPressCallback = null;
