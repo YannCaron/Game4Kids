@@ -18,6 +18,7 @@ Game4kids.Actor.GRAVITY_FACTOR = 25;
 Game4kids.Actor.WORD_BY_SECOND = 0.5;
 Game4kids.Actor.SAY_PLACEMENT_FACTOR = 0.25;
 Game4kids.Actor.SPEECH_PATCH_ID = 'ui-speech';
+Game4kids.Actor.SPEECH_BUTTON_ID = 'ui-button';
 
 // accessor
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
@@ -242,25 +243,18 @@ Game4kids.Actor.prototype.enableInput_ = function () {
 }
 
 // Actor.speech
-Game4kids.Actor.Speech = function (actor, msg, parent = null) {
+Game4kids.Actor.Speech = function (actor, content, parent = null) {
     Game4kids.TweenLockNode.call(this, parent);
 
-    this.rawMsg_ = msg;
-    if (msg instanceof Array) msg = msg.join('\n');
-
+    content.speech = this;
     this.game_ = actor.game;
     this.actor_ = actor;
-    this.msg_ = msg;
+    this.content_ = content;
     this.patch_ = null;
 }
 
 Game4kids.Actor.Speech.prototype = Object.create(Game4kids.TweenLockNode.prototype);
 Game4kids.Actor.Speech.prototype.constructor = Game4kids.Actor.Speech;
-
-Game4kids.Actor.Speech.prototype.countWords = function () {
-    var string = (this.rawMsg_ instanceof Array) ? this.rawMsg_.join(' ') : this.rawMsg_;
-    return string.split(' ').length;
-}
 
 Game4kids.Actor.Speech.prototype.start = function () {
 
@@ -269,8 +263,9 @@ Game4kids.Actor.Speech.prototype.start = function () {
     var x = Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.width;
     var y = - Game4kids.Actor.SAY_PLACEMENT_FACTOR * this.actor_.height;
 
+
     this.patch_ = this.actor_.addChild(
-        new Game4kids.PatchText(this.actor_.game, Game4kids.Actor.SPEECH_PATCH_ID, this.msg_, x, y, Game4kids.Actor.TEXT_STYLE)
+        new Game4kids.PatchContent(this.actor_.game, Game4kids.Actor.SPEECH_PATCH_ID, this.content_, x, y)
     );
     this.patch_.y -= this.patch_.height;
 }
@@ -280,10 +275,14 @@ Game4kids.Actor.Speech.prototype.destroy = function () {
 }
 
 Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
-    var speech = new Game4kids.Actor.Speech(this, string, parent);
+    if (string instanceof Array) string = string.join('\n');
+    var content = new Phaser.Text(this.game, 0, 0, string, Game4kids.Actor.TEXT_STYLE);
+
+    var speech = new Game4kids.Actor.Speech(this, content, parent);
     speech.start();
 
-    if (!time || time < 0) time = Math.max(speech.countWords() * Game4kids.Actor.WORD_BY_SECOND, 2);
+    var wordCount = string.replace('\n', ' ').split(' ').length;
+    if (!time || time < 0) time = Math.max(wordCount * Game4kids.Actor.WORD_BY_SECOND, 2);
 
     Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%
         .toTime().every(function () { return time; })																			//id: 8C(HTGcK/pNAgwFUEns|
@@ -295,7 +294,10 @@ Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
 }
 
 Game4kids.Actor.prototype.askKey = function (string, callback, parent = null) {
-    var speech = new Game4kids.Actor.Speech(this, string, parent);
+    if (string instanceof Array) string = string.join('\n');
+    var content = new Phaser.Text(this.game, 0, 0, string, Game4kids.Actor.TEXT_STYLE);
+
+    var speech = new Game4kids.Actor.Speech(this, content, parent);
     speech.start();
 
     var callback_ = callback.bind(speech);
@@ -306,4 +308,27 @@ Game4kids.Actor.prototype.askKey = function (string, callback, parent = null) {
         speech.checkChildren();
         self.game.input.keyboard.onPressCallback = null;
     }
+}
+
+Game4kids.Actor.prototype.askButtons = function (string, buttons, parent = null) {
+    if (string instanceof Array) string = string.join('\n');
+
+    var group = new Phaser.Group(this.game);
+    var text = group.add(new Phaser.Text(this.game, 0, 0, string, Game4kids.Actor.TEXT_STYLE));
+
+    var x = 0;
+    var y = text.height;
+    for (var bt of buttons) {
+        var button = group.add(new Game4kids.Button(this.game, Game4kids.Actor.SPEECH_BUTTON_ID, bt.name, x, y, Game4kids.Actor.TEXT_STYLE));
+        x += button.width + 5;
+        button.addClickEffect(new Game4kids.Effects.Move(0, 1));
+        button.addOverEffect(new Game4kids.Effects.Tint(0xccffff));
+        button.events.onInputDown.add(bt.callback);
+        button.events.onInputDown.add(function () {
+            group.speech.destroy();
+        });
+    }
+
+    var speech = new Game4kids.Actor.Speech(this, group, parent);
+    speech.start();
 }

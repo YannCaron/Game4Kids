@@ -24,30 +24,33 @@
         }
     }
 
-    // PatchText
-    // PatchText.constructor
-    Game4kids.PatchText = function (game, source, text, x = 0, y = 0, style = null) {
-        var content = Phaser.readNinePatchContentRect(game, source);
-        var text = new Phaser.Text(game, content.margin.left, content.margin.top, text, style)
+    // PatchContent
+    // PatchContent.constructor
+    Game4kids.PatchContent = function (game, source, content, x = 0, y = 0) {
+        var place = Phaser.readNinePatchContentRect(game, source);
 
-        var w = text.width + content.margin.left + content.margin.right;
-        var h = text.height + content.margin.top + content.margin.bottom;
+        content.x = place.margin.left;
+        content.y = place.margin.top;
+        var w = content.width + place.margin.left + place.margin.right;
+        var h = content.height + place.margin.top + place.margin.bottom;
 
         Phaser.NinePatch.call(this, game, source, w, h, x, y);
-        this.addChild(text);
+        this.addChild(content);
     }
 
-    Game4kids.PatchText.prototype = Object.create(Phaser.NinePatch.prototype);
-    Game4kids.PatchText.prototype.constructor = Game4kids.PatchText;
+    Game4kids.PatchContent.prototype = Object.create(Phaser.NinePatch.prototype);
+    Game4kids.PatchContent.prototype.constructor = Game4kids.PatchContent;
 
     // Button
     // Button.constructor
     Game4kids.Button = function (game, source, text, x = 0, y = 0, style = null) {
-        Game4kids.PatchText.call(this, game, source, text, x, y, style);
+        var content = new Phaser.Text(game, 0, 0, text, style)
+
+        Game4kids.PatchContent.call(this, game, source, content, x, y, style);
         this.inputEnabled = true;
     }
 
-    Game4kids.Button.prototype = Object.create(Game4kids.PatchText.prototype);
+    Game4kids.Button.prototype = Object.create(Game4kids.PatchContent.prototype);
     Game4kids.Button.prototype.constructor = Game4kids.Button;
 
     // Button.methods
