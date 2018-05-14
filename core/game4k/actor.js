@@ -284,8 +284,8 @@ Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
     var wordCount = string.replace('\n', ' ').split(' ').length;
     if (!time || time < 0) time = Math.max(wordCount * Game4kids.Actor.WORD_BY_SECOND, 2);
 
-    Game4kids.current.createSignal(speech)																			//id: kDe{Bevv]!ZzDWiZ`R7%
-        .toTime().every(function () { return time; })																			//id: 8C(HTGcK/pNAgwFUEns|
+    Game4kids.current.createSignal(speech)
+        .toTime().every(function () { return time; })
         .subscribe(function (value, speech) {
             speech.destroy();
             speech.unlock();
@@ -323,9 +323,12 @@ Game4kids.Actor.prototype.askButtons = function (string, buttons, parent = null)
         x += button.width + 5;
         button.addClickEffect(new Game4kids.Effects.Move(0, 1));
         button.addOverEffect(new Game4kids.Effects.Tint(0xccffff));
-        button.events.onInputDown.add(bt.callback);
+
+        var callback_ = bt.callback.bind(speech);
         button.events.onInputDown.add(function () {
+            bt.callback.call(group.speech);
             group.speech.destroy();
+            group.speech.checkChildren();
         });
     }
 
