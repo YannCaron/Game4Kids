@@ -841,19 +841,32 @@
                   <shadow type="math_number" id="3uC!N^BoEdt/pV7:VhsU">
                     <field name="NUM">100</field>
                   </shadow>
-                  <block type="math_arithmetic" id="8s~;l7ooGIGgGtmT$7Sn">
-                    <field name="OP">DIVIDE</field>
+                  <block type="math_arithmetic" id=".cH![@KF?FJM0;kwV~3(">
+                    <field name="OP">MINUS</field>
                     <value name="A">
-                      <shadow type="math_number" id="U?d47*A8nH7$lo=CLNw~">
+                      <shadow type="math_number" id="^ZO$igi;Be!5#~gb@N%h">
                         <field name="NUM">1</field>
                       </shadow>
-                      <block type="game_get" id="ivfBG^OVN,W2P?K)G#d)">
-                        <field name="PROPERTY">game.world.width</field>
+                      <block type="math_arithmetic" id="8s~;l7ooGIGgGtmT$7Sn">
+                        <field name="OP">DIVIDE</field>
+                        <value name="A">
+                          <shadow type="math_number" id="U?d47*A8nH7$lo=CLNw~">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="game_get" id="ivfBG^OVN,W2P?K)G#d)">
+                            <field name="PROPERTY">game4k.game.world.width</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="5e[.iJP[zzGM-,Az#W{R">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
                       </block>
                     </value>
                     <value name="B">
-                      <shadow type="math_number" id="5e[.iJP[zzGM-,Az#W{R">
-                        <field name="NUM">50</field>
+                      <shadow type="math_number" id="hR;$=z|3a11%JHxMGYgy">
+                        <field name="NUM">1</field>
                       </shadow>
                     </value>
                   </block>
@@ -874,19 +887,32 @@
                       <shadow type="math_number" id="3uC!N^BoEdt/pV7:VhsU">
                         <field name="NUM">100</field>
                       </shadow>
-                      <block type="math_arithmetic" id="+y?G$GRz5?E@gPtTU@WV">
-                        <field name="OP">DIVIDE</field>
+                      <block type="math_arithmetic" id="-%e`0sy:_rH8i1nHmU=H">
+                        <field name="OP">MINUS</field>
                         <value name="A">
-                          <shadow type="math_number" id="U?d47*A8nH7$lo=CLNw~">
+                          <shadow type="math_number" id="^ZO$igi;Be!5#~gb@N%h">
                             <field name="NUM">1</field>
                           </shadow>
-                          <block type="game_get" id="WgVBY9bymzvtwq^F*lEf">
-                            <field name="PROPERTY">game.world.height</field>
+                          <block type="math_arithmetic" id="qOoW[RPv~U;g3ok8[@.-">
+                            <field name="OP">DIVIDE</field>
+                            <value name="A">
+                              <shadow type="math_number" id="U?d47*A8nH7$lo=CLNw~">
+                                <field name="NUM">1</field>
+                              </shadow>
+                              <block type="game_get" id="b?|z_^^d=q[|7)/kx!=6">
+                                <field name="PROPERTY">game4k.game.world.height</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <shadow type="math_number" id="bxN[{IP:+Q2NXPQupX7;">
+                                <field name="NUM">50</field>
+                              </shadow>
+                            </value>
                           </block>
                         </value>
                         <value name="B">
-                          <shadow type="math_number" id="KjQ}D6`IYTPQp^~pr=*D">
-                            <field name="NUM">50</field>
+                          <shadow type="math_number" id="I60A8.Ky`/T;k.kAl0om">
+                            <field name="NUM">1</field>
                           </shadow>
                         </value>
                       </block>

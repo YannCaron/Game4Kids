@@ -11,7 +11,7 @@
       <block type="create_game" id="W]Ww~8/.^+)Ah*%zzQwj">
         <value name="IMG">
           <shadow type="game_image_Background" id=".Yk8e$4D6iQ]A_]TKjgq">
-            <field name="IMG">Background-tile-1#assets/img/Background/tile 1.png</field>
+            <field name="IMG">Background-tile-2#assets/img/Background/tile 2.png</field>
           </shadow>
         </value>
         <value name="W">
@@ -254,7 +254,7 @@
                                                         <field name="NUM">100</field>
                                                       </shadow>
                                                       <block type="game_get" id="=*?@Cm2sm$`J;6Ynw:R}">
-                                                        <field name="PROPERTY">game.input.activePointer.x</field>
+                                                        <field name="PROPERTY">game4k.game.input.activePointer.x</field>
                                                       </block>
                                                     </value>
                                                     <next>
@@ -270,7 +270,7 @@
                                                             <field name="NUM">100</field>
                                                           </shadow>
                                                           <block type="game_get" id="VSC{6/MByb@gGII_^Fsw">
-                                                            <field name="PROPERTY">game.input.activePointer.y</field>
+                                                            <field name="PROPERTY">game4k.game.input.activePointer.y</field>
                                                           </block>
                                                         </value>
                                                       </block>

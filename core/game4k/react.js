@@ -178,7 +178,6 @@ Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, gro
             Game4kids.current.groups.get(group2),
             function (obj1, obj2) {
                 var id = Math.pairing(obj1.id, obj2.id);
-                console.log(id);
 
                 var data = collisions.get(id);
                 if (!data || frame > data.frame + 2 || !toggle) {

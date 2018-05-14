@@ -318,13 +318,12 @@ Game4kids.Actor.prototype.askButtons = function (string, buttons, parent = null)
 
     var x = 0;
     var y = text.height;
-    for (var bt of buttons) {
+    for (let bt of buttons) {
         var button = group.add(new Game4kids.Button(this.game, Game4kids.Actor.SPEECH_BUTTON_ID, bt.name, x, y, Game4kids.Actor.TEXT_STYLE));
         x += button.width + 5;
         button.addClickEffect(new Game4kids.Effects.Move(0, 1));
         button.addOverEffect(new Game4kids.Effects.Tint(0xccffff));
 
-        var callback_ = bt.callback.bind(speech);
         button.events.onInputDown.add(function () {
             bt.callback.call(group.speech);
             group.speech.destroy();

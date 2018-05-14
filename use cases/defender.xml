@@ -562,6 +562,10 @@
                               <block type="signal_combine" id="8vZzi-SyTh-Z`e-j{W}b">
                                 <field name="OPERATOR">%1.combineWith(
 game4k.createSignal()%2)
+                                
+                                
+                                
+                                
                                 </field>
                                 <value name="NEXT1">
                                   <block type="signal_every" id="IyPX!qtK)v70Bq^_Nwx=">
@@ -637,7 +641,7 @@ game4k.createSignal()%2)
       </block>
     </next>
   </block>
-  <block type="procedures_defnoreturn" id="=o5twgQ}jc}fZ)3R@coy" collapsed="true" x="700" y="180">
+  <block type="procedures_defnoreturn" id="=o5twgQ}jc}fZ)3R@coy" x="700" y="180">
     <mutation>
       <arg name="img" varid="ee{nA^dfCBf}9/R~Y}o#"></arg>
       <arg name="x" varid="v1tlEvZxoa4G,Lk^5/!U"></arg>
@@ -734,7 +738,7 @@ game4k.createSignal()%2)
                                 <field name="NUM">100</field>
                               </shadow>
                               <block type="game_get" id="PUn:f[P4(6c~q6CBp{1U">
-                                <field name="PROPERTY">game.input.activePointer.x</field>
+                                <field name="PROPERTY">game4k.game.input.activePointer.x</field>
                               </block>
                             </value>
                             <next>
@@ -750,7 +754,7 @@ game4k.createSignal()%2)
                                     <field name="NUM">100</field>
                                   </shadow>
                                   <block type="game_get" id="c8`pjHZ,Z9m}B9}v~aaj">
-                                    <field name="PROPERTY">game.input.activePointer.y</field>
+                                    <field name="PROPERTY">game4k.game.input.activePointer.y</field>
                                   </block>
                                 </value>
                               </block>
@@ -790,7 +794,7 @@ game4k.createSignal()%2)
                                         <field name="NUM">100</field>
                                       </shadow>
                                       <block type="game_get" id="I~gIE)D:k5Rt4~QH55^(">
-                                        <field name="PROPERTY">game.input.activePointer.x</field>
+                                        <field name="PROPERTY">game4k.game.input.activePointer.x</field>
                                       </block>
                                     </value>
                                     <value name="Y">
@@ -798,7 +802,7 @@ game4k.createSignal()%2)
                                         <field name="NUM">100</field>
                                       </shadow>
                                       <block type="game_get" id="=AOn#Ph@2[T2]!Ma}VQ}">
-                                        <field name="PROPERTY">game.input.activePointer.y</field>
+                                        <field name="PROPERTY">game4k.game.input.activePointer.y</field>
                                       </block>
                                     </value>
                                     <statement name="STMT">
@@ -891,6 +895,24 @@ game4k.createSignal()%2)
                                                             <field name="BOOL">TRUE</field>
                                                           </block>
                                                         </value>
+                                                        <next>
+                                                          <block type="actor_set_custom" id="_35w]b]BEBbSlk1VhnUd">
+                                                            <field name="PROPERTY">place</field>
+                                                            <value name="VAR">
+                                                              <shadow type="actor_object" id="rYgFX:$p3d+B)7:ePGm;">
+                                                                <field name="VAR" id="]DGC3$c6InX|c~=np`LH" variabletype="Actor">tower</field>
+                                                              </shadow>
+                                                            </value>
+                                                            <value name="ARG1">
+                                                              <shadow type="math_number" id="5JOMcDS|4zIy/,KGUK6|">
+                                                                <field name="NUM">0</field>
+                                                              </shadow>
+                                                              <block type="actor_object" id="^WhGixcJ--+Q9v~1NO*/">
+                                                                <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </next>
                                                       </block>
                                                     </next>
                                                   </block>
@@ -949,6 +971,46 @@ game4k.createSignal()%2)
                                                     <field name="VAR" id="R,9sx:=D25sSSV1lw`]0" variabletype="">y</field>
                                                   </block>
                                                 </value>
+                                                <next>
+                                                  <block type="controls_if" id="=1^4CQ7%hw}OtAOt14gw">
+                                                    <value name="IF0">
+                                                      <block type="actor_get_custom" id="hcLMh8GbqB,%pPFYec+Y">
+                                                        <field name="PROPERTY">place</field>
+                                                        <value name="VAR">
+                                                          <shadow type="actor_object" id="bduy.C(jt$o1/8T#[C,;">
+                                                            <field name="VAR" id="]DGC3$c6InX|c~=np`LH" variabletype="Actor">tower</field>
+                                                          </shadow>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <statement name="DO0">
+                                                      <block type="actor_set_custom" id="7d2MR(OuuRDQRa%t/fb3">
+                                                        <field name="PROPERTY">hasTower</field>
+                                                        <value name="VAR">
+                                                          <shadow type="actor_object" id="N1DAAYs2!LgaQL*T?`Am">
+                                                            <field name="VAR" id="g,z0Gs1;Nk1E*(C5U$t-" variabletype="Actor">place</field>
+                                                          </shadow>
+                                                          <block type="actor_get_custom" id="W[)CLU[_3hJ[Bem$S=|h">
+                                                            <field name="PROPERTY">place</field>
+                                                            <value name="VAR">
+                                                              <shadow type="actor_object" id="v0q-KuB(adGQ5@U03RfR">
+                                                                <field name="VAR" id="]DGC3$c6InX|c~=np`LH" variabletype="Actor">tower</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ARG1">
+                                                          <shadow type="math_number" id="5JOMcDS|4zIy/,KGUK6|">
+                                                            <field name="NUM">0</field>
+                                                          </shadow>
+                                                          <block type="logic_boolean" id="(@9dkY3/r2YEWQ^x=:zT">
+                                                            <field name="BOOL">FALSE</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </statement>
+                                                  </block>
+                                                </next>
                                               </block>
                                             </next>
                                           </block>
@@ -1451,16 +1513,17 @@ game4k.createSignal()%2)
                               <shadow type="sequence_once" id="CEh~SI$UGA7QewuNM4`Z"></shadow>
                             </value>
                             <statement name="STMT0">
-                              <block type="create_tween_apply" id="U#*R^4f/=#Y](j%N[./V">
+                              <block type="create_tween" id="4rTU$sD`=nmAqP|Fkh5(">
                                 <field name="VAR" id="9VylJ9CrFHv2fOz_Fz];" variabletype="Actor">enemy</field>
-                                <field name="PROPERTY">body.velocity.x</field>
+                                <field name="PROPERTY">x</field>
+                                <field name="EASING">Phaser.Easing.Default</field>
                                 <value name="VALUE">
-                                  <shadow type="math_number" id="wt{,tz,8E7$^C$`c/u_O">
-                                    <field name="NUM">550</field>
+                                  <shadow type="math_number" id="n2Y[xSzG@Z{_yx_epZ;1">
+                                    <field name="NUM">525</field>
                                   </shadow>
                                 </value>
                                 <value name="TIME">
-                                  <shadow type="math_number" id="@z`kQ8rxAgjK#o:C}!cd">
+                                  <shadow type="math_number" id="f;z};=NWBEIh-:.Ez^un">
                                     <field name="NUM">4</field>
                                   </shadow>
                                 </value>
@@ -1484,16 +1547,17 @@ game4k.createSignal()%2)
                               </block>
                             </statement>
                             <statement name="STMT2">
-                              <block type="create_tween_apply" id="q,l)9Dos}4?N@T[6=6Ij">
+                              <block type="create_tween" id=")Oqgj}ImcFqxv:;u4+39">
                                 <field name="VAR" id="9VylJ9CrFHv2fOz_Fz];" variabletype="Actor">enemy</field>
-                                <field name="PROPERTY">body.velocity.y</field>
+                                <field name="PROPERTY">y</field>
+                                <field name="EASING">Phaser.Easing.Default</field>
                                 <value name="VALUE">
-                                  <shadow type="math_number" id="VvGZ;9l}+8ia(8~n_ARz">
-                                    <field name="NUM">500</field>
+                                  <shadow type="math_number" id="!APy?lidltk9/:Usy+{U">
+                                    <field name="NUM">625</field>
                                   </shadow>
                                 </value>
                                 <value name="TIME">
-                                  <shadow type="math_number" id="l[OYY{CR{?x81VuZn`uu">
+                                  <shadow type="math_number" id="ZCs~dIBx(nM},$#=Y6rh">
                                     <field name="NUM">4</field>
                                   </shadow>
                                 </value>
@@ -1517,16 +1581,20 @@ game4k.createSignal()%2)
                               </block>
                             </statement>
                             <statement name="STMT4">
-                              <block type="create_tween_apply" id=")ehQm#lOSB0@^8eCs4Y@">
+                              <block type="create_tween" id="},xaPSOo~j:so[*/p1~f">
                                 <field name="VAR" id="9VylJ9CrFHv2fOz_Fz];" variabletype="Actor">enemy</field>
-                                <field name="PROPERTY">body.velocity.x</field>
+                                <field name="PROPERTY">x</field>
+                                <field name="EASING">Phaser.Easing.Default</field>
                                 <value name="VALUE">
-                                  <shadow type="math_number" id="gX+ufhl%3ir4gYk(-=(R">
-                                    <field name="NUM">750</field>
+                                  <shadow type="math_number" id="`r@OXR`~ouV-PMC)B7l;">
+                                    <field name="NUM">550</field>
                                   </shadow>
+                                  <block type="game_get" id="iLWfaE:h[k;rRxI%5(q?">
+                                    <field name="PROPERTY">game4k.game.world.width</field>
+                                  </block>
                                 </value>
                                 <value name="TIME">
-                                  <shadow type="math_number" id="t(~N{Dg0id(5=H@gYA|T">
+                                  <shadow type="math_number" id="}^EMr(PnZEhPO~sGCK`w">
                                     <field name="NUM">4</field>
                                   </shadow>
                                 </value>
