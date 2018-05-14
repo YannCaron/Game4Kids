@@ -69,6 +69,7 @@ Blockly4kids.gameImages['Animals'] = [
 	[{ src: 'assets/img/Animals/zebra.png', width: 50, height: 50 }, 'Animals-zebra#assets/img/Animals/zebra.png']
 ];
 Blockly4kids.gameImages['Background'] = [
+	[{ src: 'assets/img/Background/background.png', width: 50, height: 50 }, 'Background-background#assets/img/Background/background.png'],
 	[{ src: 'assets/img/Background/bg_blue.png', width: 50, height: 50 }, 'Background-bg-blue#assets/img/Background/bg_blue.png'],
 	[{ src: 'assets/img/Background/bg_green.png', width: 50, height: 50 }, 'Background-bg-green#assets/img/Background/bg_green.png'],
 	[{ src: 'assets/img/Background/bg_red.png', width: 50, height: 50 }, 'Background-bg-red#assets/img/Background/bg_red.png'],
@@ -389,4 +390,35 @@ Blockly4kids.gameImages['SpaceArt'] = [
 	[{ src: 'assets/img/SpaceArt/ufoGreen.png', width: 50, height: 50 }, 'SpaceArt-ufoGreen#assets/img/SpaceArt/ufoGreen.png'],
 	[{ src: 'assets/img/SpaceArt/ufoRed.png', width: 50, height: 50 }, 'SpaceArt-ufoRed#assets/img/SpaceArt/ufoRed.png'],
 	[{ src: 'assets/img/SpaceArt/ufoYellow.png', width: 50, height: 50 }, 'SpaceArt-ufoYellow#assets/img/SpaceArt/ufoYellow.png']
+];
+Blockly4kids.gameImages['TappyPlane'] = [
+	[{ src: 'assets/img/TappyPlane/airPlaneBlue1.png', width: 50, height: 50 }, 'TappyPlane-airPlaneBlue1#assets/img/TappyPlane/airPlaneBlue1.png'],
+	[{ src: 'assets/img/TappyPlane/airPlaneGreen1.png', width: 50, height: 50 }, 'TappyPlane-airPlaneGreen1#assets/img/TappyPlane/airPlaneGreen1.png'],
+	[{ src: 'assets/img/TappyPlane/airPlaneRed1.png', width: 50, height: 50 }, 'TappyPlane-airPlaneRed1#assets/img/TappyPlane/airPlaneRed1.png'],
+	[{ src: 'assets/img/TappyPlane/airPlaneYellow1.png', width: 50, height: 50 }, 'TappyPlane-airPlaneYellow1#assets/img/TappyPlane/airPlaneYellow1.png'],
+	[{ src: 'assets/img/TappyPlane/groundDirt.png', width: 50, height: 50 }, 'TappyPlane-groundDirt#assets/img/TappyPlane/groundDirt.png'],
+	[{ src: 'assets/img/TappyPlane/groundGrass.png', width: 50, height: 50 }, 'TappyPlane-groundGrass#assets/img/TappyPlane/groundGrass.png'],
+	[{ src: 'assets/img/TappyPlane/groundIce.png', width: 50, height: 50 }, 'TappyPlane-groundIce#assets/img/TappyPlane/groundIce.png'],
+	[{ src: 'assets/img/TappyPlane/groundRock.png', width: 50, height: 50 }, 'TappyPlane-groundRock#assets/img/TappyPlane/groundRock.png'],
+	[{ src: 'assets/img/TappyPlane/groundSnow.png', width: 50, height: 50 }, 'TappyPlane-groundSnow#assets/img/TappyPlane/groundSnow.png'],
+	[{ src: 'assets/img/TappyPlane/medalBronze.png', width: 50, height: 50 }, 'TappyPlane-medalBronze#assets/img/TappyPlane/medalBronze.png'],
+	[{ src: 'assets/img/TappyPlane/medalGold.png', width: 50, height: 50 }, 'TappyPlane-medalGold#assets/img/TappyPlane/medalGold.png'],
+	[{ src: 'assets/img/TappyPlane/medalSilver.png', width: 50, height: 50 }, 'TappyPlane-medalSilver#assets/img/TappyPlane/medalSilver.png'],
+	[{ src: 'assets/img/TappyPlane/puffLarge.png', width: 50, height: 50 }, 'TappyPlane-puffLarge#assets/img/TappyPlane/puffLarge.png'],
+	[{ src: 'assets/img/TappyPlane/puffSmall.png', width: 50, height: 50 }, 'TappyPlane-puffSmall#assets/img/TappyPlane/puffSmall.png'],
+	[{ src: 'assets/img/TappyPlane/rock.png', width: 50, height: 50 }, 'TappyPlane-rock#assets/img/TappyPlane/rock.png'],
+	[{ src: 'assets/img/TappyPlane/rockDown.png', width: 50, height: 50 }, 'TappyPlane-rockDown#assets/img/TappyPlane/rockDown.png'],
+	[{ src: 'assets/img/TappyPlane/rockGrass.png', width: 50, height: 50 }, 'TappyPlane-rockGrass#assets/img/TappyPlane/rockGrass.png'],
+	[{ src: 'assets/img/TappyPlane/rockGrassDown.png', width: 50, height: 50 }, 'TappyPlane-rockGrassDown#assets/img/TappyPlane/rockGrassDown.png'],
+	[{ src: 'assets/img/TappyPlane/rockIce.png', width: 50, height: 50 }, 'TappyPlane-rockIce#assets/img/TappyPlane/rockIce.png'],
+	[{ src: 'assets/img/TappyPlane/rockIceDown.png', width: 50, height: 50 }, 'TappyPlane-rockIceDown#assets/img/TappyPlane/rockIceDown.png'],
+	[{ src: 'assets/img/TappyPlane/rockSnow.png', width: 50, height: 50 }, 'TappyPlane-rockSnow#assets/img/TappyPlane/rockSnow.png'],
+	[{ src: 'assets/img/TappyPlane/rockSnowDown.png', width: 50, height: 50 }, 'TappyPlane-rockSnowDown#assets/img/TappyPlane/rockSnowDown.png'],
+	[{ src: 'assets/img/TappyPlane/starBronze.png', width: 50, height: 50 }, 'TappyPlane-starBronze#assets/img/TappyPlane/starBronze.png'],
+	[{ src: 'assets/img/TappyPlane/starGold.png', width: 50, height: 50 }, 'TappyPlane-starGold#assets/img/TappyPlane/starGold.png'],
+	[{ src: 'assets/img/TappyPlane/starSilver.png', width: 50, height: 50 }, 'TappyPlane-starSilver#assets/img/TappyPlane/starSilver.png'],
+	[{ src: 'assets/img/TappyPlane/tap.png', width: 50, height: 50 }, 'TappyPlane-tap#assets/img/TappyPlane/tap.png'],
+	[{ src: 'assets/img/TappyPlane/tapTick.png', width: 50, height: 50 }, 'TappyPlane-tapTick#assets/img/TappyPlane/tapTick.png'],
+	[{ src: 'assets/img/TappyPlane/textGameOver.png', width: 50, height: 50 }, 'TappyPlane-textGameOver#assets/img/TappyPlane/textGameOver.png'],
+	[{ src: 'assets/img/TappyPlane/textGetReady.png', width: 50, height: 50 }, 'TappyPlane-textGetReady#assets/img/TappyPlane/textGetReady.png']
 ];
