@@ -6,6 +6,7 @@ Game4kids.Game.TEXT_STYLE = { font: `20px ${Game4kids.Game.TEXT_FONT}`, fill: "#
 // attributes
 Game4kids.Game.prototype.maxActor = null;
 Game4kids.Game.prototype.actorCount = null;
+Game4kids.Game.prototype.actorCurrentId = null;
 Game4kids.Game.prototype.groups = null;
 Game4kids.Game.prototype.texts = null;
 
@@ -39,6 +40,7 @@ Game4kids.Game.prototype.initGame = function () {
     this.groups = new Game4kids.Game.Groups(this.game);
     this.maxActor = Game4kids.Game.DEFAULT_MAX_ACTOR;
     this.actorCount = 0;
+    this.actorCurrentId = 0;
     this.texts = [];
 
     this.background = null;
@@ -98,6 +100,8 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
     // create actor
     var actor = new Game4kids.Actor(this.game, image, x, y);
+    actor.id = this.actorCurrentId;
+    this.actorCurrentId += 1;
     this.groups.get(name).add(actor);
     actor.anchor.setTo(0.5, 0.5);
     actor.checkWorldBounds = true;
@@ -113,11 +117,11 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     actor.body.setSize(size, size, (actor.body.width - size) / 2, (actor.body.height - size) / 2);
 
     // on kill event
-    var game4k = this;
-    game4k.actorCount++;
+    var self = this;
+    self.actorCount++;
     actor.events.onKilled.add(function (actor) {
-        game4k.actorCount--;
-        game4k.removeActorSignals(actor);
+        self.actorCount--;
+        self.removeActorSignals(actor);
     });
 
     // check

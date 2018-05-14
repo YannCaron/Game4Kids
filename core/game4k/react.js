@@ -35,7 +35,7 @@ Game4kids.React.Signal.prototype.getRoot = function () {
     return this;
 }
 
-Game4kids.React.Signal.prototype.setParent = function(parent) {
+Game4kids.React.Signal.prototype.setParent = function (parent) {
     this.parent = parent;
 }
 
@@ -169,20 +169,19 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
 }
 
 Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, group2, toggle) {
-    if (this.collisions == undefined) this.collisions = new Map();
-
+    var collisions = new Map();
     var signal = new Game4kids.React.Signal(this);
 
-    var self = this;
     this.subscribe(function (frame) {
         Game4kids.current.game.physics.arcade[type](
             Game4kids.current.groups.get(group1),
             Game4kids.current.groups.get(group2),
             function (obj1, obj2) {
-                var id = Math.pairing(obj1.renderOrderID, obj2.renderOrderID);
+                var id = Math.pairing(obj1.id, obj2.id);
+                console.log(id);
 
-                var data = self.collisions.get(id);
-                if (!data || frame > data.frame + 1 || !toggle) {
+                var data = collisions.get(id);
+                if (!data || frame > data.frame + 2 || !toggle) {
                     if (group1 != group2) {
                         signal.emit(true, obj1, obj2);
                     } else {
@@ -190,18 +189,18 @@ Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, gro
                         signal.emit(true, obj2);
                     }
                 }
-                self.collisions.set(id, { frame: frame, obj1: obj1, obj2: obj2 });
+                collisions.set(id, { frame: frame, obj1: obj1, obj2: obj2 });
             });
 
-        for (let [key, data] of self.collisions) {
-            if (data.frame != frame) {
+        for (let [key, data] of collisions) {
+            if (frame > data.frame + 2) {
                 if (group1 != group2) {
                     signal.emit(false, data.obj1, data.obj2);
                 } else {
                     signal.emit(false, data.obj1);
                     signal.emit(false, data.obj2);
                 }
-                self.collisions.delete(key);
+                collisions.delete(key);
             }
         }
     });
