@@ -52,3 +52,7 @@ Blockly.JavaScript.check = function (varName) {
 Blockly.Block.prototype.lineCode = function () {
     return `${Array(20).join('\t')}//id: ${this.id}\n`;
 }
+
+Blockly.JavaScript.escape = function (string) {
+    return string.replace('\\', '\\\\').replace('\'', '\\\'');
+}
