@@ -39,3 +39,14 @@ Number.prototype.degToRad = function () {
 Math.pairing = function (x, y) {
     return (x ^ 2 + 3 * x + 2 * x * y + y + y ^ 2) / 2;
 }
+
+// styles
+var Styles = Styles || {};
+
+Styles.getStyleOf = function (elementName, styleName) {
+
+    var element = document.getElementById(elementName);
+    var style = window.getComputedStyle(element);
+    return style.getPropertyValue(styleName);
+  
+}

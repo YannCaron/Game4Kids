@@ -7,7 +7,7 @@ Blockly.MutatorBuilder = function (name) {
 Blockly.MutatorBuilder.SEPARATOR = ';';
 
 Blockly.MutatorBuilder.prototype.addMixin = function (name, inputs, builder) {
-    this.mixins_.set(name, {inputs: inputs, builder : builder});
+    this.mixins_.set(name, { inputs: inputs, builder: builder });
     return this;
 }
 
@@ -22,7 +22,7 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
             for (var key of this.structure_) {
                 map[key] = value;
             }
-            return map;            
+            return map;
         },
         updateShape_: function () {
             // Delete everything.
@@ -74,11 +74,22 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
             var clauseBlock = containerBlock.nextConnection.targetBlock();
             this.structure_ = [];
             var connections = {};
+            var fieldValues = {};
 
             while (clauseBlock) {
                 this.structure_.push(clauseBlock.type);
 
                 for (var inp of self.mixins_.get(clauseBlock.type).inputs) {
+
+                    // save fields value
+                    var i = 1;
+                    while (this.getField(inp + i)) {
+                        var id = inp + i;
+                        fieldValues[id] = this.getFieldValue(id);
+                        i++;
+                    }
+
+                    // save connections
                     if (clauseBlock.connections_) {
                         connections[clauseBlock.type] = clauseBlock.connections_;
                     }
@@ -89,6 +100,12 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
             }
             this.updateShape_();
 
+            // restaur fields value
+            for (var key in fieldValues) {
+                this.setFieldValue(fieldValues[key], key);
+            }
+
+            // restaur connections
             for (var key in connections) {
                 for (var data of connections[key]) {
                     if (data != null) {
@@ -110,7 +127,7 @@ Blockly.MutatorBuilder.prototype.build_ = function () {
                         var input = this.getInput(inputName);
 
                         if (input.connection != null) {
-                            clauseBlock.connections_.push({name:inputName , connection: input && input.connection.targetConnection});
+                            clauseBlock.connections_.push({ name: inputName, connection: input && input.connection.targetConnection });
                         }
                         i++;
                     }

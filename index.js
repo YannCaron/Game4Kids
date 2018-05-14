@@ -605,6 +605,8 @@ Blockly.Generator.generatePreload = function (workspace, generator, code, ind) {
 Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   code.push(Code.indent(ind) + 'function create() {');
   code.push(Code.indent(ind + 1) + '// declare game');
+  code.push(Code.indent(ind + 1) + 'game4k.bgColor = Styles.getStyleOf(\'content_game\', \'background-color\');');
+
   if (workspace.getTopBlocks(true).length > 0) {
     code.push(workspace.getTopBlocks(true)[0].lineCode());
   }
@@ -612,7 +614,7 @@ Blockly.Generator.generateCreate = function (workspace, generator, code, ind) {
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
     var line = Blockly.Generator.blockToCode(generator, block);
-    code.push(line.replace(/^/gm, Code.indent(ind + 2)));
+    code.push(line.replace(/^/gm, Code.indent(ind + 1)));
   }
 
   code.push(Code.indent(ind) + '}\n');

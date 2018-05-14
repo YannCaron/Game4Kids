@@ -129,15 +129,55 @@ Blockly.Blocks['create_tween_ask_buttons'] = {
             .appendField(Blockly.Msg.BLOCK_WITH)
             .appendField(this.fieldActorFactory(), "VAR")
             .appendField("ask")
-        this.appendStatementInput("STMT1")
+        this.appendStatementInput("STMT0")
             .setCheck(null)
-            .appendField(new Blockly.FieldTextInput("yes"), "BUTTON1");
+            .appendField(new Blockly.FieldTextInput("yes"), "BUTTON0");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.TWEEN_HUE);
         this.setTooltip("");
         this.setHelpUrl("");
+
+        Blockly.Extensions.apply('create_tween_ask_mutator', this, true);
+
+    }
+};
+
+// Sequence.mutator
+new Blockly.MutatorBuilder('create_tween_ask_ask')
+    .addMixin('create_tween_ask_answer', ['BUTTON', 'STMT'],
+        (block, i) => {
+            block.appendStatementInput("STMT" + i)
+                .setCheck(null)
+                .appendField(new Blockly.FieldTextInput(""), "BUTTON" + i);
+        })
+    .register('create_tween_ask_mutator');
+
+
+// Sequence.mixin
+Blockly.Blocks['create_tween_ask_ask'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("ask");
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+        this.contextMenu = false;
+    }
+};
+
+Blockly.Blocks['create_tween_ask_answer'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("answer");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.TWEEN_HUE);
+        this.setTooltip("");
+        this.setHelpUrl("");
+        this.contextMenu = false;
     }
 };
 
@@ -197,7 +237,7 @@ Blockly.Blocks['create_sequence'] = {
     },
 };
 
-// mutator
+// Sequence.mutator
 new Blockly.MutatorBuilder('create_sequence_sequence')
     .addMixin('create_sequence_then', ['THEN', 'STMT'],
         (block, i) => {
