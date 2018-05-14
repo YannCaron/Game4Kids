@@ -76,6 +76,7 @@ Blockly.JavaScript['create_tween_ask_buttons'] = function (block) {
     var n = 0;
     do {
         var button = block.getFieldValue('BUTTON' + n);
+        // var button = Blockly.JavaScript.valueToCode(block, 'BUTTON' + n, Blockly.JavaScript.ORDER_NONE);
         var stmt = Blockly.JavaScript.statementToCode(block, 'STMT' + n);
 
         code += '{name: \'%1\', callback: function () {\n %2 }},'.format(button, stmt);

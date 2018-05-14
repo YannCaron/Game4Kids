@@ -238,6 +238,8 @@ Blockly.Blocks['signal_create_collide'] = {
         this.appendStatementInput("STMT")
             .setCheck(null)
             .appendField(Blockly.Msg.BLOCK_DO);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_CREATE_COLLIDE);
         this.setHelpUrl("");
