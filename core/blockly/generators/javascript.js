@@ -15,7 +15,7 @@ Blockly.JavaScript.initialize = function (workspace) {
 
 Blockly.JavaScript.finalize = function (workspace) {
     var variableNames = workspace.getAllVariables()
-        .filter(variable => variable.type != Blockly.Block.ACTOR_TYPE)
+        //.filter(variable => variable.type != Blockly.Block.ACTOR_TYPE)
         .map(variable => variable.name);
 
     Blockly.JavaScript.definitions_['variables'] =
