@@ -1,7 +1,7 @@
 Blockly.Blocks.event.COLLIDE_KEYS = function () {
     return [
-        [Blockly.Msg.BLOCK_COLLIDE, "collide"],
-        [Blockly.Msg.BLOCK_OVERLAP, "overlap"],
+        [Blockly.Msg.BLOCK_COLLIDE, "true"],
+        [Blockly.Msg.BLOCK_OVERLAP, "false"],
     ];
 }
 

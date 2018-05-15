@@ -96,10 +96,8 @@ Blockly.JavaScript['signal_collide'] = function (block) {
     var actor = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACTOR'), Blockly.Variables.NAME_TYPE);
 
     var code = '';
-    code += '.map(function () {\n';
-    code += 'return game4k.game.physics.arcade.%1 (this.getRoot().actor, %2);'.format(key, actor);
+    code += '.mapCollision(%1, %2)%3'.format(actor, key, event);
     code += block.lineCode();
-    code += '})%1\n'.format(event);
 
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -130,7 +128,7 @@ Blockly.JavaScript['signal_create_collide'] = function (block) {
     var value = event[1] == 1;
 
     code = 'game4k.createSignal()\n';
-    code += '.mapCollisionGroup(\'%1\', \'%2\', \'%3\', %4)'.format(key, actor1, actor2, toggle);
+    code += '.mapCollisionGroup(\'%1\', \'%2\', %3, %4)'.format(actor1, actor2, key, toggle);
     code += block.lineCode();
     code += '.whenEquals(%1)\n'.format(value);
     code += '.subscribe (function (value, %1) {'.format(actor1 == actor2 ? actor1 : actor1 + ', ' + actor2);

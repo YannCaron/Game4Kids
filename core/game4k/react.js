@@ -168,19 +168,42 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
     return signal;
 }
 
-Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, group2, toggle) {
+Game4kids.React.Signal.prototype.mapCollision = function (other, checkCollision) {
+    var signal = new Game4kids.React.Signal(this);
+    var previousFrame = 0;
+
+    if (checkCollision) Game4kids.current.registerCollision(this.getRoot().actor, other);
+
+    this.subscribe(function (frame) {
+        var value = Game4kids.current.game.physics.arcade.overlap(this.getRoot().actor, other);
+        if (!value) {
+            value = frame > previousFrame + 1;
+            previousFrame = frame;
+        }
+        signal.emit(value);
+
+    });
+
+    return signal;
+}
+
+Game4kids.React.Signal.prototype.mapCollisionGroup = function (group1, group2, checkCollision, toggle) {
     var collisions = new Map();
     var signal = new Game4kids.React.Signal(this);
 
+    if (checkCollision) Game4kids.current.registerCollision(Game4kids.current.groups.get(group1), Game4kids.current.groups.get(group2));
+
     this.subscribe(function (frame) {
-        Game4kids.current.game.physics.arcade[type](
+        Game4kids.current.game.physics.arcade.overlap(
             Game4kids.current.groups.get(group1),
             Game4kids.current.groups.get(group2),
             function (obj1, obj2) {
+
                 var id = Math.pairing(obj1.id, obj2.id);
+                var dist = Math.distQ(obj1, obj2);
 
                 var data = collisions.get(id);
-                if (!data || frame > data.frame + 2 || !toggle) {
+                if (!data || (frame > data.frame + 2 && !Math.tolerate(dist, data.dist, 1)) || !toggle) {
                     if (group1 != group2) {
                         signal.emit(true, obj1, obj2);
                     } else {
@@ -188,11 +211,12 @@ Game4kids.React.Signal.prototype.mapCollisionGroup = function (type, group1, gro
                         signal.emit(true, obj2);
                     }
                 }
-                collisions.set(id, { frame: frame, obj1: obj1, obj2: obj2 });
+                collisions.set(id, { frame: frame, dist: dist, obj1: obj1, obj2: obj2 });
+
             });
 
         for (let [key, data] of collisions) {
-            if (frame > data.frame + 2) {
+            if (frame > data.frame + 1 && !Math.tolerate(Math.distQ(data.obj1, data.obj2), data.dist, 1)) {
                 if (group1 != group2) {
                     signal.emit(false, data.obj1, data.obj2);
                 } else {
@@ -219,6 +243,7 @@ Game4kids.React.Signal.prototype.toTime = function () {
 Game4kids.Game.prototype.signals = null;
 Game4kids.Game.prototype.actorSignals = null;
 Game4kids.Game.prototype.count = null;
+Game4kids.Game.prototype.collisions = null;
 
 Game4kids.Game.prototype.initEvent = function () {
     this.signals = [];
@@ -226,6 +251,7 @@ Game4kids.Game.prototype.initEvent = function () {
     this.count = 0;
     this.input.mouse.capture = true;
     this.input.keyboard.capture = true;
+    this.collisions = new Set();
 
     var game = this.game;
 }
@@ -236,6 +262,7 @@ Game4kids.Game.prototype.updateEvent = function () {
     // loop on signals
     this.signals.forEach(signal => signal.emit(this.count)); // Important! do not send argument list
 
+    this.collisions.forEach(collision => this.game.physics.arcade.collide(collision.obj1, collision.obj2));
 }
 
 // method
@@ -261,6 +288,10 @@ Game4kids.Game.prototype.removeSignal = function (signal) {
 
 }
 
+Game4kids.Game.prototype.registerCollision = function (obj1, obj2) {
+    this.collisions.add({ obj1: obj1, obj2: obj2 });
+}
+
 Game4kids.Game.prototype.registerActorSignals = function (actor, signal) {
     if (!this.actorSignals.has(actor)) {
         this.actorSignals.set(actor, new Set());
@@ -281,4 +312,5 @@ Game4kids.Game.prototype.removeActorSignals = function (actor) {
 
 Game4kids.Game.prototype.clearSignals = function () {
     this.signals = [];
+    this.collisions.clear();
 }

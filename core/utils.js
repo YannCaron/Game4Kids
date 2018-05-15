@@ -40,13 +40,25 @@ Math.pairing = function (x, y) {
     return (x ^ 2 + 3 * x + 2 * x * y + y + y ^ 2) / 2;
 }
 
+Math.distQ = function (pt1, pt2) {
+    var x = pt1.x - pt2.x;
+    var y = pt1.y - pt2.y;
+    return x * x + y * y;
+}
+
+Math.tolerate = function (a, b, tolerance) {
+    return Math.abs(b - a) <= tolerance;
+}
+
 // styles
 var Styles = Styles || {};
 
 Styles.getStyleOf = function (elementName, styleName) {
 
     var element = document.getElementById(elementName);
-    var style = window.getComputedStyle(element);
-    return style.getPropertyValue(styleName);
-  
+    if (element) {
+        var style = window.getComputedStyle(element);
+        return style.getPropertyValue(styleName);
+    }
+
 }
