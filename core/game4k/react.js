@@ -171,16 +171,17 @@ Game4kids.React.Signal.prototype.map = function (mapper) {
 Game4kids.React.Signal.prototype.mapCollision = function (other, checkCollision) {
     var signal = new Game4kids.React.Signal(this);
     var previousFrame = 0;
+    var actor = this.getRoot().actor;
 
-    if (checkCollision) Game4kids.current.registerCollision(this.getRoot().actor, other);
+    if (checkCollision) Game4kids.current.registerCollision(actor, other);
 
     this.subscribe(function (frame) {
-        var value = Game4kids.current.game.physics.arcade.overlap(this.getRoot().actor, other);
+        var value = Game4kids.current.game.physics.arcade.overlap(actor, other);
         if (!value) {
             value = frame > previousFrame + 1;
             previousFrame = frame;
         }
-        signal.emit(value);
+        signal.emit(value, actor);
 
     });
 

@@ -1,0 +1,968 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id=";+KOQhP9#88@D/7O.4?v">story</variable>
+    <variable type="" id="@C+o{mk]WI[N%h%_P/@t">imgs</variable>
+    <variable type="" id="Kg)$BkJ[1eO%lELBLF3o">x</variable>
+    <variable type="Actor" id="Jss(P-~adYeh^otA0WJ#">mage</variable>
+    <variable type="" id="t.Bmc]gbe6/kfq9vu/cL">y</variable>
+    <variable type="Actor" id="?C|}}-d|Ci3Fb-jaXC!:">tree</variable>
+    <variable type="" id="L+kN^vH|$BYiGJkfThN{">texts</variable>
+    <variable type="Actor" id="]2%[m)}kc:k*JvMBmxDY">hero</variable>
+  </variables>
+  <block type="variables_global" id="{G+U5(rhtNo_oj|9Y9sn" x="140" y="60">
+    <field name="VAR" id=";+KOQhP9#88@D/7O.4?v" variabletype="">story</field>
+    <value name="VALUE">
+      <shadow type="math_number" id="X)KyBQ.8%M)*vbE$g[Og">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="create_game" id="pp#lQ+3T7wp6w2Uf5aIJ">
+        <value name="IMG">
+          <shadow type="game_image_Background" id="z2uw@IhZqlv/S,zZ,U/T">
+            <field name="IMG">Background-grass-2#assets/img/Background/grass 2.png</field>
+          </shadow>
+        </value>
+        <value name="W">
+          <shadow type="math_number" id="!@rJ_Z~G{5Zm2i$o,.g:">
+            <field name="NUM">10000</field>
+          </shadow>
+        </value>
+        <value name="H">
+          <shadow type="math_number" id="]zQ-N+wNs9U4[n!XxWaM">
+            <field name="NUM">10000</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="variables_set" id="(_}a92}wZ^-.de5bb!%_">
+            <field name="VAR" id="@C+o{mk]WI[N%h%_P/@t" variabletype="">imgs</field>
+            <value name="VALUE">
+              <block type="lists_create_with" id="Jp_JR/mP0o1J1@8m/0To" inline="true">
+                <mutation items="3"></mutation>
+                <value name="ADD0">
+                  <block type="game_image_PlanetCute" id="LwncDYwpd8cZnWU,/tj/">
+                    <field name="IMG">PlanetCute-Tree-Short#assets/img/PlanetCute/Tree Short.png</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="game_image_PlanetCute" id="kv)pYSigP}FcP{_!n=e@">
+                    <field name="IMG">PlanetCute-Tree-Tall#assets/img/PlanetCute/Tree Tall.png</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="game_image_PlanetCute" id="sI_H{WJf3V$`lO5y,MtD">
+                    <field name="IMG">PlanetCute-Tree-Ugly#assets/img/PlanetCute/Tree Ugly.png</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_repeat_ext" id="fj1z]8_[5**M3]^Okap.">
+                <value name="TIMES">
+                  <shadow type="math_number" id="li*DKdwK~hIr%XK?n7Um">
+                    <field name="NUM">250</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="c_e?_9-p0z`#DVWEU+f$">
+                    <field name="VAR" id="Kg)$BkJ[1eO%lELBLF3o" variabletype="">x</field>
+                    <value name="VALUE">
+                      <block type="math_random_int" id="F^@{7Tz_=0[ZbE_]HmNE">
+                        <value name="FROM">
+                          <shadow type="math_number" id="C9o/[LIm)F:Yu}^H48yj">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                        <value name="TO">
+                          <shadow type="math_number" id="9FhM$BfUEhu69L]wEr.w">
+                            <field name="NUM">50</field>
+                          </shadow>
+                          <block type="math_arithmetic" id="VN]AT:|90H2W5=#Hu#E4">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <shadow type="math_number" id="z?SEQ)~5/Nq},#wJa,sa">
+                                <field name="NUM">1</field>
+                              </shadow>
+                              <block type="game_get" id="((Y~~~hTU%=H]|.PlMf,">
+                                <field name="PROPERTY">game4k.game.world.width</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <shadow type="math_number" id="kCPGZO7hozy7mjJohRP]">
+                                <field name="NUM">50</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="dHFzd?265j0d^Y|@azj7">
+                        <field name="VAR" id="t.Bmc]gbe6/kfq9vu/cL" variabletype="">y</field>
+                        <value name="VALUE">
+                          <block type="math_random_int" id=")mBwDS;G7wd/{/wY@6*z">
+                            <value name="FROM">
+                              <shadow type="math_number" id="PEQ(=Sy7U`OdogtdXKdg">
+                                <field name="NUM">50</field>
+                              </shadow>
+                            </value>
+                            <value name="TO">
+                              <shadow type="math_number" id="9FhM$BfUEhu69L]wEr.w">
+                                <field name="NUM">50</field>
+                              </shadow>
+                              <block type="math_arithmetic" id="D@H:;7b5lq#N`-@yS;8F">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <shadow type="math_number" id="z?SEQ)~5/Nq},#wJa,sa">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                  <block type="game_get" id="zWWEJ`1ps_ul_aw-L/H|">
+                                    <field name="PROPERTY">game4k.game.world.height</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <shadow type="math_number" id="FFk:?_S3za3.xNxCmQDh">
+                                    <field name="NUM">50</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="create_actor" id="6Um!mKL=h2bt{!WWfA-4">
+                            <field name="VAR" id="?C|}}-d|Ci3Fb-jaXC!:" variabletype="Actor">tree</field>
+                            <value name="IMG">
+                              <shadow type="game_image_PlanetCute" id="38[{,F::xHBP=0Fh(v2~">
+                                <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
+                              </shadow>
+                              <block type="lists_getIndex" id="q1TUAD3j~*:76sB92F,2">
+                                <mutation statement="false" at="false"></mutation>
+                                <field name="MODE">GET</field>
+                                <field name="WHERE">RANDOM</field>
+                                <value name="VALUE">
+                                  <block type="variables_get" id="L=%ZMbmS=@nB6a@YRCy2">
+                                    <field name="VAR" id="@C+o{mk]WI[N%h%_P/@t" variabletype="">imgs</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="X">
+                              <shadow type="math_number" id="m_n,Sjljzi5_/$tem_s]">
+                                <field name="NUM">100</field>
+                              </shadow>
+                              <block type="variables_get" id="!8s.!hw+u2JF*laaUA|n">
+                                <field name="VAR" id="Kg)$BkJ[1eO%lELBLF3o" variabletype="">x</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <shadow type="math_number" id="*^tYP^s33!_hSe~a.)=v">
+                                <field name="NUM">100</field>
+                              </shadow>
+                              <block type="variables_get" id="{|s|STKj^Mi^Xc?Z#`8C">
+                                <field name="VAR" id="t.Bmc]gbe6/kfq9vu/cL" variabletype="">y</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="actor_method0" id="k+ozOlM,h+{7Hx-ppIm0">
+                                <field name="METHOD">body.immovable = true</field>
+                                <value name="VAR">
+                                  <shadow type="actor_object" id="Tdk0RIseZ?D(h3Y3J9fu">
+                                    <field name="VAR" id="?C|}}-d|Ci3Fb-jaXC!:" variabletype="Actor">tree</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="create_actor" id="YnIV|~uLPQ,|3$)!//9[">
+                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                    <value name="IMG">
+                      <shadow type="game_image_PlanetCute" id="_]54Ttstq{z3P(azm7}z">
+                        <field name="IMG">PlanetCute-Character-Cat-Girl#assets/img/PlanetCute/Character Cat Girl.png</field>
+                      </shadow>
+                    </value>
+                    <value name="X">
+                      <shadow type="math_number" id="p`2Ye});@DalD]uir/]]">
+                        <field name="NUM">200</field>
+                      </shadow>
+                    </value>
+                    <value name="Y">
+                      <shadow type="math_number" id="5NcJISL5|DcE)FqV+T_p">
+                        <field name="NUM">200</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="actor_set_custom" id="H-vgN9]GI,$GCp@pXgQ1">
+                        <field name="PROPERTY">move</field>
+                        <value name="VAR">
+                          <shadow type="actor_object" id=",z!([b=)XnfBNUF)/xFy">
+                            <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                          </shadow>
+                        </value>
+                        <value name="ARG1">
+                          <shadow type="math_number" id="T/EQGRx:#p+U(V*iZ:-4">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="logic_boolean" id="!Nwh+O_hOoK*MDN$,CyE">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="actor_method0" id="He+V3Gx;riz,Om=(x4e3">
+                            <field name="METHOD">body.collideWorldBounds = true</field>
+                            <value name="VAR">
+                              <shadow type="actor_object" id="/]|~0(#GsGU`*4U_r1dp">
+                                <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="actor_method0" id="%WMFm5}UY3mv8u4O-?oZ">
+                                <field name="METHOD">body.immovable = true</field>
+                                <value name="VAR">
+                                  <shadow type="actor_object" id="w6cuNeWBA}p]h!ZD*cPs">
+                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="signal_create" id=";/JNk%k)Vijp4+Ml,Xi9">
+                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                    <value name="NEXT">
+                                      <block type="signal_combine" id="b/zts~cy3ly.6jf{hvKm">
+                                        <field name="OPERATOR">%1%2</field>
+                                        <value name="NEXT1">
+                                          <block type="signal_if" id="a%oiK:FYkc^lqmI+6ol[">
+                                            <value name="VALUE">
+                                              <shadow type="logic_boolean" id="!O!T|)ir`gX1N;^{j628">
+                                                <field name="BOOL">TRUE</field>
+                                              </shadow>
+                                              <block type="actor_get_custom" id="|thy8J)q5p$)V2O#S*6_">
+                                                <field name="PROPERTY">move</field>
+                                                <value name="VAR">
+                                                  <shadow type="actor_object" id="Y`[(!R9P~Q4)/Adi$)`w">
+                                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="NEXT2">
+                                          <block type="signal_every" id="{+~9sERsL0?A~=1*=t4u">
+                                            <value name="VALUE">
+                                              <shadow type="math_number" id="i(OrJOazbh./C1UG#d9{">
+                                                <field name="NUM">4</field>
+                                              </shadow>
+                                              <block type="math_random_int" id="oV9[cPVd@$_.J]Lja]g7">
+                                                <value name="FROM">
+                                                  <shadow type="math_number" id="Tl!p,7N;o=[BwLi?|7fD">
+                                                    <field name="NUM">7</field>
+                                                  </shadow>
+                                                </value>
+                                                <value name="TO">
+                                                  <shadow type="math_number" id="F}EYrpt7C!2QR.`dzhXO">
+                                                    <field name="NUM">10</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="STMT">
+                                      <block type="variables_set" id="..I}2VJ+D@MaNbrz!Z)%">
+                                        <field name="VAR" id="L+kN^vH|$BYiGJkfThN{" variabletype="">texts</field>
+                                        <value name="VALUE">
+                                          <block type="lists_create_with" id="M8g~AG/t(_TSC0bAY@^m" inline="true">
+                                            <mutation items="3"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="QAhwHr?!?V|-V5oBzC}]">
+                                                <field name="TEXT">hmm ....</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="text" id="SwtKt=!h%Cun[AYW+^`!">
+                                                <field name="TEXT">haaaa ....</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD2">
+                                              <block type="text" id=",f[|3[1uuwHb9+iZF-W)">
+                                                <field name="TEXT">pffff ....</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="controls_if" id="J~^wsvz@}^UWO}v)Zfkb">
+                                            <value name="IF0">
+                                              <block type="logic_compare" id="V0oh{hCv~FRF674O(8{~">
+                                                <field name="OP">NEQ</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="Zc.@!x%!FpWTcS={KQN=">
+                                                    <field name="VAR" id=";+KOQhP9#88@D/7O.4?v" variabletype="">story</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="-XkTeie~lOOajk`sY1w;">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="variables_set" id="ozgkGrt[=::5Oi5:4]7~">
+                                                <field name="VAR" id="L+kN^vH|$BYiGJkfThN{" variabletype="">texts</field>
+                                                <value name="VALUE">
+                                                  <block type="lists_create_with" id="v6vqsu$]83r5;U,64}|Q" inline="true">
+                                                    <mutation items="2"></mutation>
+                                                    <value name="ADD0">
+                                                      <block type="text" id="T[~6@FmeOnK{UfI,a?0V">
+                                                        <field name="TEXT">I hope that the hero will kill all the rats</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD1">
+                                                      <block type="text" id="-S]k5=-kmND*oFu/O=`z">
+                                                        <field name="TEXT">I can't wait !</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="create_tween_say" id="lP@eDD)wIc$+Wr@`9,_q">
+                                                <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                <value name="VALUE">
+                                                  <shadow type="text" id="mw=762cCNFj?ZzDacg50">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="lists_getIndex" id="3F9vcgjIh1sOxS9n]`(J">
+                                                    <mutation statement="false" at="false"></mutation>
+                                                    <field name="MODE">GET</field>
+                                                    <field name="WHERE">RANDOM</field>
+                                                    <value name="VALUE">
+                                                      <block type="variables_get" id="zKs5P13EwoCC#]v,jY],">
+                                                        <field name="VAR" id="L+kN^vH|$BYiGJkfThN{" variabletype="">texts</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="TIME">
+                                                  <shadow type="tween_auto" id="M1f$Zq_aDrh.{oLpd$0X"></shadow>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="signal_create" id="}Yo;H){h3$4O1=08v+Sl">
+                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                        <value name="NEXT">
+                                          <block type="signal_combine" id="r;l+C7n_.H-Ltm5ZsRQ~">
+                                            <field name="OPERATOR">%1%2</field>
+                                            <value name="NEXT1">
+                                              <block type="signal_if" id="@S@Tdhak+Tfom3]Y8?cv">
+                                                <value name="VALUE">
+                                                  <shadow type="logic_boolean" id="pm],IBrD87v7m5S+=sd{">
+                                                    <field name="BOOL">TRUE</field>
+                                                  </shadow>
+                                                  <block type="actor_get_custom" id="5:NK_D-kfP#uajF^fB;g">
+                                                    <field name="PROPERTY">move</field>
+                                                    <value name="VAR">
+                                                      <shadow type="actor_object" id="mtMfax3oBdV`F_Ydi2iS">
+                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                      </shadow>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="NEXT2">
+                                              <block type="signal_every" id="AQ|NI,Bv.b;F]*wTSi(c">
+                                                <value name="VALUE">
+                                                  <shadow type="math_number" id="i(OrJOazbh./C1UG#d9{">
+                                                    <field name="NUM">4</field>
+                                                  </shadow>
+                                                  <block type="math_random_int" id="anSaAhjj_wujYKdL7z`!">
+                                                    <value name="FROM">
+                                                      <shadow type="math_number" id="%#cE)hxD:S5k,?^m/NgU">
+                                                        <field name="NUM">2</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <value name="TO">
+                                                      <shadow type="math_number" id="ce,LSi5HsV9FulCo;9NU">
+                                                        <field name="NUM">5</field>
+                                                      </shadow>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="STMT">
+                                          <block type="variables_set" id="@9N=`$$YoDr5XvVnH|LE">
+                                            <field name="VAR" id="Kg)$BkJ[1eO%lELBLF3o" variabletype="">x</field>
+                                            <value name="VALUE">
+                                              <block type="math_random_int" id="6g94ebF!_V;m+3|+~b#6">
+                                                <value name="FROM">
+                                                  <shadow type="math_number" id="l-IVOJn=?HRKS$8W{2M|">
+                                                    <field name="NUM">-100</field>
+                                                  </shadow>
+                                                </value>
+                                                <value name="TO">
+                                                  <shadow type="math_number" id="^$Uiu)D;I?7kMDw2e5(9">
+                                                    <field name="NUM">100</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="atjmk?7ACZvfg4N@ez~h">
+                                                <field name="VAR" id="t.Bmc]gbe6/kfq9vu/cL" variabletype="">y</field>
+                                                <value name="VALUE">
+                                                  <block type="math_random_int" id="g}O/8l3!a#h^/a..?7Ke">
+                                                    <value name="FROM">
+                                                      <shadow type="math_number" id="7jfci)D-u3ZdiryXQKjb">
+                                                        <field name="NUM">-25</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <value name="TO">
+                                                      <shadow type="math_number" id="V0`rXrf#^-J@67;#CX.^">
+                                                        <field name="NUM">25</field>
+                                                      </shadow>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="create_tween_apply" id="DsRuuxXu}cJox;`.rz9c">
+                                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                    <field name="PROPERTY">body.velocity.x</field>
+                                                    <value name="VALUE">
+                                                      <shadow type="math_number" id="W||y]/!`ljUSM/5_:)dL">
+                                                        <field name="NUM">100</field>
+                                                      </shadow>
+                                                      <block type="variables_get" id="N@h-Xb+faN}AP6?nQoZR">
+                                                        <field name="VAR" id="Kg)$BkJ[1eO%lELBLF3o" variabletype="">x</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="TIME">
+                                                      <shadow type="math_number" id="J`q*:ZYh863R_8|F2*v;">
+                                                        <field name="NUM">1.5</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <next>
+                                                      <block type="create_tween_apply" id="PgV((*lEcy63g?s%Cs:)">
+                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                        <field name="PROPERTY">body.velocity.y</field>
+                                                        <value name="VALUE">
+                                                          <shadow type="math_number" id="W||y]/!`ljUSM/5_:)dL">
+                                                            <field name="NUM">100</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="eIdkx45I2WZ4ENe[!s],">
+                                                            <field name="VAR" id="t.Bmc]gbe6/kfq9vu/cL" variabletype="">y</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="TIME">
+                                                          <shadow type="math_number" id="ExbatXE)U#1[MW^2jpR{">
+                                                            <field name="NUM">1.5</field>
+                                                          </shadow>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="signal_create_collide" id="xq-[j.IiHnT)5Sx[qxk3">
+                                            <field name="ACTOR1" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                            <field name="EVENT">11</field>
+                                            <field name="KEY">true</field>
+                                            <field name="ACTOR2" id="?C|}}-d|Ci3Fb-jaXC!:" variabletype="Actor">tree</field>
+                                            <next>
+                                              <block type="create_actor" id="LKVA*nrq{eFP=sZ4WdJ[">
+                                                <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                <value name="IMG">
+                                                  <shadow type="game_image_PlanetCute" id="/1$km/6^X}DoqRx{*U!h">
+                                                    <field name="IMG">PlanetCute-Character-Boy#assets/img/PlanetCute/Character Boy.png</field>
+                                                  </shadow>
+                                                </value>
+                                                <value name="X">
+                                                  <shadow type="math_number" id="O_F={]5rjf?K-z{($TdV">
+                                                    <field name="NUM">400</field>
+                                                  </shadow>
+                                                </value>
+                                                <value name="Y">
+                                                  <shadow type="math_number" id="XKF2Gm-dH78O`@GAN|49">
+                                                    <field name="NUM">400</field>
+                                                  </shadow>
+                                                </value>
+                                                <next>
+                                                  <block type="actor_method0" id="`Rznud}%{Kj]c$q[k(6O">
+                                                    <field name="METHOD">body.collideWorldBounds = true</field>
+                                                    <value name="VAR">
+                                                      <shadow type="actor_object" id="d5YRRF@zoM;C$WlFXrNi">
+                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                      </shadow>
+                                                    </value>
+                                                    <next>
+                                                      <block type="camera_follow" id="t*C3*#=D$:@qUa?%]MUN">
+                                                        <value name="VAR">
+                                                          <shadow type="actor_object" id="ttTJ;oPh_!IWbD^Z9iT?">
+                                                            <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                          </shadow>
+                                                        </value>
+                                                        <next>
+                                                          <block type="signal_create_collide" id="?@E_%TOAn^6q3mIMEtAL">
+                                                            <field name="ACTOR1" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                            <field name="EVENT">11</field>
+                                                            <field name="KEY">true</field>
+                                                            <field name="ACTOR2" id="?C|}}-d|Ci3Fb-jaXC!:" variabletype="Actor">tree</field>
+                                                            <next>
+                                                              <block type="signal_create" id="vX5%1s{]6$V}M1suI}o7">
+                                                                <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                <statement name="STMT">
+                                                                  <block type="actor_set" id="i-Mwxl?TYN;1MBxW.r.N">
+                                                                    <field name="PROPERTY">body.velocity.x</field>
+                                                                    <value name="VAR">
+                                                                      <shadow type="actor_object" id="peCdbEr2loYrYA/(@0!9">
+                                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                    <value name="ARG1">
+                                                                      <shadow type="math_number" id="h)mHIv9+;W+@!8.6~d[?">
+                                                                        <field name="NUM">0</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="actor_set" id="w#tO%]bW3n^C[N#1tK`8">
+                                                                        <field name="PROPERTY">body.velocity.y</field>
+                                                                        <value name="VAR">
+                                                                          <shadow type="actor_object" id="QttlF)R)znBl.R7N2oJ%">
+                                                                            <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                        <value name="ARG1">
+                                                                          <shadow type="math_number" id="Q:GN/C?]I_z6xh)bw;#_">
+                                                                            <field name="NUM">0</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </statement>
+                                                                <next>
+                                                                  <block type="signal_create" id="AUBt,7S0{g/AJ[dX/P_S">
+                                                                    <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                    <value name="NEXT">
+                                                                      <block type="signal_keyboard" id="%y!NY$qWFtXo;~+B(5d_">
+                                                                        <field name="EVENT">.whenEquals(true)</field>
+                                                                        <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.LEFT); })</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <statement name="STMT">
+                                                                      <block type="actor_set" id="E-2E~O2)#_Kulm:_1k?@">
+                                                                        <field name="PROPERTY">body.velocity.x</field>
+                                                                        <value name="VAR">
+                                                                          <shadow type="actor_object" id="EUts}KZXDDgkp+7vc[bE">
+                                                                            <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                        <value name="ARG1">
+                                                                          <shadow type="math_number" id="2Cn~I*gqk~w[#s6Be`9{">
+                                                                            <field name="NUM">-250</field>
+                                                                          </shadow>
+                                                                        </value>
+                                                                      </block>
+                                                                    </statement>
+                                                                    <next>
+                                                                      <block type="signal_create" id="gwL*)Vvnnxd~*w?Rb$1D">
+                                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                        <value name="NEXT">
+                                                                          <block type="signal_keyboard" id=".jx!gl*uLK^3fO]-.Ud/">
+                                                                            <field name="EVENT">.whenEquals(true)</field>
+                                                                            <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT); })</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <statement name="STMT">
+                                                                          <block type="actor_set" id="C:L`wsVgBR{X_2gfP`EX">
+                                                                            <field name="PROPERTY">body.velocity.x</field>
+                                                                            <value name="VAR">
+                                                                              <shadow type="actor_object" id="quXOByyjJd_*7BhC2.y)">
+                                                                                <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                            <value name="ARG1">
+                                                                              <shadow type="math_number" id="mwpI!~Fdv/(9xkaLL^Td">
+                                                                                <field name="NUM">250</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                          </block>
+                                                                        </statement>
+                                                                        <next>
+                                                                          <block type="signal_create" id="6]S3Y0[RvkN/`8/*4#Pc">
+                                                                            <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                            <value name="NEXT">
+                                                                              <block type="signal_keyboard" id="tbW5mPj2C+@4$O:#~k`E">
+                                                                                <field name="EVENT">.whenEquals(true)</field>
+                                                                                <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.UP); })</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <statement name="STMT">
+                                                                              <block type="actor_set" id="abX7H]e[RFwbr4_q_HMI">
+                                                                                <field name="PROPERTY">body.velocity.y</field>
+                                                                                <value name="VAR">
+                                                                                  <shadow type="actor_object" id="_1En):}Y,XzPTt`Oel1|">
+                                                                                    <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                                <value name="ARG1">
+                                                                                  <shadow type="math_number" id="XA%:#NTZcCVz{PHj[4,I">
+                                                                                    <field name="NUM">-250</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                              </block>
+                                                                            </statement>
+                                                                            <next>
+                                                                              <block type="signal_create" id="Hxcu0o@}HV`hXreA0|r/">
+                                                                                <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                <value name="NEXT">
+                                                                                  <block type="signal_keyboard" id="h9.7HduK#EYOB{gcNs;i">
+                                                                                    <field name="EVENT">.whenEquals(true)</field>
+                                                                                    <field name="KEY">.map(function () { return game4k.game.input.keyboard.isDown(Phaser.Keyboard.DOWN); })</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <statement name="STMT">
+                                                                                  <block type="actor_set" id="-Og9EF$58j(:MW-cU);x">
+                                                                                    <field name="PROPERTY">body.velocity.y</field>
+                                                                                    <value name="VAR">
+                                                                                      <shadow type="actor_object" id="5YlJsVtQV~:D`16J--1=">
+                                                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                    <value name="ARG1">
+                                                                                      <shadow type="math_number" id="rv3YeZ]TB3vo/*),Vv(]">
+                                                                                        <field name="NUM">250</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </statement>
+                                                                                <next>
+                                                                                  <block type="signal_create" id="k*={Wx(OS]G`RjPbS9OW">
+                                                                                    <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                    <value name="NEXT">
+                                                                                      <block type="signal_collide" id="/}_G?36J3{+gB`hs.na$">
+                                                                                        <field name="EVENT">.toggle().whenEquals(true)</field>
+                                                                                        <field name="KEY">true</field>
+                                                                                        <field name="ACTOR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <statement name="STMT">
+                                                                                      <block type="controls_if" id="=3+!q:[Os6mg)le[tR_^">
+                                                                                        <mutation else="1"></mutation>
+                                                                                        <value name="IF0">
+                                                                                          <block type="logic_compare" id="EFN2K_/woWvCmqhr^pbj">
+                                                                                            <field name="OP">EQ</field>
+                                                                                            <value name="A">
+                                                                                              <block type="variables_get" id=".g^Y,ClEdzk~MT./Fy`m">
+                                                                                                <field name="VAR" id=";+KOQhP9#88@D/7O.4?v" variabletype="">story</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="math_number" id="4jhI$X$W0J7G)#(C:bEF">
+                                                                                                <field name="NUM">0</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <statement name="DO0">
+                                                                                          <block type="create_sequence" id="D!mP[P.]c%J5,8U)ZrtO">
+                                                                                            <mutation structure="create_sequence_then;create_sequence_then;create_sequence_then;create_sequence_then"></mutation>
+                                                                                            <value name="NEXT">
+                                                                                              <shadow type="sequence_once" id="X+l:^I#+MRH)`Tkw}i]C"></shadow>
+                                                                                            </value>
+                                                                                            <statement name="STMT0">
+                                                                                              <block type="actor_set_custom" id="I@o8(RdliN0*P0;hNX0!">
+                                                                                                <field name="PROPERTY">move</field>
+                                                                                                <value name="VAR">
+                                                                                                  <shadow type="actor_object" id="zSa:{Z4[JjZl.9rlI5)@">
+                                                                                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <value name="ARG1">
+                                                                                                  <shadow type="math_number" id="T/EQGRx:#p+U(V*iZ:-4">
+                                                                                                    <field name="NUM">0</field>
+                                                                                                  </shadow>
+                                                                                                  <block type="logic_boolean" id="{f$le)9*f6rl{@FXmP#$">
+                                                                                                    <field name="BOOL">FALSE</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <next>
+                                                                                                  <block type="actor_method0" id="ffRI,O9ODg30)9rchm=6">
+                                                                                                    <field name="METHOD">toFront()</field>
+                                                                                                    <value name="VAR">
+                                                                                                      <shadow type="actor_object" id="==+^4+|F/{|@6_,7wFe0">
+                                                                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                      </shadow>
+                                                                                                    </value>
+                                                                                                    <next>
+                                                                                                      <block type="create_tween_say" id="pXM^}~-#}):^=/a_$raY">
+                                                                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id=";|Z(m0f,A{07d)DOb)}I">
+                                                                                                            <field name="TEXT">Hello hero !</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id="*I+PHeUEcio2Nb^}.nAa"></shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </next>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <statement name="STMT1">
+                                                                                              <block type="create_tween_say" id="KW^8T(TzANEkVEB.qC/)">
+                                                                                                <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <shadow type="text" id="qS^dLf+1cq1`?9eO2rim">
+                                                                                                    <field name="TEXT">Hello magician !</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <value name="TIME">
+                                                                                                  <shadow type="tween_auto" id="oH,PQZ?ufXdMuRGe=g8}"></shadow>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <statement name="STMT2">
+                                                                                              <block type="create_tween_ask_buttons" id="VZJvlmL$vX2tV$_|qoNa">
+                                                                                                <mutation structure="create_tween_ask_answer"></mutation>
+                                                                                                <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                <field name="BUTTON0">yes</field>
+                                                                                                <field name="BUTTON1">no</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <shadow type="text" id="fQONN^(qm+WpE9B*5/aR">
+                                                                                                    <field name="TEXT">Can you help me ?</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <statement name="STMT0">
+                                                                                                  <block type="create_sequence" id="rjM7*aI{:gxtL*U(UA:B">
+                                                                                                    <mutation structure="create_sequence_then;create_sequence_then"></mutation>
+                                                                                                    <value name="NEXT">
+                                                                                                      <shadow type="sequence_once" id="RXSv5#dbi8@7R,Z;-IFg"></shadow>
+                                                                                                    </value>
+                                                                                                    <statement name="STMT0">
+                                                                                                      <block type="create_tween_say" id=",8W@8G8x{cE:T$R*#A3n">
+                                                                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id="7kJgN8OI-NasN!ocqeOR">
+                                                                                                            <field name="TEXT">Yes, tell me what's your problem !</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id="H7!^B*{(z|Mq|eS[!e[F"></shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                    <statement name="STMT1">
+                                                                                                      <block type="create_tween_say" id="yhs,U|Yc{^ZUeL|XR|0N">
+                                                                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id=",mC[Ew.s)Jl.#]P,U5{n">
+                                                                                                            <field name="TEXT">Hello hero !</field>
+                                                                                                          </shadow>
+                                                                                                          <block type="lists_create_with" id="/b*XK_?T{fR#X`DX$d4_" inline="true">
+                                                                                                            <mutation items="2"></mutation>
+                                                                                                            <value name="ADD0">
+                                                                                                              <block type="text" id=".{GE|Tv*S,AMJTF`;J)|">
+                                                                                                                <field name="TEXT">Rats terrifying the village</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                            <value name="ADD1">
+                                                                                                              <block type="text" id="=j|kwlE#CFY~,.O9@)R7">
+                                                                                                                <field name="TEXT">Please kill the rats</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id=";/=6U|AfIn,V.n;HADc9"></shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                    <statement name="STMT2">
+                                                                                                      <block type="create_tween_say" id="i~i6M0H;j+1T^1*$Hv#q">
+                                                                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id="xbhX6@,L]W|R4M!MX[~:">
+                                                                                                            <field name="TEXT">Bring this knife !</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id="fo(d7qS2Leu!{]G5Kkn@"></shadow>
+                                                                                                        </value>
+                                                                                                        <next>
+                                                                                                          <block type="variables_set" id="gr@1bR{(0T0!Cn@]5x5e">
+                                                                                                            <field name="VAR" id=";+KOQhP9#88@D/7O.4?v" variabletype="">story</field>
+                                                                                                            <value name="VALUE">
+                                                                                                              <block type="math_number" id="7u+IqK|5_xxZ-64QArv5">
+                                                                                                                <field name="NUM">1</field>
+                                                                                                              </block>
+                                                                                                            </value>
+                                                                                                          </block>
+                                                                                                        </next>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                  </block>
+                                                                                                </statement>
+                                                                                                <statement name="STMT1">
+                                                                                                  <block type="create_sequence" id="Xt^w+9NnL1E9e5@^fb*U">
+                                                                                                    <mutation structure="create_sequence_then"></mutation>
+                                                                                                    <value name="NEXT">
+                                                                                                      <shadow type="sequence_once" id="lv,X6x]3D=NIJv_6c~-?"></shadow>
+                                                                                                    </value>
+                                                                                                    <statement name="STMT0">
+                                                                                                      <block type="create_tween_say" id="zSd@~+H/b?gBC+q#r55n">
+                                                                                                        <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id="J`}*U~IL?*RDALO7:bQc">
+                                                                                                            <field name="TEXT">No, sorry !</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id="9?D5X!Dv}6=2DY~xqh@e"></shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                    <statement name="STMT1">
+                                                                                                      <block type="create_tween_say" id="/lR./pUgR9is+/Jz~dao">
+                                                                                                        <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <shadow type="text" id="L_*blHX`LAi/N)=%?O:]">
+                                                                                                            <field name="TEXT">OK ! No problem !</field>
+                                                                                                          </shadow>
+                                                                                                        </value>
+                                                                                                        <value name="TIME">
+                                                                                                          <shadow type="tween_auto" id="01DC2l~I+a0V]J,!{fjC"></shadow>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </statement>
+                                                                                                  </block>
+                                                                                                </statement>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <statement name="STMT3">
+                                                                                              <block type="create_tween_say" id="X`yMLte-JF!?$Uao99i}">
+                                                                                                <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <shadow type="text" id="|s+AUiMZ4#y+??0B+}=_">
+                                                                                                    <field name="TEXT">See you later</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <value name="TIME">
+                                                                                                  <shadow type="tween_auto" id="X+Y04!$B;x5~wOPE8khX"></shadow>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <statement name="STMT4">
+                                                                                              <block type="actor_set_custom" id="BWl|IQ~GKF}P$OIvtTGD">
+                                                                                                <field name="PROPERTY">move</field>
+                                                                                                <value name="VAR">
+                                                                                                  <shadow type="actor_object" id="spIwf{ehkrmRh7:.1;Vg">
+                                                                                                    <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                                  </shadow>
+                                                                                                </value>
+                                                                                                <value name="ARG1">
+                                                                                                  <shadow type="math_number" id="ziG3B)kSr-8AHVe=_@1C">
+                                                                                                    <field name="NUM">0</field>
+                                                                                                  </shadow>
+                                                                                                  <block type="logic_boolean" id="T7tY2z[a)`9}JM,bfyBt">
+                                                                                                    <field name="BOOL">TRUE</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                          </block>
+                                                                                        </statement>
+                                                                                        <statement name="ELSE">
+                                                                                          <block type="create_tween_say" id=".Yg|IPz[VtRLH_hPkd*3">
+                                                                                            <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
+                                                                                            <value name="VALUE">
+                                                                                              <shadow type="text" id="/t]494ehPVdpcMzI)uA9">
+                                                                                                <field name="TEXT">What are you doing ? Kill the rats</field>
+                                                                                              </shadow>
+                                                                                              <block type="lists_create_with" id="yxPkQZ`KD-s8U?wIJ@mw" inline="true">
+                                                                                                <mutation items="2"></mutation>
+                                                                                                <value name="ADD0">
+                                                                                                  <block type="text" id="2W6*Jo*?oNBj2N@WYon2">
+                                                                                                    <field name="TEXT">What are you doing now ?</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="ADD1">
+                                                                                                  <block type="text" id="15:J]=rQX~RcklQ*Wl:r">
+                                                                                                    <field name="TEXT">Please kill the rats !</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="TIME">
+                                                                                              <shadow type="tween_auto" id="sLF*r6q]/:^z6P^%@+r#"></shadow>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </statement>
+                                                                                      </block>
+                                                                                    </statement>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
