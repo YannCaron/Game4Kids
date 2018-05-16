@@ -87,16 +87,16 @@ Blockly.JavaScript['actor_method1'] = function (block) {
     return code;
 };
 
-/*
+
 Blockly.JavaScript['actor_method2'] = function (block) {
     var varName = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
     var method = block.getFieldValue('METHOD');
     var arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
     var arg2 = Blockly.JavaScript.valueToCode(block, 'ARG2', Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = varName + '.' + method.format(arg1, arg2, arg3) + ';\n';
+    var code = varName + '.' + method.format(arg1, arg2) + ';\n';
     return code;
-};*/
+};
 
 Blockly.JavaScript['loop_actors_at'] = function (block) {
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);

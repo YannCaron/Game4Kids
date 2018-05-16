@@ -135,8 +135,11 @@ Blockly.Block.optionList = function (options) {
 
 Blockly.Block.DEFAULT_ACTOR = 'actor';
 
-Blockly.Block.prototype.fieldActorFactory = function (selectLast) {
+Blockly.Block.prototype.fieldActorFactory = function (selectLast = false, fieldName = 'VAR') {
     var value = selectLast ? this.getLastCreatedActor() : Blockly.Block.DEFAULT_ACTOR;
+
+    if (this.fieldNames_ == undefined) this.fieldNames_ = new Set();
+    this.fieldNames_.add(fieldName);
 
     this.setOnChange(this.selectNearestActor);
 
@@ -169,14 +172,16 @@ Blockly.Block.prototype.getLastCreatedActor = function () {
 }
 
 Blockly.Block.prototype.selectNearestActor = function (change) {
-    if (this.getField('VAR')) {
-        var variable = this.getField('VAR').getVariable();
+    for (var fieldName of this.fieldNames_) {
+        if (this.getField(fieldName)) {
+            var variable = this.getField(fieldName).getVariable();
 
-        if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
-            var nearestDeclaredActor = this.findNearestActorDeclaration();
+            if (variable.name && change.newParentId != undefined && variable.name == Blockly.Block.DEFAULT_ACTOR) {
+                var nearestDeclaredActor = this.findNearestActorDeclaration();
 
-            if (nearestDeclaredActor != null) {
-                this.getField('VAR').setValue(nearestDeclaredActor.getId());
+                if (nearestDeclaredActor != null) {
+                    this.getField(fieldName).setValue(nearestDeclaredActor.getId());
+                }
             }
         }
     }

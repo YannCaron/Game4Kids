@@ -41,10 +41,18 @@ Blockly.Blocks['actor_get'] = {
             ["y", "y"],
             [Blockly.Msg.BLOCK_WIDTH, "width"],
             [Blockly.Msg.BLOCK_HEIGHT, "height"],
+            [Blockly.Msg.BLOCK_VELOCITY, "velocity"],
             [`${Blockly.Msg.BLOCK_VELOCITY} x`, "body.velocity.x"],
             [`${Blockly.Msg.BLOCK_VELOCITY} y`, "body.velocity.y"],
-            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
+            [Blockly.Msg.BLOCK_SPEED, "body.speed"],
+            [Blockly.Msg.BLOCK_IS_MOVING, "isMoving"],
+            [`${Blockly.Msg.BLOCK_IS_MOVING} ↑`, "isMovingUp"],
+            [`${Blockly.Msg.BLOCK_IS_MOVING} ↓`, "isMovingDown"],
+            [`${Blockly.Msg.BLOCK_IS_MOVING} ←`, "isMovingLeft"],
+            [`${Blockly.Msg.BLOCK_IS_MOVING} →`, "isMovingRight"],
+            [Blockly.Msg.BLOCK_IS_WALKING, "isWalking"],
+            [Blockly.Msg.BLOCK_IS_JUMPING, "isJumping"],
         ];
 
         this.appendValueInput("VAR")
@@ -88,7 +96,6 @@ Blockly.Blocks['actor_set'] = {
             [`${Blockly.Msg.BLOCK_ACCELERATION} x`, "body.acceleration.x"],
             [`${Blockly.Msg.BLOCK_ACCELERATION} y`, "body.acceleration.y"],
             [Blockly.Msg.BLOCK_MAX_VELOCITY, "body.maxVelocity"],
-            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "velocityFromAngle"],
             [Blockly.Msg.BLOCK_GRAVITY, "gravity"],
             [Blockly.Msg.BLOCK_ANGLE, "angle"],
             [Blockly.Msg.BLOCK_OPACITY, "opacity"],
@@ -210,11 +217,10 @@ Blockly.Blocks['actor_method1'] = {
     }
 };
 
-/*
 Blockly.Blocks['actor_method2'] = {
     init: function () {
         this.OPTIONS = [
-            ['Displace from angle', "diplaceFromAngle(%1, %2)"],
+            [Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE, "setVelocityFromAngle(%1, %2)"],
         ];
 
         this.appendValueInput("VAR")
@@ -234,7 +240,7 @@ Blockly.Blocks['actor_method2'] = {
         this.setHelpUrl("");
 
     }
-};*/
+};
 
 Blockly.Blocks['loop_actors_at'] = {
     init: function () {

@@ -5,6 +5,7 @@ Game4kids.Actor = function (game, image, x = 0, y = 0) {
 
     this.drag_ = false;
     this.over_ = false;
+    this.currentSpeech_ = null;
 };
 
 Game4kids.Actor.prototype = Object.create(Phaser.Sprite.prototype);
@@ -21,6 +22,48 @@ Game4kids.Actor.SPEECH_PATCH_ID = 'ui-speech';
 Game4kids.Actor.SPEECH_BUTTON_ID = 'ui-button';
 
 // accessor
+Object.defineProperty(Game4kids.Actor.prototype, 'isMoving', {
+    get: function () { return this.deltaX != 0 || this.deltaY != 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isMovingUp', {
+    get: function () { return this.deltaY < 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isMovingDown', {
+    get: function () { return this.deltaY > 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isMovingLeft', {
+    get: function () { return this.deltaX < 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isMovingRight', {
+    get: function () { return this.deltaX > 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isWalking', {
+    get: function () { return this.deltaX != 0 },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isJumping', {
+    get: function () { return this.deltaY != 0 },
+    enumerable: true,
+    configurable: true
+});
+
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
     get: function () { return this.body.bounce.x * 100 },
     set: function (value) {
@@ -122,7 +165,7 @@ Object.defineProperty(Game4kids.Actor.prototype, 'maxVelocity', {
     configurable: true
 });
 
-Object.defineProperty(Game4kids.Actor.prototype, 'velocityFromAngle', {
+Object.defineProperty(Game4kids.Actor.prototype, 'velocity', {
     get: function () {
         return Math.sqrt(Math.pow(this.body.velocity.x, 2) + Math.pow(this.body.velocity.y, 2));
     },
@@ -132,6 +175,10 @@ Object.defineProperty(Game4kids.Actor.prototype, 'velocityFromAngle', {
     enumerable: true,
     configurable: true
 });
+
+Phaser.Sprite.prototype.setVelocityFromAngle = function (value, angle) {
+    this.game.physics.arcade.velocityFromRotation(this.rotation + angle.degToRad(), value, this.body.velocity);
+}
 
 Phaser.Sprite.prototype.getAngleWith = function (actor) {
     return this.game.physics.arcade.angleBetween(this, actor).radToDeg();
@@ -278,7 +325,10 @@ Game4kids.Actor.prototype.say = function (string, time = 0, parent = null) {
     if (string instanceof Array) string = string.join('\n');
     var content = new Phaser.Text(this.game, 0, 0, string, Game4kids.Actor.TEXT_STYLE);
 
+    if (this.currentSpeech_) this.currentSpeech_.destroy();
+
     var speech = new Game4kids.Actor.Speech(this, content, parent);
+    this.currentSpeech_ = speech;
     speech.start();
 
     var wordCount = string.replace('\n', ' ').split(' ').length;
@@ -297,7 +347,10 @@ Game4kids.Actor.prototype.askKey = function (string, callback, parent = null) {
     if (string instanceof Array) string = string.join('\n');
     var content = new Phaser.Text(this.game, 0, 0, string, Game4kids.Actor.TEXT_STYLE);
 
+    if (this.currentSpeech_) this.currentSpeech_.destroy();
+
     var speech = new Game4kids.Actor.Speech(this, content, parent);
+    this.currentSpeech_ = speech;
     speech.start();
 
     var callback_ = callback.bind(speech);
@@ -331,6 +384,9 @@ Game4kids.Actor.prototype.askButtons = function (string, buttons, parent = null)
         });
     }
 
+    if (this.currentSpeech_) this.currentSpeech_.destroy();
+
     var speech = new Game4kids.Actor.Speech(this, group, parent);
+    this.currentSpeech_ = speech;
     speech.start();
 }

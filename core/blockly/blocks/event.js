@@ -197,7 +197,7 @@ Blockly.Blocks['signal_collide'] = {
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.CONTINUOUS_EVENTS()), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
             .appendField(Blockly.Msg.BLOCK_WITH)
-            .appendField(this.fieldActorFactory(), "ACTOR");
+            .appendField(this.fieldActorFactory(false, "ACTOR"), "ACTOR");
         this.setOutput(true, Blockly.Block.SIGNAL_TYPE);
         this.setColour(Blockly.Msg.EVENT_HUE);
         this.setTooltip(Blockly.Msg.TOOLTIP_SIGNAL_COLLIDE);
@@ -229,12 +229,12 @@ Blockly.Blocks['signal_create_collide'] = {
 
         this.appendDummyInput()
             .appendField("%1 %2".format(Blockly.Msg.BLOCK_WHEN, Blockly.Msg.BLOCK_ANY))
-            .appendField(this.fieldActorFactory(), "ACTOR1")
+            .appendField(this.fieldActorFactory(false, "ACTOR1"), "ACTOR1")
             .appendField(new Blockly.FieldDropdown(this.EVENTS), "EVENT")
             .appendField(new Blockly.FieldDropdown(Blockly.Blocks.event.COLLIDE_KEYS()), "KEY")
         this.appendDummyInput()
             .appendField("%1 %2".format(Blockly.Msg.BLOCK_WITH, Blockly.Msg.BLOCK_ANY))
-            .appendField(this.fieldActorFactory(), "ACTOR2");
+            .appendField(this.fieldActorFactory(false, "ACTOR2"), "ACTOR2");
         this.appendStatementInput("STMT")
             .setCheck(null)
             .appendField(Blockly.Msg.BLOCK_DO);

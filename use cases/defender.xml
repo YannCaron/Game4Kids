@@ -562,10 +562,6 @@
                               <block type="signal_combine" id="8vZzi-SyTh-Z`e-j{W}b">
                                 <field name="OPERATOR">%1.combineWith(
 game4k.createSignal()%2)
-                                
-                                
-                                
-                                
                                 </field>
                                 <value name="NEXT1">
                                   <block type="signal_every" id="IyPX!qtK)v70Bq^_Nwx=">
@@ -1292,16 +1288,21 @@ game4k.createSignal()%2)
                   </shadow>
                 </value>
                 <next>
-                  <block type="actor_set" id="BjPUG)qbpOTfLQ99AJk=">
-                    <field name="PROPERTY">velocityFromAngle</field>
+                  <block type="actor_method2" id="lDsc8ezg~5Nis8~tc$.l">
+                    <field name="METHOD">setVelocityFromAngle(%1, %2)</field>
                     <value name="VAR">
-                      <shadow type="actor_object" id="-M^:rus%nkX[cnmcDx#4">
+                      <shadow type="actor_object" id="(6FV)AhQW:1GBX~KROiz">
                         <field name="VAR" id="7mpGyxbO/ug$}!F$7I+(" variabletype="Actor">shoot</field>
                       </shadow>
                     </value>
                     <value name="ARG1">
-                      <shadow type="math_number" id="6+y/1-Cprg^,+e+PT~.b">
+                      <shadow type="math_number" id="alJKWI4!+CWze/t*VWd{">
                         <field name="NUM">500</field>
+                      </shadow>
+                    </value>
+                    <value name="ARG2">
+                      <shadow type="math_number" id="oDsmsgsZ}cR0,-W`JmzA">
+                        <field name="NUM">0</field>
                       </shadow>
                     </value>
                   </block>
@@ -1316,7 +1317,7 @@ game4k.createSignal()%2)
   <block type="signal_create_collide" id="XLsqMPEw[PR.,0i9~`Z@" x="-580" y="860">
     <field name="ACTOR1" id="7mpGyxbO/ug$}!F$7I+(" variabletype="Actor">shoot</field>
     <field name="EVENT">01</field>
-    <field name="KEY">overlap</field>
+    <field name="KEY">false</field>
     <field name="ACTOR2" id="9VylJ9CrFHv2fOz_Fz];" variabletype="Actor">enemy</field>
     <statement name="STMT">
       <block type="actor_method0" id="mC$U%9V-H(Yz,uyKUx-I">

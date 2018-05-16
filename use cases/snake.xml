@@ -2,11 +2,11 @@
   <variables>
     <variable type="Actor" id="La-K|Jjg,3(roJdjLm:3">head</variable>
     <variable type="Actor" id="3:.^PO#5UyqTH`l6U{|o">tail</variable>
-    <variable type="Actor" id="jx_NTS[JzeRoK{06R[1k">animal</variable>
     <variable type="" id="MVnMa,Ink~K?BLWuQwoh">img</variable>
     <variable type="" id="F#f9yWTp6Brt3!1TajrB">x</variable>
     <variable type="" id=";ZB4W=dX`3Pk#ebhP[4Z">y</variable>
     <variable type="" id="!PrYgm3ipvy]@$PgOh3O">last</variable>
+    <variable type="Actor" id="jx_NTS[JzeRoK{06R[1k">animal</variable>
     <variable type="" id="a1hf-DZFZsMC*a[KRf59">direction</variable>
     <variable type="Actor" id="8x88JnJ=KfRXfHssSaDW">next</variable>
   </variables>
@@ -622,6 +622,42 @@
                                                                     </value>
                                                                   </block>
                                                                 </statement>
+                                                                <next>
+                                                                  <block type="signal_create_collide" id="KxIQ%!s2mR*+I[E),L;m">
+                                                                    <field name="ACTOR1" id="La-K|Jjg,3(roJdjLm:3" variabletype="Actor">head</field>
+                                                                    <field name="EVENT">11</field>
+                                                                    <field name="KEY">true</field>
+                                                                    <field name="ACTOR2" id="3:.^PO#5UyqTH`l6U{|o" variabletype="Actor">tail</field>
+                                                                    <statement name="STMT">
+                                                                      <block type="procedures_callnoreturn" id="~]{USLga9=NfaU@@tk?B">
+                                                                        <mutation name="game over"></mutation>
+                                                                      </block>
+                                                                    </statement>
+                                                                    <next>
+                                                                      <block type="signal_create_collide" id="zx)JYoRLA:7KnOzlf21C">
+                                                                        <field name="ACTOR1" id="La-K|Jjg,3(roJdjLm:3" variabletype="Actor">head</field>
+                                                                        <field name="EVENT">11</field>
+                                                                        <field name="KEY">false</field>
+                                                                        <field name="ACTOR2" id="jx_NTS[JzeRoK{06R[1k" variabletype="Actor">animal</field>
+                                                                        <statement name="STMT">
+                                                                          <block type="procedures_callnoreturn" id="5u0B$WY/@!-l=-?LP)o[" inline="true">
+                                                                            <mutation name="createTail"></mutation>
+                                                                            <next>
+                                                                              <block type="actor_method0" id=",rb6xl2bJ.r6O)UdA_!G">
+                                                                                <field name="METHOD">kill()</field>
+                                                                                <value name="VAR">
+                                                                                  <shadow type="actor_object" id="G6~KJ~698pu1ZIUaq}bN">
+                                                                                    <field name="VAR" id="jx_NTS[JzeRoK{06R[1k" variabletype="Actor">animal</field>
+                                                                                  </shadow>
+                                                                                </value>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </statement>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
                                                               </block>
                                                             </next>
                                                           </block>
@@ -764,38 +800,6 @@
                 </value>
               </block>
             </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="signal_create_collide" id="KxIQ%!s2mR*+I[E),L;m" x="1060" y="620">
-    <field name="ACTOR1" id="La-K|Jjg,3(roJdjLm:3" variabletype="Actor">head</field>
-    <field name="EVENT">11</field>
-    <field name="KEY">collide</field>
-    <field name="ACTOR2" id="3:.^PO#5UyqTH`l6U{|o" variabletype="Actor">tail</field>
-    <statement name="STMT">
-      <block type="procedures_callnoreturn" id="~]{USLga9=NfaU@@tk?B">
-        <mutation name="game over"></mutation>
-      </block>
-    </statement>
-  </block>
-  <block type="signal_create_collide" id="zx)JYoRLA:7KnOzlf21C" x="1060" y="740">
-    <field name="ACTOR1" id="La-K|Jjg,3(roJdjLm:3" variabletype="Actor">head</field>
-    <field name="EVENT">11</field>
-    <field name="KEY">overlap</field>
-    <field name="ACTOR2" id="jx_NTS[JzeRoK{06R[1k" variabletype="Actor">animal</field>
-    <statement name="STMT">
-      <block type="procedures_callnoreturn" id="5u0B$WY/@!-l=-?LP)o[" inline="true">
-        <mutation name="createTail"></mutation>
-        <next>
-          <block type="actor_method0" id=",rb6xl2bJ.r6O)UdA_!G">
-            <field name="METHOD">kill()</field>
-            <value name="VAR">
-              <shadow type="actor_object" id="G6~KJ~698pu1ZIUaq}bN">
-                <field name="VAR" id="jx_NTS[JzeRoK{06R[1k" variabletype="Actor">animal</field>
-              </shadow>
-            </value>
           </block>
         </next>
       </block>

@@ -465,7 +465,7 @@
                                                                                     <value name="NEXT1">
                                                                                       <block type="signal_collide" id="v!for9Yj@/.iMK`c4ch?">
                                                                                         <field name="EVENT">.whenEquals(true)</field>
-                                                                                        <field name="KEY">overlap</field>
+                                                                                        <field name="KEY">false</field>
                                                                                         <field name="ACTOR" id="hEk%?od.8fM!(R1p6J[D" variabletype="Actor">viseur</field>
                                                                                       </block>
                                                                                     </value>
@@ -835,7 +835,7 @@
                                                                                             <value name="NEXT1">
                                                                                               <block type="signal_collide" id="C!V5,)([Y{9,hX+)V|eQ">
                                                                                                 <field name="EVENT">.whenEquals(true)</field>
-                                                                                                <field name="KEY">overlap</field>
+                                                                                                <field name="KEY">false</field>
                                                                                                 <field name="ACTOR" id="hEk%?od.8fM!(R1p6J[D" variabletype="Actor">viseur</field>
                                                                                               </block>
                                                                                             </value>

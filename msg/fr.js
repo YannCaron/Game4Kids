@@ -92,9 +92,13 @@ Blockly.Msg.BLOCK_ACCELERATION = "accélération";
 Blockly.Msg.BLOCK_MAX_VELOCITY = "vélocité maximum";
 Blockly.Msg.BLOCK_GRAVITY = "gravité en %";
 Blockly.Msg.BLOCK_ANGLE = "angle";
+Blockly.Msg.BLOCK_SPEED = "vitesse";
 Blockly.Msg.BLOCK_DISTANCE = "distance";
+Blockly.Msg.BLOCK_IS_MOVING = "est en mouvement";
+Blockly.Msg.BLOCK_IS_WALKING = "est en train de marcher";
+Blockly.Msg.BLOCK_IS_JUMPING = "est en train de sauter";
 
-Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "la vélocité depuis l'angle";
+Blockly.Msg.BLOCK_VELOCITY_FROM_ANGLE = "assigne la vélocité depuis l'angle";
 Blockly.Msg.BLOCK_SCALE = "agrandissement en % de %1";
 Blockly.Msg.BLOCK_BOUNCE = "rebond en %";
 Blockly.Msg.BLOCK_FRICTION = "frottement en %";
