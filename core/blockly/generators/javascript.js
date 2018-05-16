@@ -14,18 +14,8 @@ Blockly.JavaScript.initialize = function (workspace) {
 }
 
 Blockly.JavaScript.finalize = function (workspace) {
-    var variableNames = workspace.getAllVariables()
-        //.filter(variable => variable.type != Blockly.Block.ACTOR_TYPE)
-        .map(variable => variable.name);
-
-    Blockly.JavaScript.definitions_['variables'] =
-        'var game4k = new Game4kids.Game(' + Blockly.Block.windowWidth() + ', ' + Blockly.Block.windowHeight() + ', \'content_game\', { preload: preload, create: create});';
-
-    if (variableNames.length > 0) {
-        Blockly.JavaScript.definitions_['variables'] +=
-            '\nvar ' + variableNames.join(', ') + ';';
-    }
-
+    Blockly.JavaScript.definitions_['variables'] +=
+        '\nvar game4k = new Game4kids.Game(' + Blockly.Block.windowWidth() + ', ' + Blockly.Block.windowHeight() + ', \'content_game\', { preload: preload, create: create});';
 }
 
 Blockly.JavaScript.startScope = function (block = null) {
