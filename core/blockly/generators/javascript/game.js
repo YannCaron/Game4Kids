@@ -1,16 +1,17 @@
 // Game
 Blockly.JavaScript['create_game'] = function (block) {
-  var background = Blockly.JavaScript.valueToCode(block, 'IMG', Blockly.JavaScript.ORDER_NONE);
+  var img = Blockly.JavaScript.valueToCode(block, 'IMG', Blockly.JavaScript.ORDER_NONE);
+
   var w = Blockly.JavaScript.valueToCode(block, 'W', Blockly.JavaScript.ORDER_ATOMIC);
   var h = Blockly.JavaScript.valueToCode(block, 'H', Blockly.JavaScript.ORDER_ATOMIC);
 
   var code = 'game4k.createGame(' + w + ', ' + h + ');';
   code += block.lineCode();
 
-  if (block.getInputTargetBlock('IMG').type.startsWith('game_image_')) {
-    code += 'game4k.bgImage = %1;'.format(background);
+  if (img.startsWith('\'#')) {
+    code += 'game4k.bgColor = %1;'.format(img);
   } else {
-    code += 'game4k.bgColor = %1;'.format(background);
+    code += 'game4k.bgImage = %1;'.format(img);
   }
   code += block.lineCode();
 

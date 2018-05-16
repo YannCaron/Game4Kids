@@ -1,4 +1,9 @@
 // dynamic images
+Blockly.Blocks.imageInterpreter = function (img) {
+    var data = img.replace(/'/g, '').split('#');
+    return { 'key': data[0], 'url': data[1], 'strW': data[2], 'strH': data[3], 'strOffsetW': data[4], 'strOffsetH': data[5] };
+}
+
 for (var category in Blockly4kids.gameImages) {
 
     Blockly.Blocks['game_image_' + category] = {
@@ -15,8 +20,7 @@ for (var category in Blockly4kids.gameImages) {
 
         getImage: function () {
             var img = this.getFieldValue('IMG');
-            var pair = img.split('#');
-            return { 'key': pair[0], 'url': pair[1] };
+            return Blockly.Blocks.imageInterpreter(img);
         }
     };
 }

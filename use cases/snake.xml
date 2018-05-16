@@ -13,7 +13,7 @@
   <block type="create_game" id="[o_~~t?PY:QcJp7FcI-P" x="220" y="100">
     <value name="IMG">
       <shadow type="game_image_Background" id="G*{PZ1AyL0RCFTjQf_2d">
-        <field name="IMG">Background-bg-wood#assets/img/Background/bg_wood.png</field>
+        <field name="IMG">Background-bg-wood#assets/img/Background/bg_wood.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
       </shadow>
     </value>
     <value name="W">
@@ -34,7 +34,7 @@
             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
           </shadow>
           <block type="game_image_Animals" id="U}gm=~x#7s8.r@y/XRUu">
-            <field name="IMG">Animals-snake#assets/img/Animals/snake.png</field>
+            <field name="IMG">Animals-snake#assets/img/Animals/snake.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
           </block>
         </value>
         <value name="X">
@@ -700,7 +700,7 @@
             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
           </shadow>
           <block type="game_image_Animals" id=")panzi!|Qi4M,xJ$0%:/">
-            <field name="IMG">Animals-snake-nu#assets/img/Animals/snake-nu.png</field>
+            <field name="IMG">Animals-snake-nu#assets/img/Animals/snake-nu.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
           </block>
         </value>
         <value name="X">
@@ -768,7 +768,7 @@
           <block type="create_game" id="W]STSucYO=/O7$nDOs@1">
             <value name="IMG">
               <shadow type="game_image_Background" id="U{Fbv01{y=@3VCdsrg):">
-                <field name="IMG">Background-bg-wood#assets/img/Background/bg_wood.png</field>
+                <field name="IMG">Background-bg-wood#assets/img/Background/bg_wood.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
               </shadow>
             </value>
             <value name="W">
@@ -816,17 +816,17 @@
             <mutation items="3"></mutation>
             <value name="ADD0">
               <block type="game_image_Animals" id="!aS.s2ew*#S`w-yc%Ah(">
-                <field name="IMG">Animals-chicken#assets/img/Animals/chicken.png</field>
+                <field name="IMG">Animals-chick#assets/img/Animals/chick.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
               </block>
             </value>
             <value name="ADD1">
               <block type="game_image_Animals" id="/_@o,9*4;#|[uP{fMt(`">
-                <field name="IMG">Animals-chick#assets/img/Animals/chick.png</field>
+                <field name="IMG">Animals-parrot#assets/img/Animals/parrot.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
               </block>
             </value>
             <value name="ADD2">
               <block type="game_image_Animals" id="GVpo1-%XyZ3f64Ciyeu.">
-                <field name="IMG">Animals-parrot#assets/img/Animals/parrot.png</field>
+                <field name="IMG">Animals-chicken#assets/img/Animals/chicken.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
               </block>
             </value>
           </block>

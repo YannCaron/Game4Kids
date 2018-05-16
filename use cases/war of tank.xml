@@ -32,7 +32,7 @@
                 <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
               </shadow>
               <block type="game_image_SpaceArt" id="(Dc,_#Yp9nH=KLOCo%4P">
-                <field name="IMG">SpaceArt-enemyRed4#assets/img/SpaceArt/enemyRed4.png</field>
+                <field name="IMG">SpaceArt-enemyRed4#assets/img/SpaceArt/enemyRed4.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
               </block>
             </value>
             <value name="X">
@@ -89,16 +89,21 @@
                               </block>
                             </value>
                             <statement name="STMT">
-                              <block type="actor_set" id=";*yYTp`]lzq02XC]^W`Z">
-                                <field name="PROPERTY">velocityFromAngle</field>
+                              <block type="actor_method2" id="i=^`=qxKGDr^tARF#Pz-">
+                                <field name="METHOD">setVelocityFromAngle(%1, %2)</field>
                                 <value name="VAR">
-                                  <shadow type="actor_object" id="By7{Ng+i)OZN25*XPyOk">
+                                  <shadow type="actor_object" id="x!S!@1aAX)qEpXlgcjT;">
                                     <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
                                   </shadow>
                                 </value>
                                 <value name="ARG1">
-                                  <shadow type="math_number" id="T/VZ1gN$[Xd=LY]1/`J6">
+                                  <shadow type="math_number" id="dc3ui-74@eSsc)Ypp:CP">
                                     <field name="NUM">250</field>
+                                  </shadow>
+                                </value>
+                                <value name="ARG2">
+                                  <shadow type="math_number" id="w$3vgGjFUI`y1]0S,nbf">
+                                    <field name="NUM">0</field>
                                   </shadow>
                                 </value>
                               </block>
@@ -113,15 +118,20 @@
                                   </block>
                                 </value>
                                 <statement name="STMT">
-                                  <block type="actor_set" id=")D.mP)=rja}o/alpId()">
-                                    <field name="PROPERTY">velocityFromAngle</field>
+                                  <block type="actor_method2" id=";us3SyP#.yfsbxV!~ZgE">
+                                    <field name="METHOD">setVelocityFromAngle(%1, %2)</field>
                                     <value name="VAR">
-                                      <shadow type="actor_object" id="(h,F=}1#E?fY3kd;,^;C">
+                                      <shadow type="actor_object" id="+U2N,[.i92Tg:F@w0O42">
                                         <field name="VAR" id="nf4F6g!i{_F/`#@);s$s" variabletype="Actor">player</field>
                                       </shadow>
                                     </value>
                                     <value name="ARG1">
-                                      <shadow type="math_number" id="pup5!EvQ+y4;m}ATt3i#">
+                                      <shadow type="math_number" id="+(/wQpg[..G`GSj^63y,">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="ARG2">
+                                      <shadow type="math_number" id="v{]{Wq22(UWU/nn2WWv1">
                                         <field name="NUM">0</field>
                                       </shadow>
                                     </value>
@@ -225,7 +235,7 @@
                                                 <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
                                               </shadow>
                                               <block type="game_image_ShootingGallery" id="i^|FS}/OATIlB$`6mwGS">
-                                                <field name="IMG">ShootingGallery-crosshair-red-large#assets/img/ShootingGallery/crosshair_red_large.png</field>
+                                                <field name="IMG">ShootingGallery-crosshair-outline-large#assets/img/ShootingGallery/crosshair_outline_large.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                               </block>
                                             </value>
                                             <value name="X">
@@ -285,7 +295,7 @@
                                                         <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
                                                       </shadow>
                                                       <block type="game_image_SpaceArt" id="#]Dze9Sdm1/fJ1.{q|c7">
-                                                        <field name="IMG">SpaceArt-enemyRed5#assets/img/SpaceArt/enemyRed5.png</field>
+                                                        <field name="IMG">SpaceArt-enemyRed1#assets/img/SpaceArt/enemyRed1.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                                       </block>
                                                     </value>
                                                     <value name="X">
@@ -432,7 +442,7 @@
                                                                             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
                                                                           </shadow>
                                                                           <block type="game_image_SpaceArt" id="djCAnb3Pk?N?1.52o)ly">
-                                                                            <field name="IMG">SpaceArt-laserGreen#assets/img/SpaceArt/laserGreen.png</field>
+                                                                            <field name="IMG">SpaceArt-laserRed#assets/img/SpaceArt/laserRed.png#w-24#h-24#cw#ch</field>
                                                                           </block>
                                                                         </value>
                                                                         <value name="X">
@@ -496,16 +506,21 @@
                                                                                   </shadow>
                                                                                 </value>
                                                                                 <next>
-                                                                                  <block type="actor_set" id=")GG6W8fbhX2-=.Kaj3-h">
-                                                                                    <field name="PROPERTY">velocityFromAngle</field>
+                                                                                  <block type="actor_method2" id="9}Ds(!tKSV1DMiawH2tD">
+                                                                                    <field name="METHOD">setVelocityFromAngle(%1, %2)</field>
                                                                                     <value name="VAR">
-                                                                                      <shadow type="actor_object" id="tzSfD}`+A4MXl-m(,JTV">
+                                                                                      <shadow type="actor_object" id="g)6H7{U.Q`;hu4f#3Fbp">
                                                                                         <field name="VAR" id="S^XvKn:[`?*FDeqV[0nJ" variabletype="Actor">bullet</field>
                                                                                       </shadow>
                                                                                     </value>
                                                                                     <value name="ARG1">
-                                                                                      <shadow type="math_number" id="LW)iVB4bS)3p6m5tb@fC">
+                                                                                      <shadow type="math_number" id="3?|~gg9wXB7EXk~+`_y@">
                                                                                         <field name="NUM">500</field>
+                                                                                      </shadow>
+                                                                                    </value>
+                                                                                    <value name="ARG2">
+                                                                                      <shadow type="math_number" id="T-HA_Hz*^B.kR9B(6N=y">
+                                                                                        <field name="NUM">0</field>
                                                                                       </shadow>
                                                                                     </value>
                                                                                   </block>

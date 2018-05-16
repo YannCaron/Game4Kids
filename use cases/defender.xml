@@ -413,7 +413,7 @@
   <block type="create_game" id="tSoAO-xyuYPwT2T17[gH" x="20" y="20">
     <value name="IMG">
       <shadow type="game_image_Background" id="x@J+JIYXtW-2=T{PgBsW">
-        <field name="IMG">Background-tile-2#assets/img/Background/tile 2.png</field>
+        <field name="IMG">Background-tile-2#assets/img/Background/tile 2.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
       </shadow>
     </value>
     <value name="W">
@@ -466,7 +466,7 @@
                     </mutation>
                     <value name="ARG0">
                       <block type="game_image_SpaceArt" id="#9TSpXwmWSq#T?noVIL#">
-                        <field name="IMG">SpaceArt-spaceShips-002#assets/img/SpaceArt/spaceShips_002.png</field>
+                        <field name="IMG">SpaceArt-spaceShips-001#assets/img/SpaceArt/spaceShips_001.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                       </block>
                     </value>
                     <value name="ARG1">
@@ -514,7 +514,7 @@
                         </mutation>
                         <value name="ARG0">
                           <block type="game_image_SpaceArt" id="}66%Av19ShrQ#UISCipr">
-                            <field name="IMG">SpaceArt-spaceShips-001#assets/img/SpaceArt/spaceShips_001.png</field>
+                            <field name="IMG">SpaceArt-spaceShips-007#assets/img/SpaceArt/spaceShips_007.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                           </block>
                         </value>
                         <value name="ARG1">
@@ -588,17 +588,17 @@ game4k.createSignal()%2)
                                     <mutation items="3"></mutation>
                                     <value name="ADD0">
                                       <block type="game_image_SpaceArt" id="TcJiw!y!#$Z)BTKw{14y">
-                                        <field name="IMG">SpaceArt-spaceAstronauts-002#assets/img/SpaceArt/spaceAstronauts_002.png</field>
+                                        <field name="IMG">SpaceArt-spaceAstronauts-002#assets/img/SpaceArt/spaceAstronauts_002.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                       </block>
                                     </value>
                                     <value name="ADD1">
                                       <block type="game_image_SpaceArt" id="yIcoChM|L~Az;O@Dt:kS">
-                                        <field name="IMG">SpaceArt-spaceAstronauts-005#assets/img/SpaceArt/spaceAstronauts_005.png</field>
+                                        <field name="IMG">SpaceArt-spaceAstronauts-008#assets/img/SpaceArt/spaceAstronauts_008.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                       </block>
                                     </value>
                                     <value name="ADD2">
                                       <block type="game_image_SpaceArt" id=":DG6GlWuH9J2g.6u^I70">
-                                        <field name="IMG">SpaceArt-spaceAstronauts-008#assets/img/SpaceArt/spaceAstronauts_008.png</field>
+                                        <field name="IMG">SpaceArt-spaceAstronauts-005#assets/img/SpaceArt/spaceAstronauts_005.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                       </block>
                                     </value>
                                   </block>
@@ -1158,7 +1158,7 @@ game4k.createSignal()%2)
             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
           </shadow>
           <block type="game_image_Brick" id="-F;c|JY{S3BqTtX+{:q;">
-            <field name="IMG">Brick-element-grey-diamond-glossy#assets/img/Brick/element_grey_diamond_glossy.png</field>
+            <field name="IMG">Brick-element-grey-diamond-glossy#assets/img/Brick/element_grey_diamond_glossy.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
           </block>
         </value>
         <value name="X">
@@ -1224,7 +1224,7 @@ game4k.createSignal()%2)
             <field name="IMG">PlanetCute-Beetleship#assets/img/PlanetCute/Beetleship.png</field>
           </shadow>
           <block type="game_image_SpaceArt" id="A;`J^4TQ:)~#%(yip])}">
-            <field name="IMG">SpaceArt-laserGreen#assets/img/SpaceArt/laserGreen.png</field>
+            <field name="IMG">SpaceArt-laserRed#assets/img/SpaceArt/laserRed.png#w-24#h-24#cw#ch</field>
           </block>
         </value>
         <value name="X">

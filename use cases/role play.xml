@@ -41,17 +41,17 @@
                 <mutation items="3"></mutation>
                 <value name="ADD0">
                   <block type="game_image_PlanetCute" id="LwncDYwpd8cZnWU,/tj/">
-                    <field name="IMG">PlanetCute-Tree-Short#assets/img/PlanetCute/Tree Short.png</field>
+                    <field name="IMG">PlanetCute-Tree-Short#assets/img/PlanetCute/Tree Short.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                   </block>
                 </value>
                 <value name="ADD1">
                   <block type="game_image_PlanetCute" id="kv)pYSigP}FcP{_!n=e@">
-                    <field name="IMG">PlanetCute-Tree-Tall#assets/img/PlanetCute/Tree Tall.png</field>
+                    <field name="IMG">PlanetCute-Tree-Tall#assets/img/PlanetCute/Tree Tall.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                   </block>
                 </value>
                 <value name="ADD2">
                   <block type="game_image_PlanetCute" id="sI_H{WJf3V$`lO5y,MtD">
-                    <field name="IMG">PlanetCute-Tree-Ugly#assets/img/PlanetCute/Tree Ugly.png</field>
+                    <field name="IMG">PlanetCute-Tree-Ugly#assets/img/PlanetCute/Tree Ugly.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                   </block>
                 </value>
               </block>
@@ -184,7 +184,7 @@
                     <field name="VAR" id="Jss(P-~adYeh^otA0WJ#" variabletype="Actor">mage</field>
                     <value name="IMG">
                       <shadow type="game_image_PlanetCute" id="_]54Ttstq{z3P(azm7}z">
-                        <field name="IMG">PlanetCute-Character-Cat-Girl#assets/img/PlanetCute/Character Cat Girl.png</field>
+                        <field name="IMG">PlanetCute-Character-Cat-Girl#assets/img/PlanetCute/Character Cat Girl.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                       </shadow>
                     </value>
                     <value name="X">
@@ -495,7 +495,7 @@
                                                 <field name="VAR" id="]2%[m)}kc:k*JvMBmxDY" variabletype="Actor">hero</field>
                                                 <value name="IMG">
                                                   <shadow type="game_image_PlanetCute" id="/1$km/6^X}DoqRx{*U!h">
-                                                    <field name="IMG">PlanetCute-Character-Boy#assets/img/PlanetCute/Character Boy.png</field>
+                                                    <field name="IMG">PlanetCute-Character-Boy#assets/img/PlanetCute/Character Boy.png#Math.min(w, h)#Math.min(w, h)#cw#ch</field>
                                                   </shadow>
                                                 </value>
                                                 <value name="X">

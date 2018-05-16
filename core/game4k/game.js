@@ -61,7 +61,10 @@ Game4kids.Game.prototype.createGame = function (w, h) {
 };
 
 Object.defineProperty(Game4kids.Game.prototype, 'bgImage', {
-    set: function (value) { this.game.add.tileSprite(0, 0, this.game.world.bounds.width, this.game.world.bounds.height, value); },
+    set: function (value) { 
+        var data = Blockly.Blocks.imageInterpreter(value);
+        this.game.add.tileSprite(0, 0, this.game.world.bounds.width, this.game.world.bounds.height, data.key); 
+    },
     enumerable: true,
     configurable: true
 });
@@ -98,8 +101,11 @@ Object.defineProperty(Game4kids.Game.prototype, 'cameraYDelta', {
 
 Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
+    // get data
+    var data = Blockly.Blocks.imageInterpreter(image);
+
     // create actor
-    var actor = new Game4kids.Actor(this.game, image, x, y);
+    var actor = new Game4kids.Actor(this.game, data.key, x, y);
     actor.id = this.actorCurrentId;
     this.actorCurrentId += 1;
     this.groups.get(name).add(actor);
@@ -113,8 +119,7 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
     actor.body.mass = 1;
 
     // set body size
-    var size = Math.min(actor.body.width, actor.body.height);
-    actor.body.setSize(size, size, (actor.body.width - size) / 2, (actor.body.height - size) / 2);
+    Game4kids.Game.applyStrategy(actor, data.strW, data.strH, data.strOffsetW, data.strOffsetH);
 
     // on kill event
     var self = this;
@@ -129,6 +134,22 @@ Game4kids.Game.prototype.createActor = function (name, image, x = 0, y = 0) {
 
     return actor;
 };
+
+Game4kids.Game.applyStrategy = function (actor, strW, strH, strOffsetW, strOffsetH) {
+    var w = actor.body.width;
+    var h = actor.body.height;
+
+    var width = eval(strW);
+    var height = eval(strH);
+
+    var cw = (actor.body.width - width) / 2;
+    var ch = (actor.body.height - height) / 2;
+
+    var offsetX = eval(strOffsetW);
+    var offsetY = eval(strOffsetH);
+
+    actor.body.setSize(width, height, offsetX, offsetY);
+}
 
 Game4kids.Game.prototype.createTween = function (target, parent = null) {
     return new Game4kids.Tween(target, this.game, this.game.tweens, parent);

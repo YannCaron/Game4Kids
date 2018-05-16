@@ -9,7 +9,7 @@ Blockly.JavaScript['create_actor'] = function (block) {
     if (Blockly.JavaScript.check(varName)) {
         code += 'let ';
     }
-    code += varName + ' = game4k.createActor(\'' + varName + '\', ' + img + ', ' + x + ', ' + y + ');';
+    code += '%1 = game4k.createActor(\'%1\', %2, %3, %4);'.format(varName, img, x, y);
     code += block.lineCode();
 
     return code;
