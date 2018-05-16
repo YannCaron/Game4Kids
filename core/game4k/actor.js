@@ -64,6 +64,36 @@ Object.defineProperty(Game4kids.Actor.prototype, 'isJumping', {
     configurable: true
 });
 
+Object.defineProperty(Game4kids.Actor.prototype, 'isTouching', {
+    get: function () { return this.isTouchingUp || this.isTouchingDown || this.isTouchingLeft || this.isTouchingRight  },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isTouchingUp', {
+    get: function () { return this.body.blocked.up || this.body.wasTouching.up; },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isTouchingDown', {
+    get: function () { return this.body.blocked.down || this.body.wasTouching.down; },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isTouchingLeft', {
+    get: function () { return this.body.blocked.left || this.body.wasTouching.left;  },
+    enumerable: true,
+    configurable: true
+});
+
+Object.defineProperty(Game4kids.Actor.prototype, 'isTouchingRight', {
+    get: function () { return this.body.blocked.right || this.body.wasTouching.right;  },
+    enumerable: true,
+    configurable: true
+});
+
 Object.defineProperty(Game4kids.Actor.prototype, 'bounce', {
     get: function () { return this.body.bounce.x * 100 },
     set: function (value) {
