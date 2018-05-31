@@ -154,15 +154,6 @@ Code.bindClick = function (el, func) {
 };
 
 /**
- * Load the Prettify CSS and JavaScript.
- */
-Code.importPrettify = function () {
-  var script = document.createElement('script');
-  script.setAttribute('src', 'https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js');
-  document.head.appendChild(script);
-};
-
-/**
  * Compute the absolute coordinates and dimensions of an HTML element.
  * @param {!Element} element Element to match.
  * @return {!Object} Contains height, width, x, and y properties.
@@ -429,9 +420,6 @@ Code.init = function () {
   }
   onresize();
   Blockly.svgResize(Code.workspace);
-
-  // Lazy-load the syntax-highlighting.
-  window.setTimeout(Code.importPrettify, 1);
 
   // CyaNn Code
   Code.workspace.registerToolboxCategoryCallback('IMAGE', Blockly.imageDynamic.imageFlyoutCallback);
