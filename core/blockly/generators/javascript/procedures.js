@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 Blockly.JavaScript['old_procedures_defreturn'] = Blockly.JavaScript['procedures_defreturn'];
 Blockly.JavaScript['procedures_defreturn'] = function (block) {
     // restart scope to create variables

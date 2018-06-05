@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // blocks
 Blockly.JavaScript['create_tween'] = function (block) {
     var varName = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);

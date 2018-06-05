@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // inner class
 Game4kids.Game.VariableInfo = function (name, callback) {
     this.name = name;

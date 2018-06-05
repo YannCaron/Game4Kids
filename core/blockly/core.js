@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // global
 Blockly.Blocks.event = Blockly.Blocks.event || {};
 Blockly.Blocks.event.HUE = Blockly.Msg.EVENT_HUE;

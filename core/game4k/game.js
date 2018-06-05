@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // const
 Game4kids.Game.DEFAULT_MAX_ACTOR = 500;
 Game4kids.Game.TEXT_FONT = "Courier New"; // another choice: DejaVu Sans Mono

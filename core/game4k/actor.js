@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // constructor
 Game4kids.Actor = function (game, image, x = 0, y = 0) {
     Phaser.Sprite.call(this, game, x, y, image);

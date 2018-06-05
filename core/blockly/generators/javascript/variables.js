@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 Blockly.JavaScript['variables_set'] = function (block) {
     // Variable setter.
     var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',

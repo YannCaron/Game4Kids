@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // Global
 Game4kids.Game.prototype.currentLock = null;
 Game4kids.Game.prototype.anims = null;

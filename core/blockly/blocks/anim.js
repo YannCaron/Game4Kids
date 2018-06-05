@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // Tween
 // Tween.constructor
 Blockly.Blocks['create_tween'] = {

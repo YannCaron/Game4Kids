@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // constants
 Blockly.JavaScript.STMT = 0;
 Blockly.JavaScript.SEQ = 1;

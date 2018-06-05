@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 Blockly.Blocks.event.COLLIDE_KEYS = function () {
     return [
         [Blockly.Msg.BLOCK_COLLIDE, "true"],

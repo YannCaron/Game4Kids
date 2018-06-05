@@ -1,3 +1,11 @@
+/*
+
+Copyright Yann Caron (c) 2018 - 2019
+All right reserved.
+
+*/
+// license above
+
 // create namespace
 Blockly.gameDynamic = Blockly.gameDynamic || {};
 
